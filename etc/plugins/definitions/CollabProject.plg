@@ -1,0 +1,7 @@
+<PLUGIN name="CollabProject"
+        uuid="{COLLAB_PROJECT_MODULE:44d7c0cf-6704-4d90-91b3-08ae5e535717}">
+    <!-- some local setup will be here -->   
+    <OBJECT uuid="{COLLAB_PROJECT:c08213de-7079-43a3-8620-958edb6808af}">
+        <CONFIG key="_model"    value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+    </OBJECT>
+</PLUGIN> 

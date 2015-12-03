@@ -1,0 +1,58 @@
+# ==============================================================================
+# Nemesis CMake File
+# ==============================================================================
+
+# objects in library -----------------------------------------------------------
+SET(SKETCH_PROJECT_SRC
+        SketchProjectMainHeader.cpp
+        SketchProjectModule.cpp
+        SketchProject.cpp
+        SketchProjectDesigner.cpp
+        SketchProjectWindow.cpp
+        SketchProjectWindowEdit.cpp
+        SketchProjectWindowView.cpp
+        SketchProjectJSObject.cpp
+        )
+
+# program windows --------------------------------------------------------------
+SET(SKETCH_PROJECT_UIS
+        SketchProjectWindow.ui
+        SketchProjectDesigner.ui
+        )
+
+# program resources ------------------------------------------------------------
+SET(SKETCH_PROJECT_RESOURCES
+        SketchProject.qrc
+        )
+
+# QT5 related binding ----------------------------------------------------------
+QT5_ADD_RESOURCES(SKETCH_PROJECT_SRC ${SKETCH_PROJECT_RESOURCES})
+QT5_WRAP_UI(SKETCH_PROJECT_SRC ${SKETCH_PROJECT_UIS})
+
+# Nemesis uses plugins, so dynamic linking is obligatory!
+
+# create shared library --------------------------------------------------------
+ADD_LIBRARY(sketch_project_shared SHARED ${SKETCH_PROJECT_SRC})
+
+SET_TARGET_PROPERTIES(sketch_project_shared PROPERTIES
+                        OUTPUT_NAME SketchProject
+                        CLEAN_DIRECT_OUTPUT 1
+                        VERSION ${NEMESIS_VERSION})
+
+TARGET_LINK_LIBRARIES(sketch_project_shared
+                ${INDIGO_LIB}
+                NemesisCore
+                plusula
+                ${QT_LIBRARIES}
+                ${HIPOLY_LIB_NAME}
+                ${SYSTEM_LIBS}
+                )
+
+QT5_USE_MODULES(sketch_project_shared Core Widgets Gui Script OpenGL WebKitWidgets Svg)
+
+INSTALL(TARGETS
+            sketch_project_shared
+        DESTINATION
+            lib
+        )
+

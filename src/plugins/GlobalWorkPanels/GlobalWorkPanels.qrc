@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/">
+    <file>images/GlobalWorkPanels/NewProject.svg</file>
+    <file>images/GlobalWorkPanels/JavaScriptConsole.svg</file>
+    <file>images/GlobalWorkPanels/ColorPreferences.svg</file>
+    <file>images/GlobalWorkPanels/ErrorConsole.svg</file>
+    <file>images/GlobalWorkPanels/GlobalConfig.svg</file>
+    <file>images/GlobalWorkPanels/GraphicsSetup.svg</file>
+    <file>images/GlobalWorkPanels/JobSchedulerSetup.svg</file>
+    <file>images/GlobalWorkPanels/PeriodicTable.svg</file>
+    <file>images/GlobalWorkPanels/PluginDatabase.svg</file>
+    <file>images/GlobalWorkPanels/ObjectInspector.svg</file>
+    <file>images/GlobalWorkPanels/QuantitySetup.svg</file>
+    <file>images/GlobalWorkPanels/MainLogo.png</file>
+    <file>images/GlobalWorkPanels/MainLogoRotated.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,8 @@
+<PLUGIN name="BuildProject"
+        uuid="{BUILD_PROJECT_MODULE:f3529c8a-fd15-4906-95b9-cfb24e71197d}">
+    <!-- some local setup will be here -->
+    <OBJECT uuid="{BUILD_PROJECT:b64d16f0-b73f-4747-9a13-212ab9a15d38}">
+        <CONFIG key="_model"    value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+        <CONFIG key="_designer" value="{BUILD_PROJECT_DESIGNER:32cd459f-ace3-4580-8cec-a116579d0dd3}"/>
+    </OBJECT>
+</PLUGIN> 

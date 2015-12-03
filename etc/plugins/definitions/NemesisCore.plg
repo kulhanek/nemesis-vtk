@@ -1,0 +1,320 @@
+<!-- NemesisCore Plugin Setup -->
+<PLUGIN name="NemesisCore"
+        uuid="{NEMESIS_CORE:497a5e7a-2baf-42ba-846b-0ad1565809fd}">
+    <!-- some local setup will be here -->
+
+    <!-- root lists ------------------------------------------------------------------- -->
+    <OBJECT uuid="{ROOT_LIST:e8a210c9-c2f5-4233-a2a5-b21eca1f6fcd}">
+        <CONFIG key="_model" value="{LIST_MODEL:3968bd2d-8f85-4473-b74c-5ac401e2d4bc}"/>
+    </OBJECT>
+    <OBJECT uuid="{PROJECT_LIST:dad82634-8c81-4bf5-876f-e918c3537911}">
+        <CONFIG key="_model" value="{PROJECT_LIST_MODEL:f879822f-5e08-4686-947b-abb6af144789}"/>
+    </OBJECT>
+    <OBJECT uuid="{GLOBAL_OBJECT_LIST:4a5799d0-1f14-42cf-874b-e12d37fb9e33}">
+        <CONFIG key="_model" value="{LIST_MODEL:3968bd2d-8f85-4473-b74c-5ac401e2d4bc}"/>
+    </OBJECT>
+
+    <!-- global objects ------------------------------------------------------------------- -->
+    <OBJECT uuid="{WORK_PANEL_LIST:66c245c2-fc25-498d-9222-76bf13e1b4a1}">
+        <CONFIG key="_model" value="{WORK_PANEL_LIST_MODEL:e9ee1124-0177-4058-b35f-b2de29e3bba6}"/>
+    </OBJECT>
+    <OBJECT uuid="{PHYSICAL_QUANTITIES:a60f5b8a-b319-4954-a592-8da5675d3688}">
+        <CONFIG key="_model" value="{PHYSICAL_QUANTITIES_MODEL:9cb0f309-6005-4210-97f4-1177f6d6463b}"/>
+    </OBJECT>
+    <OBJECT uuid="{PHYSICAL_QUANTITY:096b7684-9d35-4204-9c6e-74064a2c0610}">
+        <CONFIG key="_model" value="{PHYSICAL_QUANTITY_MODEL:a6098d98-c63c-40ae-a54b-20b14260e7d4}"/>
+    </OBJECT>
+    <OBJECT uuid="{INSERT_ADAPTER_LIST:f69db352-72d5-47a3-8542-f972daf18455}">
+        <CONFIG key="_model" value="{LIST_MODEL:3968bd2d-8f85-4473-b74c-5ac401e2d4bc}"/>
+    </OBJECT>
+    <OBJECT uuid="{OPTIMIZER_SETUP_LIST:77df2e28-eeb2-41b2-a6e3-f5fc4ec7e278}">
+        <CONFIG key="_model" value="{LIST_MODEL:3968bd2d-8f85-4473-b74c-5ac401e2d4bc}"/>
+    </OBJECT>
+    <OBJECT uuid="{JOB_SCHEDULER:c39f642e-7729-4dec-8d12-ce1d665d46ed}">
+        <CONFIG key="_model" value="{JOB_SCHEDULER_MODEL:aa68e43e-548a-448d-a7fd-f544c91c93de}"/>
+    </OBJECT>
+    <OBJECT uuid="{DESKTOP_SYSTEM:4ebd4e83-c6d5-4986-a5ea-376a3f9e8c80}">
+        <CONFIG key="_model" value="{LIST_MODEL:3968bd2d-8f85-4473-b74c-5ac401e2d4bc}"/>
+    </OBJECT>
+
+    <!-- project ------------------------------------------------------------------- -->
+    <OBJECT uuid="{HISTORY_LIST:dfaa255c-6858-46b1-aa60-0517acaf21b1}">
+        <CONFIG key="_model" value="{HISTORY_LIST_MODEL:ab61accf-349f-4968-b34b-7c00c539214e}"/>
+    </OBJECT>
+    <OBJECT uuid="{SELECTION_LIST:f3f06587-a9f4-4e81-ac09-14035ae1544d}">
+        <CONFIG key="_model" value="{SELECTION_MODEL:3245fa86-9fec-40ed-9923-11626c9fad86}"/>
+    </OBJECT>
+    <OBJECT uuid="{JOB_LIST:dc2ff03c-6907-4faa-b21c-01e5c7ecfe19}">
+        <CONFIG key="_model" value="{JOB_LIST_MODEL:96a5d20d-3b84-4e43-bb30-068b4108ce30}"/>
+    </OBJECT>
+
+    <!-- properties ----------------------------------------------------------------- -->
+    <OBJECT uuid="{PROPERTY_LIST:c760d6ae-74af-4abd-a192-c4ba8ac21255}">
+        <CONFIG key="_model" value="{PROPERTY_LIST_MODEL:112e5ad6-758b-49da-bfdb-f4386793d90c}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{PROPERTY_ATOM_LIST:5b9e75d4-a4ac-48df-bbc9-2a76b57d355f}">
+        <CONFIG key="_model" value="{PROPERTY_ATOM_LIST_MODEL:7daf2cf4-6c1e-4b09-a82b-2215f9bc9328}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{ENERGY_PROPERTY:ac7ee456-fe3e-4f3f-b2c3-c7205c89dbda}">
+        <CONFIG key="_designer" value="{ENERGY_PROPERTY_DESIGNER:9d508488-088c-401b-98fc-078d51a45db2}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{GEO_PROPERTY_SETUP:243ce6af-61ab-429d-a53d-af9cc4d1ef3e}">
+        <CONFIG key="_designer" value="{GEO_PROPERTY_SETUP_DESIGNER:99e2a09d-029f-492b-90c2-d5f53a2fe784}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{DISTANCE_PROPERTY:053a018d-7c50-48e6-940a-a967b89aa976}">
+        <CONFIG key="_designer" value="{DISTANCE_PROPERTY_DESIGNER:41e8b1e4-6c25-43c2-a5f3-b7a68065f0c6}"/>
+        <CONFIG key="_setup" value="{GEO_PROPERTY_SETUP:243ce6af-61ab-429d-a53d-af9cc4d1ef3e}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{ANGLE_PROPERTY:b0f6eb5d-36fc-4f80-9d9f-11173c6fdc1e}">
+        <CONFIG key="_designer" value="{ANGLE_PROPERTY_DESIGNER:87714300-063b-4c9c-9a68-82337679e8fe}"/>
+        <CONFIG key="_setup" value="{GEO_PROPERTY_SETUP:243ce6af-61ab-429d-a53d-af9cc4d1ef3e}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{TORSION_PROPERTY:49fb346b-b34b-4845-90e5-35d72f60fbae}">
+        <CONFIG key="_designer" value="{TORSION_PROPERTY_DESIGNER:43df40b2-0da5-4669-98d2-54060244df49}"/>
+        <CONFIG key="_setup" value="{GEO_PROPERTY_SETUP:243ce6af-61ab-429d-a53d-af9cc4d1ef3e}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{DISTANCE_TO_POSITION_PROPERTY:aa3ddded-6025-445f-9ff5-ba498425892c}">
+        <CONFIG key="_designer" value="{DISTANCE_TO_POSITION_PROPERTY_DESIGNER:4278c14a-3ef3-41c8-b02a-6f7777239d2b}"/>
+        <CONFIG key="_setup" value="{GEO_PROPERTY_SETUP:243ce6af-61ab-429d-a53d-af9cc4d1ef3e}"/>
+    </OBJECT>
+    
+    <!-- structure ------------------------------------------------------------------- -->
+    <OBJECT uuid="{STRUCTURE_LIST:caf85f99-147c-4eb4-a7ba-15edc7e47b53}">
+        <CONFIG key="_model" value="{STRUCTURE_LIST_MODEL:ee0a9cd7-d4a0-42a4-8364-752aad243215}"/>
+        <CONFIG key="_designer" value="{STRUCTURE_LIST_DESIGNER:4c262f61-566e-4136-a3ed-15a3bb4b4be5}"/>
+    </OBJECT>
+    <OBJECT uuid="{STRUCTURE:89533ab0-0244-4a03-8b5c-7d82ebbe2254}">
+        <CONFIG key="_model" value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+        <CONFIG key="_designer" value="{STRUCTURE_DESIGNER:c4db7f4b-1ec3-4493-886b-397aa797149b}"/>
+    </OBJECT>
+    <OBJECT uuid="{ATOM_LIST:405bc543-3852-4b5d-aa2a-60f79ce1f0c4}">
+        <CONFIG key="_model" value="{ATOM_LIST_MODEL:dd5c4ca8-19a2-4b3d-b9d5-f6906e760e35}"/>
+    </OBJECT>
+    <OBJECT uuid="{ATOM:4ac377be-76d0-4b3b-9045-6f6b865350f3}">
+        <CONFIG key="_designer" value="{ATOM_DESIGNER:56ff4ac4-67b2-4c8c-88bd-5ace4e14bd4e}"/>
+    </OBJECT>
+    <OBJECT uuid="{BOND_LIST:f2ba967c-fb2c-4727-84f3-eb48cab26cb6}">
+        <CONFIG key="_model" value="{BOND_LIST_MODEL:3562c103-e92d-40f8-833b-08b0e8744276}"/>
+    </OBJECT>
+    <OBJECT uuid="{BOND:4faa274e-70b5-4dd9-94d2-8e15552c598e}">
+        <CONFIG key="_designer" value="{BOND_DESIGNER:d9d57aa3-19b7-453c-a2ec-97cccce7e8d1}"/>
+    </OBJECT>
+    <OBJECT uuid="{RESIDUE_LIST:79634e2f-8a7c-46f1-b71c-491d25ab74ac}">
+        <CONFIG key="_model" value="{RESIDUE_LIST_MODEL:44711a1e-c457-42b3-89b6-ae7a5c962a69}"/>
+    </OBJECT>
+    <OBJECT uuid="{RESIDUE:cf1a2b7f-69cc-4994-a630-b90c1c0c112e}">
+        <CONFIG key="_model" value="{RESIDUE_MODEL:0e7e5995-596e-46dc-a65b-7f3eb38427fa}"/>
+        <CONFIG key="_designer" value="{RESIDUE_DESIGNER:991e5c1a-a4d8-4e7f-b786-7043ca5a6d12}"/>
+    </OBJECT>
+    <OBJECT uuid="{RESTRAINT_LIST:6e1dc6e5-cf47-4155-87a6-07821fad1629}">
+        <CONFIG key="_model" value="{RESTRAINT_LIST_MODEL:25dd0612-e381-4fa1-a182-dca07fab159d}"/>
+    </OBJECT>
+    <OBJECT uuid="{RESTRAINT:ab8eeb7e-8a41-4c9e-83dd-f70a78a658e0}">
+        <CONFIG key="_designer" value="{RESTRAINT_DESIGNER:f88a491d-23ca-4c54-b305-73ebf53b4ff7}"/>
+    </OBJECT>
+
+    <!-- trajectory ---------------------------------------------------------------------- -->
+    <OBJECT uuid="{TRAJECTORY_LIST:2b2a4e86-223a-433a-bcb9-93c5d2b3c717}">
+        <CONFIG key="_designer" value="{TRAJECTORY_LIST_DESIGNER:1e47ac2c-7921-4bdd-adaa-7593e92077e4}"/>
+        <CONFIG key="_model" value="{TRAJECTORY_LIST_MODEL:9ea0a9e4-38b1-48f4-ae04-addabcdd149e}"/>
+    </OBJECT>
+    <OBJECT uuid="{TRAJECTORY:2f2b512b-382b-4a33-8575-c8203dd94858}">
+        <CONFIG key="_designer" value="{TRAJECTORY_DESIGNER:8470d302-d01d-4150-a419-a638d27b2906}"/>
+	<CONFIG key="_model" value="{TRAJECTORY_MODEL:4e05dfc0-4733-4e62-a62b-9bc85296c081}"/>
+        <CONFIG key="_segments" value="{TRAJECTORY_MODEL_SEGMENTS:2db1471f-56e9-4587-b395-bddcac7ff225}"/>
+        <CONFIG key="_filters" value="{TRAJECTORY_MODEL_FILTERS:e5244fe5-9cb0-4005-9360-d308904fd467}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{XYZ_TRAJ_SEGMENT:da7a0e6c-5089-4255-b8d5-e05be341122b}">
+        <CONFIG key="_designer" value="{XYZ_TRAJ_SEGMENT_DESIGNER:583c944e-1403-461d-8268-1fa82404e80a}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{PDBQT_TRAJ_SEGMENT:7710e8c7-39c8-436c-a822-4e4871d3edbc}">
+        <CONFIG key="_designer" value="{PDBQT_TRAJ_SEGMENT_DESIGNER:2f59da96-5788-4fa1-8f6b-a933c92cfdac}"/>
+	<CONFIG key="_model" value="{PDBQT_TRAJ_SEGMENT_MODEL:ad3f4620-9896-4bf3-8266-0f8bba545eb7}"/>
+    </OBJECT>
+
+    <!-- batch jobs ------------------------------------------------------------------- -->
+    <OBJECT uuid="{BATCH_JOB_LIST:1d92d419-4efe-4fd3-afa6-577a75be2a1a}">
+        <CONFIG key="_designer" value=""/>
+        <CONFIG key="_model" value="{BATCH_JOB_LIST_MODEL:4a19da13-8a37-4b69-924e-ac645e5a61e2}"/>
+    </OBJECT>
+
+    <!-- graphics core ------------------------------------------------------------------- -->
+    <OBJECT uuid="{GRAPHICS:32bbf75b-edc0-4321-a188-a7dd37cd034f}">
+        <CONFIG key="_model" value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_OBJECT_LIST:07c60ac0-2919-45f6-ad87-5b7e43b1aa38}">
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_LIST_MODEL:6ef10a49-f781-4af9-aaab-fabc045af09e}"/>
+        <CONFIG key="_designer" value="{GRAPHICS_OBJECT_LIST_DESIGNER:9a561a4e-0c00-435a-9118-ea2926ff1ef2}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_VIEW_LIST:55610ded-9278-47ea-80ff-af7a6a879661}">
+        <CONFIG key="_model" value="{GRAPHICS_VIEW_LIST_MODEL:4609b8bd-bc46-4bbb-adf8-6c820ef5e8a1}"/>
+        <CONFIG key="_designer" value="{GRAPHICS_VIEW_LIST_DESIGNER:eeb53172-b286-4f95-82f3-6b118a491d82}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_PROFILE_LIST:b2a17719-cc6c-4850-97fe-e216b56387ba}">
+        <CONFIG key="_model" value="{GRAPHICS_PROFILE_LIST_MODEL:2f682c81-34ed-4988-ae99-ab5eac2393e7}"/>
+        <CONFIG key="_designer" value="{GRAPHICS_PROFILE_LIST_DESIGNER:172e56fa-1375-4e26-adb4-a5b229f288c6}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_PROFILE:0ab66d74-4cd6-4788-b513-251c45700e78}">
+        <CONFIG key="_model" value="{GRAPHICS_PROFILE_MODEL:c6f27ac7-90c3-4443-83a0-b4cafe10878e}"/>
+        <CONFIG key="_designer" value="{GRAPHICS_PROFILE_DESIGNER:310ef994-4099-4772-80e7-cffd2534fcbe}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_VIEW:ec35dc44-7f02-4814-b3b2-c712f258aec6}">
+        <CONFIG key="_designer" value="{GRAPHICS_VIEW_DESIGNER:3fb5fdaa-ad95-4ea3-aa4b-bfd37baba051}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_SETUP_LIST:553dd8be-3ee0-4db0-97c7-7b28af1a1968}">
+        <CONFIG key="_model" value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+    </OBJECT>
+    <OBJECT uuid="{GRAPHICS_SETUP_PROFILE:7fcbc9f0-3ede-43ef-9ad1-132ed3bef3ac}">
+        <CONFIG key="_model" value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+    </OBJECT>
+    <OBJECT uuid="{GO_COLOR_MODE:359c8445-f9dc-4cc1-9d21-8b288634cccd}">
+        <CONFIG key="_designer" value="{GO_COLOR_MODE_DESIGNER:a307367c-eaba-4747-a141-82cdeff89f8d}"/>
+    </OBJECT>
+
+    <!-- graphics links -->
+    <OBJECT uuid="{GRAPHICS_OBJECT_LINK:eda5a997-2e6c-4dfd-bc59-ad00a90a391b}">
+        <CONFIG key="_designer" value="{GRAPHICS_OBJECT_LINK_DESIGNER:e79b6482-ddd9-44ab-9870-63bca5a51147}"/>
+        <CONFIG key="_user" value="NO"/>
+    </OBJECT>
+
+    <!-- graphics ------------------------------------------------------------------- -->
+    <OBJECT uuid="{BACKGROUND_SETUP:c4983c35-3d1e-4a26-ad16-bb131cd51fa9}">
+        <CONFIG key="_designer" value="{BACKGROUND_SETUP_DESIGNER:c5dbb780-166d-4b72-a66b-58a2ad1fa223}"/>
+    </OBJECT>
+    <OBJECT uuid="{BACKGROUND_OBJECT:f646b31e-e0f8-406d-a9ea-f7f9df0349d3}">
+        <CONFIG key="_designer" value="{BACKGROUND_OBJECT_DESIGNER:8c0464bf-3a46-480f-8ca7-fea4e9c75dc4}"/>
+        <CONFIG key="_setup" value="{BACKGROUND_SETUP:c4983c35-3d1e-4a26-ad16-bb131cd51fa9}"/>
+    </OBJECT>
+    
+    <OBJECT uuid="{LIGHT_SETUP:08f36a6d-85b2-42a7-bfb8-69813b544823}">
+        <CONFIG key="_designer" value="{LIGHT_SETUP_DESIGNER:04b5e85b-c295-48ec-87ca-3c8eefe4bb74}"/>
+    </OBJECT>
+    <OBJECT uuid="{LIGHT_OBJECT:03f65a4c-2f8a-4629-8cdc-3409df428db8}">
+        <CONFIG key="_designer" value="{LIGHT_OBJECT_DESIGNER:8a81c1b3-51f1-438a-b95c-aafe6e823cac}"/>
+        <CONFIG key="_setup" value="{LIGHT_SETUP:08f36a6d-85b2-42a7-bfb8-69813b544823}"/>
+    </OBJECT>
+    
+    <OBJECT uuid="{STANDARD_MODEL_SETUP:ca769af6-6332-4fc7-a378-47423b837fa9}">
+        <CONFIG key="_designer" value="{STANDARD_MODEL_SETUP_DESIGNER:f2976c7e-687c-4658-a34b-c5a6c25df73d}"/>
+    </OBJECT>
+    <OBJECT uuid="{STANDARD_MODEL_OBJECT:b8ec4377-b886-44c3-a206-4d40eaf7d5f2}">
+        <CONFIG key="_designer" value="{STANDARD_MODEL_OBJECT_DESIGNER:8955d34c-5d3d-49dd-9be0-b8552c8935a8}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{STANDARD_MODEL_SETUP:ca769af6-6332-4fc7-a378-47423b837fa9}"/>
+    </OBJECT>
+    
+    <OBJECT uuid="{GEOMETRY_LABEL_SETUP:209c0d4c-3919-46bd-bf1f-810439e7f5c1}">
+        <CONFIG key="_designer" value="{GEOMETRY_LABEL_SETUP_DESIGNER:3bf1c462-5337-4b19-a851-db4f52c79940}"/>
+    </OBJECT>
+    <OBJECT uuid="{GEOMETRY_LABEL_OBJECT:e8f67b10-14ec-4f72-9099-9a74827485b6}">
+        <CONFIG key="_designer" value="{GEOMETRY_LABEL_OBJECT_DESIGNER:d069a9a4-3e5c-4930-975c-2d807da589da}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{GEOMETRY_LABEL_SETUP:209c0d4c-3919-46bd-bf1f-810439e7f5c1}"/>
+        <CONFIG key="_user" value="NO"/>
+    </OBJECT>
+    
+    <OBJECT uuid="{XYZ_AXES_SETUP:7724c44e-bc09-4da8-bd78-1a263efcda20}">
+        <CONFIG key="_designer" value="{XYZ_AXES_SETUP_DESIGNER:98a577b6-9d75-4814-9605-d9ac8f912b96}"/>
+    </OBJECT>
+    <OBJECT uuid="{XYZ_AXES_OBJECT:47c4e99c-2335-49c9-a5cc-7d8d06d9214e}">
+        <CONFIG key="_designer" value="{XYZ_AXES_OBJECT_DESIGNER:a8686b4f-b5b0-44f6-9c5c-0c9084801db7}"/>
+        <CONFIG key="_setup" value="{XYZ_AXES_SETUP:7724c44e-bc09-4da8-bd78-1a263efcda20}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{SPEC_AXES_SETUP:cbdc9945-c110-4130-8885-e813849f0c4b}">
+        <CONFIG key="_designer" value="{SPEC_AXES_SETUP_DESIGNER:f2c5a2ae-1514-439d-bcba-9c85344462d9}"/>
+    </OBJECT>
+    <OBJECT uuid="{SPEC_AXES_OBJECT:b89d56a9-c2f7-42d3-85f4-613bd6e97c27}">
+        <CONFIG key="_designer" value="{SPEC_AXES_OBJECT_DESIGNER:d0800eb9-7864-4dcd-95fc-19af85f5372e}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{SPEC_AXES_SETUP:cbdc9945-c110-4130-8885-e813849f0c4b}"/>
+    </OBJECT>
+    
+    <OBJECT uuid="{FAST_MODEL_SETUP:0c8436f2-3e81-47f2-ac7b-c63507d4097e}">
+        <CONFIG key="_designer" value="{FAST_MODEL_SETUP_DESIGNER:059ff399-8493-4bad-838e-2063a6f5f8d5}"/>
+    </OBJECT>
+    <OBJECT uuid="{FAST_MODEL_OBJECT:172377a6-4faf-4803-8245-eb07eb6a459f}">
+        <CONFIG key="_designer" value="{FAST_MODEL_OBJECT_DESIGNER:b0424633-0cda-4cc9-9e53-c6a160fe8c25}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{FAST_MODEL_SETUP:0c8436f2-3e81-47f2-ac7b-c63507d4097e}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{BOX_SETUP:3c4a9462-d061-4a0b-a929-b20723161ac5}">
+        <CONFIG key="_designer" value="{BOX_SETUP_DESIGNER:06a1cdf2-60fd-4edf-a4ec-9c249804097b}"/>
+    </OBJECT>
+    <OBJECT uuid="{BOX_OBJECT:132cddc8-556c-46d7-8159-337ff4476366}">
+        <CONFIG key="_designer" value="{BOX_OBJECT_DESIGNER:d35c5137-b5bd-4afd-b65e-d11084a29bd9}"/>
+        <CONFIG key="_setup" value="{BOX_SETUP:3c4a9462-d061-4a0b-a929-b20723161ac5}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{PBC_BOX_SETUP:733a1345-128d-414e-ba09-c0a0c00074e1}">
+        <CONFIG key="_designer" value="{PBC_BOX_SETUP_DESIGNER:bf876246-908b-4fdc-84cf-2c723c3103a6}"/>
+    </OBJECT>
+    <OBJECT uuid="{PBC_BOX_OBJECT:2929a64d-921a-414b-8dcd-c81e53881ce1}">
+        <CONFIG key="_designer" value="{PBC_BOX_OBJECT_DESIGNER:6de1864d-067f-4ee9-ad89-f4588e993e73}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{PBC_BOX_SETUP:733a1345-128d-414e-ba09-c0a0c00074e1}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{PLANE_SETUP:ab0df312-7e6d-4b1d-af90-5722d7cadcf2}">
+        <CONFIG key="_designer" value="{PLANE_SETUP_DESIGNER:1d7982a0-6d65-4e5e-a3b7-151e00456ff2}"/>
+    </OBJECT>
+    <OBJECT uuid="{PLANE_OBJECT:e78be954-3698-4ac4-a58e-2816930b8772}">
+        <CONFIG key="_designer" value="{PLANE_OBJECT_DESIGNER:08d2fb7d-b499-4e96-b45e-7a14d873f644}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{PLANE_SETUP:ab0df312-7e6d-4b1d-af90-5722d7cadcf2}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{VECTOR_SETUP:bfbc1b4e-f685-43b4-8284-074688e61760}">
+        <CONFIG key="_designer" value="{VECTOR_SETUP_DESIGNER:5d6459ba-bcf2-4c0e-a071-b374183f28e6}"/>
+    </OBJECT>
+    <OBJECT uuid="{VECTOR_OBJECT:970f766f-c637-4107-8b25-2d76f558840f}">
+        <CONFIG key="_designer" value="{VECTOR_OBJECT_DESIGNER:a88bff46-4491-4055-8b6b-e4f49c9c34a4}"/>
+        <CONFIG key="_setup" value="{VECTOR_SETUP:bfbc1b4e-f685-43b4-8284-074688e61760}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{ATOM_LABEL_SETUP:e943f64f-7e45-4e33-b4fa-155d8b426468}">
+        <CONFIG key="_designer" value="{ATOM_LABEL_SETUP_DESIGNER:6e9351ea-3ace-4719-9af4-c6795e12d1da}"/>
+    </OBJECT>
+    <OBJECT uuid="{ATOM_LABEL_OBJECT:9949e9ed-1c44-4bc6-b510-9f055893e2b1}">
+        <CONFIG key="_designer" value="{ATOM_LABEL_OBJECT_DESIGNER:d9ec8ab4-6655-460e-ad20-d9c4b7d66074}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{ATOM_LABEL_SETUP:e943f64f-7e45-4e33-b4fa-155d8b426468}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{FREEZED_ATOMS_SETUP:976f7af5-d108-4edf-af7a-f2adbaae1c86}">
+        <CONFIG key="_designer" value="{FREEZED_ATOM_SETUP_DESIGNER:e4e2f3b8-e9f6-4d7c-8749-30a834752c70}"/>
+    </OBJECT>
+    <OBJECT uuid="{FREEZED_ATOMS_OBJECT:d638ed90-b60a-4344-a810-eb55f09125a6}">
+        <CONFIG key="_designer" value="{FREEZED_ATOMS_OBJECT_DESIGNER:8d24850a-dc86-46ea-bf24-64be730d18b0}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{FREEZED_ATOMS_SETUP:976f7af5-d108-4edf-af7a-f2adbaae1c86}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{POINT_SETUP:0071bbd8-c368-4571-8164-30e3c7467084}">
+        <CONFIG key="_designer" value="{POINT_SETUP_DESIGNER:a8c1c6b8-4408-43fd-9eff-4fd416fde43b}"/>
+    </OBJECT>
+    <OBJECT uuid="{POINT_OBJECT:089f4df8-cf38-48a2-84e1-f0bac7aa6ffe}">
+        <CONFIG key="_designer" value="{POINT_OBJECT_DESIGNER:ef11d98a-3e39-4c9b-a4a1-8e0acc56239f}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{POINT_SETUP:0071bbd8-c368-4571-8164-30e3c7467084}"/>
+    </OBJECT>
+
+    <OBJECT uuid="{TEXT_SETUP:cfe9a310-6af4-4878-922f-b344b86dda81}">
+        <CONFIG key="_designer" value="{TEXT_SETUP_DESIGNER:4394f8b3-4dc1-416e-b696-e9af19b3c69c}"/>
+    </OBJECT>
+    <OBJECT uuid="{TEXT_OBJECT:47bc1a07-c933-4841-8a6e-776a0d85e82e}">
+        <CONFIG key="_designer" value="{TEXT_OBJECT_DESIGNER:bd5949fd-ddb4-4320-ab0d-63a7b4897019}"/>
+        <CONFIG key="_model" value="{GRAPHICS_OBJECT_MODEL:d886fff0-9cdb-4161-99bd-eef538d7df34}"/>
+        <CONFIG key="_setup" value="{TEXT_SETUP:cfe9a310-6af4-4878-922f-b344b86dda81}"/>
+    </OBJECT>
+</PLUGIN>

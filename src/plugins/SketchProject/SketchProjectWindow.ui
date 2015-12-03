@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SketchProjectWindow</class>
+ <widget class="QMainWindow" name="SketchProjectWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>655</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>SketchProjectWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/images/NemesisCore/MainIcon.svg</normaloff>:/images/NemesisCore/MainIcon.svg</iconset>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>655</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuOpenRecent">
+     <property name="title">
+      <string>Open Recent</string>
+     </property>
+     <addaction name="actionEmptyRecentList"/>
+    </widget>
+    <addaction name="actionNewMolecule"/>
+    <addaction name="actionNewProject"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen"/>
+    <addaction name="menuOpenRecent"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="actionSaveAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionCloseAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionProjectInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionNemesisHelp"/>
+    <addaction name="separator"/>
+    <addaction name="actionAboutQt"/>
+    <addaction name="actionAboutNemesis"/>
+   </widget>
+   <widget class="QMenu" name="menuSetup">
+    <property name="title">
+     <string>Setup</string>
+    </property>
+    <addaction name="actionToolbarsConfig"/>
+    <addaction name="actionSaveLayout"/>
+    <addaction name="separator"/>
+    <addaction name="actionGlobalSetup"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCutStructure"/>
+    <addaction name="actionCopyStructure"/>
+    <addaction name="actionPasteStructure"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelectAll"/>
+    <addaction name="actionClearSelection"/>
+    <addaction name="separator"/>
+    <addaction name="actionDeleteAll"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuStructure">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <widget class="QMenu" name="menuInsert">
+     <property name="title">
+      <string>Insert</string>
+     </property>
+     <addaction name="actionInsertSMILES"/>
+    </widget>
+    <addaction name="menuInsert"/>
+    <addaction name="actionShowSMILES"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoomIn"/>
+    <addaction name="actionZoomOut"/>
+    <addaction name="separator"/>
+    <addaction name="actionClean"/>
+    <addaction name="actionConvertTo3D"/>
+    <addaction name="actionCopyAsSVG"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuStructure"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuSetup"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionNewMolecule">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/NewStructure.svg</normaloff>:/images/SketchProject/01.file/NewStructure.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Structure</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/Open.svg</normaloff>:/images/SketchProject/01.file/Open.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Open ...</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/Save.svg</normaloff>:/images/SketchProject/01.file/Save.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/Quit.svg</normaloff>:/images/SketchProject/01.file/Quit.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="whatsThis">
+    <string comment="Click to quit window"/>
+   </property>
+  </action>
+  <action name="actionAboutNemesis">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/06.help/NemesisAbout.svg</normaloff>:/images/SketchProject/06.help/NemesisAbout.svg</iconset>
+   </property>
+   <property name="text">
+    <string>About Nemesis</string>
+   </property>
+  </action>
+  <action name="actionNewProject">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/NewProject.svg</normaloff>:/images/SketchProject/01.file/NewProject.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Project ...</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/SaveAs.svg</normaloff>:/images/SketchProject/01.file/SaveAs.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save as ...</string>
+   </property>
+  </action>
+  <action name="actionSaveAll">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/SaveAs.svg</normaloff>:/images/SketchProject/01.file/SaveAs.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save all</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/Close.svg</normaloff>:/images/SketchProject/01.file/Close.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionCloseAll">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/CloseAll.svg</normaloff>:/images/SketchProject/01.file/CloseAll.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Close all</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/02.edit/Undo.svg</normaloff>:/images/SketchProject/02.edit/Undo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/02.edit/Redo.svg</normaloff>:/images/SketchProject/02.edit/Redo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionNemesisHelp">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/06.help/OnlineDoc.svg</normaloff>:/images/SketchProject/06.help/OnlineDoc.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Nemesis help ...</string>
+   </property>
+  </action>
+  <action name="actionProjectInfo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/01.file/Info.svg</normaloff>:/images/SketchProject/01.file/Info.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Project Info</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/06.help/QTAbout.svg</normaloff>:/images/SketchProject/06.help/QTAbout.svg</iconset>
+   </property>
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionCutStructure">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/02.edit/Cut.svg</normaloff>:/images/SketchProject/02.edit/Cut.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Cut </string>
+   </property>
+  </action>
+  <action name="actionPasteStructure">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/02.edit/Paste.svg</normaloff>:/images/SketchProject/02.edit/Paste.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionCopyStructure">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/02.edit/Copy.svg</normaloff>:/images/SketchProject/02.edit/Copy.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionSaveLayout">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/05.setup/SaveDesktop.svg</normaloff>:/images/SketchProject/05.setup/SaveDesktop.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save Default Layout</string>
+   </property>
+  </action>
+  <action name="actionToolbarsConfig">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/05.setup/ConfigToolBars.svg</normaloff>:/images/SketchProject/05.setup/ConfigToolBars.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Toolbars Config</string>
+   </property>
+  </action>
+  <action name="actionEmptyRecentList">
+   <property name="text">
+    <string>Clear list</string>
+   </property>
+  </action>
+  <action name="actionClean">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/03.view/Clean.svg</normaloff>:/images/SketchProject/03.view/Clean.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Clean</string>
+   </property>
+  </action>
+  <action name="actionConvertTo3D">
+   <property name="text">
+    <string>Convert to 3D</string>
+   </property>
+  </action>
+  <action name="actionDeleteAll">
+   <property name="text">
+    <string>Delete all</string>
+   </property>
+  </action>
+  <action name="actionZoomIn">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/03.view/ZoomIn.svg</normaloff>:/images/SketchProject/03.view/ZoomIn.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom in</string>
+   </property>
+  </action>
+  <action name="actionZoomOut">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/03.view/ZoomOut.svg</normaloff>:/images/SketchProject/03.view/ZoomOut.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom out</string>
+   </property>
+  </action>
+  <action name="actionSelectAll">
+   <property name="text">
+    <string>Select all</string>
+   </property>
+  </action>
+  <action name="actionClearSelection">
+   <property name="text">
+    <string>Clear selection</string>
+   </property>
+  </action>
+  <action name="actionInsertSMILES">
+   <property name="text">
+    <string>SMILES ...</string>
+   </property>
+  </action>
+  <action name="actionCopyAsSVG">
+   <property name="text">
+    <string>Copy as SVG</string>
+   </property>
+  </action>
+  <action name="actionShowSMILES">
+   <property name="text">
+    <string>Show SMILES</string>
+   </property>
+  </action>
+  <action name="actionGlobalSetup">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/SketchProject/05.setup/GlobalConfig.svg</normaloff>:/images/SketchProject/05.setup/GlobalConfig.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Global Preferences</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

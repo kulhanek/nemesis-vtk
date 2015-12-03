@@ -1,0 +1,7 @@
+<PLUGIN name="CATsProject"
+        uuid="{CATS_PROJECT_MODULE:00f34621-f13d-45c5-92f1-6a6c808e01b0}">
+    <!-- some local setup will be here -->
+    <OBJECT uuid="{CATS_PROJECT:5e8fd5b9-a39d-47ae-9a95-fe4389e83f0a}">
+        <CONFIG key="_model"    value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+    </OBJECT>
+</PLUGIN> 

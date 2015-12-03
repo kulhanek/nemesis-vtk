@@ -1,0 +1,5 @@
+<!-- Standard Work Panels Plugin Setup -->
+<PLUGIN name="StandardWorkPanels"
+        uuid="{STANDARD_WORK_PANELS:f271af20-9d74-418b-8efd-a53670a6b18c}">
+    <!-- some local setup will be here -->
+</PLUGIN> 

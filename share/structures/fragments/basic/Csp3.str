@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<structure name="Csp3" connector="-1" mode="1">
+  <atoms>
+    <atom id="12" ai="1" Z="1" px="0.00000" py="0.00000" pz="1.10939"/>
+    <atom id="13" ai="2" Z="6" px="0.00000" py="0.00000" pz="0.00000"/>
+    <atom id="14" ai="3" Z="1" px="0.52298" py="0.90582" pz="-0.36980"/>
+    <atom id="15" ai="4" Z="1" px="-1.04596" py="0.00000" pz="-0.36980"/>
+    <atom id="16" ai="5" Z="1" px="0.52298" py="-0.90582" pz="-0.36980"/>
+  </atoms>
+  <bonds>
+    <bond id="17" ord="2" A1="12" A2="13"/>
+    <bond id="18" ord="2" A1="13" A2="14"/>
+    <bond id="19" ord="2" A1="13" A2="15"/>
+    <bond id="20" ord="2" A1="13" A2="16"/>
+  </bonds>
+  <connectors>
+    <connector id="12"/>
+  </connectors>
+</structure>

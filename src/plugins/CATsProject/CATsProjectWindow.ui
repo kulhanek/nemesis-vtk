@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CATsProjectWindow</class>
+ <widget class="QMainWindow" name="BuildProjectWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>690</width>
+    <height>608</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>BuildProjectWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/images/NemesisCore/MainIcon.svg</normaloff>:/images/NemesisCore/MainIcon.svg</iconset>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>690</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuImportStructure">
+     <property name="title">
+      <string>Import Structure from ...</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuExportStructure">
+     <property name="title">
+      <string>Export Structure as ...</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuOpenRecent">
+     <property name="title">
+      <string>Open Recent</string>
+     </property>
+     <addaction name="actionEmptyRecentList"/>
+    </widget>
+    <widget class="QMenu" name="menuImportProperty">
+     <property name="title">
+      <string>Import Property from ...</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuInjectCoordinates">
+     <property name="title">
+      <string>Inject Coordinates from ...</string>
+     </property>
+    </widget>
+    <addaction name="actionNewMolecule"/>
+    <addaction name="actionNewProject"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen"/>
+    <addaction name="menuOpenRecent"/>
+    <addaction name="separator"/>
+    <addaction name="menuImportStructure"/>
+    <addaction name="menuImportProperty"/>
+    <addaction name="menuInjectCoordinates"/>
+    <addaction name="menuExportStructure"/>
+    <addaction name="actionExportPropertiesWP"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="actionSaveAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionRender"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionCloseAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionProjectInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionNemesisHelp"/>
+    <addaction name="separator"/>
+    <addaction name="actionAboutQt"/>
+    <addaction name="actionAboutNemesis"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuLock">
+     <property name="title">
+      <string>Lock</string>
+     </property>
+     <addaction name="actionLockStructures"/>
+     <addaction name="actionLockTopology"/>
+     <addaction name="actionLockGeometry"/>
+     <addaction name="actionLockGraphics"/>
+     <addaction name="actionLockDescription"/>
+     <addaction name="actionLockProperties"/>
+    </widget>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCopyActiveStructure"/>
+    <addaction name="actionPasteStructure"/>
+    <addaction name="actionPasteStructureDoNotOverlap"/>
+    <addaction name="separator"/>
+    <addaction name="actionClearHistory"/>
+    <addaction name="actionClearAllData"/>
+    <addaction name="separator"/>
+    <addaction name="menuLock"/>
+   </widget>
+   <widget class="QMenu" name="menuGraphics">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>626</x>
+      <y>80</y>
+      <width>192</width>
+      <height>419</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Graphics</string>
+    </property>
+    <widget class="QMenu" name="menuNew_Object">
+     <property name="title">
+      <string>New Object</string>
+     </property>
+     <addaction name="actionNewObjectGlobalScope"/>
+     <addaction name="actionNewObjectActiveProfile"/>
+    </widget>
+    <widget class="QMenu" name="menuStereo">
+     <property name="title">
+      <string>Stereo</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuProjection">
+     <property name="title">
+      <string>Projection</string>
+     </property>
+     <addaction name="actionPerspective"/>
+     <addaction name="actionOrthographic"/>
+    </widget>
+    <addaction name="actionAutofitScene"/>
+    <addaction name="menuProjection"/>
+    <addaction name="menuStereo"/>
+    <addaction name="actionStereoSwapEyes"/>
+    <addaction name="actionDepthCueing"/>
+    <addaction name="separator"/>
+    <addaction name="menuNew_Object"/>
+    <addaction name="actionObjectListInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionNewProfile"/>
+    <addaction name="actionProfileListInfo"/>
+    <addaction name="actionActiveProfileInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionNewView"/>
+    <addaction name="actionViewListInfo"/>
+    <addaction name="actionPrimaryViewInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionGraphicsManagerWP"/>
+    <addaction name="actionProfileManagerWP"/>
+   </widget>
+   <widget class="QMenu" name="menuMouse">
+    <property name="title">
+     <string>Mouse</string>
+    </property>
+    <addaction name="actionSRTMode"/>
+    <addaction name="actionSelectMode"/>
+    <addaction name="actionRotateMode"/>
+    <addaction name="actionTranslateMode"/>
+    <addaction name="actionScaleMode"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelectRotationCentre"/>
+    <addaction name="actionAtomManipulation"/>
+    <addaction name="actionDirManipulation"/>
+    <addaction name="actionMoleculeManipulation"/>
+    <addaction name="actionObjectManipulation"/>
+    <addaction name="separator"/>
+    <addaction name="actionObjectProperties"/>
+   </widget>
+   <widget class="QMenu" name="menuSetup">
+    <property name="title">
+     <string>Setup</string>
+    </property>
+    <addaction name="actionToolbarsConfig"/>
+    <addaction name="actionSaveLayout"/>
+    <addaction name="separator"/>
+    <addaction name="actionGraphicsSetup"/>
+    <addaction name="actionColorSetup"/>
+    <addaction name="actionUnitSetup"/>
+    <addaction name="actionJobSchedulerPreferences"/>
+    <addaction name="actionGlobalSetup"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuProperties">
+    <property name="title">
+     <string>Properties</string>
+    </property>
+    <addaction name="actionNewProperty"/>
+    <addaction name="actionManagePropertiesWP"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelectedProperties"/>
+    <addaction name="actionDeleteInvalidProperties"/>
+    <addaction name="actionDeleteAllProperties"/>
+   </widget>
+   <widget class="QMenu" name="menuSelection">
+    <property name="title">
+     <string>Selection</string>
+    </property>
+    <widget class="QMenu" name="menuSelectResiduesBy">
+     <property name="title">
+      <string>Select Residues by</string>
+     </property>
+     <addaction name="actionSelectResiduesByName"/>
+     <addaction name="actionSelectResiduesByMask"/>
+    </widget>
+    <widget class="QMenu" name="menuSelectAtomsBy">
+     <property name="title">
+      <string>Select Atoms by</string>
+     </property>
+     <addaction name="actionSelectAtomsBySymbol"/>
+     <addaction name="actionSelectAtomsByName"/>
+     <addaction name="actionSelectAtomsByType"/>
+     <addaction name="actionSelectAtomsByMask"/>
+    </widget>
+    <widget class="QMenu" name="menuSelectBondBy">
+     <property name="title">
+      <string>Select Bonds by</string>
+     </property>
+     <addaction name="actionSelectBondsByBondOrder"/>
+     <addaction name="actionSelectBondsByName"/>
+    </widget>
+    <widget class="QMenu" name="menuSelectGraphicsObjectsBy">
+     <property name="title">
+      <string>Select Graphics Objects by</string>
+     </property>
+     <addaction name="actionSelectGraphicsObjectsByType"/>
+    </widget>
+    <widget class="QMenu" name="menuFilters">
+     <property name="title">
+      <string>Object Selection Mode</string>
+     </property>
+     <addaction name="actionOnlyActiveStructureObjects"/>
+     <addaction name="actionAlreadySelectedObjectsAsSeed"/>
+     <addaction name="actionConsiderObjectsOfAllStructures"/>
+    </widget>
+    <addaction name="actionSelectStructures"/>
+    <addaction name="actionSelectAtomsAndBonds"/>
+    <addaction name="actionSelectAtoms"/>
+    <addaction name="actionSelectBonds"/>
+    <addaction name="actionSelectResidues"/>
+    <addaction name="actionSelectRestraints"/>
+    <addaction name="actionSelectGraphicsObjects"/>
+    <addaction name="actionSelectProperties"/>
+    <addaction name="actionSelectNone"/>
+    <addaction name="separator"/>
+    <addaction name="actionInvertSelection"/>
+    <addaction name="actionClearSelection"/>
+    <addaction name="separator"/>
+    <addaction name="menuSelectAtomsBy"/>
+    <addaction name="menuSelectBondBy"/>
+    <addaction name="menuSelectResiduesBy"/>
+    <addaction name="menuSelectGraphicsObjectsBy"/>
+    <addaction name="separator"/>
+    <addaction name="actionCompleteAll"/>
+    <addaction name="actionCompleteActiveStructure"/>
+    <addaction name="actionCompleteMolecules"/>
+    <addaction name="actionCompleteValences"/>
+    <addaction name="actionCompleteBonds"/>
+    <addaction name="separator"/>
+    <addaction name="menuFilters"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelectionListWP"/>
+   </widget>
+   <widget class="QMenu" name="menuGeometry">
+    <property name="title">
+     <string>Geometry</string>
+    </property>
+    <widget class="QMenu" name="menuMirror">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Mirror in</string>
+     </property>
+     <addaction name="actionMirrorInXYPlane"/>
+     <addaction name="actionMirrorInXZPlane"/>
+     <addaction name="actionMirrorInYZPlane"/>
+    </widget>
+    <widget class="QMenu" name="menuRotate">
+     <property name="title">
+      <string>Rotate around</string>
+     </property>
+     <addaction name="actionRotateAroundXAxisClockwise"/>
+     <addaction name="actionRotateAroundXAxisAnticlockwise"/>
+     <addaction name="separator"/>
+     <addaction name="actionRotateAroundYAxisClockwise"/>
+     <addaction name="actionRotateAroundYAxisAnticlockwise"/>
+     <addaction name="separator"/>
+     <addaction name="actionRotateAroundZAxisClockwise"/>
+     <addaction name="actionRotateAroundZAxisAnticlockwise"/>
+    </widget>
+    <widget class="QMenu" name="menuUnfreezeAtoms">
+     <property name="title">
+      <string>Unfreeze</string>
+     </property>
+     <addaction name="actionUnfreezeAllAtoms"/>
+     <addaction name="actionUnfreezeSelectedAtoms"/>
+    </widget>
+    <widget class="QMenu" name="menuScope">
+     <property name="title">
+      <string>Scope</string>
+     </property>
+     <addaction name="actionManipulateAllAtoms"/>
+     <addaction name="actionManipulateSelectedAtoms"/>
+     <addaction name="actionManipulateMolecules"/>
+    </widget>
+    <widget class="QMenu" name="menuMove">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Move COM to</string>
+     </property>
+     <addaction name="actionCOMToOrigin"/>
+     <addaction name="actionCOMToBoxCenter"/>
+    </widget>
+    <widget class="QMenu" name="menuFreezeAtoms">
+     <property name="title">
+      <string>Freeze</string>
+     </property>
+     <addaction name="actionFreezeAllAtoms"/>
+     <addaction name="actionFreezeHeavyAtoms"/>
+     <addaction name="actionFreezeSelectedAtoms"/>
+    </widget>
+    <widget class="QMenu" name="menuImage_by">
+     <property name="title">
+      <string>Image by</string>
+     </property>
+     <addaction name="actionImageByMolecules"/>
+     <addaction name="actionImageByResidues"/>
+     <addaction name="actionImageByAtoms"/>
+     <addaction name="separator"/>
+     <addaction name="actionFamiliarShape"/>
+     <addaction name="actionAroundOrigin"/>
+    </widget>
+    <widget class="QMenu" name="menuRestraints">
+     <property name="title">
+      <string>Restraints</string>
+     </property>
+     <addaction name="actionNewRestraint"/>
+     <addaction name="separator"/>
+     <addaction name="actionDeleteInvalidRestraints"/>
+     <addaction name="actionDeleteSelectedRestraints"/>
+     <addaction name="actionDeleteAllRestraints"/>
+    </widget>
+    <addaction name="actionOptimize"/>
+    <addaction name="actionOptimizerSetup"/>
+    <addaction name="separator"/>
+    <addaction name="menuRestraints"/>
+    <addaction name="actionEnableRestraints"/>
+    <addaction name="separator"/>
+    <addaction name="menuFreezeAtoms"/>
+    <addaction name="menuUnfreezeAtoms"/>
+    <addaction name="separator"/>
+    <addaction name="menuScope"/>
+    <addaction name="actionAlignPrincipalAxes"/>
+    <addaction name="menuMove"/>
+    <addaction name="menuRotate"/>
+    <addaction name="menuMirror"/>
+    <addaction name="menuImage_by"/>
+    <addaction name="separator"/>
+    <addaction name="actionGeometryWP"/>
+    <addaction name="actionGeoManipWP"/>
+    <addaction name="actionRestraintManagerWP"/>
+   </widget>
+   <widget class="QMenu" name="menuStructure">
+    <property name="title">
+     <string>Structure</string>
+    </property>
+    <widget class="QMenu" name="menuResidue">
+     <property name="title">
+      <string>Residue</string>
+     </property>
+     <addaction name="actionNewResidue"/>
+     <addaction name="actionNewResidueFromSelectedAtoms"/>
+     <addaction name="actionSortResidues"/>
+     <addaction name="separator"/>
+     <addaction name="actionDeleteSelectedResidues"/>
+     <addaction name="actionDeleteEmptyResidues"/>
+    </widget>
+    <widget class="QMenu" name="menuInsert">
+     <property name="title">
+      <string>Insert</string>
+     </property>
+     <addaction name="actionInsertSMILES"/>
+     <addaction name="actionInsertInChI"/>
+    </widget>
+    <widget class="QMenu" name="menuSubStructure">
+     <property name="title">
+      <string>Structure</string>
+     </property>
+     <addaction name="actionNewStructure"/>
+     <addaction name="actionCreateStructureFromSelectedResidues"/>
+     <addaction name="actionMergeAllStructures"/>
+     <addaction name="actionSortStructures"/>
+     <addaction name="separator"/>
+     <addaction name="actionDeleteSelectedStructures"/>
+     <addaction name="actionDeleteEmptyStructures"/>
+    </widget>
+    <widget class="QMenu" name="menuAtom">
+     <property name="title">
+      <string>Atom</string>
+     </property>
+     <addaction name="actionNewAtom"/>
+     <addaction name="actionSortAtoms"/>
+     <addaction name="separator"/>
+     <addaction name="actionDeleteSelectedAtoms"/>
+    </widget>
+    <widget class="QMenu" name="menuBond">
+     <property name="title">
+      <string>Bond</string>
+     </property>
+     <addaction name="actionNewBond"/>
+     <addaction name="separator"/>
+     <addaction name="actionDeleteSelectedBonds"/>
+     <addaction name="actionDeleteInvalidBonds"/>
+    </widget>
+    <addaction name="actionActiveStructureInfo"/>
+    <addaction name="actionAllStructuresInfo"/>
+    <addaction name="separator"/>
+    <addaction name="menuSubStructure"/>
+    <addaction name="menuResidue"/>
+    <addaction name="menuAtom"/>
+    <addaction name="menuBond"/>
+    <addaction name="separator"/>
+    <addaction name="menuInsert"/>
+    <addaction name="actionConvertTo2D"/>
+    <addaction name="actionOpenAsBuildProject"/>
+    <addaction name="actionDuplicateStructure"/>
+    <addaction name="actionClearStructure"/>
+    <addaction name="separator"/>
+    <addaction name="actionAddHydrogens"/>
+    <addaction name="actionAddPolarHydrogens"/>
+    <addaction name="actionRemoveHydrogens"/>
+    <addaction name="separator"/>
+    <addaction name="actionAddBonds"/>
+    <addaction name="actionRemoveBonds"/>
+    <addaction name="separator"/>
+    <addaction name="actionBuildWP"/>
+    <addaction name="actionManageStructuresWP"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuSelection"/>
+   <addaction name="menuStructure"/>
+   <addaction name="menuGeometry"/>
+   <addaction name="menuProperties"/>
+   <addaction name="menuGraphics"/>
+   <addaction name="menuMouse"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuSetup"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionNewMolecule">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/NewStructure.svg</normaloff>:/images/BuildProject/01.file/NewStructure.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Structure</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/Open.svg</normaloff>:/images/BuildProject/01.file/Open.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Open ...</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/Save.svg</normaloff>:/images/BuildProject/01.file/Save.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/Quit.svg</normaloff>:/images/BuildProject/01.file/Quit.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="whatsThis">
+    <string comment="Click to quit window"/>
+   </property>
+  </action>
+  <action name="actionAboutNemesis">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/11.help/NemesisAbout.svg</normaloff>:/images/BuildProject/11.help/NemesisAbout.svg</iconset>
+   </property>
+   <property name="text">
+    <string>About Nemesis</string>
+   </property>
+  </action>
+  <action name="actionNewProject">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/NewProject.svg</normaloff>:/images/BuildProject/01.file/NewProject.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Project ...</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/SaveAs.svg</normaloff>:/images/BuildProject/01.file/SaveAs.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save as ...</string>
+   </property>
+  </action>
+  <action name="actionSaveAll">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/SaveAll.svg</normaloff>:/images/BuildProject/01.file/SaveAll.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save all</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/Close.svg</normaloff>:/images/BuildProject/01.file/Close.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionCloseAll">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/CloseAll.svg</normaloff>:/images/BuildProject/01.file/CloseAll.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Close all</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/02.edit/Undo.svg</normaloff>:/images/BuildProject/02.edit/Undo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/02.edit/Redo.svg</normaloff>:/images/BuildProject/02.edit/Redo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionNemesisHelp">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/11.help/OnlineDoc.svg</normaloff>:/images/BuildProject/11.help/OnlineDoc.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Online Documentation ...</string>
+   </property>
+  </action>
+  <action name="actionProjectInfo">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/01.file/Info.svg</normaloff>:/images/BuildProject/01.file/Info.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Project Info</string>
+   </property>
+  </action>
+  <action name="actionUnitSetup">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/QuantitySetup.svg</normaloff>:/images/BuildProject/10.setup/QuantitySetup.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Quantity Unit Preferences</string>
+   </property>
+  </action>
+  <action name="actionGraphicsSetup">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/GraphicsSetup.svg</normaloff>:/images/BuildProject/10.setup/GraphicsSetup.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Graphics Preferences</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/11.help/QTAbout.svg</normaloff>:/images/BuildProject/11.help/QTAbout.svg</iconset>
+   </property>
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionGlobalSetup">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/GlobalConfig.svg</normaloff>:/images/BuildProject/10.setup/GlobalConfig.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Global Preferences</string>
+   </property>
+  </action>
+  <action name="actionPasteStructure">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Paste As It Is</string>
+   </property>
+  </action>
+  <action name="actionAutofitScene">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/Fit.svg</normaloff>:/images/BuildProject/07.graphics/Fit.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Autofit Scene</string>
+   </property>
+  </action>
+  <action name="actionColorSetup">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/ColorPreferences.svg</normaloff>:/images/BuildProject/10.setup/ColorPreferences.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Color Preferences</string>
+   </property>
+  </action>
+  <action name="actionCopyActiveStructure">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Copy active structure</string>
+   </property>
+  </action>
+  <action name="actionBuildWP">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/BuildStructure.svg</normaloff>:/images/BuildProject/04.structure/BuildStructure.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Build Structure</string>
+   </property>
+  </action>
+  <action name="actionAddHydrogens">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/AddHydrogens.svg</normaloff>:/images/BuildProject/04.structure/AddHydrogens.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Hydrogens</string>
+   </property>
+  </action>
+  <action name="actionRemoveHydrogens">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/RemoveHydrogens.svg</normaloff>:/images/BuildProject/04.structure/RemoveHydrogens.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Remove Hydrogens</string>
+   </property>
+  </action>
+  <action name="actionGeometryWP">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/05.geometry/Geometry.svg</normaloff>:/images/BuildProject/05.geometry/Geometry.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Measure</string>
+   </property>
+  </action>
+  <action name="actionOptimize">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/05.geometry/Optimize.svg</normaloff>:/images/BuildProject/05.geometry/Optimize.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Optimize</string>
+   </property>
+  </action>
+  <action name="actionAlignPrincipalAxes">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Align Principal Axes</string>
+   </property>
+  </action>
+  <action name="actionActiveProfileInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/ProfileInfo.svg</normaloff>:/images/BuildProject/07.graphics/ProfileInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Active Profile Info</string>
+   </property>
+  </action>
+  <action name="actionSaveLayout">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/SaveDesktop.svg</normaloff>:/images/BuildProject/10.setup/SaveDesktop.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save Default Layout</string>
+   </property>
+  </action>
+  <action name="actionToolbarsConfig">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/ConfigToolBars.svg</normaloff>:/images/BuildProject/10.setup/ConfigToolBars.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Toolbars Config</string>
+   </property>
+  </action>
+  <action name="actionEmptyRecentList">
+   <property name="text">
+    <string>Clear list</string>
+   </property>
+  </action>
+  <action name="actionSelectMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/Select.svg</normaloff>:/images/BuildProject/08.mouse/Select.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Mode</string>
+   </property>
+  </action>
+  <action name="actionRotateMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/Rotate.svg</normaloff>:/images/BuildProject/08.mouse/Rotate.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Rotate Mode</string>
+   </property>
+  </action>
+  <action name="actionTranslateMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/Move.svg</normaloff>:/images/BuildProject/08.mouse/Move.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Translate Mode</string>
+   </property>
+  </action>
+  <action name="actionSRTMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/SRT.svg</normaloff>:/images/BuildProject/08.mouse/SRT.svg</iconset>
+   </property>
+   <property name="text">
+    <string>SRT Mode</string>
+   </property>
+  </action>
+  <action name="actionObjectManipulation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/ObjectManipulation.svg</normaloff>:/images/BuildProject/08.mouse/ObjectManipulation.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Graphics Object Manipulation</string>
+   </property>
+  </action>
+  <action name="actionDirManipulation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/DirectionManipulation.svg</normaloff>:/images/BuildProject/08.mouse/DirectionManipulation.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Direction Manipulation</string>
+   </property>
+  </action>
+  <action name="actionMoleculeManipulation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/MoleculeManipulation.svg</normaloff>:/images/BuildProject/08.mouse/MoleculeManipulation.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Structure Manipulation</string>
+   </property>
+  </action>
+  <action name="actionCOMToOrigin">
+   <property name="text">
+    <string>origin</string>
+   </property>
+  </action>
+  <action name="actionMirrorInXYPlane">
+   <property name="text">
+    <string>XY plane</string>
+   </property>
+  </action>
+  <action name="actionMirrorInXZPlane">
+   <property name="text">
+    <string>XZ plane</string>
+   </property>
+  </action>
+  <action name="actionMirrorInYZPlane">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>YZ plane</string>
+   </property>
+  </action>
+  <action name="actionLockTopology">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Topology</string>
+   </property>
+  </action>
+  <action name="actionLockGraphics">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Graphics</string>
+   </property>
+  </action>
+  <action name="actionAddBonds">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/AddSingleBonds.svg</normaloff>:/images/BuildProject/04.structure/AddSingleBonds.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Single Bonds</string>
+   </property>
+  </action>
+  <action name="actionRemoveBonds">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/RemoveBonds.svg</normaloff>:/images/BuildProject/04.structure/RemoveBonds.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Remove Bonds</string>
+   </property>
+  </action>
+  <action name="actionObjectProperties">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/ObjectProperties.svg</normaloff>:/images/BuildProject/08.mouse/ObjectProperties.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Object Properties</string>
+   </property>
+  </action>
+  <action name="actionRotateAroundXAxisClockwise">
+   <property name="text">
+    <string>X Axis Clockwise</string>
+   </property>
+  </action>
+  <action name="actionRotateAroundXAxisAnticlockwise">
+   <property name="text">
+    <string>X Axis Anticlockwise</string>
+   </property>
+  </action>
+  <action name="actionRotateAroundYAxisAnticlockwise">
+   <property name="text">
+    <string>Y Axis Anticlockwise</string>
+   </property>
+  </action>
+  <action name="actionRotateAroundZAxisAnticlockwise">
+   <property name="text">
+    <string>Z Axis Anticlockwise</string>
+   </property>
+  </action>
+  <action name="actionRotateAroundYAxisClockwise">
+   <property name="text">
+    <string>Y Axis Clockwise</string>
+   </property>
+  </action>
+  <action name="actionRotateAroundZAxisClockwise">
+   <property name="text">
+    <string>Z Axis Clockwise</string>
+   </property>
+  </action>
+  <action name="actionAddPolarHydrogens">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/AddPolarHydrogens.svg</normaloff>:/images/BuildProject/04.structure/AddPolarHydrogens.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Polar Hydrogens</string>
+   </property>
+  </action>
+  <action name="actionActiveStructureInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/ActiveStructureInfo.svg</normaloff>:/images/BuildProject/04.structure/ActiveStructureInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Active Structure Info</string>
+   </property>
+  </action>
+  <action name="actionSelectNone">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectNone.svg</normaloff>:/images/BuildProject/03.selection/SelectNone.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select None</string>
+   </property>
+  </action>
+  <action name="actionSelectStructures">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectStructure.svg</normaloff>:/images/BuildProject/03.selection/SelectStructure.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Structures</string>
+   </property>
+  </action>
+  <action name="actionSelectAtoms">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectAtoms.svg</normaloff>:/images/BuildProject/03.selection/SelectAtoms.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Atoms</string>
+   </property>
+  </action>
+  <action name="actionSelectBonds">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectBonds.svg</normaloff>:/images/BuildProject/03.selection/SelectBonds.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Bonds</string>
+   </property>
+  </action>
+  <action name="actionInvertSelection">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/InvertSelection.svg</normaloff>:/images/BuildProject/03.selection/InvertSelection.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Invert Selection</string>
+   </property>
+  </action>
+  <action name="actionSelectGraphicsObjects">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectGraphicalObject.svg</normaloff>:/images/BuildProject/03.selection/SelectGraphicalObject.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Graphics Objects</string>
+   </property>
+  </action>
+  <action name="actionSelectionListWP">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectionList.svg</normaloff>:/images/BuildProject/03.selection/SelectionList.svg</iconset>
+   </property>
+   <property name="text">
+    <string>View Selection List</string>
+   </property>
+  </action>
+  <action name="actionSelectResidues">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectResidue.svg</normaloff>:/images/BuildProject/03.selection/SelectResidue.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Residues</string>
+   </property>
+  </action>
+  <action name="actionCompleteMolecules">
+   <property name="text">
+    <string>Complete Molecules</string>
+   </property>
+  </action>
+  <action name="actionSelectAtomsAndBonds">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectAtomsBonds.svg</normaloff>:/images/BuildProject/03.selection/SelectAtomsBonds.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Atoms and Bonds</string>
+   </property>
+  </action>
+  <action name="actionRender">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Render ...</string>
+   </property>
+  </action>
+  <action name="actionCompleteBonds">
+   <property name="text">
+    <string>Complete Bonds</string>
+   </property>
+  </action>
+  <action name="actionLockDescription">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Description</string>
+   </property>
+  </action>
+  <action name="actionRestraintManagerWP">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/05.geometry/RestraintManagement.svg</normaloff>:/images/BuildProject/05.geometry/RestraintManagement.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Restraint Manager</string>
+   </property>
+  </action>
+  <action name="actionGeoManipWP">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/05.geometry/GeoManip.svg</normaloff>:/images/BuildProject/05.geometry/GeoManip.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Manipulation</string>
+   </property>
+  </action>
+  <action name="actionEnableRestraints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Enable Restraints</string>
+   </property>
+  </action>
+  <action name="actionClearSelection">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/ClearSelection.svg</normaloff>:/images/BuildProject/03.selection/ClearSelection.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Clear Selection</string>
+   </property>
+  </action>
+  <action name="actionCompleteValences">
+   <property name="text">
+    <string>Complete Valences</string>
+   </property>
+  </action>
+  <action name="actionLockGeometry">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Geometry</string>
+   </property>
+  </action>
+  <action name="actionFreezeAllAtoms">
+   <property name="text">
+    <string>All Atoms</string>
+   </property>
+  </action>
+  <action name="actionFreezeSelectedAtoms">
+   <property name="text">
+    <string>Selected Atoms</string>
+   </property>
+  </action>
+  <action name="actionUnfreezeAllAtoms">
+   <property name="text">
+    <string>All Atoms</string>
+   </property>
+  </action>
+  <action name="actionUnfreezeSelectedAtoms">
+   <property name="text">
+    <string>Selected Atoms</string>
+   </property>
+  </action>
+  <action name="actionManipulateAllAtoms">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Manipulate All Atoms</string>
+   </property>
+  </action>
+  <action name="actionManipulateSelectedAtoms">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Manipulate Selected Atoms</string>
+   </property>
+  </action>
+  <action name="actionManipulateMolecules">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Manipulate Molecules</string>
+   </property>
+  </action>
+  <action name="actionStereoOff">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Off</string>
+   </property>
+  </action>
+  <action name="actionStereoQuadBuffered">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>QuadBuffered</string>
+   </property>
+  </action>
+  <action name="actionNewProfile">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/ProfileNew.svg</normaloff>:/images/BuildProject/07.graphics/ProfileNew.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Profile</string>
+   </property>
+  </action>
+  <action name="actionNewObjectGlobalScope">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Global Scope</string>
+   </property>
+  </action>
+  <action name="actionNewObjectActiveProfile">
+   <property name="text">
+    <string>Active Profile</string>
+   </property>
+  </action>
+  <action name="actionStereoAnaglyphRB">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Anaglyph Red/Blue</string>
+   </property>
+  </action>
+  <action name="actionStereoSwapEyes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Swap eyes</string>
+   </property>
+  </action>
+  <action name="actionGraphicsManagerWP">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/GraphicsManager.svg</normaloff>:/images/BuildProject/07.graphics/GraphicsManager.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Graphics Manager</string>
+   </property>
+  </action>
+  <action name="actionAtomManipulation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/AtomManipulation.svg</normaloff>:/images/BuildProject/08.mouse/AtomManipulation.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Atom Manipulation</string>
+   </property>
+  </action>
+  <action name="actionCOMToBoxCenter">
+   <property name="text">
+    <string>box center</string>
+   </property>
+  </action>
+  <action name="actionNewResidue">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/NewResidue.svg</normaloff>:/images/BuildProject/04.structure/NewResidue.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Residue</string>
+   </property>
+  </action>
+  <action name="actionNewResidueFromSelectedAtoms">
+   <property name="text">
+    <string>New Residue From Selected Atoms</string>
+   </property>
+  </action>
+  <action name="actionDeleteSelectedResidues">
+   <property name="text">
+    <string>Delete Selected Residues</string>
+   </property>
+  </action>
+  <action name="actionFreezeHeavyAtoms">
+   <property name="text">
+    <string>Heavy Atoms</string>
+   </property>
+  </action>
+  <action name="actionSelectAtomsBySymbol">
+   <property name="text">
+    <string>Symbol ...</string>
+   </property>
+  </action>
+  <action name="actionSelectAtomsByName">
+   <property name="text">
+    <string>Name ...</string>
+   </property>
+  </action>
+  <action name="actionSelectAtomsByType">
+   <property name="text">
+    <string>Type ...</string>
+   </property>
+  </action>
+  <action name="actionSelectAtomsByMask">
+   <property name="text">
+    <string>Mask ...</string>
+   </property>
+  </action>
+  <action name="actionSelectBondsByBondOrder">
+   <property name="text">
+    <string>Bond Order ...</string>
+   </property>
+  </action>
+  <action name="actionSelectBondsByName">
+   <property name="text">
+    <string>Name ...</string>
+   </property>
+  </action>
+  <action name="actionSelectResiduesByName">
+   <property name="text">
+    <string>Name ...</string>
+   </property>
+  </action>
+  <action name="actionSelectResiduesByMask">
+   <property name="text">
+    <string>Mask ...</string>
+   </property>
+  </action>
+  <action name="actionSelectGraphicsObjectsByType">
+   <property name="text">
+    <string>Type ...</string>
+   </property>
+  </action>
+  <action name="actionInsertSMILES">
+   <property name="text">
+    <string>SMILES ...</string>
+   </property>
+  </action>
+  <action name="actionInsertInChI">
+   <property name="text">
+    <string>InChI ...</string>
+   </property>
+  </action>
+  <action name="actionNewProperty">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/06.properties/PropertyAdd.svg</normaloff>:/images/BuildProject/06.properties/PropertyAdd.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Property</string>
+   </property>
+  </action>
+  <action name="actionManagePropertiesWP">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/06.properties/PropertiesManagement.svg</normaloff>:/images/BuildProject/06.properties/PropertiesManagement.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Properties Manager</string>
+   </property>
+  </action>
+  <action name="actionLockProperties">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionOptimizerSetup">
+   <property name="text">
+    <string>Optimizer Setup</string>
+   </property>
+  </action>
+  <action name="actionPasteStructureDoNotOverlap">
+   <property name="text">
+    <string>Paste Do Not Overlap</string>
+   </property>
+  </action>
+  <action name="actionImageByMolecules">
+   <property name="text">
+    <string>Molecules</string>
+   </property>
+  </action>
+  <action name="actionImageByResidues">
+   <property name="text">
+    <string>Residues</string>
+   </property>
+  </action>
+  <action name="actionImageByAtoms">
+   <property name="text">
+    <string>Atoms</string>
+   </property>
+  </action>
+  <action name="actionFamiliarShape">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Familiar Shape</string>
+   </property>
+  </action>
+  <action name="actionAroundOrigin">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Around Origin</string>
+   </property>
+  </action>
+  <action name="actionClearHistory">
+   <property name="text">
+    <string>Clear History</string>
+   </property>
+  </action>
+  <action name="actionDeleteEmptyResidues">
+   <property name="text">
+    <string>Delete Empty Residues</string>
+   </property>
+  </action>
+  <action name="actionClearAllData">
+   <property name="text">
+    <string>Clear All Data</string>
+   </property>
+  </action>
+  <action name="actionSelectProperties">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectProperties.svg</normaloff>:/images/BuildProject/03.selection/SelectProperties.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Properties</string>
+   </property>
+  </action>
+  <action name="actionObjectListInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/AllObjectInfo.svg</normaloff>:/images/BuildProject/07.graphics/AllObjectInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>All Objects Info</string>
+   </property>
+  </action>
+  <action name="actionNewView">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/ViewNew.svg</normaloff>:/images/BuildProject/07.graphics/ViewNew.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New View</string>
+   </property>
+  </action>
+  <action name="actionPerspective">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Perspective</string>
+   </property>
+  </action>
+  <action name="actionOrthographic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Orthographic</string>
+   </property>
+  </action>
+  <action name="actionDepthCueing">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Depth Cueing</string>
+   </property>
+  </action>
+  <action name="actionViewListInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/AllViewInfo.svg</normaloff>:/images/BuildProject/07.graphics/AllViewInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>All Views Info</string>
+   </property>
+  </action>
+  <action name="actionPrimaryViewInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/ViewInfo.svg</normaloff>:/images/BuildProject/07.graphics/ViewInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Primary View Info</string>
+   </property>
+  </action>
+  <action name="actionProfileListInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/AllProfileInfo.svg</normaloff>:/images/BuildProject/07.graphics/AllProfileInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>All Profiles Info</string>
+   </property>
+  </action>
+  <action name="actionConvertTo2D">
+   <property name="text">
+    <string>Convert to 2D</string>
+   </property>
+  </action>
+  <action name="actionDeleteEmptyStructures">
+   <property name="text">
+    <string>Delete Empty Structures</string>
+   </property>
+  </action>
+  <action name="actionCreateStructureFromSelectedResidues">
+   <property name="text">
+    <string>New Structure From Selected Residues</string>
+   </property>
+  </action>
+  <action name="actionMergeAllStructures">
+   <property name="text">
+    <string>Merge All Structures</string>
+   </property>
+  </action>
+  <action name="actionAllStructuresInfo">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/AllStructuresInfo.svg</normaloff>:/images/BuildProject/04.structure/AllStructuresInfo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>All Structures Info</string>
+   </property>
+  </action>
+  <action name="actionNewAtom">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/NewAtom.svg</normaloff>:/images/BuildProject/04.structure/NewAtom.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Atom</string>
+   </property>
+  </action>
+  <action name="actionDeleteSelectedAtoms">
+   <property name="text">
+    <string>Delete Selected Atoms</string>
+   </property>
+  </action>
+  <action name="actionNewBond">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/NewBond.svg</normaloff>:/images/BuildProject/04.structure/NewBond.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Bond</string>
+   </property>
+  </action>
+  <action name="actionDeleteSelectedBonds">
+   <property name="text">
+    <string>Delete Selected Bonds</string>
+   </property>
+  </action>
+  <action name="actionDeleteInvalidBonds">
+   <property name="text">
+    <string>Delete Invalid Bonds</string>
+   </property>
+  </action>
+  <action name="actionNewStructure">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/NewStructure.svg</normaloff>:/images/BuildProject/04.structure/NewStructure.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Structure</string>
+   </property>
+  </action>
+  <action name="actionClearStructure">
+   <property name="text">
+    <string>Clear Structure</string>
+   </property>
+  </action>
+  <action name="actionDeleteSelectedStructures">
+   <property name="text">
+    <string>Delete Selected Structures</string>
+   </property>
+  </action>
+  <action name="actionManageStructuresWP">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/04.structure/ManageStructures.svg</normaloff>:/images/BuildProject/04.structure/ManageStructures.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Manage Structures</string>
+   </property>
+  </action>
+  <action name="actionProfileManagerWP">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/07.graphics/ProfileManager.svg</normaloff>:/images/BuildProject/07.graphics/ProfileManager.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Profile Manager</string>
+   </property>
+  </action>
+  <action name="actionSortStructures">
+   <property name="text">
+    <string>Sort Structures</string>
+   </property>
+  </action>
+  <action name="actionSortResidues">
+   <property name="text">
+    <string>Sort Residues</string>
+   </property>
+  </action>
+  <action name="actionSortAtoms">
+   <property name="text">
+    <string>Sort Atoms</string>
+   </property>
+  </action>
+  <action name="actionJobSchedulerPreferences">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/10.setup/JobSchedulerSetup.svg</normaloff>:/images/BuildProject/10.setup/JobSchedulerSetup.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Job Scheduler Preferences</string>
+   </property>
+  </action>
+  <action name="actionCompleteActiveStructure">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Complete Active Structure</string>
+   </property>
+  </action>
+  <action name="actionOnlyActiveStructureObjects">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Only Active Structure Objects</string>
+   </property>
+  </action>
+  <action name="actionConsiderObjectsOfAllStructures">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Consider Objects of All Structures</string>
+   </property>
+  </action>
+  <action name="actionAlreadySelectedObjectsAsSeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Already Selected Objects as Seed</string>
+   </property>
+  </action>
+  <action name="actionSelectRestraints">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/03.selection/SelectRestraints.svg</normaloff>:/images/BuildProject/03.selection/SelectRestraints.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Restraints</string>
+   </property>
+  </action>
+  <action name="actionScaleMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/Scale.svg</normaloff>:/images/BuildProject/08.mouse/Scale.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Scale Mode</string>
+   </property>
+  </action>
+  <action name="actionNewRestraint">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/05.geometry/NewRestraint.svg</normaloff>:/images/BuildProject/05.geometry/NewRestraint.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Restraint</string>
+   </property>
+  </action>
+  <action name="actionDeleteInvalidRestraints">
+   <property name="text">
+    <string>Delete Invalid Restraints</string>
+   </property>
+  </action>
+  <action name="actionDeleteAllRestraints">
+   <property name="text">
+    <string>Delete All Restraints</string>
+   </property>
+  </action>
+  <action name="actionDeleteSelectedRestraints">
+   <property name="text">
+    <string>Delete Selected Restraints</string>
+   </property>
+  </action>
+  <action name="actionSelectedProperties">
+   <property name="text">
+    <string>Delete Selected Properties</string>
+   </property>
+  </action>
+  <action name="actionDeleteInvalidProperties">
+   <property name="text">
+    <string>Delete Invalid Properties</string>
+   </property>
+  </action>
+  <action name="actionDeleteAllProperties">
+   <property name="text">
+    <string>Delete All Properties</string>
+   </property>
+  </action>
+  <action name="actionCompleteAll">
+   <property name="text">
+    <string>Complete All</string>
+   </property>
+  </action>
+  <action name="actionLockStructures">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Structures</string>
+   </property>
+  </action>
+  <action name="actionExportPropertiesWP">
+   <property name="text">
+    <string>Export Properties as ...</string>
+   </property>
+  </action>
+  <action name="actionOpenAsBuildProject">
+   <property name="text">
+    <string>Open as Build Project</string>
+   </property>
+  </action>
+  <action name="actionDuplicateStructure">
+   <property name="text">
+    <string>Duplicate Structure</string>
+   </property>
+  </action>
+  <action name="actionSelectRotationCentre">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/BuildProject/08.mouse/SelectRotationCentre.svg</normaloff>:/images/BuildProject/08.mouse/SelectRotationCentre.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select Rotation Centre</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

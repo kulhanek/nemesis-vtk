@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--NEMESIS desktop setup-->
+<tools>
+    <workpanel uuid="{RESIDUE_LIST_WORK_PANEL:9a26a97a-7ac0-4d64-bbc7-8aa627b5d6b4}"/>
+    <workpanel uuid="{RESIDUE_WORK_PANEL:983992af-e31d-417a-bc21-0b35a32d855b}"/>
+    <workpanel uuid="{STRUCTURE_PALETTE_WORK_PANEL:4055ad4a-4b46-4130-bad3-9192dee5c512}"/>
+    <workpanel uuid="{SUPER_CELL_BUILDER_WORK_PANEL:ab06478c-26ca-49e3-871e-73239ea1042f}"/>
+    <workpanel uuid="{STR_INTERNAL_GEO:412c1f0b-5675-4198-9687-a89555971110}"/>
+    <workpanel uuid="{CMP_INTERNAL_GEO:2c451d0a-b794-4b38-a362-71417987c7a8}"/>
+    <workpanel uuid="{SELECT_BY_MASK_WORK_PANEL:4501cda8-1db7-4634-8eeb-95ca0aa11e6a}"/>
+    <workpanel uuid="{PERIODIC_TABLE_WORK_PANEL:843f334f-db10-460b-8ea2-bca948d9afd9}"/>
+    <workpanel uuid="{JOB_WORK_PANEL:69932eda-d93f-4dda-ae40-4695da5dda96}"/>
+    <workpanel uuid="{AUTO_ROTATE_WP:751acdb4-1309-41a3-a4fe-92b53fa38180}"/>
+    <separator/>
+    <menu name="Controls">
+        <workpanel uuid="{JS_TERMINAL_WORK_PANEL:4329f25a-6268-4478-a9c1-7bbb3dd44c20}"/>
+        <workpanel uuid="{ERROR_CONSOLE_WORK_PANEL:7dc0630c-19e5-48bc-9130-904cc8640900}"/>
+        <workpanel uuid="{PLUGIN_DATABASE_WORK_PANEL:4428c905-e31c-4d8a-9720-1e6738b70601}"/>
+        <workpanel uuid="{OBJECT_INSPECTOR_WORK_PANEL:743b3270-c31e-4dfb-8ed4-583cbbf6f785}"/>
+    </menu>
+</tools>

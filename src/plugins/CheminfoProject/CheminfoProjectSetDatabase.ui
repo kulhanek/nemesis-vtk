@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CheminfoProjectSetDatabase</class>
+ <widget class="QWidget" name="CheminfoProjectSetDatabase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>478</width>
+    <height>255</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cheminfo - Database settings</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>461</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,1,0,0" columnminimumwidth="0,190,0,0">
+    <item row="1" column="0">
+     <widget class="QLabel" name="dbPathLabel">
+      <property name="text">
+       <string>Path:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="dbPathLine"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="dbNameLine">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="dbTypeLabel">
+      <property name="text">
+       <string>DBMS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="dbNameLabel">
+      <property name="text">
+       <string>DB name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="dbUserLine"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="dbUserLabel">
+      <property name="text">
+       <string>User name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="loadPB">
+      <property name="minimumSize">
+       <size>
+        <width>55</width>
+        <height>27</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Browse</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="dbPasswordLabel">
+      <property name="text">
+       <string>Password:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="dbPasswordLine">
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QComboBox" name="dbTypeCB">
+      <item>
+       <property name="text">
+        <string>Firebird</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QCheckBox" name="saveSettingsCB">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>190</y>
+     <width>121</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Save settings into the file?
+(in next startup will be setting restore from the settings file)</string>
+   </property>
+   <property name="text">
+    <string>Save settings</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connectPB">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>220</y>
+     <width>99</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelPB">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>220</y>
+     <width>99</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>dbNameLine</tabstop>
+  <tabstop>dbPathLine</tabstop>
+  <tabstop>dbUserLine</tabstop>
+  <tabstop>dbPasswordLine</tabstop>
+  <tabstop>loadPB</tabstop>
+  <tabstop>saveSettingsCB</tabstop>
+  <tabstop>cancelPB</tabstop>
+  <tabstop>connectPB</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

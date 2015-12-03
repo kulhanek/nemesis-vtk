@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--NEMESIS desktop setup-->
+<tools>
+    <workpanel uuid="{PERIODIC_TABLE_WORK_PANEL:843f334f-db10-460b-8ea2-bca948d9afd9}"/>
+    <menu name="Controls">
+        <workpanel uuid="{JS_TERMINAL_WORK_PANEL:4329f25a-6268-4478-a9c1-7bbb3dd44c20}"/>
+        <workpanel uuid="{ERROR_CONSOLE_WORK_PANEL:7dc0630c-19e5-48bc-9130-904cc8640900}"/>
+        <workpanel uuid="{PLUGIN_DATABASE_WORK_PANEL:4428c905-e31c-4d8a-9720-1e6738b70601}"/>
+        <workpanel uuid="{OBJECT_INSPECTOR_WORK_PANEL:743b3270-c31e-4dfb-8ed4-583cbbf6f785}"/>
+    </menu>
+</tools>

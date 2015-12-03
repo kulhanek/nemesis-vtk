@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--user graphics setup profile-->
+<setups id="-1" name="Graphics setup profile">
+    <ext/>
+    <setup id="-1" name="Plane object setup" uuid="{PLANE_SETUP:ab0df312-7e6d-4b1d-af90-5722d7cadcf2}">
+        <ext/>
+        <data>
+            <active r="8.0000001e-01" g="8.0000001e-01" b="1.5000001e-01" a="3.0000001e-01"/>
+            <deactive r="8.9999998e-01" g="1.5000001e-01" b="1.5000001e-01" a="3.0000001e-01"/>
+        </data>
+    </setup>
+    <setup id="-1" name="Box object setup" uuid="{BOX_SETUP:4bfc06b2-40a3-4a5e-bb83-bf8ff3634eb0}">
+        <ext/>
+        <data>
+            <color r="1.0000000e+00" g="1.0000000e+00" b="1.0000000e+00" a="1.0000000e+00"/>
+        </data>
+    </setup>
+    <setup id="-1" name="Freezed Atoms Setup" uuid="{FREEZED_ATOMS_SETUP:976f7af5-d108-4edf-af7a-f2adbaae1c86}">
+        <ext/>
+        <data/>
+    </setup>
+    <setup id="-1" name="Simple geometry label setup" uuid="{SIMPLE_GEO_LABEL_SETUP:209c0d4c-3919-46bd-bf1f-810439e7f5c1}">
+        <ext/>
+        <data/>
+    </setup>
+    <setup id="-1" name="Atom label setup" uuid="{ATOM_LABEL_SETUP:e943f64f-7e45-4e33-b4fa-155d8b426468}">
+        <ext/>
+        <data/>
+    </setup>
+    <setup id="-1" name="XYZAxes object setup" uuid="{XYZ_AXES_SETUP:7724c44e-bc09-4da8-bd78-1a263efcda20}">
+        <ext>
+            <designer open="false">
+                <GEOM l="3" t="23" w="434" h="506" sot="false"/>
+                <DATA/>
+            </designer>
+        </ext>
+        <data ar="5.0000001e-02" cr="1.0000000e-01" ch="4.0000001e-01" cyt="3" cot="3" sx="true" sy="true" sz="true" smx="false" smy="false" smz="false" mx="5.0000000e+00" my="5.0000000e+00" mz="5.0000000e+00" mmx="3.0000000e+00" mmy="3.0000000e+00" mmz="3.0000000e+00">
+            <X>
+                <pc r="8.0000001e-01" g="0.0000000e+00" b="0.0000000e+00" a="1.0000000e+00"/>
+                <nc r="8.0000001e-01" g="0.0000000e+00" b="0.0000000e+00" a="1.0000000e+00"/>
+                <cc r="8.0000001e-01" g="0.0000000e+00" b="0.0000000e+00" a="1.0000000e+00"/>
+            </X>
+            <Y>
+                <pc r="0.0000000e+00" g="8.0000001e-01" b="0.0000000e+00" a="1.0000000e+00"/>
+                <nc r="0.0000000e+00" g="8.0000001e-01" b="0.0000000e+00" a="1.0000000e+00"/>
+                <cc r="0.0000000e+00" g="8.0000001e-01" b="0.0000000e+00" a="1.0000000e+00"/>
+            </Y>
+            <Z>
+                <pc r="0.0000000e+00" g="0.0000000e+00" b="8.0000001e-01" a="1.0000000e+00"/>
+                <nc r="0.0000000e+00" g="0.0000000e+00" b="8.0000001e-01" a="1.0000000e+00"/>
+                <cc r="0.0000000e+00" g="0.0000000e+00" b="8.0000001e-01" a="1.0000000e+00"/>
+            </Z>
+        </data>
+    </setup>
+    <setup id="-1" name="Fast line model setup" uuid="{FAST_MODEL_SETUP:0c8436f2-3e81-47f2-ac7b-c63507d4097e}">
+        <ext>
+            <designer open="false">
+                <GEOM l="3" t="23" w="344" h="275" sot="false"/>
+                <DATA/>
+            </designer>
+        </ext>
+        <data/>
+    </setup>
+    <setup id="-1" name="Standard model setup" uuid="{STANDARD_MODEL_SETUP:ca769af6-6332-4fc7-a378-47423b837fa9}">
+        <ext>
+            <designer open="false">
+                <GEOM l="17" t="53" w="368" h="371" sot="false"/>
+                <DATA/>
+            </designer>
+        </ext>
+        <data>
+            <models>
+                <model level="0" model="0">
+                    <atom Type="1" Radius="0.0000000e+00" Ratio="0.0000000e+00" TessellationQuality="8"/>
+                    <bond Type="0" Radius="2.9999999e-02" Pitch="1.0000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="0" model="1">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="1.5000001e-01" TessellationQuality="3"/>
+                    <bond Type="0" Radius="2.9999999e-02" Pitch="1.5000001e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="0" model="2">
+                    <atom Type="1" Radius="5.9999999e-02" Ratio="0.0000000e+00" TessellationQuality="9"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="false" Diffuse="false" TessellationQuality="8"/>
+                </model>
+                <model level="0" model="3">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="2.0000000e-01" TessellationQuality="3"/>
+                    <bond Type="1" Radius="7.9999998e-02" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="0" model="4">
+                    <atom Type="1" Radius="0.0000000e+00" Ratio="2.0000000e-01" TessellationQuality="3"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="0" model="5">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="1.1000000e+00" TessellationQuality="3"/>
+                    <bond Type="1" Radius="0.0000000e+00" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="1" model="0">
+                    <atom Type="1" Radius="0.0000000e+00" Ratio="0.0000000e+00" TessellationQuality="8"/>
+                    <bond Type="0" Radius="2.9999999e-02" Pitch="1.0000000e-01" ShowOrder="true" Diffuse="true" TessellationQuality="3"/>
+                </model>
+                <model level="1" model="1">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="1.5000001e-01" TessellationQuality="3"/>
+                    <bond Type="0" Radius="2.9999999e-02" Pitch="1.5000001e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="1" model="2">
+                    <atom Type="1" Radius="5.9999999e-02" Ratio="0.0000000e+00" TessellationQuality="9"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="false" Diffuse="true" TessellationQuality="8"/>
+                </model>
+                <model level="1" model="3">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="2.0000000e-01" TessellationQuality="3"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="true" TessellationQuality="3"/>
+                </model>
+                <model level="1" model="4">
+                    <atom Type="1" Radius="0.0000000e+00" Ratio="2.0000000e-01" TessellationQuality="3"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="1" model="5">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="1.1000000e+00" TessellationQuality="3"/>
+                    <bond Type="1" Radius="0.0000000e+00" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="2" model="0">
+                    <atom Type="1" Radius="0.0000000e+00" Ratio="0.0000000e+00" TessellationQuality="8"/>
+                    <bond Type="0" Radius="2.9999999e-02" Pitch="1.0000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="2" model="1">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="1.5000001e-01" TessellationQuality="3"/>
+                    <bond Type="0" Radius="2.9999999e-02" Pitch="1.5000001e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="2" model="2">
+                    <atom Type="1" Radius="5.9999999e-02" Ratio="0.0000000e+00" TessellationQuality="9"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="false" Diffuse="false" TessellationQuality="8"/>
+                </model>
+                <model level="2" model="3">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="2.0000000e-01" TessellationQuality="3"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="2" model="4">
+                    <atom Type="1" Radius="0.0000000e+00" Ratio="2.0000000e-01" TessellationQuality="3"/>
+                    <bond Type="1" Radius="5.9999999e-02" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+                <model level="2" model="5">
+                    <atom Type="2" Radius="0.0000000e+00" Ratio="1.1000000e+00" TessellationQuality="3"/>
+                    <bond Type="1" Radius="0.0000000e+00" Pitch="2.5000000e-01" ShowOrder="true" Diffuse="false" TessellationQuality="3"/>
+                </model>
+            </models>
+        </data>
+    </setup>
+    <setup id="-1" name="Background object setup" uuid="{BACKGROUND_SETUP:c4983c35-3d1e-4a26-ad16-bb131cd51fa9}">
+        <ext>
+            <designer open="false">
+                <GEOM l="286" t="138" w="250" h="264" sot="false"/>
+                <DATA/>
+            </designer>
+        </ext>
+        <data>
+            <active r="0.0000000e+00" g="0.0000000e+00" b="5.0196081e-01" a="1.0000000e+00"/>
+            <deactive r="4.9803922e-01" g="4.9803922e-01" b="4.9803922e-01" a="1.0000000e+00"/>
+        </data>
+    </setup>
+    <setup id="-1" name="Light object setup" uuid="{LIGHT_SETUP:08f36a6d-85b2-42a7-bfb8-69813b544823}">
+        <ext>
+            <designer open="false">
+                <GEOM l="73" t="71" w="435" h="504" sot="false"/>
+                <DATA/>
+            </designer>
+        </ext>
+        <data>
+            <ambient r="2.0000000e-01" g="2.0000000e-01" b="2.0000000e-01" a="1.0000000e+00"/>
+            <diffuse r="1.0000000e+00" g="1.0000000e+00" b="1.0000000e+00" a="1.0000000e+00"/>
+            <specular r="1.0000000e+00" g="1.0000000e+00" b="1.0000000e+00" a="1.0000000e+00"/>
+        </data>
+    </setup>
+</setups>

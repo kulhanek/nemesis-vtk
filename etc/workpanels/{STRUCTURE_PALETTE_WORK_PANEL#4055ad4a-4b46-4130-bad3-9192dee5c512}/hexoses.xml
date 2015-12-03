@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<structures>
+    <structure>
+    <atoms>
+        <atom id="2" Z="6" px="-3.751620000000000e+00" py="3.445540000000000e+00" pz="1.730500000000000e-01"/>
+        <atom id="3" Z="6" px="-3.781710000000000e+00" py="1.963050000000000e+00" pz="-2.458200000000000e-01"/>
+        <atom id="4" Z="6" px="-2.593280000000000e+00" py="1.225470000000000e+00" pz="4.001900000000000e-01"/>
+        <atom id="5" Z="1" px="-3.665900000000000e+00" py="1.909710000000000e+00" pz="-1.351710000000000e+00"/>
+        <atom id="6" Z="8" px="-5.005430000000000e+00" py="1.359280000000000e+00" pz="9.171000000000000e-02"/>
+        <atom id="7" Z="6" px="-1.282730000000000e+00" py="1.967870000000000e+00" pz="6.126000000000000e-02"/>
+        <atom id="8" Z="1" px="-2.718350000000000e+00" py="1.239450000000000e+00" pz="1.505970000000000e+00"/>
+        <atom id="9" Z="8" px="-2.544590000000000e+00" py="-1.165400000000000e-01" pz="-1.622000000000000e-02"/>
+        <atom id="10" Z="6" px="-2.353490000000000e+00" py="4.037770000000000e+00" pz="-1.473000000000000e-01"/>
+        <atom id="11" Z="1" px="-3.914900000000000e+00" py="3.504080000000000e+00" pz="1.271810000000000e+00"/>
+        <atom id="12" Z="8" px="-4.779910000000000e+00" py="4.164860000000000e+00" pz="-4.616100000000000e-01"/>
+        <atom id="13" Z="8" px="-1.342850000000000e+00" py="3.306490000000000e+00" pz="5.323700000000000e-01"/>
+        <atom id="14" Z="6" px="-2.252410000000000e+00" py="5.512360000000000e+00" pz="2.685100000000000e-01"/>
+        <atom id="15" Z="1" px="-2.171840000000000e+00" py="4.009490000000000e+00" pz="-1.247670000000000e+00"/>
+        <atom id="16" Z="8" px="-2.185300000000000e-01" py="1.311000000000000e+00" pz="6.937700000000000e-01"/>
+        <atom id="17" Z="1" px="-1.107730000000000e+00" py="1.941990000000000e+00" pz="-1.041980000000000e+00"/>
+        <atom id="18" Z="1" px="6.126400000000000e-01" py="1.748530000000000e+00" pz="3.724500000000000e-01"/>
+        <atom id="19" Z="1" px="-2.404670000000000e+00" py="-1.225900000000000e-01" pz="-9.993500000000000e-01"/>
+        <atom id="20" Z="1" px="-5.102270000000000e+00" py="1.405660000000000e+00" pz="1.078880000000000e+00"/>
+        <atom id="21" Z="1" px="-4.609030000000000e+00" py="4.134990000000000e+00" pz="-1.439320000000000e+00"/>
+        <atom id="22" Z="8" px="-2.407800000000000e+00" py="5.659690000000000e+00" pz="1.655760000000000e+00"/>
+        <atom id="23" Z="1" px="-2.995620000000000e+00" py="6.132420000000000e+00" pz="-2.848900000000000e-01"/>
+        <atom id="24" Z="1" px="-1.251320000000000e+00" py="5.904010000000000e+00" pz="-1.143000000000000e-02"/>
+        <atom id="25" Z="1" px="-3.368600000000000e+00" py="5.845010000000000e+00" pz="1.822640000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="26" ord="2" A1="21" A2="12"/>
+        <bond id="27" ord="2" A1="5" A2="3"/>
+        <bond id="28" ord="2" A1="15" A2="10"/>
+        <bond id="29" ord="2" A1="17" A2="7"/>
+        <bond id="30" ord="2" A1="19" A2="9"/>
+        <bond id="31" ord="2" A1="12" A2="2"/>
+        <bond id="32" ord="2" A1="23" A2="14"/>
+        <bond id="33" ord="2" A1="3" A2="6"/>
+        <bond id="34" ord="2" A1="3" A2="2"/>
+        <bond id="35" ord="2" A1="3" A2="4"/>
+        <bond id="36" ord="2" A1="10" A2="2"/>
+        <bond id="37" ord="2" A1="10" A2="14"/>
+        <bond id="38" ord="2" A1="10" A2="13"/>
+        <bond id="39" ord="2" A1="9" A2="4"/>
+        <bond id="40" ord="2" A1="24" A2="14"/>
+        <bond id="41" ord="2" A1="7" A2="4"/>
+        <bond id="42" ord="2" A1="7" A2="13"/>
+        <bond id="43" ord="2" A1="7" A2="16"/>
+        <bond id="44" ord="2" A1="6" A2="20"/>
+        <bond id="45" ord="2" A1="2" A2="11"/>
+        <bond id="46" ord="2" A1="14" A2="22"/>
+        <bond id="47" ord="2" A1="18" A2="16"/>
+        <bond id="48" ord="2" A1="4" A2="8"/>
+        <bond id="49" ord="2" A1="22" A2="25"/>
+    </bonds>
+        <connectors>
+          <connector id="2">
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Galactopyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:28px">GLU</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>          
+            </connector>
+          </connectors>
+    </structure>
+    <!-- ##################################################### -->
+    <structure>
+      <!-- atoms, bonds -->
+      <connectors>
+        <connector id="1">
+                  <!-- svg-->
+        </connector>  
+      </connectors>
+    </structure>
+    <!-- ##################################################### -->
+    <structure>
+          <atoms>
+        <atom id="1" Z="6" px="-3.525120000000000e+00" py="2.944770000000000e+00" pz="4.948400000000000e-01"/>
+        <atom id="2" Z="6" px="-2.455220000000000e+00" py="3.369530000000000e+00" pz="-5.530800000000000e-01"/>
+        <atom id="3" Z="6" px="-4.059040000000000e+00" py="1.530420000000000e+00" pz="1.844800000000000e-01"/>
+        <atom id="4" Z="6" px="-2.856790000000000e+00" py="5.782400000000000e-01" pz="1.729000000000000e-02"/>
+        <atom id="5" Z="6" px="-1.839700000000000e+00" py="1.148520000000000e+00" pz="-1.000680000000000e+00"/>
+        <atom id="6" Z="8" px="-1.390090000000000e+00" py="2.428440000000000e+00" pz="-5.770600000000000e-01"/>
+        <atom id="7" Z="8" px="-4.578000000000000e+00" py="3.871430000000000e+00" pz="5.950000000000000e-01"/>
+        <atom id="8" Z="1" px="-3.017660000000000e+00" py="2.899350000000000e+00" pz="1.484060000000000e+00"/>
+        <atom id="9" Z="6" px="-1.871500000000000e+00" py="4.751120000000000e+00" pz="-2.265500000000000e-01"/>
+        <atom id="10" Z="1" px="-2.905130000000000e+00" py="3.461470000000000e+00" pz="-1.567250000000000e+00"/>
+        <atom id="11" Z="8" px="-4.908950000000000e+00" py="1.516090000000000e+00" pz="-9.413800000000000e-01"/>
+        <atom id="12" Z="1" px="-4.674440000000000e+00" py="1.184050000000000e+00" pz="1.043150000000000e+00"/>
+        <atom id="13" Z="8" px="-3.276070000000000e+00" py="-7.195400000000000e-01" pz="-3.238200000000000e-01"/>
+        <atom id="14" Z="1" px="-2.330610000000000e+00" py="5.176900000000000e-01" pz="9.963100000000000e-01"/>
+        <atom id="15" Z="8" px="-7.398300000000000e-01" py="2.815900000000000e-01" pz="-1.060370000000000e+00"/>
+        <atom id="16" Z="1" px="-2.288590000000000e+00" py="1.204390000000000e+00" pz="-2.019810000000000e+00"/>
+        <atom id="17" Z="8" px="-1.239610000000000e+00" py="4.730840000000000e+00" pz="1.024290000000000e+00"/>
+        <atom id="18" Z="1" px="-4.946290000000000e+00" py="4.009370000000000e+00" pz="-3.162900000000000e-01"/>
+        <atom id="19" Z="1" px="-2.685840000000000e+00" py="5.509690000000000e+00" pz="-2.276900000000000e-01"/>
+        <atom id="20" Z="1" px="-1.128760000000000e+00" py="5.014220000000000e+00" pz="-1.013100000000000e+00"/>
+        <atom id="21" Z="1" px="-4.412330000000000e+00" py="1.829460000000000e+00" pz="-1.736540000000000e+00"/>
+        <atom id="22" Z="1" px="-3.626160000000000e+00" py="-6.903100000000000e-01" pz="-1.252160000000000e+00"/>
+        <atom id="23" Z="1" px="-8.709900000000000e-01" py="5.641940000000000e+00" pz="1.161250000000000e+00"/>
+        <atom id="24" Z="1" px="-1.482500000000000e-01" py="6.251400000000000e-01" pz="-1.779890000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="16" A2="5"/>
+        <bond id="26" ord="2" A1="24" A2="15"/>
+        <bond id="27" ord="2" A1="21" A2="11"/>
+        <bond id="28" ord="2" A1="10" A2="2"/>
+        <bond id="29" ord="2" A1="22" A2="13"/>
+        <bond id="30" ord="2" A1="15" A2="5"/>
+        <bond id="31" ord="2" A1="20" A2="9"/>
+        <bond id="32" ord="2" A1="5" A2="6"/>
+        <bond id="33" ord="2" A1="5" A2="4"/>
+        <bond id="34" ord="2" A1="11" A2="3"/>
+        <bond id="35" ord="2" A1="6" A2="2"/>
+        <bond id="36" ord="2" A1="2" A2="9"/>
+        <bond id="37" ord="2" A1="2" A2="1"/>
+        <bond id="38" ord="2" A1="13" A2="4"/>
+        <bond id="39" ord="2" A1="18" A2="7"/>
+        <bond id="40" ord="2" A1="19" A2="9"/>
+        <bond id="41" ord="2" A1="9" A2="17"/>
+        <bond id="42" ord="2" A1="4" A2="3"/>
+        <bond id="43" ord="2" A1="4" A2="14"/>
+        <bond id="44" ord="2" A1="3" A2="1"/>
+        <bond id="45" ord="2" A1="3" A2="12"/>
+        <bond id="46" ord="2" A1="1" A2="7"/>
+        <bond id="47" ord="2" A1="1" A2="8"/>
+        <bond id="48" ord="2" A1="17" A2="23"/>
+    </bonds>
+      <connectors>
+        <connector id="1">
+                      <svg
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+      width="64"
+      height="64"
+      id="svg2"
+      version="1.1"
+      inkscape:version="0.48.3.1 r9886"
+      sodipodi:docname="alpha-L-Talopyranose.svg">
+      <defs
+        id="defs4" />
+      <sodipodi:namedview
+        id="base"
+        pagecolor="#ffffff"
+        bordercolor="#666666"
+        borderopacity="1.0"
+        inkscape:pageopacity="0.0"
+        inkscape:pageshadow="2"
+        inkscape:zoom="3.959798"
+        inkscape:cx="79.799336"
+        inkscape:cy="97.845883"
+        inkscape:document-units="px"
+        inkscape:current-layer="layer1"
+        showgrid="false"
+        inkscape:window-width="1280"
+        inkscape:window-height="1000"
+        inkscape:window-x="0"
+        inkscape:window-y="24"
+        inkscape:window-maximized="1" />
+      <metadata
+        id="metadata7">
+        <rdf:RDF>
+          <cc:Work
+            rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type
+              rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+            <dc:title></dc:title>
+          </cc:Work>
+        </rdf:RDF>
+      </metadata>
+      <g
+        inkscape:label="Layer 1"
+        inkscape:groupmode="layer"
+        id="layer1"
+        transform="translate(0,-988.36218)">
+        <text
+          xml:space="preserve"
+          style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+          x="5.8083768"
+          y="1045.7961"
+          id="text3004"
+          sodipodi:linespacing="125%"><tspan
+            sodipodi:role="line"
+            id="tspan3006"
+            x="5.8083768"
+            y="1045.7961"
+            style="font-size:28px">ALO</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+          x="17.172594"
+          y="1010.1884"
+          id="text3046"
+          sodipodi:linespacing="125%"><tspan
+            sodipodi:role="line"
+            id="tspan3048"
+            x="17.172594"
+            y="1010.1884">β-D</tspan></text>
+      </g>
+    </svg>
+        </connector>  
+      </connectors>
+    </structure>
+    <!-- ##################################################### --> 
+    <structure>
+     <atoms>
+        <atom id="1" Z="6" px="-2.287020000000000e+00" py="2.540890000000000e+00" pz="-2.582200000000000e-01"/>
+        <atom id="2" Z="6" px="-1.105580000000000e+00" py="3.415210000000000e+00" pz="-7.757900000000000e-01"/>
+        <atom id="3" Z="6" px="-2.097870000000000e+00" py="1.065350000000000e+00" pz="-6.814000000000000e-01"/>
+        <atom id="4" Z="8" px="-3.538070000000000e+00" py="3.030250000000000e+00" pz="-6.736000000000000e-01"/>
+        <atom id="5" Z="1" px="-2.268210000000000e+00" py="2.577850000000000e+00" pz="8.516400000000000e-01"/>
+        <atom id="6" Z="6" px="-6.794700000000000e-01" py="5.972200000000000e-01" pz="-2.920300000000000e-01"/>
+        <atom id="7" Z="8" px="-2.339060000000000e+00" py="8.691500000000000e-01" pz="-2.057410000000000e+00"/>
+        <atom id="8" Z="1" px="-2.845930000000000e+00" py="4.360800000000000e-01" pz="-1.518500000000000e-01"/>
+        <atom id="9" Z="6" px="3.763800000000000e-01" py="1.597900000000000e+00" pz="-8.291700000000000e-01"/>
+        <atom id="10" Z="8" px="-5.738799999999999e-01" py="4.415300000000000e-01" pz="1.105880000000000e+00"/>
+        <atom id="11" Z="1" px="-4.956800000000000e-01" py="-4.051400000000000e-01" pz="-7.363600000000000e-01"/>
+        <atom id="12" Z="8" px="1.358600000000000e-01" py="2.900150000000000e+00" pz="-3.102700000000000e-01"/>
+        <atom id="13" Z="6" px="-1.235580000000000e+00" py="4.870890000000000e+00" pz="-3.040900000000000e-01"/>
+        <atom id="14" Z="1" px="-1.102640000000000e+00" py="3.460030000000000e+00" pz="-1.887990000000000e+00"/>
+        <atom id="15" Z="8" px="1.647670000000000e+00" py="1.168780000000000e+00" pz="-4.237900000000000e-01"/>
+        <atom id="16" Z="1" px="3.627000000000000e-01" py="1.611060000000000e+00" pz="-1.943810000000000e+00"/>
+        <atom id="17" Z="1" px="2.302120000000000e+00" py="1.777740000000000e+00" pz="-8.556800000000000e-01"/>
+        <atom id="18" Z="1" px="-4.858200000000000e-01" py="1.333200000000000e+00" pz="1.529990000000000e+00"/>
+        <atom id="19" Z="1" px="-1.755610000000000e+00" py="1.463560000000000e+00" pz="-2.589180000000000e+00"/>
+        <atom id="20" Z="1" px="-3.512670000000000e+00" py="3.125950000000000e+00" pz="-1.661090000000000e+00"/>
+        <atom id="21" Z="8" px="-1.179360000000000e+00" py="4.957500000000000e+00" pz="1.095920000000000e+00"/>
+        <atom id="22" Z="1" px="-2.171980000000000e+00" py="5.331820000000000e+00" pz="-6.965800000000000e-01"/>
+        <atom id="23" Z="1" px="-3.969300000000000e-01" py="5.468100000000000e+00" pz="-7.213200000000000e-01"/>
+        <atom id="24" Z="1" px="-2.115660000000000e+00" py="4.958240000000000e+00" pz="1.425610000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="19" A2="7"/>
+        <bond id="26" ord="2" A1="7" A2="3"/>
+        <bond id="27" ord="2" A1="16" A2="9"/>
+        <bond id="28" ord="2" A1="14" A2="2"/>
+        <bond id="29" ord="2" A1="20" A2="4"/>
+        <bond id="30" ord="2" A1="17" A2="15"/>
+        <bond id="31" ord="2" A1="9" A2="15"/>
+        <bond id="32" ord="2" A1="9" A2="12"/>
+        <bond id="33" ord="2" A1="9" A2="6"/>
+        <bond id="34" ord="2" A1="2" A2="12"/>
+        <bond id="35" ord="2" A1="2" A2="13"/>
+        <bond id="36" ord="2" A1="2" A2="1"/>
+        <bond id="37" ord="2" A1="11" A2="6"/>
+        <bond id="38" ord="2" A1="23" A2="13"/>
+        <bond id="39" ord="2" A1="22" A2="13"/>
+        <bond id="40" ord="2" A1="3" A2="6"/>
+        <bond id="41" ord="2" A1="3" A2="1"/>
+        <bond id="42" ord="2" A1="3" A2="8"/>
+        <bond id="43" ord="2" A1="4" A2="1"/>
+        <bond id="44" ord="2" A1="13" A2="21"/>
+        <bond id="45" ord="2" A1="6" A2="10"/>
+        <bond id="46" ord="2" A1="1" A2="5"/>
+        <bond id="47" ord="2" A1="21" A2="24"/>
+        <bond id="48" ord="2" A1="10" A2="18"/>
+    </bonds>
+      <connectors>
+        <connector id="1">
+                  <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Alopyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:28px">ALT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>
+        </connector>  
+      </connectors>
+    </structure>
+    <!-- ##################################################### -->
+    <structure>
+
+    <atoms>
+        <atom id="1" Z="6" px="-3.204510000000000e+00" py="-1.805000000000000e-02" pz="-2.938330000000000e+00"/>
+        <atom id="2" Z="6" px="-3.040420000000000e+00" py="1.053390000000000e+00" pz="-1.840510000000000e+00"/>
+        <atom id="3" Z="6" px="-1.548710000000000e+00" py="1.223680000000000e+00" pz="-1.477350000000000e+00"/>
+        <atom id="4" Z="1" px="-3.566430000000000e+00" py="6.835800000000000e-01" pz="-9.316900000000000e-01"/>
+        <atom id="5" Z="8" px="-3.636650000000000e+00" py="2.271500000000000e+00" pz="-2.210350000000000e+00"/>
+        <atom id="6" Z="6" px="-9.430600000000000e-01" py="-1.588100000000000e-01" pz="-1.138070000000000e+00"/>
+        <atom id="7" Z="1" px="-1.001410000000000e+00" py="1.634690000000000e+00" pz="-2.352740000000000e+00"/>
+        <atom id="8" Z="8" px="-1.387750000000000e+00" py="2.127130000000000e+00" pz="-4.121500000000000e-01"/>
+        <atom id="9" Z="6" px="-2.485520000000000e+00" py="-1.311380000000000e+00" pz="-2.463980000000000e+00"/>
+        <atom id="10" Z="8" px="-2.719660000000000e+00" py="4.416400000000000e-01" pz="-4.179830000000000e+00"/>
+        <atom id="11" Z="1" px="-4.288090000000000e+00" py="-2.314700000000000e-01" pz="-3.066610000000000e+00"/>
+        <atom id="12" Z="6" px="-2.629270000000000e+00" py="-2.468880000000000e+00" pz="-3.462760000000000e+00"/>
+        <atom id="13" Z="8" px="-1.986300000000000e+00" py="-2.182000000000000e+00" pz="-4.677400000000000e+00"/>
+        <atom id="14" Z="1" px="-3.708120000000000e+00" py="-2.707050000000000e+00" pz="-3.618890000000000e+00"/>
+        <atom id="15" Z="1" px="-2.163230000000000e+00" py="-3.382130000000000e+00" pz="-3.035200000000000e+00"/>
+        <atom id="16" Z="8" px="-1.106790000000000e+00" py="-1.056680000000000e+00" pz="-2.229190000000000e+00"/>
+        <atom id="17" Z="8" px="4.251100000000000e-01" py="1.530000000000000e-03" pz="-8.805100000000000e-01"/>
+        <atom id="18" Z="1" px="-1.429000000000000e+00" py="-5.650300000000000e-01" pz="-2.175100000000000e-01"/>
+        <atom id="19" Z="1" px="-2.971240000000000e+00" py="-1.669990000000000e+00" pz="-1.525280000000000e+00"/>
+        <atom id="20" Z="1" px="7.548700000000000e-01" py="-8.766600000000000e-01" pz="-5.556100000000000e-01"/>
+        <atom id="21" Z="1" px="-1.851260000000000e+00" py="1.746890000000000e+00" pz="3.794300000000000e-01"/>
+        <atom id="22" Z="1" px="-3.107000000000000e+00" py="2.654150000000000e+00" pz="-2.957460000000000e+00"/>
+        <atom id="23" Z="1" px="-1.729160000000000e+00" py="4.609700000000000e-01" pz="-4.151910000000000e+00"/>
+        <atom id="24" Z="1" px="-2.692490000000000e+00" py="-1.970530000000000e+00" pz="-5.342200000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="24" A2="13"/>
+        <bond id="26" ord="2" A1="13" A2="12"/>
+        <bond id="27" ord="2" A1="10" A2="23"/>
+        <bond id="28" ord="2" A1="10" A2="1"/>
+        <bond id="29" ord="2" A1="14" A2="12"/>
+        <bond id="30" ord="2" A1="12" A2="15"/>
+        <bond id="31" ord="2" A1="12" A2="9"/>
+        <bond id="32" ord="2" A1="11" A2="1"/>
+        <bond id="33" ord="2" A1="22" A2="5"/>
+        <bond id="34" ord="2" A1="1" A2="9"/>
+        <bond id="35" ord="2" A1="1" A2="2"/>
+        <bond id="36" ord="2" A1="9" A2="16"/>
+        <bond id="37" ord="2" A1="9" A2="19"/>
+        <bond id="38" ord="2" A1="7" A2="3"/>
+        <bond id="39" ord="2" A1="16" A2="6"/>
+        <bond id="40" ord="2" A1="5" A2="2"/>
+        <bond id="41" ord="2" A1="2" A2="3"/>
+        <bond id="42" ord="2" A1="2" A2="4"/>
+        <bond id="43" ord="2" A1="3" A2="6"/>
+        <bond id="44" ord="2" A1="3" A2="8"/>
+        <bond id="45" ord="2" A1="6" A2="17"/>
+        <bond id="46" ord="2" A1="6" A2="18"/>
+        <bond id="47" ord="2" A1="17" A2="20"/>
+        <bond id="48" ord="2" A1="8" A2="21"/>
+    </bonds>
+
+      <connectors>
+        <connector id="1">
+                  <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Altropyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:28px">GAL</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>
+        </connector>  
+      </connectors>
+    </structure>    
+    <!-- ##################################################### -->
+    <structure>
+    <atoms>
+        <atom id="1" Z="6" px="-3.339930000000000e+00" py="-4.822000000000000e-01" pz="1.851270000000000e+00"/>
+        <atom id="2" Z="6" px="-2.527450000000000e+00" py="3.495500000000000e-01" pz="8.369900000000000e-01"/>
+        <atom id="3" Z="6" px="-1.244740000000000e+00" py="-4.223600000000000e-01" pz="4.643600000000000e-01"/>
+        <atom id="4" Z="8" px="-2.176230000000000e+00" py="1.584550000000000e+00" pz="1.411430000000000e+00"/>
+        <atom id="5" Z="1" px="-3.123750000000000e+00" py="5.356500000000000e-01" pz="-8.681999999999999e-02"/>
+        <atom id="6" Z="6" px="-4.737600000000000e-01" py="-8.212699999999999e-01" pz="1.747690000000000e+00"/>
+        <atom id="7" Z="1" px="-1.528370000000000e+00" py="-1.357560000000000e+00" pz="-6.392000000000000e-02"/>
+        <atom id="8" Z="8" px="-4.410700000000000e-01" py="3.234000000000000e-01" pz="-4.168800000000000e-01"/>
+        <atom id="9" Z="6" px="-2.417510000000000e+00" py="-8.531700000000000e-01" pz="3.048410000000000e+00"/>
+        <atom id="10" Z="8" px="-3.902010000000000e+00" py="-1.614730000000000e+00" pz="1.227360000000000e+00"/>
+        <atom id="11" Z="1" px="-4.187800000000000e+00" py="1.342400000000000e-01" pz="2.221830000000000e+00"/>
+        <atom id="12" Z="8" px="-1.298470000000000e+00" py="-1.606030000000000e+00" pz="2.600470000000000e+00"/>
+        <atom id="13" Z="8" px="6.476300000000000e-01" py="-1.576650000000000e+00" pz="1.378870000000000e+00"/>
+        <atom id="14" Z="1" px="-1.196400000000000e-01" py="9.557000000000000e-02" pz="2.278380000000000e+00"/>
+        <atom id="15" Z="6" px="-3.156250000000000e+00" py="-1.637660000000000e+00" pz="4.142570000000000e+00"/>
+        <atom id="16" Z="1" px="-2.069520000000000e+00" py="8.354000000000000e-02" pz="3.544470000000000e+00"/>
+        <atom id="17" Z="1" px="1.166240000000000e+00" py="-1.734790000000000e+00" pz="2.210480000000000e+00"/>
+        <atom id="18" Z="1" px="-7.106999999999999e-02" py="1.096130000000000e+00" pz="8.436000000000000e-02"/>
+        <atom id="19" Z="1" px="-2.987230000000000e+00" py="2.156680000000000e+00" pz="1.383120000000000e+00"/>
+        <atom id="20" Z="1" px="-3.199650000000000e+00" py="-2.303590000000000e+00" pz="1.107770000000000e+00"/>
+        <atom id="21" Z="8" px="-3.584370000000000e+00" py="-2.891060000000000e+00" pz="3.677330000000000e+00"/>
+        <atom id="22" Z="1" px="-4.009860000000000e+00" py="-1.035680000000000e+00" pz="4.534870000000000e+00"/>
+        <atom id="23" Z="1" px="-2.469700000000000e+00" py="-1.806260000000000e+00" pz="4.999480000000000e+00"/>
+        <atom id="24" Z="1" px="-4.562350000000000e+00" py="-2.828390000000000e+00" pz="3.519380000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="8" A2="18"/>
+        <bond id="26" ord="2" A1="8" A2="3"/>
+        <bond id="27" ord="2" A1="5" A2="2"/>
+        <bond id="28" ord="2" A1="7" A2="3"/>
+        <bond id="29" ord="2" A1="3" A2="2"/>
+        <bond id="30" ord="2" A1="3" A2="6"/>
+        <bond id="31" ord="2" A1="2" A2="4"/>
+        <bond id="32" ord="2" A1="2" A2="1"/>
+        <bond id="33" ord="2" A1="20" A2="10"/>
+        <bond id="34" ord="2" A1="10" A2="1"/>
+        <bond id="35" ord="2" A1="13" A2="6"/>
+        <bond id="36" ord="2" A1="13" A2="17"/>
+        <bond id="37" ord="2" A1="19" A2="4"/>
+        <bond id="38" ord="2" A1="6" A2="14"/>
+        <bond id="39" ord="2" A1="6" A2="12"/>
+        <bond id="40" ord="2" A1="1" A2="11"/>
+        <bond id="41" ord="2" A1="1" A2="9"/>
+        <bond id="42" ord="2" A1="12" A2="9"/>
+        <bond id="43" ord="2" A1="9" A2="16"/>
+        <bond id="44" ord="2" A1="9" A2="15"/>
+        <bond id="45" ord="2" A1="24" A2="21"/>
+        <bond id="46" ord="2" A1="21" A2="15"/>
+        <bond id="47" ord="2" A1="15" A2="22"/>
+        <bond id="48" ord="2" A1="15" A2="23"/>
+    </bonds>
+      <connectors>
+        <connector id="1">
+               <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Glucopyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:24px">GUL</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>
+        </connector>  
+      </connectors>
+        </structure>    
+    <!-- ##################################################### -->
+    <structure>
+          <atoms>
+        <atom id="1" Z="6" px="-4.839860000000000e+00" py="-7.009000000000000e-01" pz="-1.515640000000000e+00"/>
+        <atom id="2" Z="6" px="-3.710480000000000e+00" py="3.548800000000000e-01" pz="-1.498180000000000e+00"/>
+        <atom id="3" Z="6" px="-2.380950000000000e+00" py="-2.994100000000000e-01" pz="-1.071310000000000e+00"/>
+        <atom id="4" Z="8" px="-4.026170000000000e+00" py="1.367600000000000e+00" pz="-5.746800000000000e-01"/>
+        <atom id="5" Z="1" px="-3.583740000000000e+00" py="8.188500000000000e-01" pz="-2.504540000000000e+00"/>
+        <atom id="6" Z="6" px="-2.594300000000000e+00" py="-1.058530000000000e+00" pz="2.608600000000000e-01"/>
+        <atom id="7" Z="8" px="-1.938210000000000e+00" py="-1.181290000000000e+00" pz="-2.071870000000000e+00"/>
+        <atom id="8" Z="1" px="-1.623770000000000e+00" py="5.102300000000000e-01" pz="-9.416400000000000e-01"/>
+        <atom id="9" Z="6" px="-4.866000000000000e+00" py="-1.422460000000000e+00" pz="-1.361800000000000e-01"/>
+        <atom id="10" Z="8" px="-4.675940000000000e+00" py="-1.587520000000000e+00" pz="-2.599940000000000e+00"/>
+        <atom id="11" Z="1" px="-5.812420000000000e+00" py="-1.851700000000000e-01" pz="-1.671590000000000e+00"/>
+        <atom id="12" Z="8" px="-3.612890000000000e+00" py="-2.042310000000000e+00" pz="1.220900000000000e-01"/>
+        <atom id="13" Z="8" px="-1.394900000000000e+00" py="-1.684210000000000e+00" pz="6.273800000000000e-01"/>
+        <atom id="14" Z="1" px="-2.858300000000000e+00" py="-3.271100000000000e-01" pz="1.062850000000000e+00"/>
+        <atom id="15" Z="6" px="-5.990980000000000e+00" py="-2.462950000000000e+00" pz="-2.508000000000000e-02"/>
+        <atom id="16" Z="1" px="-5.089320000000000e+00" py="-6.729300000000000e-01" pz="6.596600000000000e-01"/>
+        <atom id="17" Z="1" px="-1.543800000000000e+00" py="-2.072160000000000e+00" pz="1.528970000000000e+00"/>
+        <atom id="18" Z="1" px="-9.572400000000000e-01" py="-1.283820000000000e+00" pz="-1.958350000000000e+00"/>
+        <atom id="19" Z="1" px="-4.708350000000000e+00" py="1.947730000000000e+00" pz="-1.003750000000000e+00"/>
+        <atom id="20" Z="1" px="-4.058380000000000e+00" py="-2.317240000000000e+00" pz="-2.340220000000000e+00"/>
+        <atom id="21" Z="8" px="-5.802780000000000e+00" py="-3.527930000000000e+00" pz="-9.197500000000000e-01"/>
+        <atom id="22" Z="1" px="-6.981440000000000e+00" py="-1.972840000000000e+00" pz="-1.790300000000000e-01"/>
+        <atom id="23" Z="1" px="-6.003110000000000e+00" py="-2.879600000000000e+00" pz="1.004640000000000e+00"/>
+        <atom id="24" Z="1" px="-6.436560000000000e+00" py="-3.395780000000000e+00" pz="-1.672240000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="10" A2="20"/>
+        <bond id="26" ord="2" A1="10" A2="1"/>
+        <bond id="27" ord="2" A1="5" A2="2"/>
+        <bond id="28" ord="2" A1="7" A2="18"/>
+        <bond id="29" ord="2" A1="7" A2="3"/>
+        <bond id="30" ord="2" A1="24" A2="21"/>
+        <bond id="31" ord="2" A1="11" A2="1"/>
+        <bond id="32" ord="2" A1="1" A2="2"/>
+        <bond id="33" ord="2" A1="1" A2="9"/>
+        <bond id="34" ord="2" A1="2" A2="3"/>
+        <bond id="35" ord="2" A1="2" A2="4"/>
+        <bond id="36" ord="2" A1="3" A2="8"/>
+        <bond id="37" ord="2" A1="3" A2="6"/>
+        <bond id="38" ord="2" A1="19" A2="4"/>
+        <bond id="39" ord="2" A1="21" A2="15"/>
+        <bond id="40" ord="2" A1="22" A2="15"/>
+        <bond id="41" ord="2" A1="9" A2="15"/>
+        <bond id="42" ord="2" A1="9" A2="12"/>
+        <bond id="43" ord="2" A1="9" A2="16"/>
+        <bond id="44" ord="2" A1="15" A2="23"/>
+        <bond id="45" ord="2" A1="12" A2="6"/>
+        <bond id="46" ord="2" A1="6" A2="13"/>
+        <bond id="47" ord="2" A1="6" A2="14"/>
+        <bond id="48" ord="2" A1="13" A2="17"/>
+    </bonds>
+      <connectors>
+        <connector id="1">
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Gulopyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:28px">IDO</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>
+        </connector>  
+      </connectors>
+    </structure>
+    
+    <!-- ##################################################### -->
+    <structure>
+    <atoms>
+        <atom id="1" Z="6" px="-4.535570000000000e+00" py="1.925960000000000e+00" pz="2.304780000000000e+00"/>
+        <atom id="2" Z="6" px="-4.193450000000000e+00" py="1.466270000000000e+00" pz="8.714900000000000e-01"/>
+        <atom id="3" Z="6" px="-2.915100000000000e+00" py="6.047500000000000e-01" pz="8.773000000000000e-01"/>
+        <atom id="4" Z="1" px="-3.978030000000000e+00" py="2.377230000000000e+00" pz="2.688700000000000e-01"/>
+        <atom id="5" Z="8" px="-5.268170000000000e+00" py="7.967500000000000e-01" pz="2.609100000000000e-01"/>
+        <atom id="6" Z="6" px="-1.792900000000000e+00" py="1.390500000000000e+00" pz="1.594280000000000e+00"/>
+        <atom id="7" Z="8" px="-3.135970000000000e+00" py="-6.522500000000000e-01" pz="1.477320000000000e+00"/>
+        <atom id="8" Z="1" px="-2.604590000000000e+00" py="4.155100000000000e-01" pz="-1.733500000000000e-01"/>
+        <atom id="9" Z="6" px="-3.283460000000000e+00" py="2.599210000000000e+00" pz="2.932940000000000e+00"/>
+        <atom id="10" Z="1" px="-4.803950000000000e+00" py="1.035840000000000e+00" pz="2.912670000000000e+00"/>
+        <atom id="11" Z="8" px="-5.643200000000000e+00" py="2.792480000000000e+00" pz="2.300400000000000e+00"/>
+        <atom id="12" Z="8" px="-2.178830000000000e+00" py="1.703750000000000e+00" pz="2.926200000000000e+00"/>
+        <atom id="13" Z="8" px="-6.330400000000000e-01" py="6.044400000000000e-01" pz="1.620600000000000e+00"/>
+        <atom id="14" Z="1" px="-1.571000000000000e+00" py="2.321600000000000e+00" pz="1.017690000000000e+00"/>
+        <atom id="15" Z="1" px="-3.025830000000000e+00" py="3.523360000000000e+00" pz="2.363600000000000e+00"/>
+        <atom id="16" Z="6" px="-3.544580000000000e+00" py="3.044060000000000e+00" pz="4.378840000000000e+00"/>
+        <atom id="17" Z="1" px="8.849000000000000e-02" py="1.180600000000000e+00" pz="1.985180000000000e+00"/>
+        <atom id="18" Z="1" px="-3.199270000000000e+00" py="-5.363300000000000e-01" pz="2.459770000000000e+00"/>
+        <atom id="19" Z="1" px="-5.521260000000000e+00" py="3.431000000000000e-02" pz="8.438200000000000e-01"/>
+        <atom id="20" Z="1" px="-5.390360000000000e+00" py="3.602820000000000e+00" pz="1.785280000000000e+00"/>
+        <atom id="21" Z="8" px="-3.821980000000000e+00" py="1.943540000000000e+00" pz="5.204850000000000e+00"/>
+        <atom id="22" Z="1" px="-4.369390000000000e+00" py="3.793160000000000e+00" pz="4.420220000000000e+00"/>
+        <atom id="23" Z="1" px="-2.640730000000000e+00" py="3.554660000000000e+00" pz="4.774120000000000e+00"/>
+        <atom id="24" Z="1" px="-4.809120000000000e+00" py="1.843550000000000e+00" pz="5.234600000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="8" A2="3"/>
+        <bond id="26" ord="2" A1="5" A2="19"/>
+        <bond id="27" ord="2" A1="5" A2="2"/>
+        <bond id="28" ord="2" A1="4" A2="2"/>
+        <bond id="29" ord="2" A1="2" A2="3"/>
+        <bond id="30" ord="2" A1="2" A2="1"/>
+        <bond id="31" ord="2" A1="3" A2="7"/>
+        <bond id="32" ord="2" A1="3" A2="6"/>
+        <bond id="33" ord="2" A1="14" A2="6"/>
+        <bond id="34" ord="2" A1="7" A2="18"/>
+        <bond id="35" ord="2" A1="6" A2="13"/>
+        <bond id="36" ord="2" A1="6" A2="12"/>
+        <bond id="37" ord="2" A1="13" A2="17"/>
+        <bond id="38" ord="2" A1="20" A2="11"/>
+        <bond id="39" ord="2" A1="11" A2="1"/>
+        <bond id="40" ord="2" A1="1" A2="10"/>
+        <bond id="41" ord="2" A1="1" A2="9"/>
+        <bond id="42" ord="2" A1="15" A2="9"/>
+        <bond id="43" ord="2" A1="12" A2="9"/>
+        <bond id="44" ord="2" A1="9" A2="16"/>
+        <bond id="45" ord="2" A1="16" A2="22"/>
+        <bond id="46" ord="2" A1="16" A2="23"/>
+        <bond id="47" ord="2" A1="16" A2="21"/>
+        <bond id="48" ord="2" A1="21" A2="24"/>
+    </bonds>
+
+      <connectors>
+        <connector id="1">
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Idopyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:24px">MAN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>
+        </connector>  
+      </connectors>
+    </structure>  
+    </structures> 
+        <!-- ##################################################### -->
+    <structure>
+ <atoms>
+        <atom id="1" Z="6" px="-2.414570000000000e+00" py="1.626480000000000e+00" pz="-1.835960000000000e+00"/>
+        <atom id="2" Z="6" px="-3.832240000000000e+00" py="2.096390000000000e+00" pz="-1.443460000000000e+00"/>
+        <atom id="3" Z="6" px="-1.438290000000000e+00" py="2.035730000000000e+00" pz="-7.092600000000000e-01"/>
+        <atom id="4" Z="6" px="-4.215960000000000e+00" py="1.598340000000000e+00" pz="-3.144000000000000e-02"/>
+        <atom id="5" Z="8" px="-4.794850000000000e+00" py="1.750520000000000e+00" pz="-2.408100000000000e+00"/>
+        <atom id="6" Z="1" px="-3.799820000000000e+00" py="3.208460000000000e+00" pz="-1.397750000000000e+00"/>
+        <atom id="7" Z="6" px="-3.083580000000000e+00" py="2.019770000000000e+00" pz="9.481000000000001e-01"/>
+        <atom id="8" Z="8" px="-4.457860000000000e+00" py="2.090100000000000e-01" pz="-2.379000000000000e-02"/>
+        <atom id="9" Z="1" px="-5.160890000000000e+00" py="2.095430000000000e+00" pz="2.786400000000000e-01"/>
+        <atom id="10" Z="8" px="-1.838440000000000e+00" py="1.470550000000000e+00" pz="5.342000000000000e-01"/>
+        <atom id="11" Z="8" px="-1.514400000000000e-01" py="1.582730000000000e+00" pz="-1.030730000000000e+00"/>
+        <atom id="12" Z="1" px="-1.405620000000000e+00" py="3.151040000000000e+00" pz="-6.455700000000000e-01"/>
+        <atom id="13" Z="1" px="-2.134500000000000e+00" py="2.130450000000000e+00" pz="-2.791320000000000e+00"/>
+        <atom id="14" Z="8" px="-2.390870000000000e+00" py="2.329800000000000e-01" pz="-2.019160000000000e+00"/>
+        <atom id="15" Z="6" px="-3.369370000000000e+00" py="1.617750000000000e+00" pz="2.402970000000000e+00"/>
+        <atom id="16" Z="1" px="-3.020640000000000e+00" py="3.134120000000000e+00" pz="9.628600000000000e-01"/>
+        <atom id="17" Z="8" px="-3.396900000000000e+00" py="2.229400000000000e-01" pz="2.558180000000000e+00"/>
+        <atom id="18" Z="1" px="-4.322240000000000e+00" py="2.084560000000000e+00" pz="2.748160000000000e+00"/>
+        <atom id="19" Z="1" px="-2.566910000000000e+00" py="2.019110000000000e+00" pz="3.057910000000000e+00"/>
+        <atom id="20" Z="1" px="4.624000000000000e-01" py="1.978330000000000e+00" pz="-3.582700000000000e-01"/>
+        <atom id="21" Z="1" px="-1.627170000000000e+00" py="3.048000000000000e-02" pz="-2.620240000000000e+00"/>
+        <atom id="22" Z="1" px="-4.825130000000000e+00" py="7.610300000000000e-01" pz="-2.470320000000000e+00"/>
+        <atom id="23" Z="1" px="-3.594270000000000e+00" py="-2.733000000000000e-01" pz="2.975000000000000e-02"/>
+        <atom id="24" Z="1" px="-4.348790000000000e+00" py="-4.537000000000000e-02" pz="2.643590000000000e+00"/>
+    </atoms>
+    <bonds>
+        <bond id="25" ord="2" A1="13" A2="1"/>
+        <bond id="26" ord="2" A1="21" A2="14"/>
+        <bond id="27" ord="2" A1="22" A2="5"/>
+        <bond id="28" ord="2" A1="5" A2="2"/>
+        <bond id="29" ord="2" A1="14" A2="1"/>
+        <bond id="30" ord="2" A1="1" A2="2"/>
+        <bond id="31" ord="2" A1="1" A2="3"/>
+        <bond id="32" ord="2" A1="2" A2="6"/>
+        <bond id="33" ord="2" A1="2" A2="4"/>
+        <bond id="34" ord="2" A1="11" A2="3"/>
+        <bond id="35" ord="2" A1="11" A2="20"/>
+        <bond id="36" ord="2" A1="3" A2="12"/>
+        <bond id="37" ord="2" A1="3" A2="10"/>
+        <bond id="38" ord="2" A1="4" A2="8"/>
+        <bond id="39" ord="2" A1="4" A2="9"/>
+        <bond id="40" ord="2" A1="4" A2="7"/>
+        <bond id="41" ord="2" A1="8" A2="23"/>
+        <bond id="42" ord="2" A1="10" A2="7"/>
+        <bond id="43" ord="2" A1="7" A2="16"/>
+        <bond id="44" ord="2" A1="7" A2="15"/>
+        <bond id="45" ord="2" A1="15" A2="17"/>
+        <bond id="46" ord="2" A1="15" A2="18"/>
+        <bond id="47" ord="2" A1="15" A2="19"/>
+        <bond id="48" ord="2" A1="17" A2="24"/>
+    </bonds>
+      <connectors>
+        <connector id="1">
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="beta-D-Mannopyranose.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="79.799336"
+     inkscape:cy="97.845883"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="5.8083768"
+       y="1045.7961"
+       id="text3004"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3006"
+         x="5.8083768"
+         y="1045.7961"
+         style="font-size:28px">TAL</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="17.172594"
+       y="1010.1884"
+       id="text3046"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3048"
+         x="17.172594"
+         y="1010.1884">β-D</tspan></text>
+  </g>
+</svg>
+        </connector>  
+      </connectors>
+    </structure>  
+     
+    </structures>

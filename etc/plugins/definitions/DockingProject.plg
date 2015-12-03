@@ -1,0 +1,29 @@
+<!-- DockingProject Plugin Setup -->
+<PLUGIN name="DockingProject"
+        uuid="{DOCKING_PROJECT_MODULE:d4051e5a-d0c1-48a7-805a-6dd441fdb276}">
+    <!-- some local setup will be here -->
+    <OBJECT uuid="{DOCKING_PROJECT:48bddbcd-7158-47be-8ff1-09a79989e52e}">							 
+        <CONFIG key="_model"    value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
+        <CONFIG key="_designer" value="{DOCKING_PROJECT_DESIGNER:c9299df0-0130-4304-ad68-22795c074f10}"/>
+    </OBJECT>
+   <!-- import category -->
+    <OBJECT uuid="{DOCKING_PROJECT_LIGAND_IMPORT_TOOL:f1e1104e-ae07-449b-9d15-a245279edb57}">
+        <CONFIG key="_category"    value="Docking"/>
+    </OBJECT>
+    <OBJECT uuid="{DOCKING_PROJECT_RECEPTOR_IMPORT_TOOL:e7db12dc-ac60-4b3f-a712-32c1db10153f}">
+        <CONFIG key="_category"    value="Docking"/>
+    </OBJECT>
+    <OBJECT uuid="{DOCKING_PROJECT_RESULTS_IMPORT_TOOL:7bda5a28-c66a-4c9e-b24e-71880651fbd7}">
+        <CONFIG key="_category"    value="Docking"/>
+    </OBJECT>
+    <!--  export category -->
+    <OBJECT uuid="{DOCKING_PROJECT_INPUT_EXPORT_TOOL:e777b111-7b54-4c11-8e8d-6d63ad2bfd80}">
+        <CONFIG key="_category"    value="Docking"/>
+    </OBJECT>
+    <OBJECT uuid="{DOCKING_PROJECT_LIGAND_EXPORT_TOOL:af8f9bfe-4c54-4e43-878b-d383c84bf024}">
+        <CONFIG key="_category"    value="Docking"/>
+    </OBJECT>
+    <OBJECT uuid="{DOCKING_PROJECT_RECEPTOR_EXPORT_TOOL:2a1fb185-aee5-4b69-bab6-7905a07ed494}">
+        <CONFIG key="_category"    value="Docking"/>
+    </OBJECT>
+</PLUGIN>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NEMESIS structure -->
+<structure name="" connector="-1" mode="1">
+    <atoms>
+           <atom id="12" name="H" Z="1" px="0.000000000000000e+00" py="0.000000000000000e+00" pz="-1.094000000000000e+00"/>
+           <atom id="13" name="C" Z="6" px="0.000000000000000e+00" py="0.000000000000000e+00" pz="0.000000000000000e+00"/>
+           <atom id="14" name="H" Z="1" px="0.000000000000000e+00" py="0.000000000000000e+00" pz="1.094000000000000e+00"/>
+    </atoms>
+    <bonds>
+                <bond id="15" ord="4" A1="12" A2="13"/>
+                <bond id="16" ord="4" A1="13" A2="14"/>
+    </bonds>
+    <connectors>
+        <connector id="12"/>
+    </connectors>
+</structure>

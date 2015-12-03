@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="32"
+   height="32"
+   id="svg3946"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="SelectionSelectResidueBy.svg">
+  <metadata
+     id="metadata4823">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="845"
+     id="namedview4821"
+     showgrid="false"
+     inkscape:zoom="18.6875"
+     inkscape:cx="16"
+     inkscape:cy="16"
+     inkscape:window-x="-4"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="15.036789,22.207358"
+       id="guide4813" />
+  </sodipodi:namedview>
+  <defs
+     id="defs3948">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 16 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="32 : 16 : 1"
+       inkscape:persp3d-origin="16 : 10.666667 : 1"
+       id="perspective4825" />
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow2Lstart"
+       style="overflow:visible">
+      <path
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         id="path5588"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" />
+    </marker>
+    <marker
+       refX="0"
+       refY="0"
+       orient="auto"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         id="path5570"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" />
+    </marker>
+    <filter
+       x="-0.24750264"
+       y="-0.27925599"
+       width="1.4950052"
+       height="1.558512"
+       color-interpolation-filters="sRGB"
+       id="filter9455">
+      <feGaussianBlur
+         id="feGaussianBlur9457"
+         stdDeviation="0.71386225" />
+    </filter>
+    <filter
+       x="-0.24750264"
+       y="-0.27925599"
+       width="1.4950052"
+       height="1.558512"
+       color-interpolation-filters="sRGB"
+       id="filter9455-8">
+      <feGaussianBlur
+         id="feGaussianBlur9457-4"
+         stdDeviation="0.71386225" />
+    </filter>
+    <filter
+       x="-0.24750264"
+       y="-0.27925599"
+       width="1.4950052"
+       height="1.558512"
+       color-interpolation-filters="sRGB"
+       id="filter9455-8-4">
+      <feGaussianBlur
+         id="feGaussianBlur9457-4-5"
+         stdDeviation="0.71386225" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter6560"
+       x="-0.29354751"
+       width="1.587095"
+       y="-0.33900158"
+       height="1.6780032">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.85679974"
+         id="feGaussianBlur6562" />
+    </filter>
+    <inkscape:perspective
+       id="perspective3394"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <g
+     id="layer1">
+    <path
+       d="m 30.452181,18.235505 a 13.310763,12.405213 0 1 1 -26.6215251,0 13.310763,12.405213 0 1 1 26.6215251,0 z"
+       id="path9491"
+       style="opacity:0.69642861;fill:none;stroke:#001c9c;stroke-width:2.17975879;stroke-miterlimit:2.9000001;stroke-opacity:0.99033813;stroke-dasharray:none;stroke-dashoffset:0" />
+    <path
+       d="M 19.554202,14.273824 C 29.292025,3.7732666 29.292025,3.7732666 29.292025,3.7732666 l 0,0"
+       id="path9493"
+       style="opacity:0.92857139;fill:#000700;fill-opacity:0.9758454;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2Lstart)" />
+    <path
+       d="M 17.322573,12.794559 A 3.264214,3.2374582 0 1 1 17.277228,12.64823"
+       transform="matrix(0.84029353,1.9297888,-2.2945016,0.62098738,35.672014,-16.587622)"
+       id="path5481-5-3"
+       style="fill:#008000;fill-opacity:0.9758454;fill-rule:nonzero;stroke:#00144f;stroke-width:0.1;stroke-miterlimit:4;stroke-opacity:0.98067633;stroke-dasharray:none;filter:url(#filter6560)" />
+    <text
+       x="0.10856237"
+       y="10.240764"
+       id="text11290"
+       xml:space="preserve"
+       style="font-size:13.35640049px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Garuda;-inkscape-font-specification:Garuda Bold"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0423811,0.95934204)"><tspan
+         x="0.10856237"
+         y="10.240764"
+         id="tspan11292">R</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#28310b;fill-opacity:1;stroke:none;font-family:Garuda;-inkscape-font-specification:Garuda Bold"
+       x="13.344948"
+       y="23.4736"
+       id="text5994"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5996"
+         x="13.344948"
+         y="23.4736">R</tspan></text>
+  </g>
+  <g
+     id="layer2" />
+</svg>

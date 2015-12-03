@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NEMESIS structure -->
+<structure name="" connector="-1" mode="1">
+    <atoms>
+           <atom id="12" name="H" Z="1" px="-0.000000000000000e+00" py="2.499999999999725e-04" pz="-9.887499999999999e-01"/>
+           <atom id="13" name="C" Z="6" px="-0.000000000000000e+00" py="2.499999999999725e-04" pz="-3.574999999999995e-02"/>
+           <atom id="14" name="H" Z="1" px="-0.000000000000000e+00" py="9.492499999999999e-01" pz="5.122500000000001e-01"/>
+           <atom id="15" name="H" Z="1" px="-0.000000000000000e+00" py="-9.497500000000001e-01" pz="5.122500000000001e-01"/>
+    </atoms>
+    <bonds>
+                <bond id="16" ord="2" A1="12" A2="13"/>
+                <bond id="17" ord="2" A1="13" A2="14"/>
+                <bond id="18" ord="4" A1="13" A2="15"/>
+    </bonds>
+    <connectors>
+        <connector id="12"/>
+        <connector id="15"/>
+    </connectors>
+</structure>

@@ -1,0 +1,2 @@
+flex -o ASLMask.yy.c ASLMask.l
+bison -d -b ASLMask ASLMask.y
