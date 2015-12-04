@@ -24,10 +24,6 @@
 #include <ProjectList.hpp>
 #include <Project.hpp>
 #include <ProjectStatusBar.hpp>
-#include <JobScheduler.hpp>
-#include <Graphics.hpp>
-#include <GraphicsSetupProfile.hpp>
-#include <GraphicsPrimaryView.hpp>
 
 #include "CATsProjectWindow.hpp"
 #include "CATsProjectWindow.moc"
@@ -46,16 +42,9 @@ CCATsProjectWindow::CCATsProjectWindow(CCATsProject* p_project)
     // shortcuts
     Project = p_project;
 
-    // setup OpenGL area
-    OpenGL = new CGraphicsPrimaryView(this);
-    OpenGL->setContextMenuPolicy(Qt::PreventContextMenu);
-    OpenGL->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
-    OpenGL->SetGraphicsView(Project->GetGraphics()->GetPrimaryView());
-    setCentralWidget(OpenGL);
-
     // status bar
-    ProjectStatusBar = new CProjectStatusBar(this,Project);
-    setStatusBar(ProjectStatusBar);
+//    ProjectStatusBar = new CProjectStatusBar(this,Project);
+//    setStatusBar(ProjectStatusBar);
 }
 
 //------------------------------------------------------------------------------
@@ -70,16 +59,7 @@ CCATsProjectWindow::~CCATsProjectWindow(void)
 void CCATsProjectWindow::ConnectAllMenu(void)
 {
     // restore desktop was already called
-    ConnectFileMenu();
-    ConnectEditMenu();
-    ConnectSelectionMenu();
-    ConnectStructureMenu();
-    ConnectGeometryMenu();
-    ConnectPropertiesMenu();
-    ConnectGraphicsMenu();
-    ConnectMouseMenu();
-    ConnectSetupMenu();
-    ConnectHelpMenu();
+
 }
 
 //------------------------------------------------------------------------------
@@ -87,7 +67,7 @@ void CCATsProjectWindow::ConnectAllMenu(void)
 void CCATsProjectWindow::keyPressEvent(QKeyEvent* p_event)
 {
     if( p_event->key() == Qt::Key_Escape ){
-        JobScheduler->TerminateProjectRunningJobs(Project);
+//        JobScheduler->TerminateProjectRunningJobs(Project);
     }
     CMainWindow::keyPressEvent(p_event);
 }
