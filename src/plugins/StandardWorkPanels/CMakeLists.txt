@@ -57,6 +57,7 @@ QT5_ADD_RESOURCES(STANDARD_WORK_PANELS_SRC ${STANDARD_WORK_PANELS_RESOURCES})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(standard_work_panels_shared SHARED ${STANDARD_WORK_PANELS_SRC})
+ADD_DEPENDENCIES(standard_work_panels_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(standard_work_panels_shared PROPERTIES
                         OUTPUT_NAME StandardWorkPanels

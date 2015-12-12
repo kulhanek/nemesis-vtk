@@ -43,6 +43,7 @@ QT5_WRAP_UI(EXTRA_IMPEX_SRC ${EXTRA_IMPEX_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(extra_impex_shared SHARED ${EXTRA_IMPEX_SRC})
+ADD_DEPENDENCIES(extra_impex_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(extra_impex_shared PROPERTIES
                         OUTPUT_NAME ExtraImpex

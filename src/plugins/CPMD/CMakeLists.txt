@@ -27,6 +27,7 @@ QT5_WRAP_UI(CPMD_SRC ${CPMD_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(cpmd_shared SHARED ${CPMD_SRC})
+ADD_DEPENDENCIES(cpmd_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(cpmd_shared PROPERTIES
                         OUTPUT_NAME CPMD

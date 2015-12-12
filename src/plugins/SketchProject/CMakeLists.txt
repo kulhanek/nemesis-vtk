@@ -33,6 +33,7 @@ QT5_WRAP_UI(SKETCH_PROJECT_SRC ${SKETCH_PROJECT_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(sketch_project_shared SHARED ${SKETCH_PROJECT_SRC})
+ADD_DEPENDENCIES(sketch_project_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(sketch_project_shared PROPERTIES
                         OUTPUT_NAME SketchProject

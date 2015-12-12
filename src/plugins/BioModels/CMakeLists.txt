@@ -25,6 +25,7 @@ QT5_ADD_RESOURCES(BIOMODELS_SRC ${BIOMODELS_RESOURCES})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(biomodels_shared SHARED ${BIOMODELS_SRC})
+ADD_DEPENDENCIES(biomodels_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(biomodels_shared PROPERTIES
                         OUTPUT_NAME BioModels

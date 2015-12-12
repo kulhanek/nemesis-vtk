@@ -31,6 +31,7 @@ QT5_ADD_RESOURCES(EXTRA_TOOLS_SRC ${EXTRA_TOOLS_RESOURCES})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(extra_tools_shared SHARED ${EXTRA_TOOLS_SRC})
+ADD_DEPENDENCIES(extra_tools_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(extra_tools_shared PROPERTIES
                         OUTPUT_NAME ExtraTools

@@ -35,6 +35,7 @@ QT5_WRAP_UI(RMSDTOOLS_SRC ${RMSDTOOLS_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(rmsdtools_shared SHARED ${RMSDTOOLS_SRC})
+ADD_DEPENDENCIES(rmsdtools_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(rmsdtools_shared PROPERTIES
                         OUTPUT_NAME RMSDTools

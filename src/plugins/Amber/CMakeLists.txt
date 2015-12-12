@@ -42,6 +42,7 @@ QT5_WRAP_UI(AMBER_PLUGIN_SRC ${AMBER_PLUGIN_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(amber_plugin_shared SHARED ${AMBER_PLUGIN_SRC})
+ADD_DEPENDENCIES(amber_plugin_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(amber_plugin_shared PROPERTIES
                         OUTPUT_NAME AmberPlugin

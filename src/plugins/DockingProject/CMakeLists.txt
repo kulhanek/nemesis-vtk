@@ -51,6 +51,7 @@ QT5_WRAP_UI(DOCKING_PROJECT_SRC ${DOCKING_PROJECT_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(docking_project_shared SHARED ${DOCKING_PROJECT_SRC})
+ADD_DEPENDENCIES(docking_project_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(docking_project_shared PROPERTIES
                         OUTPUT_NAME DockingProject

@@ -560,6 +560,8 @@ ADD_DEFINITIONS(-DNEMESIS_CORE_BUILDING_DLL)
 
 ADD_LIBRARY(nemesis_core_shared SHARED ${NEMESIS_CORE_SRC})
 
+ADD_DEPENDENCIES(nemesis_core_shared plusula)
+
 TARGET_LINK_LIBRARIES(nemesis_core_shared plusula
                 ${HPMC_LIB}
                 ${GLS_LIB}

@@ -31,6 +31,7 @@ QT5_WRAP_UI(TRAJECTORY_PROJECT_SRC ${TRAJECTORY_PROJECT_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(trajectory_project_shared SHARED ${TRAJECTORY_PROJECT_SRC})
+ADD_DEPENDENCIES(trajectory_project_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(trajectory_project_shared PROPERTIES
                         OUTPUT_NAME TrajectoryProject

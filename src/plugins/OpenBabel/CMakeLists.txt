@@ -37,6 +37,7 @@ QT5_ADD_RESOURCES(OPEN_BABEL_OBJ ${OPEN_BABEL_RESOURCES})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(open_babel_shared SHARED ${OPEN_BABEL_OBJ})
+ADD_DEPENDENCIES(open_babel_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(open_babel_shared PROPERTIES
                         OUTPUT_NAME OpenBabel

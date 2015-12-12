@@ -30,6 +30,7 @@ QT5_WRAP_UI(BUILD_PROJECT_SRC ${BUILD_PROJECT_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(build_project_shared SHARED ${BUILD_PROJECT_SRC})
+ADD_DEPENDENCIES(build_project_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(build_project_shared PROPERTIES
                         OUTPUT_NAME BuildProject

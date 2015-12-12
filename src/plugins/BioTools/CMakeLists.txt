@@ -31,6 +31,7 @@ QT5_WRAP_UI(BIOTOOLS_SRC ${BIOTOOLS_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(biotools_shared SHARED ${BIOTOOLS_SRC})
+ADD_DEPENDENCIES(biotools_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(biotools_shared PROPERTIES
                         OUTPUT_NAME BioTools

@@ -22,6 +22,8 @@ endif(WIN32)
 
 # final build ------------------------------------------------------------------
 ADD_EXECUTABLE(nemesis ${NEMESIS_SRC})
+
+ADD_DEPENDENCIES(nemesis nemesis_core_shared)
 QT5_USE_MODULES(nemesis Core Widgets Script)
 
 TARGET_LINK_LIBRARIES(nemesis

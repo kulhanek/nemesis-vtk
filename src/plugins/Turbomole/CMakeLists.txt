@@ -31,6 +31,7 @@ QT5_WRAP_UI(TURBOMOLE_SRC ${TURBOMOLE_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(turbomole_shared SHARED ${TURBOMOLE_SRC})
+ADD_DEPENDENCIES(turbomole_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(turbomole_shared PROPERTIES
                         OUTPUT_NAME Turbomole

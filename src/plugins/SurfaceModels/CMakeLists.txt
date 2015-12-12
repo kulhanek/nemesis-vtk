@@ -41,6 +41,7 @@ QT5_ADD_RESOURCES(SURFMODELS_SRC ${SURFMODELS_RESOURCES})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(surfmodel_shared SHARED ${SURFMODELS_SRC})
+ADD_DEPENDENCIES(surfmodel_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(surfmodel_shared PROPERTIES
                         OUTPUT_NAME SurfaceModels

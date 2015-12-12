@@ -27,6 +27,7 @@ QT5_WRAP_UI(CRYSTAL_TOOLS_SRC ${CRYSTAL_TOOLS_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(crystal_tools_shared SHARED ${CRYSTAL_TOOLS_SRC})
+ADD_DEPENDENCIES(crystal_tools_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(crystal_tools_shared PROPERTIES
                         OUTPUT_NAME CrystalTools

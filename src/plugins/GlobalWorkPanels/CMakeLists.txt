@@ -46,6 +46,7 @@ QT5_ADD_RESOURCES(GLOBAL_WORK_PANELS_SRC ${GLOBAL_WORK_PANELS_RCS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(global_work_panels_shared SHARED ${GLOBAL_WORK_PANELS_SRC})
+ADD_DEPENDENCIES(global_work_panels_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(global_work_panels_shared PROPERTIES
                         OUTPUT_NAME GlobalWorkPanels

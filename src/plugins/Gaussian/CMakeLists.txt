@@ -36,6 +36,7 @@ QT5_WRAP_UI(GAUSSIAN_SRC ${GAUSSIAN_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(gaussian_shared SHARED ${GAUSSIAN_SRC})
+ADD_DEPENDENCIES(gaussian_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(gaussian_shared PROPERTIES
                         OUTPUT_NAME Gaussian

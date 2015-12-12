@@ -28,6 +28,7 @@ QT5_WRAP_UI(CATS_PROJECT_SRC ${CATS_PROJECT_UIS})
 
 # create shared library --------------------------------------------------------
 ADD_LIBRARY(cats_project_shared SHARED ${CATS_PROJECT_SRC})
+ADD_DEPENDENCIES(cats_project_shared nemesis_core_shared)
 
 SET_TARGET_PROPERTIES(cats_project_shared PROPERTIES
                         OUTPUT_NAME CATsProject
