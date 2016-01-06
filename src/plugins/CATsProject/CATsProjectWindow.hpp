@@ -26,6 +26,15 @@
 
 #include <MainWindow.hpp>
 #include "ui_CATsProjectWindow.h"
+#include "highlighter.h"
+
+#include <QMessageBox>
+#include <QTextStream>
+#include <QFileDialog>
+#include <fstream>
+#include <QtScript/QtScript>
+#include <QtScript/QScriptEngine>
+#include <QtScript/QScriptable>
 
 //------------------------------------------------------------------------------
 
@@ -34,7 +43,7 @@ class CProjectStatusBar;
 class CGraphicsPrimaryView;
 
 //------------------------------------------------------------------------------
-
+/*
 class CCATsProjectWindow : public CMainWindow {
     Q_OBJECT
 public:
@@ -55,6 +64,56 @@ private:
 
 // events -----------------------------------
     // process ESC key to stop project running jobs
+    virtual void keyPressEvent(QKeyEvent* p_event);
+};*/
+
+class CCATsProjectWindow : public CMainWindow
+{
+    Q_OBJECT
+
+public:
+    // constructor and destructors -------------------------------------------------
+        CCATsProjectWindow(CCATsProject* p_project);
+        virtual ~CCATsProjectWindow(void);
+
+        /// connect all menu - do not call it in constructor
+        // it requires restored desktop
+        void ConnectAllMenu(void);
+    //CCATsProjectWindow(QWidget *parent = 0);
+
+public slots:
+        void loadFile();
+        void saveFile();
+        void saveFileAs();
+        void exitProgram();
+        void setWorkingDirectory();
+        void runScript();
+        void debugScript();
+        void refreshTabs();
+    //void about();
+    //void newFile();
+    //void openFile(const QString &path = QString());
+
+private:
+    CCATsProject*          Project;
+    CGraphicsPrimaryView*   OpenGL;
+    CProjectStatusBar*      ProjectStatusBar;
+    Ui::MainWindow  WidgetUI;
+    void setupEditor();
+    void setupMenu();
+
+    std::string workingDir;
+    std::string currentFile;
+    QString console_content;
+    QString output_content;
+    QString debugger_tools_content;
+    QString stack_view_content;
+    //void setupHelpMenu();
+    //CCATsProjectWindow *ui;
+
+    QPlainTextEdit *editor;
+    Highlighter *highlighter;
+
     virtual void keyPressEvent(QKeyEvent* p_event);
 };
 
