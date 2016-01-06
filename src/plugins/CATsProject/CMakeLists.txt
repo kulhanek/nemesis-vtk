@@ -4,6 +4,7 @@
 
 # objects in library -----------------------------------------------------------
 SET(CATS_PROJECT_SRC
+	highlighter.cpp
         CATsProjectMainHeader.cpp
         CATsProjectModule.cpp
         CATsProject.cpp
@@ -42,7 +43,7 @@ TARGET_LINK_LIBRARIES(cats_project_shared
                 ${SYSTEM_LIBS}
                 )
 
-QT5_USE_MODULES(cats_project_shared Core Widgets Script)
+QT5_USE_MODULES(cats_project_shared Core Widgets Script ScriptTools)
 
 INSTALL(TARGETS
             cats_project_shared
