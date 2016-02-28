@@ -27,6 +27,9 @@
 #include <MainWindow.hpp>
 #include "ui_CATsProjectWindow.h"
 #include "highlighter.h"
+#include "qdebugstream.hpp"
+#include "scriptthread.hpp"
+#include <unistd.h>
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -89,7 +92,11 @@ public slots:
         void setWorkingDirectory();
         void runScript();
         void debugScript();
+        void debugScriptInThread();
+        void switchToEditor();
+        void switchToDebugger();
         void refreshTabs();
+        void printResults();
     //void about();
     //void newFile();
     //void openFile(const QString &path = QString());
@@ -108,6 +115,7 @@ private:
     QString output_content;
     QString debugger_tools_content;
     QString stack_view_content;
+    ScriptThread st;
     //void setupHelpMenu();
     //CCATsProjectWindow *ui;
 

@@ -1,0 +1,14 @@
+CATsProject.cpp
+CATsProject.hpp
+CATsProjectMainHeader.cpp
+CATsProjectMainHeader.hpp
+CATsProjectModule.cpp
+CATsProjectModule.hpp
+CATsProjectWindow.cpp
+CATsProjectWindow.hpp
+highlighter.cpp
+highlighter.h
+ui_CATsProjectWindow.h
+CATsProjectWindow.ui
+CATsProject.qrc
+catsprojectresources.qrc
