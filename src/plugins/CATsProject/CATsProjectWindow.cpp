@@ -29,6 +29,10 @@
 #include "CATsProjectWindow.moc"
 #include "CATsProject.hpp"
 #include "highlighter.h"
+<<<<<<< HEAD
+=======
+#include "qdebugstream.hpp"
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
 #include <QAction>
 #include <QtScript/QScriptEngine>
 #include <QtScript/QScriptValue>
@@ -68,7 +72,11 @@ void CCATsProjectWindow::setupMenu()
     //WidgetUI.mainToolBar->show();
     //QAction::setVisible(WidgetUI.mainToolBar);
     //WidgetUI.mainToolBar->setVisible(true);
+<<<<<<< HEAD
     WidgetUI.toolBar->setVisible(true);
+=======
+    //WidgetUI.toolBar->setVisible(true);
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
 /*
     if (WidgetUI.menuBar->isVisible())
         WidgetUI.plainTextEdit->setPlainText("VISIBLE");
@@ -82,7 +90,15 @@ void CCATsProjectWindow::setupMenu()
     connect(WidgetUI.actionChange_working_directory, SIGNAL(triggered()), this, SLOT(setWorkingDirectory()));
     connect(WidgetUI.actionRun_script, SIGNAL(triggered()), this, SLOT(runScript()));
     connect(WidgetUI.actionDebug, SIGNAL(triggered()), this, SLOT(debugScript()));
+<<<<<<< HEAD
     connect(WidgetUI.tabWidget, SIGNAL(currentChanged(int)), this, SLOT(refreshTabs()));
+=======
+    connect(WidgetUI.actionSwitch_to_Editor, SIGNAL(triggered()), this, SLOT(switchToEditor()));
+    connect(WidgetUI.actionSwitch_to_Debugger, SIGNAL(triggered()), this, SLOT(switchToDebugger()));
+    connect(WidgetUI.tabWidget, SIGNAL(currentChanged(int)), this, SLOT(refreshTabs()));
+
+    connect(&st, SIGNAL(finished()), this, SLOT(printResults()));
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
 }
 
 void CCATsProjectWindow::setupEditor()
@@ -178,7 +194,11 @@ void CCATsProjectWindow::setWorkingDirectory()
         workingDir = dirName.toStdString();
     }
 }
+<<<<<<< HEAD
 
+=======
+/*
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
 QScriptValue QtPrintFunction(QScriptContext *context, QScriptEngine *engine)
 {
     QString result;
@@ -194,6 +214,7 @@ QScriptValue QtPrintFunction(QScriptContext *context, QScriptEngine *engine)
 
     return engine->undefinedValue();
 }
+<<<<<<< HEAD
 
 void CCATsProjectWindow::runScript()
 {
@@ -214,6 +235,30 @@ void CCATsProjectWindow::runScript()
         QString err = result.toString();
         QString msg = QString("Error at line %1: %2").arg(line).arg(err);
 
+=======
+*/
+void CCATsProjectWindow::runScript()
+{
+    console_content = "";
+    output_content = "";
+    WidgetUI.textBrowser->clear();
+
+    st.setCode(WidgetUI.plainTextEdit->toPlainText());
+
+    st.start();
+}
+
+void CCATsProjectWindow::printResults()
+{
+    if (st.getEngine()->hasUncaughtException())
+    {
+        int line = st.getEngine()->uncaughtExceptionLineNumber();
+        QString err = st.getResult().toString();
+        QString msg = QString("Error at line %1: %2").arg(line).arg(err);
+
+        WidgetUI.textBrowser->setPlainText(msg);
+
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
         WidgetUI.tabWidget->setCurrentIndex(0);
 
         console_content = msg;
@@ -222,18 +267,43 @@ void CCATsProjectWindow::runScript()
     }
     else
     {
+<<<<<<< HEAD
         output_content = WidgetUI.textBrowser->document()->toPlainText();
 
+=======
+        WidgetUI.textBrowser->setPlainText(st.getOutput());
+        WidgetUI.textBrowser->viewport()->update();
+
+        output_content = WidgetUI.textBrowser->document()->toPlainText();
+
+        size_t index = 0;
+        while (true) {
+            index = output_content.toStdString().find("\n\n", index);
+
+            if (index == std::string::npos) break;
+
+            output_content.replace(index, 3, "  \n");
+
+            index += 3;
+        }
+
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
         WidgetUI.tabWidget->setCurrentIndex(1);
 
         refreshTabs();
     }
+<<<<<<< HEAD
+=======
+
+    this->switchToEditor();
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
 }
 
 void CCATsProjectWindow::debugScript()
 {
     QScriptEngine JSEngine;
 
+<<<<<<< HEAD
     QScriptValue printFunction = JSEngine.newFunction(QtPrintFunction);
 
     printFunction.setData(JSEngine.newQObject(WidgetUI.textBrowser));
@@ -246,6 +316,64 @@ void CCATsProjectWindow::debugScript()
     JSEngine.evaluate(WidgetUI.plainTextEdit->toPlainText());
 }
 
+=======
+    QScriptEngineDebugger* debugger = new QScriptEngineDebugger();
+    //debugger->setAutoShowStandardWindow(false);
+    if (WidgetUI.stackedWidget->count() > 2)
+    {
+        WidgetUI.stackedWidget->setCurrentIndex(WidgetUI.stackedWidget->count()-1);
+        WidgetUI.stackedWidget->removeWidget(WidgetUI.stackedWidget->currentWidget());
+    }
+
+    WidgetUI.stackedWidget->addWidget(debugger->standardWindow());
+    WidgetUI.stackedWidget->setCurrentWidget(debugger->standardWindow());
+
+    debugger->attachTo(&JSEngine);
+    debugger->action(QScriptEngineDebugger::InterruptAction)->trigger();
+
+    this->switchToDebugger();
+    JSEngine.evaluate(WidgetUI.plainTextEdit->toPlainText());
+}
+
+void CCATsProjectWindow::debugScriptInThread()
+{
+    QScriptEngineDebugger* debugger = new QScriptEngineDebugger();
+
+    if (WidgetUI.stackedWidget->count() > 2)
+    {
+        WidgetUI.stackedWidget->setCurrentIndex(WidgetUI.stackedWidget->count()-1);
+        WidgetUI.stackedWidget->removeWidget(WidgetUI.stackedWidget->currentWidget());
+    }
+
+    WidgetUI.stackedWidget->addWidget(debugger->standardWindow());
+    WidgetUI.stackedWidget->setCurrentWidget(debugger->standardWindow());
+
+    debugger->attachTo(st.getEngine());
+    debugger->action(QScriptEngineDebugger::InterruptAction)->trigger();
+
+    this->switchToDebugger();
+
+    st.setCode(WidgetUI.plainTextEdit->toPlainText());
+    st.start();
+}
+
+void CCATsProjectWindow::switchToEditor()
+{
+    WidgetUI.stackedWidget->setCurrentIndex(0);
+    WidgetUI.actionSwitch_to_Editor->setChecked(true);
+    WidgetUI.actionSwitch_to_Debugger->setChecked(false);
+}
+
+void CCATsProjectWindow::switchToDebugger()
+{
+    //If the debugger hasn't been launched, switch to "debugger not launched" message.
+    //Otherwise show debugger.
+    WidgetUI.stackedWidget->setCurrentIndex(WidgetUI.stackedWidget->count()-1);
+    WidgetUI.actionSwitch_to_Editor->setChecked(false);
+    WidgetUI.actionSwitch_to_Debugger->setChecked(true);
+}
+
+>>>>>>> 829d1e533d741784b83b6b2fdd79208edb65eefe
 void CCATsProjectWindow::refreshTabs()
 {
     if (WidgetUI.tabWidget->currentIndex() == 0)
