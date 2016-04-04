@@ -19,6 +19,8 @@ SET(AMBER_PLUGIN_SRC
         TopologyImportTool.cpp
         ChargesImportJob.cpp
         ChargesImportTool.cpp
+        GESPImportJob.cpp
+        GESPImportTool.cpp
         )
 
 # program windows --------------------------------------------------------------
@@ -27,6 +29,7 @@ SET(AMBER_PLUGIN_UIS
         LeapProjectDesigner.ui
         LeapProjectWindow.ui
         Rst7ExportTool.ui
+        GESPImportTool.ui
         )
 
 # program resources ------------------------------------------------------------

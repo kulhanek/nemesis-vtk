@@ -16,7 +16,7 @@ ADD_SUBDIRECTORY(BuildProject)
 #ADD_SUBDIRECTORY(CheminfoProject)
 ADD_SUBDIRECTORY(SketchProject)
 ADD_SUBDIRECTORY(TrajectoryProject)
-ADD_SUBDIRECTORY(CATsProject)
+#ADD_SUBDIRECTORY(CATsProject)
 #ADD_SUBDIRECTORY(CollabProject)
 
 # extra graphics ---------------------------------

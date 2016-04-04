@@ -1,10 +1,9 @@
+#ifndef GESPImportToolH
+#define GESPImportToolH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2010 Petr Kulhanek, kulhanek@chemi.muni.cz
-//    Copyright (C) 2008 Petr Kulhanek, kulhanek@enzim.hu,
-//                       Jakub Stepan, xstepan3@chemi.muni.cz
-//    Copyright (C) 1998-2004 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2011 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -21,30 +20,23 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include "CATsProjectMainHeader.hpp"
+#include <ProObject.hpp>
 
-//==============================================================================
 //------------------------------------------------------------------------------
-//==============================================================================
 
-#if defined _WIN32 || defined __CYGWIN__
+/// GESP import tool
 
-#include <windows.h>
+class CGESPImportTool : public CProObject {
+public:
+// constructor and destructor -------------------------------------------------
+    CGESPImportTool(CProject* p_project);
 
-BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
-{
-    return(TRUE);
-}
+// section of public data -----------------------------------------------------
+public:
+    void ExecuteDialog(void);
+    void LunchJob(const QString& file);
+};
 
-//==============================================================================
-#else
-//==============================================================================
-
-// nothing
+//------------------------------------------------------------------------------
 
 #endif
-
-//==============================================================================
-//------------------------------------------------------------------------------
-//==============================================================================
-

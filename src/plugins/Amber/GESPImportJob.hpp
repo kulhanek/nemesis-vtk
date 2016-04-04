@@ -1,12 +1,9 @@
-#ifndef CATsProjectH
-#define CATsProjectH
+#ifndef GESPImportJobH
+#define GESPImportJobH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2010 Petr Kulhanek, kulhanek@chemi.muni.cz
-//    Copyright (C) 2008 Petr Kulhanek, kulhanek@enzim.hu,
-//                       Jakub Stepan, xstepan3@chemi.muni.cz
-//    Copyright (C) 1998-2004 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2013 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -23,28 +20,54 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include "CATsProjectMainHeader.hpp"
+#include <ImportJob.hpp>
+#include <HistoryList.hpp>
+#include <fstream>
 #include <Project.hpp>
 
 //------------------------------------------------------------------------------
 
-class CCATsProjectWindow;
+class CStructure;
+class CAtom;
 
 //------------------------------------------------------------------------------
 
-class CCATsProject : public CProject {
+/// import GESP file job
+
+class CGESPImportJob : public CImportJob {
+Q_OBJECT
 public:
 // constructor and destructor -------------------------------------------------
-    CCATsProject(CExtComObject* p_owner);
-    ~CCATsProject(void);
-
-    virtual void            CreateMainWindow(void);
-    virtual CMainWindow*    GetMainWindow(void);
-    virtual void            NewData(void);
+    CGESPImportJob(CProject* p_project);
 
 // section of private data ----------------------------------------------------
 private:
-    CCATsProjectWindow*    MainWindow;
+    CHistoryNode*   History;
+    std::ifstream   sin;
+    CLockLevels     BackupLockLevels;
+    QObject*        OldMoleculeParent;
+    QObject*        OldHistoryParent;
+
+    /// can we submit the job? - executed from main thread during JobSubmit
+    virtual bool JobAboutToBeSubmitted(void);
+
+    /// initialize job - executed from main thread
+    virtual bool InitializeJob(void);
+
+    /// job main execution point - executed from job thread
+    virtual bool ExecuteJob(void);
+
+    /// finalize job - executed from main thread
+    virtual bool FinalizeJob(void);
+
+    /// helper methods
+    bool ImportStructure(void);
+    bool InjectCoordinates(void);
+
+signals:
+    void OnStartProgressNotification(int length);
+    void OnProgressNotification(int progress,const QString& text);
+    void OnTextNotification(ETextNotificationType type,const QString& text,int time);
 };
 
 //------------------------------------------------------------------------------

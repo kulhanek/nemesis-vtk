@@ -15,4 +15,7 @@
     <OBJECT uuid="{CHARGES_IMPORT_TOOL:77412bd8-5006-4786-bc61-b3db045cc8fa}">
         <CONFIG key="_category"    value="Amber"/>
     </OBJECT>
+    <OBJECT uuid="{GESP_IMPORT_TOOL:c260533b-80d6-4607-9ad8-0a2dd4b388d1}">
+        <CONFIG key="_category"    value="Amber"/>
+    </OBJECT>
 </PLUGIN>
