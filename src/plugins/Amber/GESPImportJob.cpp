@@ -31,7 +31,6 @@
 #include <Project.hpp>
 #include <Structure.hpp>
 #include <JobList.hpp>
-#include <OpenBabelUtils.hpp>
 #include <MainWindow.hpp>
 #include <StructureList.hpp>
 #include <QMessageBox>
@@ -42,18 +41,17 @@
 #include <XYZStructure.hpp>
 #include <Atom.hpp>
 #include <PeriodicTable.hpp>
+#include <BondList.hpp>
+#include <AtomList.hpp>
+#include <Atom.hpp>
 
 #include "AmberModule.hpp"
 
 #include "GESPImportJob.hpp"
 #include "GESPImportJob.moc"
 
-#include "openbabel/mol.h"
-#include "openbabel/obconversion.h"
-
 //------------------------------------------------------------------------------
 using namespace std;
-using namespace OpenBabel;
 //------------------------------------------------------------------------------
 
 #if defined _WIN32 || defined __CYGWIN__
@@ -130,22 +128,11 @@ bool CGESPImportJob::JobAboutToBeSubmitted(void)
     // it is composed from EHCL_TOPOLOGY and EHCL_GRAPHICS
     CHistoryNode* p_history;
 
-    if( GetProject()->property("impex.inject") == false ){
-        p_history = Structure->BeginChangeWH(EHCL_COMPOSITE,"import XYZ structure");
-    } else {
-        p_history = Structure->BeginChangeWH(EHCL_COMPOSITE,"inject XYZ structure");
-    }
+    p_history = Structure->BeginChangeWH(EHCL_COMPOSITE,"import XYZ structure");
     if( p_history == NULL ) return(false);
 
     // initialize topology change
-    if( GetProject()->property("impex.inject") == false ){
-        History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import");
-    } else{
-        History = Structure->BeginChangeWH(EHCL_GEOMETRY,"inject");
-        CAtomListCoordinatesHI* p_history = new CAtomListCoordinatesHI(Structure);
-        History->Register(p_history);
-        Structure->BeginUpdate(History);
-    }
+    History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import");
     if( History == NULL ){
         // end composite change
         Structure->EndChangeWH();
@@ -192,7 +179,7 @@ bool CGESPImportJob::InitializeJob(void)
     CGraphics* p_grp = p_project->GetGraphics();
     p_grp->GetProfiles()->SetDataManipulationMode(true);
 
-    emit OnStartProgressNotification(4);
+    emit OnStartProgressNotification(2);
 
     return(true);
 }
@@ -201,11 +188,7 @@ bool CGESPImportJob::InitializeJob(void)
 
 bool CGESPImportJob::ExecuteJob(void)
 {
-    if( GetProject()->property("impex.inject") == false ){
-        return(ImportStructure());
-    } else {
-        return(InjectCoordinates());
-    }
+    return(ImportStructure());
 }
 
 //------------------------------------------------------------------------------
@@ -215,43 +198,22 @@ bool CGESPImportJob::ImportStructure(void)
     Structure->BeginUpdate(History);
 
     // read molecule from file to babel internal
-    OBConversion    conv(&sin, &cout);
-    OBFormat*       obFormat = conv.FormatFromExt(FileName.toStdString());
-    OBMol           mol;
-
     emit OnProgressNotification(0,"Total progress %p% - Loading structure ...");
 
     bool result = true;
+    
+    // TODO
+    // extract data from the "sin" object (ifstream) - it is already opened, create new atoms, set their Z, position and chanrge
+    // Jakub vam ukaze, jak pouzit CStructure->CAtomList->CreateAtom()
+    // CAtom::SetPosWH
+    // CAtom::SetChargeWH
 
-    if( obFormat == NULL ) {
-        GetProject()->TextNotification(ETNT_ERROR,"unsupported format",ETNT_ERROR_DELAY);
-        result = false;
-    }
-
-    if( result && (! conv.SetInFormat(obFormat)) ) {
-        QString message(tr("Failed to set format for %1"));
-        message = message.arg(QString(FileName));
-        GetProject()->TextNotification(ETNT_ERROR,message,ETNT_ERROR_DELAY);
-        result = false;
-    }
-
-    if( result && (! conv.Read(&mol)) ) {
-        QString message(tr("Failed to read molecule from file %1"));
-        message = message.arg(QString(FileName));
-        GetProject()->TextNotification(ETNT_ERROR,message,ETNT_ERROR_DELAY);
-        result = false;
-    }
 
     if( result ){
         emit OnProgressNotification(1,"Total progress %p% - Generating bonds ...");
-        mol.ConnectTheDots();
 
-        emit OnProgressNotification(2,"Total progress %p% - Generating bond types ...");
-        mol.PerceiveBondOrders();
-
-        // convert data
-        emit OnProgressNotification(3,"Total progress %p% - Converting to internal representation ...");
-        COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
+        // add bonds
+        Structure->GetBonds()->AddBondsWH();
     }
 
     // we do not need to sort the lists
@@ -267,53 +229,6 @@ bool CGESPImportJob::ImportStructure(void)
     return(result);
 }
 
-//------------------------------------------------------------------------------
-
-bool CGESPImportJob::InjectCoordinates(void)
-{
-    emit OnStartProgressNotification(4);
-
-    // read XYZ structure
-    emit OnProgressNotification(1,"Total progress %p% - Reading XYZ structure ...");
-    CXYZStructure xyz_structure;
-
-    if( xyz_structure.Load(FileName) == false ){
-        emit OnTextNotification(ETNT_ERROR,tr("Unable to read XYZ file!"),ETNT_ERROR_DELAY);
-        return(true);
-    }
-
-    // check XYZ structure
-    emit OnProgressNotification(2,"Total progress %p% - Checking XYZ structure ...");
-
-    if( xyz_structure.GetNumberOfAtoms() != Structure->GetAtoms()->GetNumberOfAtoms() ){
-        QString error = tr("Inconsistent number of atoms! Active structure: %1, injected structure: %2.");
-        emit OnTextNotification(ETNT_ERROR,error.arg(Structure->GetAtoms()->GetNumberOfAtoms()).arg(xyz_structure.GetNumberOfAtoms()),ETNT_ERROR_DELAY);
-        return(true);
-    }
-
-    int id = 0;
-    foreach(QObject* p_qobj, Structure->GetAtoms()->children()){
-        CAtom* p_atom = static_cast<CAtom*>(p_qobj);
-        if( p_atom->GetZ() != PeriodicTable.SearchZBySymbol(xyz_structure.GetSymbol(id)) ){
-            QString error = tr("Inconsistent atom no. %1! Active structure: %2, injected structure: %3.");
-            emit OnTextNotification(ETNT_ERROR,error.arg(id+1).arg(QString(PeriodicTable.GetSymbol(p_atom->GetZ()))).arg(xyz_structure.GetSymbol(id)),ETNT_ERROR_DELAY);
-            return(true);
-        }
-        id++;
-    }
-
-    // update coordinates
-    emit OnProgressNotification(3,"Total progress %p% - Updating coordinates ...");
-
-    id = 0;
-    foreach(QObject* p_qobj, Structure->GetAtoms()->children()){
-        CAtom* p_atom = static_cast<CAtom*>(p_qobj);
-        p_atom->SetPos(xyz_structure.GetPosition(id));
-        id++;
-    }
-
-    return(true);
-}
 
 //------------------------------------------------------------------------------
 
@@ -323,11 +238,11 @@ bool CGESPImportJob::FinalizeJob(void)
         // we do not need to sort the lists
         Structure->EndUpdate(true,History);
     }
-
-    emit OnProgressNotification(4,"Total progress %p% - Finalization ...");
-
-    // close file
+    
+    // close the stream
     sin.close();
+
+    emit OnProgressNotification(3,"Total progress %p% - Finalization ...");
 
     // THREAD SAFETY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // do some magic with parent and thread ownership
@@ -357,9 +272,7 @@ bool CGESPImportJob::FinalizeJob(void)
     }
 
     // adjust graphics
-    if( GetProject()->property("impex.inject") == false ){
-        AdjustGraphics();
-    }
+    AdjustGraphics();
 
     if( History != NULL ){
         // end composite change

@@ -62,7 +62,6 @@ private:
 
     /// helper methods
     bool ImportStructure(void);
-    bool InjectCoordinates(void);
 
 signals:
     void OnStartProgressNotification(int length);

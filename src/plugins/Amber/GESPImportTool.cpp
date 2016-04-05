@@ -50,11 +50,11 @@ QObject* GESPImportToolCB(void* p_data);
 CExtUUID        GESPImportToolID(
                     "{GESP_IMPORT_TOOL:c260533b-80d6-4607-9ad8-0a2dd4b388d1}",
                     "GESP File (*.esp)",
-                    "Import/inject GESP file");
+                    "Import GESP file");
 
 CPluginObject   GESPImportToolObject(&AmberPlugin,
                     GESPImportToolID,IMPORT_STRUCTURE_CAT,
-                    QStringList() << "EPF_IMPORT_STRUCTURE" << "EPF_INJECT_COORDINATES",
+                    QStringList() << "EPF_IMPORT_STRUCTURE",
                     GESPImportToolCB);
 
 // -----------------------------------------------------------------------------
@@ -91,17 +91,11 @@ void CGESPImportTool::ExecuteDialog(void)
 {
     // parse formats list ------------------------
     QStringList filters;
-    filters << "XYZ Files (*.xyz)";
+    filters << "GESP Files (*.gesp)";
     filters << "All Files (*)";
 
     // open qfiledialog for file open with filters set correctly
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
-
-    if( GetProject()->property("impex.inject") == true ){
-        p_dialog->setWindowTitle(tr("Inject XYZ coordinates"));
-    } else {
-        p_dialog->setWindowTitle(tr("Import XYZ file"));
-    }
 
     p_dialog->setNameFilters(filters);
     p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(GESPImportToolID)));
