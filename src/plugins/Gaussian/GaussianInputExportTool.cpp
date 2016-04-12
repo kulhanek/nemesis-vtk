@@ -317,8 +317,12 @@ void CGaussianInputExportTool::SaveInputFile(void)
     QString checkpointName = QFileInfo(fileName).baseName();
     checkpointName.prepend("%Chk=");
     checkpointName.append(".chk");
+    QString gaussianESPFileName = QFileInfo(fileName).baseName();
+    gaussianESPFileName.append(".gesp");
+    
     previewText.replace(QLatin1String("%Chk=checkpoint.chk"), checkpointName, Qt::CaseInsensitive);
-
+    previewText.replace(QLatin1String("gaussianESP.gesp"), gaussianESPFileName, Qt::CaseInsensitive);
+    
     QTextStream out(&file);
     out << previewText;
 
@@ -350,6 +354,8 @@ QString CGaussianInputExportTool::GetCalculationType(void)
             return "Opt=(CalcFC,TS,NoEigenTest,MaxCycle=25)";
         case 3:
             return "Freq";
+        case 4:
+            return "SCF=Tight Pop=MK IOp=(6/33=2,6/50=1)";
         default:
             return "SP";
     }
@@ -631,6 +637,10 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
         }
         break;
     }
+    if(WidgetUI.calculationCB->currentIndex() == 4) {
+        str << "gaussianESP.gesp" <<'\n' ;
+	str << '\n';
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -748,5 +758,6 @@ QString CGaussianInputExportTool::GenerateInputDeck(void)
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
+
 
 

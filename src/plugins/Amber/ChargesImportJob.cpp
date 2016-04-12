@@ -160,7 +160,7 @@ bool CChargesImportJob::ExecuteJob(void)
 {
     Structure->BeginUpdate(History);
 
-    ifstream fin(FileName.toStdString().c_str());
+    ifstream fin(FileName.toLatin1());
 
     int tick = 1;
     int quantum = MaxTicks / 100;

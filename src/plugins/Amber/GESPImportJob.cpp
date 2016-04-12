@@ -44,11 +44,24 @@
 #include <BondList.hpp>
 #include <AtomList.hpp>
 #include <Atom.hpp>
+#include <PointObject.hpp>
+
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <stdlib.h>
+#include <stdio.h>
+#include <SmallString.hpp>
+#include <openbabel/mol.h>
+#include <map>
+#include <PeriodicTable.hpp>
 
 #include "AmberModule.hpp"
 
 #include "GESPImportJob.hpp"
 #include "GESPImportJob.moc"
+
 
 //------------------------------------------------------------------------------
 using namespace std;
@@ -197,16 +210,66 @@ bool CGESPImportJob::ImportStructure(void)
 {
     Structure->BeginUpdate(History);
 
+
     // read molecule from file to babel internal
     emit OnProgressNotification(0,"Total progress %p% - Loading structure ...");
 
     bool result = true;
-    
+
     // TODO
     // extract data from the "sin" object (ifstream) - it is already opened, create new atoms, set their Z, position and chanrge
     // Jakub vam ukaze, jak pouzit CStructure->CAtomList->CreateAtom()
     // CAtom::SetPosWH
     // CAtom::SetChargeWH
+
+
+    double bohrR = 0.4/*529177249*/;
+    int num;
+    string s;
+    string temp;
+    stringstream stream;
+
+    for(int i=0;i<3;i++){
+        getline(sin,s);
+    }
+    stream.str(s);
+    stream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> num;
+
+
+
+
+
+    for(int i=0;i<num;i++){
+        string xstr, ystr, zstr, qespstr, E="E", type;
+        getline(sin,s);
+
+        stream.str(s);
+        stream.clear();
+
+        stream >> type >> xstr >> ystr >> zstr >> qespstr;
+
+
+        xstr.replace((xstr.length()-4),1,E);
+        ystr.replace((ystr.length()-4),1,E);
+        zstr.replace((zstr.length()-4),1,E);
+        qespstr.replace((qespstr.length()-4),1,E);
+
+
+        double x=(atof(xstr.c_str())*bohrR);
+        double y=(atof(ystr.c_str())*bohrR);
+        double z=(atof(zstr.c_str())*bohrR);
+        double qesp=(atof(qespstr.c_str())*bohrR);
+        CPoint pos(x,y,z);
+
+        const CElement* p_ele = PeriodicTable.SearchBySymbol(type);
+
+        CAtom* p_atom = Structure->GetAtoms()->CreateAtom(p_ele->GetZ(),pos);
+        if(p_atom != NULL){
+        p_atom->SetCharge(qesp);
+       }
+
+
+    }
 
 
     if( result ){
