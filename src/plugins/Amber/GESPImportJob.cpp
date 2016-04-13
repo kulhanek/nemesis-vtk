@@ -229,20 +229,15 @@ bool CGESPImportJob::ExecuteJob(void)
 
 bool CGESPImportJob::ImportStructure(void)
 {
-    Structure->BeginUpdate(History);
 
+// read structure
+
+    Structure->BeginUpdate(History);
 
     // read molecule from file to babel internal
     emit OnProgressNotification(0,"Total progress %p% - Loading structure ...");
 
     bool result = true;
-
-    // TODO
-    // extract data from the "sin" object (ifstream) - it is already opened, create new atoms, set their Z, position and chanrge
-    // Jakub vam ukaze, jak pouzit CStructure->CAtomList->CreateAtom()
-    // CAtom::SetPosWH
-    // CAtom::SetChargeWH
-
 
     OpenBabel::OBMol mol;
     double bohrR = 0.529177249;
@@ -290,43 +285,50 @@ bool CGESPImportJob::ImportStructure(void)
     mol.ConnectTheDots();
     COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
 
-
-    string g;
-    stringstream gridstream;
-    int count;
-    for(int i = 0; i < 6; i++){
-        getline(sin,s);
-    }
-
-    gridstream.str(g);
-    gridstream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> count;
-    cout<<count;
-    for(int i = 0; i < count; i++){
-        string xstr, ystr, zstr, espstr, E="E", type;
-        getline(sin,g);
-
-        gridstream.str(s);
-        gridstream.clear();
-        gridstream >> espstr >> xstr >> ystr >> zstr;
-
-        espstr.replace((espstr.length()-4),1,E);
-        xstr.replace((xstr.length()-4),1,E);
-        ystr.replace((ystr.length()-4),1,E);
-        zstr.replace((zstr.length()-4),1,E);
-
-
-        double esp=(atof(espstr.c_str())*bohrR);
-        double x=(atof(xstr.c_str())*bohrR);
-        double y=(atof(ystr.c_str())*bohrR);
-        double z=(atof(zstr.c_str())*bohrR);
-
-
-
-        GESPGridObject->AddPoint(x,y,z,esp);
-
-    }
     // we do not need to sort the lists
     Structure->EndUpdate(true,History);
+
+// read ESP grid points
+
+    emit OnProgressNotification(1,"Total progress %p% - Loading ESP grid potential ...");
+    if( GESPGridObject ){
+        string g;
+        stringstream gridstream;
+        int count;
+        for(int i = 0; i < 6; i++){
+            getline(sin,s);
+        }
+
+        gridstream.str(g);
+        gridstream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> count;
+        cout<<count;
+        for(int i = 0; i < count; i++){
+            string xstr, ystr, zstr, espstr, E="E", type;
+            getline(sin,g);
+
+            gridstream.str(s);
+            gridstream.clear();
+            gridstream >> espstr >> xstr >> ystr >> zstr;
+
+            espstr.replace((espstr.length()-4),1,E);
+            xstr.replace((xstr.length()-4),1,E);
+            ystr.replace((ystr.length()-4),1,E);
+            zstr.replace((zstr.length()-4),1,E);
+
+
+            double esp=(atof(espstr.c_str())*bohrR);
+            double x=(atof(xstr.c_str())*bohrR);
+            double y=(atof(ystr.c_str())*bohrR);
+            double z=(atof(zstr.c_str())*bohrR);
+
+
+
+            GESPGridObject->AddPoint(x,y,z,esp);
+
+        }
+    }
+
+// final
 
     // THREAD SAFETY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // do some magic with parent and thread ownership
@@ -346,7 +348,7 @@ bool CGESPImportJob::FinalizeJob(void)
     // close the stream
     sin.close();
 
-    emit OnProgressNotification(3,"Total progress %p% - Finalization ...");
+    emit OnProgressNotification(2,"Total progress %p% - Finalization ...");
 
     // THREAD SAFETY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // do some magic with parent and thread ownership
