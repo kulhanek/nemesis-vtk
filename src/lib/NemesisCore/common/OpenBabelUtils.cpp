@@ -269,6 +269,7 @@ void COpenBabelUtils::OpenBabel2Nemesis(OpenBabel::OBMol& obmol,CStructure* p_mo
 
         data.Z = p_obAtom->GetAtomicNum();
         data.Pos = CPoint(p_obAtom->x(), p_obAtom->y(), p_obAtom->z());
+        data.Charge = p_obAtom->GetPartialCharge();
         data.SerIndex = top_index+i;
         loc_index++;
 
