@@ -75,6 +75,7 @@ CTerminalOStream    tout;
 class CNemesisPlugNotification : public OpenBabel::OBPlugNotification {
 public:
     CNemesisPlugNotification(CWelcomeWindow* p_pw,const QString& base_text);
+    virtual ~CNemesisPlugNotification(){}
     virtual void notify(const std::string& text);
 private:
    CWelcomeWindow*  ProgressWindow;

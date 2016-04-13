@@ -21,6 +21,10 @@ SET(AMBER_PLUGIN_SRC
         ChargesImportTool.cpp
         GESPImportJob.cpp
         GESPImportTool.cpp
+        GESPGridObject.cpp
+        GESPGridObjectDesigner.cpp
+        GESPGridSetup.cpp
+        GESPGridSetupDesigner.cpp
         )
 
 # program windows --------------------------------------------------------------
@@ -30,6 +34,8 @@ SET(AMBER_PLUGIN_UIS
         LeapProjectWindow.ui
         Rst7ExportTool.ui
         GESPImportTool.ui
+        GESPGridObjectDesigner.ui
+        GESPGridSetupDesigner.ui
         )
 
 # program resources ------------------------------------------------------------
