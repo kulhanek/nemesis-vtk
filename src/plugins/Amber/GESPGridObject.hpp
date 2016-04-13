@@ -39,9 +39,16 @@ public:
 // constructors and destructors -----------------------------------------------
     CGESPGridObject(CGraphicsObjectList* p_gl);
 
+    /// add new ESP grid point
+    void AddPoint(double x, double y, double z, double esp);
+
 // executive methods -----------------------------------------------------------
     /// draw object
     virtual void Draw(void);
+
+// section of private data -----------------------------------------------------
+private:
+    // list of points, max and min value of ESP
 };
 
 //------------------------------------------------------------------------------
