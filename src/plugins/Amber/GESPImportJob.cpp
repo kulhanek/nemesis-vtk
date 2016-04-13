@@ -213,7 +213,7 @@ bool CGESPImportJob::InitializeJob(void)
     CGraphics* p_grp = p_project->GetGraphics();
     p_grp->GetProfiles()->SetDataManipulationMode(true);
 
-    emit OnStartProgressNotification(3);
+    emit OnStartProgressNotification(2);
 
     return(true);
 }
