@@ -61,7 +61,7 @@
 #include <openbabel/atom.h>
 
 #include "AmberModule.hpp"
-
+#include "GESPGridObject.hpp"
 #include "GESPImportJob.hpp"
 #include "GESPImportJob.moc"
 
@@ -109,10 +109,8 @@ QObject* GESPImportJobCB(void* p_data)
 CGESPImportJob::CGESPImportJob(CProject* p_project)
     : CImportJob(&GESPImportJobObject,p_project)
 {
-    Structure = NULL;
-    FileName = "";
-
     p_project->GetJobs()->RegisterJob(this);
+    GESPGridObject = NULL;
 }
 
 //==============================================================================
@@ -145,19 +143,26 @@ bool CGESPImportJob::JobAboutToBeSubmitted(void)
 
     CHistoryNode* p_history;
 
-    p_history = Structure->BeginChangeWH(EHCL_COMPOSITE,"import XYZ structure");
+    p_history = Structure->BeginChangeWH(EHCL_COMPOSITE,"import GESP data");
     if( p_history == NULL ) return(false);
 
+    // initialize graphics change - this is optional
+    CHistoryNode* p_ghistory = Structure->BeginChangeWH(EHCL_GRAPHICS,"import GESP grid data");
+    if( p_ghistory != NULL ){
+        CGraphics* p_grp = Structure->GetProject()->GetGraphics();
+        GESPGridObject = dynamic_cast<CGESPGridObject*>(p_grp->GetObjects()->CreateObject(GESPGridObjectID,"GESP data","",p_ghistory));
+        if( GESPGridObject != NULL ){
+            if( p_grp->GetProfiles()->GetActiveProfile() != NULL ){
+                p_grp->GetProfiles()->GetActiveProfile()->AddObject(GESPGridObject,-1,p_ghistory);
+            }
+        }
+    }
+
+    // end graphics change
+    Structure->EndChangeWH();
+
     // initialize topology change
-
-
-//   History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import");
-//   CAtomListCoordinatesHI* p_history = new CAtomListCoordinatesHI(Structure);
- //  History->Register(p_history);
-//   Structure->BeginUpdate(History);
-
-
-    History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import");
+    History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import GESP structure");
     if( History == NULL ){
         // end composite change
         Structure->EndChangeWH();
@@ -187,6 +192,10 @@ bool CGESPImportJob::InitializeJob(void)
     connect(this,SIGNAL(OnTextNotification(ETextNotificationType,const QString&,int)),
             p_project,SLOT(TextNotification(ETextNotificationType,const QString&,int)));
 
+    // create graphics
+
+
+
     // THREAD SAFETY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // do some magic with parent and thread ownership
     OldMoleculeParent = Structure->parent();
@@ -204,7 +213,7 @@ bool CGESPImportJob::InitializeJob(void)
     CGraphics* p_grp = p_project->GetGraphics();
     p_grp->GetProfiles()->SetDataManipulationMode(true);
 
-    emit OnStartProgressNotification(2);
+    emit OnStartProgressNotification(3);
 
     return(true);
 }
@@ -277,10 +286,8 @@ bool CGESPImportJob::ImportStructure(void)
         p_atom->SetAtomicNum(p_ele->GetZ());
         p_atom->SetVector(x,y,z);
         p_atom->SetPartialCharge(qesp);
-
-
-
     }
+
     //make bonds and convert to Nemesis data
     mol.ConnectTheDots();
     COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
@@ -302,12 +309,7 @@ bool CGESPImportJob::ImportStructure(void)
 //------------------------------------------------------------------------------
 
 bool CGESPImportJob::FinalizeJob(void)
-{
-    if( GetProject()->property("impex.inject") == true ){
-        // we do not need to sort the lists
-        Structure->EndUpdate(true,History);
-    }
-    
+{   
     // close the stream
     sin.close();
 
