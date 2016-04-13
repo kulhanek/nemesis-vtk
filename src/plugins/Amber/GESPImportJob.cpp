@@ -254,23 +254,20 @@ bool CGESPImportJob::ImportStructure(void)
 
 
     for(int i = 0; i < num; i++){
-        string xstr, ystr, zstr, qespstr, E="E", type;
+        string  type;
+        double  x, y, z;
+        double  qesp;
+
         getline(sin,s);
+        replace(s.begin(),s.end(),'D','E');
 
         stream.str(s);
         stream.clear();
-        stream >> type >> xstr >> ystr >> zstr >> qespstr;
+        stream >> type >> x >> y >> z >> qesp;
 
-        xstr.replace((xstr.length()-4),1,E);
-        ystr.replace((ystr.length()-4),1,E);
-        zstr.replace((zstr.length()-4),1,E);
-        qespstr.replace((qespstr.length()-4),1,E);
-
-
-        double x=(atof(xstr.c_str())*bohrR);
-        double y=(atof(ystr.c_str())*bohrR);
-        double z=(atof(zstr.c_str())*bohrR);
-        double qesp=(atof(qespstr.c_str())*bohrR);
+        x=(x*bohrR);
+        y=(y*bohrR);
+        z=(z*bohrR);
 
         int atomicNumber = PeriodicTable.SearchZBySymbol(type);
 
@@ -303,25 +300,20 @@ bool CGESPImportJob::ImportStructure(void)
         gridstream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> count;
         cout<<count;
         for(int i = 0; i < count; i++){
-            string xstr, ystr, zstr, espstr, E="E", type;
+            string type;
+            double  x, y, z;
+            double  esp;
+
             getline(sin,g);
+            replace(g.begin(),g.end(),'D','E');
 
             gridstream.str(s);
             gridstream.clear();
-            gridstream >> espstr >> xstr >> ystr >> zstr;
+            gridstream >> esp >> x >> y >> z;
 
-            espstr.replace((espstr.length()-4),1,E);
-            xstr.replace((xstr.length()-4),1,E);
-            ystr.replace((ystr.length()-4),1,E);
-            zstr.replace((zstr.length()-4),1,E);
-
-
-            double esp=(atof(espstr.c_str())*bohrR);
-            double x=(atof(xstr.c_str())*bohrR);
-            double y=(atof(ystr.c_str())*bohrR);
-            double z=(atof(zstr.c_str())*bohrR);
-
-
+            x=(x*bohrR);
+            y=(y*bohrR);
+            z=(z*bohrR);
 
             GESPGridObject->AddPoint(x,y,z,esp);
 
