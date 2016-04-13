@@ -29,6 +29,7 @@
 
 class CStructure;
 class CAtom;
+class CGESPGridObject;
 
 //------------------------------------------------------------------------------
 
@@ -42,11 +43,12 @@ public:
 
 // section of private data ----------------------------------------------------
 private:
-    CHistoryNode*   History;
-    std::ifstream   sin;
-    CLockLevels     BackupLockLevels;
-    QObject*        OldMoleculeParent;
-    QObject*        OldHistoryParent;
+    CHistoryNode*       History;
+    std::ifstream       sin;
+    CLockLevels         BackupLockLevels;
+    QObject*            OldMoleculeParent;
+    QObject*            OldHistoryParent;
+    CGESPGridObject*    GESPGridObject;
 
     /// can we submit the job? - executed from main thread during JobSubmit
     virtual bool JobAboutToBeSubmitted(void);

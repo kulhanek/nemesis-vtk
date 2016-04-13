@@ -61,7 +61,7 @@
 #include <openbabel/atom.h>
 
 #include "AmberModule.hpp"
-
+#include "GESPGridObject.hpp"
 #include "GESPImportJob.hpp"
 #include "GESPImportJob.moc"
 
@@ -242,22 +242,20 @@ bool CGESPImportJob::ImportStructure(void)
     string temp;
     stringstream stream;
 
-    for(int i=0;i<3;i++){
+    for(int i = 0; i < 3; i++){
         getline(sin,s);
     }
     stream.str(s);
     stream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> num;
 
 
-    for(int i=0;i<num;i++){
+    for(int i = 0; i < num; i++){
         string xstr, ystr, zstr, qespstr, E="E", type;
         getline(sin,s);
 
         stream.str(s);
         stream.clear();
-
         stream >> type >> xstr >> ystr >> zstr >> qespstr;
-
 
         xstr.replace((xstr.length()-4),1,E);
         ystr.replace((ystr.length()-4),1,E);
@@ -270,21 +268,54 @@ bool CGESPImportJob::ImportStructure(void)
         double z=(atof(zstr.c_str())*bohrR);
         double qesp=(atof(qespstr.c_str())*bohrR);
 
-        const CElement* p_ele = PeriodicTable.SearchBySymbol(type);
+        int atomicNumber = PeriodicTable.SearchZBySymbol(type);
 
         //Create OB molecule
         OpenBabel::OBAtom* p_atom =mol.NewAtom(i);
-        p_atom->SetAtomicNum(p_ele->GetZ());
+        p_atom->SetAtomicNum(atomicNumber);
         p_atom->SetVector(x,y,z);
         p_atom->SetPartialCharge(qesp);
 
-
-
     }
-    //make bonds and convert to Nemesis data
+    //make bonds and  convert OBMol to Nemesis data
     mol.ConnectTheDots();
     COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
 
+
+    string g;
+    stringstream gridstream;
+    int count;
+    for(int i = 0; i < 6; i++){
+        getline(sin,s);
+    }
+
+    gridstream.str(g);
+    gridstream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> count;
+    cout<<count;
+    for(int i = 0; i < count; i++){
+        string xstr, ystr, zstr, espstr, E="E", type;
+        getline(sin,g);
+
+        gridstream.str(s);
+        gridstream.clear();
+        gridstream >> espstr >> xstr >> ystr >> zstr;
+
+        espstr.replace((espstr.length()-4),1,E);
+        xstr.replace((xstr.length()-4),1,E);
+        ystr.replace((ystr.length()-4),1,E);
+        zstr.replace((zstr.length()-4),1,E);
+
+
+        double esp=(atof(espstr.c_str())*bohrR);
+        double x=(atof(xstr.c_str())*bohrR);
+        double y=(atof(ystr.c_str())*bohrR);
+        double z=(atof(zstr.c_str())*bohrR);
+
+
+
+        GESPGridObject->AddPoint(x,y,z,esp);
+
+    }
     // we do not need to sort the lists
     Structure->EndUpdate(true,History);
 

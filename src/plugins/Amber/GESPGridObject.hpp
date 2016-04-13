@@ -32,6 +32,13 @@ class CGESPGridSetup;
 
 extern CExtUUID GESPGridObjectID;
 
+class NEMESIS_CORE_PACKAGE CGESPGridPoint {
+public:
+    double x, y, z;
+    double esp;
+};
+
+
 //------------------------------------------------------------------------------
 
 class NEMESIS_CORE_PACKAGE CGESPGridObject : public CGraphicsObject {
@@ -48,7 +55,10 @@ public:
 
 // section of private data -----------------------------------------------------
 private:
-    // list of points, max and min value of ESP
+    std::vector<CGESPGridPoint> Data;
+    double MaxESP;
+    double MinESP;
+
 };
 
 //------------------------------------------------------------------------------
