@@ -59,11 +59,38 @@ QObject* GESPGridObjectCB(void* p_data)
 CGESPGridObject::CGESPGridObject(CGraphicsObjectList* p_gl)
     : CGraphicsObject(&GESPGridObject,p_gl)
 {
+    MinESP = 0;
+    MaxESP = 0;
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
+
+void CGESPGridObject::AddPoint(double x, double y, double z, double esp)
+{
+    CGESPGridPoint point;
+    point.x = x;
+    point.y = y;
+    point.z = z;
+    point.esp = esp;
+
+    Data.push_back(point);
+
+    if(Data.size() == 1){
+        MinESP = esp;
+        MaxESP = esp;
+    }
+
+    if(MinESP > esp){
+        MinESP = esp;
+    }
+    if(MaxESP < esp){
+        MaxESP = esp;
+    }
+}
+
+//------------------------------------------------------------------------------
 
 void CGESPGridObject::Draw(void)
 {

@@ -46,3 +46,13 @@ ui_LeapProjectDesigner.h
 ui_LeapProjectWindow.h
 ui_Rst7ExportTool.h
 GESPImportTool.ui
+GESPGridSetupDesigner.ui
+GESPGridSetupDesigner.hpp
+GESPGridSetupDesigner.cpp
+GESPGridSetup.hpp
+GESPGridSetup.cpp
+GESPGridObjectDesigner.ui
+GESPGridObjectDesigner.hpp
+GESPGridObjectDesigner.cpp
+GESPGridObject.hpp
+GESPGridObject.cpp
