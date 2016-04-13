@@ -45,6 +45,7 @@
 #include <AtomList.hpp>
 #include <Atom.hpp>
 #include <PointObject.hpp>
+#include <OpenBabelUtils.hpp>
 
 #include <fstream>
 #include <iostream>
@@ -56,6 +57,8 @@
 #include <openbabel/mol.h>
 #include <map>
 #include <PeriodicTable.hpp>
+#include <openbabel/mol.h>
+#include <openbabel/atom.h>
 
 #include "AmberModule.hpp"
 
@@ -139,12 +142,21 @@ bool CGESPImportJob::JobAboutToBeSubmitted(void)
 
     // following change is composite
     // it is composed from EHCL_TOPOLOGY and EHCL_GRAPHICS
+
     CHistoryNode* p_history;
 
     p_history = Structure->BeginChangeWH(EHCL_COMPOSITE,"import XYZ structure");
     if( p_history == NULL ) return(false);
 
     // initialize topology change
+
+
+//   History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import");
+//   CAtomListCoordinatesHI* p_history = new CAtomListCoordinatesHI(Structure);
+ //  History->Register(p_history);
+//   Structure->BeginUpdate(History);
+
+
     History = Structure->BeginChangeWH(EHCL_TOPOLOGY,"import");
     if( History == NULL ){
         // end composite change
@@ -223,7 +235,8 @@ bool CGESPImportJob::ImportStructure(void)
     // CAtom::SetChargeWH
 
 
-    double bohrR = 0.4/*529177249*/;
+    OpenBabel::OBMol mol;
+    double bohrR = 0.529177249;
     int num;
     string s;
     string temp;
@@ -234,9 +247,6 @@ bool CGESPImportJob::ImportStructure(void)
     }
     stream.str(s);
     stream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> num;
-
-
-
 
 
     for(int i=0;i<num;i++){
@@ -259,25 +269,21 @@ bool CGESPImportJob::ImportStructure(void)
         double y=(atof(ystr.c_str())*bohrR);
         double z=(atof(zstr.c_str())*bohrR);
         double qesp=(atof(qespstr.c_str())*bohrR);
-        CPoint pos(x,y,z);
 
         const CElement* p_ele = PeriodicTable.SearchBySymbol(type);
 
-        CAtom* p_atom = Structure->GetAtoms()->CreateAtom(p_ele->GetZ(),pos);
-        if(p_atom != NULL){
-        p_atom->SetCharge(qesp);
-       }
+        //Create OB molecule
+        OpenBabel::OBAtom* p_atom =mol.NewAtom(i);
+        p_atom->SetAtomicNum(p_ele->GetZ());
+        p_atom->SetVector(x,y,z);
+        p_atom->SetPartialCharge(qesp);
+
 
 
     }
-
-
-    if( result ){
-        emit OnProgressNotification(1,"Total progress %p% - Generating bonds ...");
-
-        // add bonds
-        Structure->GetBonds()->AddBondsWH();
-    }
+    //make bonds and convert to Nemesis data
+    mol.ConnectTheDots();
+    COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
 
     // we do not need to sort the lists
     Structure->EndUpdate(true,History);
