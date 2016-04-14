@@ -293,7 +293,7 @@ bool CGESPImportJob::ImportStructure(void)
         stringstream gridstream;
         int count;
         for(int i = 0; i < 6; i++){
-            getline(sin,s);
+            getline(sin,g);
         }
 
         gridstream.str(g);
@@ -307,7 +307,7 @@ bool CGESPImportJob::ImportStructure(void)
             getline(sin,g);
             replace(g.begin(),g.end(),'D','E');
 
-            gridstream.str(s);
+            gridstream.str(g);
             gridstream.clear();
             gridstream >> esp >> x >> y >> z;
 

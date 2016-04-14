@@ -48,6 +48,9 @@ public:
 
     /// add new ESP grid point
     void AddPoint(double x, double y, double z, double esp);
+    int GetNumOfPoints(void);
+    double GetMaxESP(void);
+    double GetMinESP(void);
 
 // executive methods -----------------------------------------------------------
     /// draw object

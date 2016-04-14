@@ -63,7 +63,7 @@ GODESIGNER_ENTRY_POINT(GESPGridObject);
 CGESPGridObjectDesigner::CGESPGridObjectDesigner(CGraphicsObject* p_bo)
     : CProObjectDesigner(&GESPGridObjectDesignerObject, p_bo)
 {
-    Object = p_bo;
+    Object = dynamic_cast<CGESPGridObject*>(p_bo);
 
     // graphics layout ---------------------------
     WidgetUI.setupUi(this);
@@ -92,6 +92,12 @@ void CGESPGridObjectDesigner::InitAllValues(void)
     General->InitValues();
     Setup->InitValues();
     RefBy->InitValues();
+
+    int npoints = Object->GetNumOfPoints();
+
+    WidgetUI.numOfGridPointsLabel->setText(QString("%1").arg(npoints));
+    WidgetUI.maxESPLabel->setText(QString("%1").arg(Object->GetMaxESP()));
+    WidgetUI.minESPLabel->setText(QString("%1").arg(Object->GetMinESP()));
 
     SetChangedFlag(false);
 }
