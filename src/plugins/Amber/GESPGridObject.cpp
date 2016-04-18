@@ -90,6 +90,7 @@ void CGESPGridObject::AddPoint(double x, double y, double z, double esp)
     }
 }
 
+
 //------------------------------------------------------------------------------
 
 void CGESPGridObject::Draw(void)
@@ -100,19 +101,43 @@ void CGESPGridObject::Draw(void)
         return;
     }
 
-    // backup current color mode from anaglyph rendering if enabled
-    GLboolean data[4];
-    glGetBooleanv(GL_COLOR_WRITEMASK,data);
 
-    // clear entire buffer only for red component and normal mode
-    if( data[2] == GL_FALSE ){
-        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+
+
+    glPointSize(2);
+    glBegin(GL_POINTS);
+
+    for(std::vector<CGESPGridPoint>::iterator it = Data.begin(); it != Data.end(); it++){
+        double r, b;
+        CGESPGridPoint p = *it;
+
+        r = (p.esp-MinESP)/(MaxESP-MinESP);
+        b = 1 - r;
+        glColor3f(r,(r+b)/2,b);
+
+        glVertex3f(p.x,p.y,p.z);
+
     }
-    //glClearColor(p_setup->Color.R(),p_setup->Color.G(),p_setup->Color.B(),1);
-    glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-    // restore color mode
-    glColorMask(data[0], data[1], data[2], data[3]);
+    glEnd();
+}
+//------------------------------------------------------------------------------
+
+int CGESPGridObject::GetNumOfPoints(void)
+{
+    return Data.size();
+}
+//------------------------------------------------------------------------------
+
+double CGESPGridObject::GetMaxESP(void)
+{
+    return MaxESP;
+}
+//------------------------------------------------------------------------------
+
+double CGESPGridObject::GetMinESP(void)
+{
+    return MinESP;
 }
 
 //==============================================================================

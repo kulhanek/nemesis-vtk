@@ -26,6 +26,7 @@
 
 //------------------------------------------------------------------------------
 
+class CGESPGridObject;
 class CGraphicsObject;
 class CPODesignerGeneral;
 class CGODesignerSetup;
@@ -47,11 +48,11 @@ public:
 
 // section of private data -----------------------------------------------------
 private:
-    Ui::GESPGridObjectDesigner    WidgetUI;
-    CGraphicsObject*                Object;
-    CPODesignerGeneral*             General;
-    CGODesignerSetup*               Setup;
-    CGODesignerRefBy*               RefBy;
+    Ui::GESPGridObjectDesigner  WidgetUI;
+    CGESPGridObject*            Object;
+    CPODesignerGeneral*         General;
+    CGODesignerSetup*           Setup;
+    CGODesignerRefBy*           RefBy;
 
 private slots:
     void ButtonBoxClicked(QAbstractButton *);
