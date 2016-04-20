@@ -25,6 +25,8 @@ SET(AMBER_PLUGIN_SRC
         GESPGridObjectDesigner.cpp
         GESPGridSetup.cpp
         GESPGridSetupDesigner.cpp
+        GESPAsRESPImportTool.cpp
+        GESPAsRESPImportJob.cpp
         )
 
 # program windows --------------------------------------------------------------
@@ -36,6 +38,7 @@ SET(AMBER_PLUGIN_UIS
         GESPImportTool.ui
         GESPGridObjectDesigner.ui
         GESPGridSetupDesigner.ui
+        GESPAsRESPImportTool.ui
         )
 
 # program resources ------------------------------------------------------------

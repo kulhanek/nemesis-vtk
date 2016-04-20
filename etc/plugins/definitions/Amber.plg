@@ -18,6 +18,9 @@
     <OBJECT uuid="{GESP_IMPORT_TOOL:c260533b-80d6-4607-9ad8-0a2dd4b388d1}">
         <CONFIG key="_category"    value="Amber"/>
     </OBJECT>
+    <OBJECT uuid="{GESPASRESP_IMPORT_TOOL:aa0590e4-af85-4e60-8551-10d3ecc9d6c3}">
+        <CONFIG key="_category"    value="Amber"/>
+    </OBJECT>
     <!-- graphics ------------------------------------------------------------------- -->
     <OBJECT uuid="{GESPGRID_SETUP:0c8facc0-f6a0-49fe-969a-7c4fdd451f45}">
         <CONFIG key="_designer" value="{GESPGRID_SETUP_DESIGNER:d6309161-5715-4260-9a02-db8c956c96bc}"/>
