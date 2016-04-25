@@ -1,6 +1,7 @@
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
+//    Copyright (C) 2016 Matej Stevuliak, 423943@mail.muni.cz
 //    Copyright (C) 2016 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
@@ -75,9 +76,10 @@ void CGESPGridObject::AddPoint(double x, double y, double z, double esp)
     point.z = z;
     point.esp = esp;
 
+
     Data.push_back(point);
 
-    if(Data.size() == 1){
+    if(Data.size() == 1) {
         MinESP = esp;
         MaxESP = esp;
     }
@@ -100,20 +102,19 @@ void CGESPGridObject::Draw(void)
         ES_ERROR("setup is null");
         return;
     }
-
-
-
-
+// daw ESP grid points
     glPointSize(2);
     glBegin(GL_POINTS);
 
-    for(std::vector<CGESPGridPoint>::iterator it = Data.begin(); it != Data.end(); it++){
-        double r, b;
+    //go through all grid points
+    for(std::vector<CGESPGridPoint>::iterator it = Data.begin(); it != Data.end(); it++) {
+        double r,  g, b;
         CGESPGridPoint p = *it;
 
-        r = (p.esp-MinESP)/(MaxESP-MinESP);
-        b = 1 - r;
-        glColor3f(r,(r+b)/2,b);
+        b = (p.esp-MinESP)/(MaxESP-MinESP);
+        r = 1 - b;
+
+        glColor3f(r,0,b);
 
         glVertex3f(p.x,p.y,p.z);
 

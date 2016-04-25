@@ -56,3 +56,10 @@ GESPGridObjectDesigner.hpp
 GESPGridObjectDesigner.cpp
 GESPGridObject.hpp
 GESPGridObject.cpp
+ui_GESPAsRESPImportTool.h
+GESPAsRESPImportTool.ui
+GESPAsRESPImportTool.hpp
+GESPAsRESPImportTool.cpp
+GESPAsRESPImportJob.moc
+GESPAsRESPImportJob.hpp
+GESPAsRESPImportJob.cpp

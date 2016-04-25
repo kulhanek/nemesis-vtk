@@ -1,7 +1,7 @@
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2013 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2016 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by

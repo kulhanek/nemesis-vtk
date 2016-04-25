@@ -1,7 +1,8 @@
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2013 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2016 Matej Stevuliak, 423943@mail.muni.cz
+//    Copyright (C) 2016 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program sin free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -237,27 +238,30 @@ bool CGESPImportJob::ImportStructure(void)
     // read molecule from file to babel internal
     emit OnProgressNotification(0,"Total progress %p% - Loading structure ...");
 
-    bool result = true;
+    bool result = true;   
 
-    OpenBabel::OBMol mol;
-    double bohrR = 0.529177249;
     int num;
+    double bohr = 0.529177249;
+    double  x, y, z;
+    double  qesp;
     string s;
     string temp;
+    string  type;
     stringstream stream;
 
-    for(int i = 0; i < 3; i++){
+ // read header --------------------------------------
+    for( int i = 0; i < 3; i++ ) {
         getline(sin,s);
     }
+
     stream.str(s);
     stream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> num;
 
 
-    for(int i = 0; i < num; i++){
-        string  type;
-        double  x, y, z;
-        double  qesp;
+// read structure ------------------------------------
+    OpenBabel::OBMol mol;
 
+    for( int i = 0; i < num; i++ ) {
         getline(sin,s);
         replace(s.begin(),s.end(),'D','E');
 
@@ -265,56 +269,57 @@ bool CGESPImportJob::ImportStructure(void)
         stream.clear();
         stream >> type >> x >> y >> z >> qesp;
 
-        x=(x*bohrR);
-        y=(y*bohrR);
-        z=(z*bohrR);
+        // convert coordenates to angstroms
+        x=(x*bohr);
+        y=(y*bohr);
+        z=(z*bohr);
 
-        int atomicNumber = PeriodicTable.SearchZBySymbol(type);
-
-        //Create OB molecule
-        OpenBabel::OBAtom* p_atom =mol.NewAtom(i);
-        p_atom->SetAtomicNum(atomicNumber);
+        // create OB molecule
+        OpenBabel::OBAtom* p_atom = mol.NewAtom(i);
+        p_atom->SetAtomicNum(PeriodicTable.SearchZBySymbol(type));
         p_atom->SetVector(x,y,z);
         p_atom->SetPartialCharge(qesp);
+
     }
 
-    //make bonds and convert to Nemesis data
+    // make bonds and convert to Nemesis data
     mol.ConnectTheDots();
     COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
+
 
     // we do not need to sort the lists
     Structure->EndUpdate(true,History);
 
-// read ESP grid points
+// read ESP grid points --------------------------------
 
     emit OnProgressNotification(1,"Total progress %p% - Loading ESP grid potential ...");
-    if( GESPGridObject ){
-        string g;
-        stringstream gridstream;
+    if( GESPGridObject ) {
         int count;
-        for(int i = 0; i < 6; i++){
-            getline(sin,g);
+        double  esp;
+
+        for( int i = 0; i < 6; i++ ) {
+            getline(sin,s);
         }
 
-        gridstream.str(g);
-        gridstream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> count;
-        cout<<count;
-        for(int i = 0; i < count; i++){
-            string type;
-            double  x, y, z;
-            double  esp;
+        stream.str(s);
+        stream.clear();
+        stream >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> temp >> count;
 
-            getline(sin,g);
-            replace(g.begin(),g.end(),'D','E');
+        // go trough all grid points
+        for(int i = 0; i < count; i++) {
+            getline(sin,s);
+            replace(s.begin(),s.end(),'D','E');
 
-            gridstream.str(g);
-            gridstream.clear();
-            gridstream >> esp >> x >> y >> z;
+            stream.str(s);
+            stream.clear();
+            stream >> esp >> x >> y >> z;
 
-            x=(x*bohrR);
-            y=(y*bohrR);
-            z=(z*bohrR);
+            // convert coordenates to angstroms
+            x=(x*bohr);
+            y=(y*bohr);
+            z=(z*bohr);
 
+            // adds point to the grid
             GESPGridObject->AddPoint(x,y,z,esp);
 
         }
