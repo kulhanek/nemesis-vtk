@@ -103,12 +103,12 @@ void CGESPGridObject::Draw(void)
         return;
     }
 // daw ESP grid points
-    glPointSize(2);
+    glPointSize(5);
     glBegin(GL_POINTS);
 
     //go through all grid points
     for(std::vector<CGESPGridPoint>::iterator it = Data.begin(); it != Data.end(); it++) {
-        double r,  g, b;
+        double r, b;
         CGESPGridPoint p = *it;
 
         b = (p.esp-MinESP)/(MaxESP-MinESP);
@@ -116,7 +116,9 @@ void CGESPGridObject::Draw(void)
 
         glColor3f(r,0,b);
 
-        glVertex3f(p.x,p.y,p.z);
+//        if(p.z > -1.2 && p.z < 1.2) {
+             glVertex3f(p.x,p.y,p.z);
+//        }
 
     }
 

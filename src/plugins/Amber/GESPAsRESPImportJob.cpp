@@ -286,11 +286,11 @@ bool CGESPAsRESPImportJob::ImportStructure(void)
     QTemporaryDir temp_dir;
     temp_dir.setAutoRemove(false);
     temp = temp_dir.path().toStdString();
-
+    cout<<temp<<endl;
     // prepare cmd line for system()
     stringstream cmd;
     cmd << boost::format("cd %s > /dev/null 2>&1 && "
-                         "antechamber -i %s  -fi gesp -o output.mol2 -fo mol2 -nc %f -c resp ")%temp %FileName.toStdString() %netCharge;
+                         "antechamber -i %s  -fi gesp -o output.mol2 -fo mol2 -nc %f -c resp -pl 10 ")%temp %FileName.toStdString() %netCharge;
 
     // run antechamber
     int status = system( cmd.str().c_str() );

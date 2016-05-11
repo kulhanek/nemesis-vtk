@@ -355,7 +355,7 @@ QString CGaussianInputExportTool::GetCalculationType(void)
         case 3:
             return "Freq";
         case 4:
-            return "SCF=Tight Pop=MK IOp=(6/33=2,6/50=1)";
+            return "SCF=Tight Pop=chelpg IOp=(6/33=2,6/50=1)";
         default:
             return "SP";
     }
