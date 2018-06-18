@@ -1,5 +1,0 @@
-<!-- BioTools Plugin Setup -->
-<PLUGIN name="BioTools"
-        uuid="{BIOTOOLS_PLUGIN:ffcbe354-6eef-4515-9ce2-a7b7d6284a3f}">
-    <!-- some local setup will be here -->
-</PLUGIN> 

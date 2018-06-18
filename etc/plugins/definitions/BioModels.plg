@@ -1,5 +1,0 @@
-<!-- BioModels Plugin Setup -->
-<PLUGIN name="BioModels"
-        uuid="{BIOMODELS_PLUGIN:01cb3c28-767a-46b9-89ea-f549de0529cf}">
-    <!-- some local setup will be here -->
-</PLUGIN> 
