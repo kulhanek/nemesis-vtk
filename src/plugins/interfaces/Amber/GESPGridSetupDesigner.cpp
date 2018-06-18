@@ -31,7 +31,6 @@
 #include "AmberModule.hpp"
 #include "GESPGridSetup.hpp"
 #include "GESPGridSetupDesigner.hpp"
-#include "GESPGridSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

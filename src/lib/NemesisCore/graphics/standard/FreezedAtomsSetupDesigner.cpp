@@ -32,7 +32,6 @@
 #include <GSDesignerGeneral.hpp>
 #include <GSDesignerRefBy.hpp>
 #include <FreezedAtomsSetupDesigner.hpp>
-#include "FreezedAtomsSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

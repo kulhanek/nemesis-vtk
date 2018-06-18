@@ -43,8 +43,6 @@
 #include <QStyle>
 #include <QStyleOptionTitleBar>
 
-#include "ProjectList.moc"
-
 //------------------------------------------------------------------------------
 
 CProjectList* Projects = NULL;

@@ -33,7 +33,6 @@
 
 #include <EnergyProperty.hpp>
 #include <EnergyPropertyDesigner.hpp>
-#include "EnergyPropertyDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

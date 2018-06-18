@@ -38,8 +38,6 @@
 #include "AmberModule.hpp"
 
 #include "GESPImportTool.hpp"
-#include "GESPImportTool.moc"
-
 #include "GESPImportJob.hpp"
 
 //==============================================================================

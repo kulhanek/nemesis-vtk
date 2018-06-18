@@ -37,7 +37,6 @@
 #include <ProjectList.hpp>
 #include <XYZAxesSetup.hpp>
 #include <XYZAxesSetupDesigner.hpp>
-#include "XYZAxesSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

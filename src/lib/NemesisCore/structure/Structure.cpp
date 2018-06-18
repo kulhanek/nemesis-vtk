@@ -41,8 +41,6 @@
 #include <vector>
 #include <Trajectory.hpp>
 
-#include "Structure.moc"
-
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
@@ -439,6 +437,122 @@ bool CStructure::BuildSuperCellWH(int ka,int kb,int kc)
     bool pc = PBCInfo.IsPeriodicAlongC();
 
     SetBox(pa,pb,pc,sizes,angles,p_history);
+
+    EndChangeWH();
+    return(true);
+}
+
+//------------------------------------------------------------------------------
+
+bool CStructure::BuildSuperCellWH(int va,int vb,int vc,int n)
+{
+    if( (va == 0) && (vb == 0) && (vc == 0) ) return(false);
+    if( n <= 1 ) return(false);
+    if( PBCInfo.IsPBCEnabled() == false ) return(false);
+
+    CHistoryNode* p_history = BeginChangeWH(EHCL_GEOMETRY,tr("build super cell"));
+    if( p_history == NULL ) return (false);
+
+    // assign PBC bond indexes
+    int pbcbonds = GetBonds()->AssignPBCBondIndexes();
+
+    // save current structure
+    CXMLDocument xml_doc;
+    CXMLElement* p_str = xml_doc.CreateChildElement("structure");
+    SaveData(p_str);
+
+    BeginUpdate();
+
+    // duplicate structure
+    for(int i=1; i < n; i++){
+        CPoint offset = PBCInfo.GetAVector()*va*i + PBCInfo.GetBVector()*vb*i + PBCInfo.GetCVector()*vc*i;
+        Paste(p_str,true,offset,p_history);
+    }
+
+    double minlen = PBCInfo.GetLargestSphereRadius();
+    // solve PBC bonds
+    for(int pbcbtype = 1; pbcbtype <= pbcbonds; pbcbtype++ ){
+        // find all bonds of given type
+        CSimpleList<CBond> pbc_bonds;
+        foreach(QObject* p_qobj,GetBonds()->children()){
+            CBond* p_bond = static_cast<CBond*>(p_qobj);
+            if( p_bond->GetPBCIndex() == pbcbtype ){
+                pbc_bonds.InsertToEnd(p_bond,0,false);
+            }
+        }
+
+        bool changed;
+        do{
+            changed = false;
+            // interconnect those PBC bonds that are close to each other
+            CSimpleIterator<CBond>  I1(pbc_bonds);
+            while( I1.Current() != NULL ){
+                CBond* p_b1 = I1.Current();
+                CAtom* p_b1a1 = p_b1->GetFirstAtom();
+                CAtom* p_b1a2 = p_b1->GetSecondAtom();
+                I1++;
+                CSimpleIterator<CBond>  I2 = I1;
+                while(  I2.Current() != NULL ){
+                    CBond* p_b2 = I2.Current();
+                    CAtom* p_b2a1 = p_b2->GetFirstAtom();
+                    CAtom* p_b2a2 = p_b2->GetSecondAtom();
+                    bool found = false;
+                    CBond* p_nbond = NULL;
+                    if( (p_b1a1->IsBondedWith(p_b2a1) == false) &&
+                        (Size(p_b1a1->GetPos()-p_b2a1->GetPos()) <= minlen) ){
+                        GetBonds()->CreateBond(p_b1a1,p_b2a1,p_b1->GetBondOrder(),p_history);
+                        p_nbond = GetBonds()->CreateBond(p_b1a2,p_b2a2,p_b1->GetBondOrder(),p_history);
+                        found = true;
+                    }
+                    if( (p_b1a1->IsBondedWith(p_b2a2) == false) &&
+                        (Size(p_b1a1->GetPos()-p_b2a2->GetPos()) <= minlen) ){
+                        GetBonds()->CreateBond(p_b1a1,p_b2a2,p_b1->GetBondOrder(),p_history);
+                        p_nbond = GetBonds()->CreateBond(p_b1a2,p_b2a1,p_b1->GetBondOrder(),p_history);
+                        found = true;
+                    }
+                    if( (p_b1a2->IsBondedWith(p_b2a1) == false) &&
+                        (Size(p_b1a2->GetPos()-p_b2a1->GetPos()) <= minlen) ){
+                        GetBonds()->CreateBond(p_b1a2,p_b2a1,p_b1->GetBondOrder(),p_history);
+                        p_nbond = GetBonds()->CreateBond(p_b1a1,p_b2a2,p_b1->GetBondOrder(),p_history);
+                        found = true;
+                    }
+                    if( (p_b1a2->IsBondedWith(p_b2a2) == false) &&
+                        (Size(p_b1a2->GetPos()-p_b2a2->GetPos()) <= minlen) ){
+                        GetBonds()->CreateBond(p_b1a2,p_b2a2,p_b1->GetBondOrder(),p_history);
+                        p_nbond = GetBonds()->CreateBond(p_b1a1,p_b2a1,p_b1->GetBondOrder(),p_history);
+                        found = true;
+                    }
+                    I2++;
+                    if( found ){
+                        changed = true;
+                        pbc_bonds.InsertToEnd(p_nbond,0,false);
+                        pbc_bonds.Remove(p_b1);
+                        pbc_bonds.Remove(p_b2);
+                        p_b1->RemoveFromBaseList(p_history);
+                        p_b2->RemoveFromBaseList(p_history);
+                        break;
+                    }
+                }
+                // we must quit the loop as object in I1 can be invalid
+                // I1 points to I2 which is destroyed
+                if( changed == true ) break;
+            }
+        } while( changed );
+    }
+
+    EndUpdate(false);
+
+//    // fix box sizes
+//    CPoint sizes = PBCInfo.GetSizes();
+//    sizes.x = sizes.x + sizes.x*abs(va)*(n-1);
+//    sizes.y = sizes.y + sizes.y*abs(vb)*(n-1);
+//    sizes.z = sizes.z + sizes.z*abs(vc)*(n-1);
+//    CPoint angles = PBCInfo.GetAngles();
+//    bool pa = PBCInfo.IsPeriodicAlongA();
+//    bool pb = PBCInfo.IsPeriodicAlongB();
+//    bool pc = PBCInfo.IsPeriodicAlongC();
+
+//    SetBox(pa,pb,pc,sizes,angles,p_history);
 
     EndChangeWH();
     return(true);

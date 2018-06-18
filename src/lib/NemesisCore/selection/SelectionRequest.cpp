@@ -22,7 +22,6 @@
 #include <NemesisCoreModule.hpp>
 #include <CategoryUUID.hpp>
 #include <ProObject.hpp>
-#include "SelectionRequest.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

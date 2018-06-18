@@ -27,7 +27,6 @@
 #include <TrajectorySegment.hpp>
 #include <Snapshot.hpp>
 
-#include "PODesignerDockingTabsResults.moc"
 #include "PODesignerDockingTabsResults.hpp"
 
 //==============================================================================

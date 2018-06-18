@@ -41,8 +41,6 @@
 #include <StructureList.hpp>
 #include <Restraint.hpp>
 
-#include "SelectionList.moc"
-
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
@@ -312,6 +310,55 @@ bool CSelectionList::SelectAtomsByMask(const QString& mask,EAtomMaskType type,CS
     }
 
     return(true);
+}
+
+//------------------------------------------------------------------------------
+
+void CSelectionList::SelectAtomsByPlane(double a,double b,double c, double d,bool front)
+{
+    switch( GetStrObjectSelMode() ){
+        case ESOSM_ACTIVE_STRUCTURE_ONLY:
+        case ESOSM_STRUCTURES_FROM_OBJECTS: {
+            if( GetProject()->GetStructures()->GetActiveStructure() ){
+                SelectAtomsByPlane(a,b,c,d,front,GetProject()->GetStructures()->GetActiveStructure());
+            }
+            break;
+        }
+
+        case ESOSM_CONSIDER_ALL_STRUCTURES:{
+            foreach(QObject* p_qobj, GetProject()->GetStructures()->children()){
+                CStructure* p_str = static_cast<CStructure*>(p_qobj);
+                SelectAtomsByPlane(a,b,c,d,front,p_str);
+            }
+            break;
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void CSelectionList::SelectAtomsByPlane(double a,double b,double c, double d,bool front,CStructure* p_mol)
+{
+    if( p_mol == NULL ) {
+        INVALID_ARGUMENT("p_mol is NULL");
+    }
+
+    foreach(QObject* p_qobj,p_mol->GetAtoms()->children()) {
+        CAtom* p_atom = static_cast<CAtom*>(p_qobj);
+        if( p_atom->IsFlagSet(EPOF_SELECTED) ) continue;
+        CPoint pos = p_atom->GetPos();
+        if( front ){
+            if( pos.x*a + pos.y*b + pos.z*c + d > 0 ) {
+                CSelObject selobj(p_atom,0);
+                RegisterObject(selobj);
+            }
+        } else {
+            if( pos.x*a + pos.y*b + pos.z*c + d < 0 ) {
+                CSelObject selobj(p_atom,0);
+                RegisterObject(selobj);
+            }
+        }
+    }
 }
 
 //==============================================================================

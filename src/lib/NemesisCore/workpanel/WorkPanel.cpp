@@ -21,7 +21,6 @@
 // =============================================================================
 
 #include <WorkPanel.hpp>
-#include "WorkPanel.moc"
 
 #include <GlobalDesktop.hpp>
 #include <XMLElement.hpp>

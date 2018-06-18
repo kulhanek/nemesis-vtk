@@ -32,7 +32,6 @@
 #include <TextSetup.hpp>
 #include <GlobalSetup.hpp>
 #include <TextSetupDesigner.hpp>
-#include "TextSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -22,8 +22,6 @@
 #include <DesktopSystem.hpp>
 #include <PluginDatabase.hpp>
 
-
-#include "GraphicsTypeDialog.moc"
 #include <GraphicsTypeDialog.hpp>
 #include <NemesisCoreModule.hpp>
 #include <QDialog>

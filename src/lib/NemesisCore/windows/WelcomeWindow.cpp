@@ -21,7 +21,6 @@
 // =============================================================================
 
 #include "WelcomeWindow.hpp"
-#include "WelcomeWindow.moc"
 
 #include <QDesktopWidget>
 

@@ -37,11 +37,11 @@
 #include <GODesignerObjects.hpp>
 #include <GODesignerSetup.hpp>
 #include <GODesignerRefBy.hpp>
+#include <SelectionList.hpp>
 
 #include <GraphicsProfileObject.hpp>
 #include <PlaneObject.hpp>
 #include <PlaneObjectDesigner.hpp>
-#include "PlaneObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -168,6 +168,9 @@ CPlaneObjectDesigner::CPlaneObjectDesigner(CPlaneObject* p_go)
     //------------------
     connect(WidgetUI.buttonBox3, SIGNAL(clicked(QAbstractButton *)),
             this,SLOT(ButtonBoxClicked(QAbstractButton *)));
+    //------------------
+    connect(WidgetUI.selectFrontAtomsTB, SIGNAL(clicked(bool)),
+            this,SLOT(SelectAtomsAboveFrontFace()));
     //------------------
     connect(Object, SIGNAL(OnStatusChanged(EStatusChanged)),
             this,SLOT(InitValues()));
@@ -406,6 +409,19 @@ void CPlaneObjectDesigner::ProjectLockChanged(EHistoryChangeMessage message)
     WidgetUI.flagsGB->setEnabled(!locked);
     WidgetUI.geometryTab->setEnabled(!locked);
     WidgetUI.otherTab->setEnabled(!locked);
+}
+
+//------------------------------------------------------------------------------
+
+void CPlaneObjectDesigner::SelectAtomsAboveFrontFace(void)
+{
+    CProject* p_proj = Object->GetProject();
+    if( p_proj == NULL ) return;
+    CPoint dir = Object->GetDirection();
+    CPoint pos = Object->GetPosition();
+    double d = -VectDot(dir,pos);
+    p_proj->GetSelection()->SelectAtomsByPlane(dir.x,dir.y,dir.z,d,true);
+    p_proj->RepaintProject();
 }
 
 //==============================================================================

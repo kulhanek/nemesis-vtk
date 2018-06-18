@@ -19,7 +19,6 @@
 // =============================================================================
 
 #include <TerminalEdit.hpp>
-#include <TerminalEdit.moc>
 #include <TerminalWidget.hpp>
 #include <QKeyEvent>
 

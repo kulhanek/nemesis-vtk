@@ -39,7 +39,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <LightObject.hpp>
 #include <LightObjectDesigner.hpp>
-#include "LightObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

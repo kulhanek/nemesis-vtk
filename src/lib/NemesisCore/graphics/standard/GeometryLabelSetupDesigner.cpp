@@ -35,7 +35,6 @@
 
 #include <GeometryLabelSetup.hpp>
 #include <GeometryLabelSetupDesigner.hpp>
-#include "GeometryLabelSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

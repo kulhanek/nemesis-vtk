@@ -32,7 +32,6 @@
 #include <AtomLabelSetup.hpp>
 #include <GlobalSetup.hpp>
 #include <AtomLabelSetupDesigner.hpp>
-#include "AtomLabelSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

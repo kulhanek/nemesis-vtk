@@ -40,7 +40,6 @@
 #include <PODesignerGeneral.hpp>
 
 #include <GraphicsProfileDesigner.hpp>
-#include "GraphicsProfileDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

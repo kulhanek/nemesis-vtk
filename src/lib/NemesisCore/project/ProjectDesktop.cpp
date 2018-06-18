@@ -37,8 +37,6 @@
 #include <CategoryUUID.hpp>
 #include <FileSystem.hpp>
 
-#include "ProjectDesktop.moc"
-
 //------------------------------------------------------------------------------
 
 CExtUUID        ProjectDesktopID(

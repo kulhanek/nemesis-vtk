@@ -32,7 +32,6 @@
 #include <CategoryUUID.hpp>
 #include <QPushButton>
 
-#include "ErrorConsoleWorkPanel.moc"
 #include "ErrorConsoleWorkPanel.hpp"
 #include "GlobalWorkPanelsModule.hpp"
 

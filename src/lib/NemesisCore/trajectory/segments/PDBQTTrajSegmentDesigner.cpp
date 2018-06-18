@@ -34,7 +34,6 @@
 #include <Trajectory.hpp>
 
 #include <PDBQTTrajSegmentDesigner.hpp>
-#include "PDBQTTrajSegmentDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

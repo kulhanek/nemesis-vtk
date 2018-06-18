@@ -66,6 +66,7 @@ private slots:
     void DirectionObjectChanged(void);
     void ChangeToSpherical(void);
     void ChangeToCartesian(void);
+    void SelectAtomsAboveFrontFace(void);
     void ProjectLockChanged(EHistoryChangeMessage message);
 };
 

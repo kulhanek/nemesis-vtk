@@ -36,7 +36,6 @@
 
 #include <StandardModelSetup.hpp>
 #include <StandardModelSetupDesigner.hpp>
-#include "StandardModelSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

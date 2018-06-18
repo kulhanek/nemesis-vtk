@@ -37,7 +37,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "XYZImportTool.hpp"
-#include "XYZImportTool.moc"
 
 #include "XYZImportJob.hpp"
 

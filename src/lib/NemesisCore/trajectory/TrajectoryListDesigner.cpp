@@ -30,7 +30,6 @@
 #include <PODesignerTrajectories.hpp>
 
 #include <TrajectoryListDesigner.hpp>
-#include "TrajectoryListDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

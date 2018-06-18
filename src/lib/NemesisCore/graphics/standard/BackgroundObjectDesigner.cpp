@@ -35,7 +35,6 @@
 #include <BackgroundObject.hpp>
 
 #include <BackgroundObjectDesigner.hpp>
-#include "BackgroundObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -37,7 +37,6 @@
 #include <PODesignerGeneral.hpp>
 
 #include <GraphicsViewDesigner.hpp>
-#include "GraphicsViewDesigner.moc"
 
 // undef some strange windows macros
 #ifdef WIN32

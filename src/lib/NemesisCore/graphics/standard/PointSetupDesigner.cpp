@@ -32,7 +32,6 @@
 #include <NemesisCoreModule.hpp>
 #include <PointSetup.hpp>
 #include <PointSetupDesigner.hpp>
-#include "PointSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

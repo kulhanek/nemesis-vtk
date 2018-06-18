@@ -43,7 +43,6 @@
 #include "XYZTrajImportTool.hpp"
 #include "XYZTrajSegment.hpp"
 #include "ExtraImpexModule.hpp"
-#include "XYZTrajImportTool.moc"
 
 #include "openbabel/mol.h"
 #include "openbabel/obconversion.h"

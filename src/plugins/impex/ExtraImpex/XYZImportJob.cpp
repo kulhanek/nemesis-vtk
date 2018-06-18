@@ -46,7 +46,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "XYZImportJob.hpp"
-#include "XYZImportJob.moc"
 
 #include "openbabel/mol.h"
 #include "openbabel/obconversion.h"

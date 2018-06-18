@@ -67,8 +67,6 @@
 
 #include "AmberModule.hpp"
 #include "GESPAsRESPImportJob.hpp"
-#include "GESPAsRESPImportJob.moc"
-
 
 //------------------------------------------------------------------------------
 using namespace std;

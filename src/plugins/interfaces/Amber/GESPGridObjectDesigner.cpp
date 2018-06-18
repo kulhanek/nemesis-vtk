@@ -36,7 +36,6 @@
 #include "AmberModule.hpp"
 #include "GESPGridObject.hpp"
 #include "GESPGridObjectDesigner.hpp"
-#include "GESPGridObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

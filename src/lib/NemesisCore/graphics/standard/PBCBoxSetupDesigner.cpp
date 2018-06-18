@@ -32,7 +32,6 @@
 #include <NemesisCoreModule.hpp>
 #include <PBCBoxSetup.hpp>
 #include <PBCBoxSetupDesigner.hpp>
-#include "PBCBoxSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

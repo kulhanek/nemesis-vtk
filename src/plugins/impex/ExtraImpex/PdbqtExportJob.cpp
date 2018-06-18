@@ -47,7 +47,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "PdbqtExportJob.hpp"
-#include "PdbqtExportJob.moc"
 
 #include <fstream>
 

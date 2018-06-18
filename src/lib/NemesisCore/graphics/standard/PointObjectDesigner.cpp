@@ -38,7 +38,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <PointObject.hpp>
 #include <PointObjectDesigner.hpp>
-#include "PointObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

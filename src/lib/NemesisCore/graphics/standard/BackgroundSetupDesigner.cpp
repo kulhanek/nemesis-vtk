@@ -31,7 +31,6 @@
 #include <NemesisCoreModule.hpp>
 #include <BackgroundSetup.hpp>
 #include <BackgroundSetupDesigner.hpp>
-#include "BackgroundSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

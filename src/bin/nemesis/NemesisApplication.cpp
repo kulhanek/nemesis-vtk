@@ -19,7 +19,6 @@
 // =============================================================================
 
 #include "NemesisApplication.hpp"
-#include "NemesisApplication.moc"
 #include <CrashCentre.hpp>
 #include <ErrorSystem.hpp>
 

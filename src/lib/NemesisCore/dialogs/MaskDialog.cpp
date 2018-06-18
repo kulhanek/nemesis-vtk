@@ -26,7 +26,6 @@
 
 #include <SelectionList.hpp>
 
-#include "MaskDialog.moc"
 #include <MaskDialog.hpp>
 #include <NemesisCoreModule.hpp>
 #include <QDialog>

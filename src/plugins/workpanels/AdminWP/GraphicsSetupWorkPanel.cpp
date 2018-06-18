@@ -28,7 +28,6 @@
 #include <XMLElement.hpp>
 #include <ExtComObjectDesigner.hpp>
 
-#include "GraphicsSetupWorkPanel.moc"
 #include "GraphicsSetupWorkPanel.hpp"
 #include "GlobalWorkPanelsModule.hpp"
 

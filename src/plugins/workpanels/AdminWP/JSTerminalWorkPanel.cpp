@@ -26,7 +26,6 @@
 #include <NemesisJScript.hpp>
 #include <QVBoxLayout>
 
-#include "JSTerminalWorkPanel.moc"
 #include "JSTerminalWorkPanel.hpp"
 #include "GlobalWorkPanelsModule.hpp"
 

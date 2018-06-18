@@ -31,7 +31,6 @@
 #include <NemesisCoreModule.hpp>
 #include <PlaneSetup.hpp>
 #include <PlaneSetupDesigner.hpp>
-#include "PlaneSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

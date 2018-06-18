@@ -43,7 +43,6 @@
 #include <PlaneObject.hpp>
 #include <PlaneObjectHistory.hpp>
 #include <PlaneSetup.hpp>
-#include "PlaneObject.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -26,7 +26,6 @@
 #include <Terminal.hpp>
 
 #include <NemesisJScript.hpp>
-#include "NemesisJScript.moc"
 
 #include <QTextStream>
 #include <QFile>
@@ -59,7 +58,7 @@
 
 #include <MouseDriverSetup.hpp>
 
-#include "openbabel/obconversion.h"
+#include "openbabel/plugin.h"
 
 using namespace std;
 
@@ -308,9 +307,9 @@ int CNemesisJScript::InitSubsystems(void)
 
     emit SetupLevelChanged(tr("Init OpenBabel ...."));
     CNemesisPlugNotification* p_obn = new CNemesisPlugNotification(p_ww,tr("Loading OpenBabel plugin %1 ...."));
-    OpenBabel::OBConversion::PlugNotification = p_obn;
-    OpenBabel::OBConversion  co;    // this will initialize OBPlugin subsystem
-    OpenBabel::OBConversion::PlugNotification = NULL;
+    OpenBabel::OBPlugNotification::PlugNotification = p_obn;
+    OpenBabel::OBPlugin::LoadAllPlugins();    // this will initialize OBPlugin subsystem
+    OpenBabel::OBPlugNotification::PlugNotification = NULL;
     delete p_obn;
     // do not remove above line - it is necessary for OB 2.3.0
 

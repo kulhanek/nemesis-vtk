@@ -36,8 +36,6 @@
 #include <AtomList.hpp>
 #include <StructureList.hpp>
 
-#include "Trajectory.moc"
-
 //------------------------------------------------------------------------------
 
 CExtUUID        TrajectoryID(

@@ -24,7 +24,6 @@
 #include <ProObjectDesigner.hpp>
 
 #include <PRDesignerGeneral.hpp>
-#include "PRDesignerGeneral.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

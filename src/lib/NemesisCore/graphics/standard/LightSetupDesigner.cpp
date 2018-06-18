@@ -33,7 +33,6 @@
 #include <NemesisCoreModule.hpp>
 #include <LightSetup.hpp>
 #include <LightSetupDesigner.hpp>
-#include "LightSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

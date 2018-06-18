@@ -34,7 +34,6 @@
 
 #include <AngleProperty.hpp>
 #include <AnglePropertyDesigner.hpp>
-#include "AnglePropertyDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

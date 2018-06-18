@@ -8,11 +8,6 @@ SET(AMBER_PLUGIN_SRC
         AmberModule.cpp
         AmberImportJob.cpp
         AmberImportTool.cpp
-        LeapCmds.cpp
-        LeapProject.cpp
-        LeapProjectDesigner.cpp
-        LeapProjectWindow.cpp
-        LeapProjectWindowEdit.cpp
         Rst7ExportJob.cpp
         Rst7ExportTool.cpp
         TopologyImportJob.cpp
@@ -32,8 +27,6 @@ SET(AMBER_PLUGIN_SRC
 # program windows --------------------------------------------------------------
 SET(AMBER_PLUGIN_UIS
         AmberImportTool.ui
-        LeapProjectDesigner.ui
-        LeapProjectWindow.ui
         Rst7ExportTool.ui
         GESPImportTool.ui
         GESPGridObjectDesigner.ui

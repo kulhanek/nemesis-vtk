@@ -30,8 +30,6 @@
 #include <QMessageBox>
 #include <PluginDatabase.hpp>
 
-#include "RecentFileList.moc"
-
 //------------------------------------------------------------------------------
 
 using namespace std;

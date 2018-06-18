@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -405,6 +405,22 @@
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>Selection</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QPushButton" name="selectFrontAtomsTB">
+            <property name="text">
+             <string>Select Atoms Above Front Face</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -447,15 +463,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QQuantitySpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header location="global">QuantitySpinBox.hpp</header>
-  </customwidget>
-  <customwidget>
    <class>QObjectLinkWidget</class>
    <extends>QWidget</extends>
    <header location="global">ObjectLinkWidget.hpp</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QQuantitySpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header location="global">QuantitySpinBox.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

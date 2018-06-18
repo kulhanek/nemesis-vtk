@@ -32,7 +32,6 @@
 #include <PODesignerGeneral.hpp>
 
 #include <GraphicsProfileListDesigner.hpp>
-#include "GraphicsProfileListDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

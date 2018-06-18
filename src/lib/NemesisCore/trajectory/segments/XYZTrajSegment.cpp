@@ -28,7 +28,6 @@
 
 #include <XYZTrajSegment.hpp>
 #include <NemesisCoreModule.hpp>
-#include "XYZTrajSegment.moc"
 
 //------------------------------------------------------------------------------
 

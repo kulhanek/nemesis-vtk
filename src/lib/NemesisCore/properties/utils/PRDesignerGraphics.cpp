@@ -26,7 +26,6 @@
 #include <GraphicsObjectLink.hpp>
 
 #include <PRDesignerGraphics.hpp>
-#include "PRDesignerGraphics.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

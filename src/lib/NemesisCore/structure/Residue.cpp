@@ -35,8 +35,6 @@
 #include <PeriodicTable.hpp>
 #include <HistoryNode.hpp>
 
-#include "Residue.moc"
-
 // remove AddAtom macro defined on Windows
 #if defined AddAtom
 #undef AddAtom

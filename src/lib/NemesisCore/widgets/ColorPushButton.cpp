@@ -21,7 +21,6 @@
 #include <ColorPushButton.hpp>
 #include <ErrorSystem.hpp>
 #include <QColorDialog>
-#include "ColorPushButton.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -32,7 +32,6 @@
 #include <GeoPropertySetup.hpp>
 #include <GlobalSetup.hpp>
 #include <GeoPropertySetupDesigner.hpp>
-#include "GeoPropertySetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

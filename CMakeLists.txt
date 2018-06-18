@@ -6,7 +6,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1 FATAL_ERROR)
 #SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 # define project name ----------------------------------------------------------
-SET(NEMESIS_VERSION 15.x)
+SET(NEMESIS_VERSION 18.x)
 
 # what languages we use --------------------------------------------------------
 ENABLE_LANGUAGE(C)
@@ -28,6 +28,11 @@ ENDIF(NOT DEVELOPMENT_ROOT)
 # ==============================================================================
 # external libraries -----------------------------------------------------------
 # ==============================================================================
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${DEVELOPMENT_ROOT}/projects/cmake-modules/1.0/share/modules")
+
+# boost =======================
+FIND_PACKAGE(MyBoost REQUIRED)
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS} SYSTEM)
 
 # HIPOLY -----------------------------------------
 SET(HIPOLY_ROOT ${DEVELOPMENT_ROOT}/projects/hipoly/1.0)
@@ -69,35 +74,16 @@ SET(ASL_LIB_NAME asl)
 
 ADD_DEFINITIONS(-DUNIX)
 
-# FIREBIRD ---------------------------------------
-#SET(FBCLIENT_ROOT ${DEVELOPMENT_ROOT}/thirdparty/fbclient/2.5.2.26539)
-#INCLUDE_DIRECTORIES(${FBCLIENT_ROOT}/include SYSTEM)
-#LINK_DIRECTORIES(${FBCLIENT_ROOT}/lib)
-#SET(FBCLIENT_ROOT fbclient)
-
-# FIREBIRD ---------------------------------------
-#SET(FIREBIRD_ROOT ${DEVELOPMENT_ROOT}/projects/firebird/1.0)
-#INCLUDE_DIRECTORIES(${FIREBIRD_ROOT}/src/lib/firebird SYSTEM)
-#LINK_DIRECTORIES(${FIREBIRD_ROOT}/lib)
-#SET(FIREBIRD_LIB_NAME firebird)
-
 # OpenBabel --------------------------------------
-SET(OPEN_BABEL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/obcore/2.3.1)
+SET(OPEN_BABEL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/obcore/2.4.0)
 INCLUDE_DIRECTORIES(${OPEN_BABEL_ROOT}/include)
 LINK_DIRECTORIES(${OPEN_BABEL_ROOT}/lib)
 SET(OPEN_BABEL_LIB obcore)
 
-# Indigo -----------------------------------------
-SET(INDIGO_ROOT ${DEVELOPMENT_ROOT}/thirdparty/indigo/1.1)
-INCLUDE_DIRECTORIES(${INDIGO_ROOT}/src/api)
-LINK_DIRECTORIES(${INDIGO_ROOT}/lib)
-SET(INDIGO_LIB indigo)
-
 # FreeType ----------------------------------------
-SET(FT2_ROOT ${DEVELOPMENT_ROOT}/thirdparty/freetype/2.4.10)
-INCLUDE_DIRECTORIES(${FT2_ROOT}/include)
-LINK_DIRECTORIES(${FT2_ROOT}/lib)
-SET(FT2_LIB freetype)
+find_package(Freetype REQUIRED)
+INCLUDE_DIRECTORIES(${FREETYPE_INCLUDE_DIRS})
+#SET(FT2_LIB ${FREETYPE_LIBRARIES)
 
 # FTGL -------------------------------------------
 SET(FTGL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/ftgl/2.1.3rc5)
@@ -117,24 +103,6 @@ INCLUDE_DIRECTORIES(${GLS_ROOT}/include)
 LINK_DIRECTORIES(${GLS_ROOT}/lib)
 SET(GLS_LIB gls)
 
-# ActiveMQ-CPP -----------------------------------
-#SET(CMSCORE_ROOT ${DEVELOPMENT_ROOT}/thirdparty/cmscore/3.4.1)
-#INCLUDE_DIRECTORIES(${CMSCORE_ROOT}/src/lib/cmscore/cmscore)
-#LINK_DIRECTORIES(${CMSCORE_ROOT}/lib)
-#SET(CMSCORE_LIB cmscore)
-
-# boost ---------------------------------------
-SET(BOOST_ROOT ${DEVELOPMENT_ROOT}/thirdparty/boost/1.59.0)
-INCLUDE_DIRECTORIES(${BOOST_ROOT} SYSTEM)
-
-# nLEaP ------------------------------------------
-SET(NLEAP_ROOT ${DEVELOPMENT_ROOT}/projects/nleap/1.0)
-INCLUDE_DIRECTORIES(${NLEAP_ROOT}/src/lib/nleap)
-INCLUDE_DIRECTORIES(${NLEAP_ROOT}/src/lib/nleapcmds)
-LINK_DIRECTORIES(${NLEAP_ROOT}/lib)
-SET(NLEAP_LIB nleap)
-SET(NLEAP_CMDS_LIB nleapcmds)
-
 # OpenGL -----------------------------------------
 FIND_PACKAGE(OpenGL REQUIRED)
 
@@ -146,14 +114,9 @@ FIND_PACKAGE(Qt5Gui REQUIRED)
 FIND_PACKAGE(Qt5Script REQUIRED)
 FIND_PACKAGE(Qt5OpenGL REQUIRED)
 FIND_PACKAGE(Qt5Svg REQUIRED)
+FIND_PACKAGE(Qt5WebEngine REQUIRED)
 SET(HAVE_QT5 1)
 ADD_DEFINITIONS(-DHAVE_QT5)
-
-# policies ---------------------------------------
-IF(COMMAND cmake_policy)
-    cmake_policy(SET CMP0003 NEW)
-    cmake_policy(SET CMP0020 NEW)
-ENDIF(COMMAND cmake_policy)
 
 # ==============================================================================
 # output directories -----------------------------------------------------------
@@ -176,7 +139,7 @@ SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
 # the RPATH to be used when installing
 SET(CMAKE_INSTALL_RPATH
-        "${CMAKE_INSTALL_PREFIX}/lib:${CMAKE_INSTALL_PREFIX}/lib/openbabel/2.3.0")
+        "${CMAKE_INSTALL_PREFIX}/lib:${CMAKE_INSTALL_PREFIX}/lib/openbabel/2.4.0")
 
 # add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH

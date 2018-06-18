@@ -99,6 +99,12 @@ public:
     /// select atoms by mask
     bool SelectAtomsByMask(const QString& mask,EAtomMaskType type,CStructure* p_mol);
 
+    /// select atoms by plane
+    void SelectAtomsByPlane(double a,double b,double c, double d,bool front);
+
+    /// select atoms by plane
+    void SelectAtomsByPlane(double a,double b,double c, double d,bool front,CStructure* p_mol);
+
     /// select bonds by name
     void SelectBondsByName(const QRegExp& regexp);
 

@@ -64,8 +64,6 @@
 #include "AmberModule.hpp"
 #include "GESPGridObject.hpp"
 #include "GESPImportJob.hpp"
-#include "GESPImportJob.moc"
-
 
 //------------------------------------------------------------------------------
 using namespace std;

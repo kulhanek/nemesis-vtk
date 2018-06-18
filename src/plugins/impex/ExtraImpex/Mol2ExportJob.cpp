@@ -46,7 +46,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "Mol2ExportJob.hpp"
-#include "Mol2ExportJob.moc"
 
 #include <fstream>
 

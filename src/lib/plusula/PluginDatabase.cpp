@@ -29,8 +29,6 @@
 #include <XMLPrinter.hpp>
 #include <SystemFS.hpp>
 
-#include "PluginDatabase.moc"
-
 //------------------------------------------------------------------------------
 
 /*

@@ -37,7 +37,6 @@
 #include "AmberModule.hpp"
 
 #include "TopologyImportTool.hpp"
-#include "TopologyImportTool.moc"
 
 #include "TopologyImportJob.hpp"
 

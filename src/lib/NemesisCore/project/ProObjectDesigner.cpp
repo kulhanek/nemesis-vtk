@@ -22,7 +22,6 @@
 // =============================================================================
 
 #include <ProObjectDesigner.hpp>
-#include "ProObjectDesigner.moc"
 #include <ProjectList.hpp>
 #include <DesktopSystem.hpp>
 #include <ProObject.hpp>

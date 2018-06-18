@@ -36,7 +36,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "NStrExportTool.hpp"
-#include "NStrExportTool.moc"
 
 #include "NStrExportJob.hpp"
 

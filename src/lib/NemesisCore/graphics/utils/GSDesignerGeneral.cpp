@@ -24,7 +24,6 @@
 #include <ProObjectDesigner.hpp>
 
 #include <GSDesignerGeneral.hpp>
-#include "GSDesignerGeneral.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

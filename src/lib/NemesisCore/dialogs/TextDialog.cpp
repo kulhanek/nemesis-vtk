@@ -26,7 +26,6 @@
 
 #include <SelectionList.hpp>
 
-#include "TextDialog.moc"
 #include <TextDialog.hpp>
 #include <NemesisCoreModule.hpp>
 

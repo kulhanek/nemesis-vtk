@@ -41,7 +41,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <GeometryLabelObject.hpp>
 #include <GeometryLabelObjectDesigner.hpp>
-#include "GeometryLabelObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -36,9 +36,6 @@
 #include <QContextMenuEvent>
 #include <QMessageBox>
 
-#include "ExtComObjectDesigner.moc"
-
-
 #if defined _WIN32 || defined __CYGWIN__
 #undef GetObject
 #endif

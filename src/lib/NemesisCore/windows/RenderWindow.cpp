@@ -21,7 +21,6 @@
 // =============================================================================
 
 #include <RenderWindow.hpp>
-#include "RenderWindow.moc"
 
 #include <ProjectList.hpp>
 #include <Project.hpp>

@@ -34,7 +34,6 @@
 
 #include <TorsionProperty.hpp>
 #include <TorsionPropertyDesigner.hpp>
-#include "TorsionPropertyDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

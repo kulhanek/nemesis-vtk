@@ -32,7 +32,6 @@
 #include <NemesisCoreModule.hpp>
 #include <FastModelSetup.hpp>
 #include <FastModelSetupDesigner.hpp>
-#include "FastModelSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -34,8 +34,6 @@
 #include <GeoPropertySetup.hpp>
 #include <ElementColorsList.hpp>
 
-#include "AngleProperty.moc"
-
 #if defined _WIN32 || defined __CYGWIN__
 #undef DrawText
 #endif

@@ -36,7 +36,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <PBCBoxObject.hpp>
 #include <PBCBoxObjectDesigner.hpp>
-#include "PBCBoxObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

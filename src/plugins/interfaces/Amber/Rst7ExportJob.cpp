@@ -46,7 +46,6 @@
 #include "AmberModule.hpp"
 
 #include "Rst7ExportJob.hpp"
-#include "Rst7ExportJob.moc"
 
 #include <fstream>
 

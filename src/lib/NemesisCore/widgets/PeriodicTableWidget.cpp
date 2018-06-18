@@ -20,7 +20,6 @@
 // =============================================================================
 
 #include <PeriodicTableWidget.hpp>
-#include <PeriodicTableWidget.moc>
 
 #include <ErrorSystem.hpp>
 #include <SmallColor.hpp>

@@ -35,8 +35,6 @@
 #include "AmberModule.hpp"
 
 #include "Rst7ExportTool.hpp"
-#include "Rst7ExportTool.moc"
-
 #include "Rst7ExportJob.hpp"
 
 //==============================================================================

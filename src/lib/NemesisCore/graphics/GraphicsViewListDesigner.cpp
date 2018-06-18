@@ -32,7 +32,6 @@
 #include <PODesignerGeneral.hpp>
 
 #include <GraphicsViewListDesigner.hpp>
-#include "GraphicsViewListDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -19,7 +19,6 @@
 // =============================================================================
 
 #include <TerminalWidget.hpp>
-#include <TerminalWidget.moc>
 #include <TerminalEdit.hpp>
 
 #include <QVBoxLayout>

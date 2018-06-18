@@ -22,7 +22,6 @@
 #include <NemesisCoreModule.hpp>
 #include <CategoryUUID.hpp>
 #include <WorkPanelList.hpp>
-#include "WorkPanelModel.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

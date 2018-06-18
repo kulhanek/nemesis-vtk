@@ -37,8 +37,6 @@
 #include <GraphicsShadowView.hpp>
 #include <FTGLFontCache.hpp>
 
-#include "GraphicsView.moc"
-
 // undef some strange windows macros
 #ifdef WIN32
 #undef near

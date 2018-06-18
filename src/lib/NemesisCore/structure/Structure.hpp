@@ -84,8 +84,11 @@ public:
     /// set box parameters
     bool SetBoxWH(bool pa,bool pb,bool pc,const CPoint& sizes,const CPoint& angles);
 
-    /// build super cell
+    /// build super cell - ka,kb,kc - dimmensions of supercell
     bool BuildSuperCellWH(int ka,int kb,int kc);
+
+    /// build super cell - va,vb,vc - transformation vector, n - number of repeats
+    bool BuildSuperCellWH(int va,int vb,int vc,int n);
 
     /// set sequence index
     bool SetSeqIndexWH(int seqidx);

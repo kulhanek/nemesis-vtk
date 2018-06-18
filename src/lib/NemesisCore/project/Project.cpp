@@ -50,8 +50,6 @@
 #include <StaticIndexes.hpp>
 #include <TrajectoryList.hpp>
 
-#include "Project.moc"
-
 //------------------------------------------------------------------------------
 
 void ProjectRegisterMetaObject(void)

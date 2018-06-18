@@ -38,7 +38,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <BoxObject.hpp>
 #include <BoxObjectDesigner.hpp>
-#include "BoxObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

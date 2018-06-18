@@ -51,7 +51,6 @@
 
 #include "AmberModule.hpp"
 #include "AmberImportJob.hpp"
-#include "AmberImportJob.moc"
 
 //------------------------------------------------------------------------------
 

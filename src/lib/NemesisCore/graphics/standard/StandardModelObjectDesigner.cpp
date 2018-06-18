@@ -41,7 +41,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <StandardModelObject.hpp>
 #include <StandardModelObjectDesigner.hpp>
-#include "StandardModelObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

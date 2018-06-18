@@ -37,7 +37,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <GraphicsObjectLink.hpp>
 #include <GraphicsObjectLinkDesigner.hpp>
-#include "GraphicsObjectLinkDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

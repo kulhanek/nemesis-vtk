@@ -37,7 +37,6 @@
 #include "AmberModule.hpp"
 
 #include "ChargesImportTool.hpp"
-#include "ChargesImportTool.moc"
 
 #include "ChargesImportJob.hpp"
 

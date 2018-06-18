@@ -37,8 +37,6 @@
 #include <GraphicsProfileList.hpp>
 #include <GraphicsObjectList.hpp>
 
-#include "PropertyAtomList.moc"
-
 // remove AddAtom macro defined on Windows
 #if defined AddAtom
 #undef AddAtom

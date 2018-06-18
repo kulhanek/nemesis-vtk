@@ -32,7 +32,6 @@
 #include <NemesisCoreModule.hpp>
 #include <BoxSetup.hpp>
 #include <BoxSetupDesigner.hpp>
-#include "BoxSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

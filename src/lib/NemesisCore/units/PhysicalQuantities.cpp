@@ -36,8 +36,6 @@
 #include <CategoryUUID.hpp>
 #include <math.h>
 
-#include "PhysicalQuantities.moc"
-
 // -----------------------------------------------------------------------------
 // XMLSetup
 /*

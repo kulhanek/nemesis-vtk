@@ -26,7 +26,6 @@
 
 #include <SelectionList.hpp>
 
-#include "RegExpDialog.moc"
 #include <RegExpDialog.hpp>
 #include <NemesisCoreModule.hpp>
 #include <QDialog>

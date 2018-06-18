@@ -38,7 +38,6 @@
 #include <ProjectList.hpp>
 #include <SpecAxesSetup.hpp>
 #include <SpecAxesSetupDesigner.hpp>
-#include "SpecAxesSetupDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

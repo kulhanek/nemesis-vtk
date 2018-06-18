@@ -40,7 +40,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <FastModelObject.hpp>
 #include <FastModelObjectDesigner.hpp>
-#include "FastModelObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

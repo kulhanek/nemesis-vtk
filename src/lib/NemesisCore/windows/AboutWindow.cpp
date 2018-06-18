@@ -21,7 +21,6 @@
 // =============================================================================
 
 #include "AboutWindow.hpp"
-#include "AboutWindow.moc"
 
 #include <QDesktopWidget>
 

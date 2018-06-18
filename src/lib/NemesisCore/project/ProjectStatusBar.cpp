@@ -37,8 +37,6 @@
 #include <MouseDriver.hpp>
 #include <ErrorSystem.hpp>
 
-#include "ProjectStatusBar.moc"
-
 //------------------------------------------------------------------------------
 
 #define SB_ICON_SIZE 16

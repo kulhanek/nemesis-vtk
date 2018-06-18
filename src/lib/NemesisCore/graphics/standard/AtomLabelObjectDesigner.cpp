@@ -37,7 +37,6 @@
 
 #include <AtomLabelObject.hpp>
 #include <AtomLabelObjectDesigner.hpp>
-#include "AtomLabelObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

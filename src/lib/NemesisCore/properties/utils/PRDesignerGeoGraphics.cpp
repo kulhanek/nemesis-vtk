@@ -28,7 +28,6 @@
 #include <PhysicalQuantities.hpp>
 
 #include <PRDesignerGeoGraphics.hpp>
-#include "PRDesignerGeoGraphics.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

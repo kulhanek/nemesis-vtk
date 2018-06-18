@@ -31,7 +31,6 @@
 #include <ExtUUID.hpp>
 #include <CategoryUUID.hpp>
 
-#include <CrashCentre.moc>
 #include <CrashCentre.hpp>
 
 //==============================================================================

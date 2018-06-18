@@ -39,7 +39,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <XYZAxesObject.hpp>
 #include <XYZAxesObjectDesigner.hpp>
-#include "XYZAxesObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

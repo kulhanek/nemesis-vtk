@@ -52,8 +52,6 @@
 
 #include <queue>
 
-#include "AtomList.moc"
-
 using namespace std;
 
 //==============================================================================

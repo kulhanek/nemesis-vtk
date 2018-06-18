@@ -20,7 +20,6 @@
 // =============================================================================
 
 #include "ColorSetupWorkPanel.hpp"
-#include "ColorSetupWorkPanel.moc"
 
 #include "GlobalWorkPanelsModule.hpp"
 

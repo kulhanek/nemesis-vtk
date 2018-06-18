@@ -37,8 +37,6 @@
 #include "AmberModule.hpp"
 
 #include "GESPAsRESPImportTool.hpp"
-#include "GESPAsRESPImportTool.moc"
-
 #include "GESPAsRESPImportJob.hpp"
 
 //==============================================================================

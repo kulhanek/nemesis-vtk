@@ -33,7 +33,6 @@
 #include <Trajectory.hpp>
 
 #include <XYZTrajSegmentDesigner.hpp>
-#include "XYZTrajSegmentDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

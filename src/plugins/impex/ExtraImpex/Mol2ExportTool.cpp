@@ -36,7 +36,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "Mol2ExportTool.hpp"
-#include "Mol2ExportTool.moc"
 
 #include "Mol2ExportJob.hpp"
 

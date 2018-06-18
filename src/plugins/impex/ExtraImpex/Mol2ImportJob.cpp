@@ -53,7 +53,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "Mol2ImportJob.hpp"
-#include "Mol2ImportJob.moc"
 #include "Mol2ImportTypes.hpp"
 
 #include <fstream>

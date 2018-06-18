@@ -34,8 +34,6 @@
 #include <PluginObject.hpp>
 #include <GraphicsViewList.hpp>
 
-#include "GraphicsObject.moc"
-
 // -----------------------------------------------------------------------------
 
 CExtUUID PrivateObjectID(

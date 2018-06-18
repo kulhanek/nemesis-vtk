@@ -29,7 +29,6 @@
 #include <Project.hpp>
 
 #include <PODesignerTrajectories.hpp>
-#include "PODesignerTrajectories.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

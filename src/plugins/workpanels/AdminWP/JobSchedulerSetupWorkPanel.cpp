@@ -30,7 +30,6 @@
 #include <Project.hpp>
 #include <ContainerModel.hpp>
 
-#include "JobSchedulerSetupWorkPanel.moc"
 #include "JobSchedulerSetupWorkPanel.hpp"
 #include "GlobalWorkPanelsModule.hpp"
 

@@ -34,7 +34,6 @@
 
 #include <DistanceProperty.hpp>
 #include <DistancePropertyDesigner.hpp>
-#include "DistancePropertyDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

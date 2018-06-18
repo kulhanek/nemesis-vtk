@@ -36,7 +36,6 @@
 #include <PhysicalQuantity.hpp>
 
 #include <VibTrajSegmentDesigner.hpp>
-#include "VibTrajSegmentDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

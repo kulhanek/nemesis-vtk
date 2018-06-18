@@ -37,7 +37,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <TextObject.hpp>
 #include <TextObjectDesigner.hpp>
-#include "TextObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

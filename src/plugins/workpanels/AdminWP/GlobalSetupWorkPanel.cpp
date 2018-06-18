@@ -36,7 +36,6 @@
 #include <GraphicsSetupProfile.hpp>
 #include <QFileDialog>
 
-#include "GlobalSetupWorkPanel.moc"
 #include "GlobalSetupWorkPanel.hpp"
 #include "GlobalWorkPanelsModule.hpp"
 

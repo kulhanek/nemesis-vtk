@@ -39,7 +39,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <FreezedAtomsObject.hpp>
 #include <FreezedAtomsObjectDesigner.hpp>
-#include "FreezedAtomsObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -37,8 +37,6 @@
 #include <PluginDatabase.hpp>
 #include <iomanip>
 
-#include "GlobalSetup.moc"
-
 #define VERSION "14.x"
 
 //------------------------------------------------------------------------------

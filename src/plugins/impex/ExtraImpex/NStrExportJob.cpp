@@ -47,7 +47,6 @@
 #include "ExtraImpexModule.hpp"
 
 #include "NStrExportJob.hpp"
-#include "NStrExportJob.moc"
 
 #include <fstream>
 

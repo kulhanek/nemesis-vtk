@@ -41,11 +41,6 @@ INCLUDE_DIRECTORIES(lib/NemesisCore/trajectory SYSTEM)
 INCLUDE_DIRECTORIES(lib/NemesisCore/trajectory/segments SYSTEM)
 INCLUDE_DIRECTORIES(lib/NemesisCore/batchjob SYSTEM)
 
-# part used by collaborative project
-INCLUDE_DIRECTORIES(lib/CollabCore/ SYSTEM)
-INCLUDE_DIRECTORIES(lib/CollabCore/communication SYSTEM)
-INCLUDE_DIRECTORIES(lib/CollabCore/data/base SYSTEM)
-
 # include subdirectories -------------------------------------------------------
 
 # NemesisCore and plugins

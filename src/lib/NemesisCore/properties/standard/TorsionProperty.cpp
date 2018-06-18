@@ -34,8 +34,6 @@
 #include <GraphicsUtil.hpp>
 #include <ElementColorsList.hpp>
 
-#include "TorsionProperty.moc"
-
 #if defined _WIN32 || defined __CYGWIN__
 #undef DrawText
 #endif

@@ -25,9 +25,7 @@
 #include <ErrorSystem.hpp>
 #include <Atom.hpp>
 
-
 #include <GOColorMode.hpp>
-#include "GOColorMode.moc"
 #include <GOColorModeHistory.hpp>
 
 // -----------------------------------------------------------------------------

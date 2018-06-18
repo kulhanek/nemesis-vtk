@@ -38,7 +38,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <VectorObject.hpp>
 #include <VectorObjectDesigner.hpp>
-#include "VectorObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

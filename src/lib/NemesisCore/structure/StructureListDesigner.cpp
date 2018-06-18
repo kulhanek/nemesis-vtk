@@ -30,7 +30,6 @@
 #include <PODesignerStructures.hpp>
 
 #include <StructureListDesigner.hpp>
-#include "StructureListDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

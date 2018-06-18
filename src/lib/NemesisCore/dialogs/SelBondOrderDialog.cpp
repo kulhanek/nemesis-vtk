@@ -26,7 +26,6 @@
 
 #include <SelectionList.hpp>
 
-#include "SelBondOrderDialog.moc"
 #include <SelBondOrderDialog.hpp>
 #include <NemesisCoreModule.hpp>
 #include <QDialog>

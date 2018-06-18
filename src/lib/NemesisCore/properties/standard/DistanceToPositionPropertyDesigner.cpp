@@ -36,7 +36,6 @@
 
 #include <DistanceToPositionProperty.hpp>
 #include <DistanceToPositionPropertyDesigner.hpp>
-#include "DistanceToPositionPropertyDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

@@ -48,7 +48,6 @@
 #include <GraphicsProfileObject.hpp>
 #include <SpecAxesObject.hpp>
 #include <SpecAxesObjectDesigner.hpp>
-#include "SpecAxesObjectDesigner.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------

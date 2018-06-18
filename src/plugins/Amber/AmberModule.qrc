@@ -1,7 +1,0 @@
-<!DOCTYPE RCC><RCC version="1.0">
- <qresource>
-     <file>images/AmberPlugin/nLEaPProject.svg</file>
-     <file>images/AmberPlugin/fileopen.png</file>
-     <file>images/AmberPlugin/fileclose.png</file>
- </qresource>
- </RCC>
