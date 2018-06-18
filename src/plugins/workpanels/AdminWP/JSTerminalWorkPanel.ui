@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>JSTerminalWorkPanel</class>
+ <widget class="QWidget" name="JSTerminalWorkPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>238</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Javascript Console</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="AdminWorkPanels.qrc">
+    <normaloff>:/images/AdminWorkPanels/javascript.png</normaloff>:/images/AdminWorkPanels/javascript.png</iconset>
+  </property>
+ </widget>
+ <resources>
+  <include location="AdminWorkPanels.qrc"/>
+ </resources>
+ <connections/>
+</ui>

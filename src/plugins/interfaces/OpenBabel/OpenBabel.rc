@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file>images/OpenBabel/OpenBabel.png</file>
+    <file>images/OpenBabel/GraphSymmetryWorkPanel.svg</file>
+  </qresource>
+</RCC>
