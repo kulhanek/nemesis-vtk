@@ -126,20 +126,23 @@ LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/lib)
 # rpaths -----------------------------------------------------------------------
 # ==============================================================================
 
-# use, i.e. don't skip the full RPATH for the build tree
-SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
+IF(NOT DEFINED COMPOSITE_PROJECT)
 
-# when building, don't use the install RPATH already
-# (but later on when installing)
-SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+    # use, i.e. don't skip the full RPATH for the build tree
+    SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 
-# the RPATH to be used when installing
-SET(CMAKE_INSTALL_RPATH
-        "${CMAKE_INSTALL_PREFIX}/lib:${CMAKE_INSTALL_PREFIX}/lib/openbabel/2.4.0")
+    # when building, don't use the install RPATH already
+    # (but later on when installing)
+    SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
-# add the automatically determined parts of the RPATH
-# which point to directories outside the build tree to the install RPATH
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
+    # the RPATH to be used when installing
+    SET(CMAKE_INSTALL_RPATH
+            "${CMAKE_INSTALL_PREFIX}/lib:${CMAKE_INSTALL_PREFIX}/lib/openbabel/2.4.0")
+
+    # add the automatically determined parts of the RPATH
+    # which point to directories outside the build tree to the install RPATH
+    SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
+ENDIF(OT DEFINED COMPOSITE_PROJECT)
 
 # ==============================================================================
 # compiler setups --------------------------------------------------------------
