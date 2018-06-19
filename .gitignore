@@ -13,7 +13,7 @@ Makefile
 /bin/*
 /lib/*
 /include/*
-/etc/plugins
+/etc/plugins/*.plg
 Testing/
 Nemesis15.x.*
 NemesisWin.*

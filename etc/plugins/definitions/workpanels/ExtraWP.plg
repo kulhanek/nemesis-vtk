@@ -1,0 +1,5 @@
+<!-- Plugin Setup -->
+<PLUGIN name="ExtraWP"
+        uuid="{EXTRA_WP:adf3823e-cf3b-4769-9c52-55f97a2916f6}">
+    <!-- some local setup will be here -->
+</PLUGIN> 
