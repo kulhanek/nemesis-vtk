@@ -8,6 +8,13 @@ INSTALL(DIRECTORY
             etc/plugins/
         )
 
+INSTALL(FILES
+            plugins/ConnectPlugins.sh
+        DESTINATION
+            etc/plugins/
+        PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+        )
+
 INSTALL(DIRECTORY
             graphics
         DESTINATION

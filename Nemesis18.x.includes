@@ -26,3 +26,4 @@ etc/plugins/definitions/properties
 .
 src/lib/NemesisCore
 src/lib/NemesisCore/windows
+etc

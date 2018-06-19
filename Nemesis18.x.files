@@ -1,4 +1,6 @@
 README.md
+etc/CMakeLists.txt
+etc/CMakeLists.txt
 etc/plugins/definitions/NemesisCore.plg
 etc/plugins/definitions/impex/ExtraImpex.plg
 etc/plugins/definitions/interfaces/Amber.plg
