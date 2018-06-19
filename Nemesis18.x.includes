@@ -25,3 +25,4 @@ etc/plugins/definitions/projects
 etc/plugins/definitions/properties
 .
 src/lib/NemesisCore
+src/lib/NemesisCore/windows

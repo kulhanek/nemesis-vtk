@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>images/NemesisCore/MainLogo.png</file>
     <file>images/NemesisCore/trajectory/MoveDownTrajectoryFilter.svg</file>
     <file>images/NemesisCore/trajectory/MoveUpTrajectoryFilter.svg</file>
     <file>images/NemesisCore/trajectory/NewTrajectoryFilter.svg</file>
@@ -31,7 +32,6 @@
     <file>images/NemesisCore/window/ConfigMainWindow/arrows/right.png</file>
     <file>images/NemesisCore/window/ConfigMainWindow/arrows/left.png</file>
     <file>images/NemesisCore/window/ConfigMainWindow/arrows/separator.png</file>
-    <file>images/NemesisCore/MainLogo.png</file>
     <file>images/NemesisCore/project/ProjectStatusBar/JobStatus.png</file>
     <file>images/NemesisCore/project/ProjectStatusBar/Changed.png</file>
     <file>images/NemesisCore/project/ProjectStatusBar/SRT.svg</file>

@@ -14,6 +14,7 @@ etc/plugins/definitions/workpanels/AdminWP.plg
 etc/plugins/definitions/workpanels/ExtraWP.plg
 etc/plugins/definitions/workpanels/StandardWP.plg
 src/lib/NemesisCore/NemesisCoreMainHeaderConfig.hpp
+src/lib/NemesisCore/windows/AboutWindow.ui
 src/plugins/properties/RMSDTools/CMakeLists.txt
 src/plugins/workpanels/AdminWP/AdminWP.qrc
 src/plugins/workpanels/AdminWP/GlobalWorkPanels.qrc

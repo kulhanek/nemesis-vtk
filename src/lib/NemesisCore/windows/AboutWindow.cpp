@@ -21,6 +21,7 @@
 // =============================================================================
 
 #include "AboutWindow.hpp"
+#include <NemesisCoreMainHeader.hpp>
 
 #include <QDesktopWidget>
 
@@ -74,6 +75,8 @@ CAboutWindow::CAboutWindow(void)
     x = (available_desktop.width() - width()) / 2;
     y = (available_desktop.height() - height()) / 2;
     setGeometry( x, y, width(), height());
+
+    WidgetUI.VersionLB->setText(LibBuildVersion_NEMESIS);
 
     // show window
     show();
