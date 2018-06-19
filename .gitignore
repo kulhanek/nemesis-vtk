@@ -18,3 +18,4 @@ Testing/
 Nemesis15.x.*
 NemesisWin.*
 /test/*
+src/lib/NemesisCore/NemesisCoreMainHeaderConfig.hpp

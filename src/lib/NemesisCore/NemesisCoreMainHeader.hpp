@@ -24,8 +24,6 @@
 
 #include <HiPoLyMainHeader.hpp>
 
-#define NEMESIS_VERSION "9.0.SVNVERSION (DATE) [Nemesis]"
-
 //------------------------------------------------------------------------------
 
 extern const char* LibBuildVersion_NEMESIS;
