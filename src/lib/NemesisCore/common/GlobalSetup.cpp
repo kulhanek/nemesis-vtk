@@ -37,7 +37,7 @@
 #include <PluginDatabase.hpp>
 #include <iomanip>
 
-#define VERSION "14.x"
+#define VERSION "18.x"
 
 //------------------------------------------------------------------------------
 

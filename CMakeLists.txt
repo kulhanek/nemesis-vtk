@@ -72,30 +72,25 @@ INCLUDE_DIRECTORIES(${ASL_ROOT}/src/lib/asl/trajectory SYSTEM)
 LINK_DIRECTORIES(${ASL_ROOT}/lib)
 SET(ASL_LIB_NAME asl)
 
-ADD_DEFINITIONS(-DUNIX)
-
 # OpenBabel --------------------------------------
 SET(OPEN_BABEL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/obcore/2.4.0)
 INCLUDE_DIRECTORIES(${OPEN_BABEL_ROOT}/include)
 LINK_DIRECTORIES(${OPEN_BABEL_ROOT}/lib)
 SET(OPEN_BABEL_LIB obcore)
 
-# FreeType ----------------------------------------
-find_package(Freetype REQUIRED)
+# GLEW -------------------------------------------
+FIND_PACKAGE(GLEW REQUIRED)
+INCLUDE_DIRECTORIES(${GLEW_INCLUDE_DIRS})
+
+# FreeType ---------------------------------------
+FIND_PACKAGE(Freetype REQUIRED)
 INCLUDE_DIRECTORIES(${FREETYPE_INCLUDE_DIRS})
-#SET(FT2_LIB ${FREETYPE_LIBRARIES)
 
 # FTGL -------------------------------------------
 SET(FTGL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/ftgl/2.1.3rc5)
 INCLUDE_DIRECTORIES(${FTGL_ROOT}/src/lib/ftgl)
 LINK_DIRECTORIES(${FTGL_ROOT}/lib)
 SET(FTGL_LIB ftgl)
-
-# GLEW -------------------------------------------
-SET(GLEW_ROOT ${DEVELOPMENT_ROOT}/thirdparty/glew/1.5.8/)
-INCLUDE_DIRECTORIES(${GLEW_ROOT}/include)
-LINK_DIRECTORIES(${GLEW_ROOT}/lib)
-SET(GLEW_LIB glew)
 
 # GLS -------------------------------------------
 SET(GLS_ROOT ${DEVELOPMENT_ROOT}/thirdparty/gls/1.0.0/)
@@ -117,6 +112,8 @@ FIND_PACKAGE(Qt5Svg REQUIRED)
 FIND_PACKAGE(Qt5WebEngine REQUIRED)
 SET(HAVE_QT5 1)
 ADD_DEFINITIONS(-DHAVE_QT5)
+
+ADD_DEFINITIONS(-DUNIX)
 
 # ==============================================================================
 # output directories -----------------------------------------------------------

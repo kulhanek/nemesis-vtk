@@ -563,11 +563,8 @@ ADD_LIBRARY(nemesis_core_shared SHARED ${NEMESIS_CORE_SRC})
 ADD_DEPENDENCIES(nemesis_core_shared plusula_shared)
 
 TARGET_LINK_LIBRARIES(nemesis_core_shared plusula
-                ${HPMC_LIB}
                 ${GLS_LIB}
-                ${GLEW_LIB}
                 ${FTGL_LIB}
-                ${FREETYPE_LIBRARIES}
                 ${OPENGL_glu_LIBRARY}
                 ${OPENGL_gl_LIBRARY}
                 ${OPEN_BABEL_LIB}
