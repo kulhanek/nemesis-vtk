@@ -3,17 +3,15 @@
 # ==============================================================================
 
 INSTALL(DIRECTORY
-            plugins/definitions/
+            plugins/definitions
         DESTINATION
-            etc/plugins
-        FILES_MATCHING PATTERN
-            "*.plg"
+            etc/plugins/
         )
 
 INSTALL(DIRECTORY
             graphics
         DESTINATION
-            etc
+            etc/
         FILES_MATCHING PATTERN
             "*.xml"
         )
@@ -21,7 +19,7 @@ INSTALL(DIRECTORY
 INSTALL(DIRECTORY
             workpanels
         DESTINATION
-            etc
+            etc/
         FILES_MATCHING PATTERN
             "*.xml"
         )
@@ -29,7 +27,7 @@ INSTALL(DIRECTORY
 INSTALL(DIRECTORY
             desktop
         DESTINATION
-            etc
+            etc/
         FILES_MATCHING PATTERN
             "*.xml"
         )
@@ -37,7 +35,7 @@ INSTALL(DIRECTORY
 INSTALL(DIRECTORY
             desktop
         DESTINATION
-            etc
+            etc/
         FILES_MATCHING PATTERN
             "*.dsk"
         )
