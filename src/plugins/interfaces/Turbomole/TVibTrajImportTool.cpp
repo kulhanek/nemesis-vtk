@@ -32,6 +32,8 @@
 #include <Trajectory.hpp>
 #include <Structure.hpp>
 #include <AtomList.hpp>
+#include <QVBoxLayout>
+#include <QMessageBox>
 
 #include "TVibTrajImportTool.hpp"
 #include "TVibTrajSegment.hpp"
@@ -100,7 +102,7 @@ void CTVibTrajImportTool::InitInternalDialog(void)
 
     // open qfiledialog for file open with filters set correctly
     Dialog = new QFileDialog();
-    Dialog->setFilters(filters);
+    Dialog->setNameFilters(filters);
     Dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(TVibTrajImportToolID)));
     Dialog->setFileMode(QFileDialog::ExistingFile);
     Dialog->setAcceptMode(QFileDialog::AcceptOpen);

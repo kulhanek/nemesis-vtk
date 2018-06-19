@@ -30,11 +30,11 @@
 
 #include <Structure.hpp>
 #include <Project.hpp>
+#include <QMessageBox>
+#include <QVBoxLayout>
 
 #include "TurbomoleModule.hpp"
-
 #include "CoordImportTool.hpp"
-
 #include "CoordImportJob.hpp"
 
 //==============================================================================
@@ -102,7 +102,7 @@ void CCoordImportTool::InitInternalDialog(void)
 
     // open qfiledialog for file open with filters set correctly
     Dialog = new QFileDialog();
-    Dialog->setFilters(filters);
+    Dialog->setNameFilters(filters);
     Dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(CoordImportToolID)));
     Dialog->setFileMode(QFileDialog::ExistingFile);
     Dialog->setAcceptMode(QFileDialog::AcceptOpen);

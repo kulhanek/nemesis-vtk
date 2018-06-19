@@ -38,6 +38,8 @@ SET_TARGET_PROPERTIES(turbomole_shared PROPERTIES
                         CLEAN_DIRECT_OUTPUT 1
                         VERSION ${NEMESIS_VERSION})
 
+QT5_USE_MODULES(turbomole_shared Core Widgets Gui)
+
 TARGET_LINK_LIBRARIES(turbomole_shared
                 NemesisCore
                 plusula
