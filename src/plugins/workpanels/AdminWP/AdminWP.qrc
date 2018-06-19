@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/">
+    <file>images/AdminWP/NewProject.svg</file>
+    <file>images/AdminWP/JavaScriptConsole.svg</file>
+    <file>images/AdminWP/ColorPreferences.svg</file>
+    <file>images/AdminWP/ErrorConsole.svg</file>
+    <file>images/AdminWP/GlobalConfig.svg</file>
+    <file>images/AdminWP/GraphicsSetup.svg</file>
+    <file>images/AdminWP/JobSchedulerSetup.svg</file>
+    <file>images/AdminWP/PeriodicTable.svg</file>
+    <file>images/AdminWP/PluginDatabase.svg</file>
+    <file>images/AdminWP/ObjectInspector.svg</file>
+    <file>images/AdminWP/QuantitySetup.svg</file>
+    <file>images/AdminWP/MainLogo.png</file>
+    <file>images/AdminWP/MainLogoRotated.png</file>
+  </qresource>
+</RCC>

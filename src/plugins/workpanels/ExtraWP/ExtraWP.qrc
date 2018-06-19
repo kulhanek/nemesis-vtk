@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/ExtraWP/CompareInternalGeometry.svg</file>
+        <file>images/ExtraWP/StructureInternalGeometry.svg</file>
+        <file>images/ExtraWP/AutoRotateWorkPanel.svg</file>
+        <file>images/ExtraWP/object_deselect.svg</file>
+        <file>images/ExtraWP/object_select.svg</file>
+        <file>images/ExtraWP/ResidueEditor.svg</file>
+        <file>images/ExtraWP/ResidueListEditor.svg</file>
+        <file>images/ExtraWP/StructurePaletteWP.svg</file>
+        <file>images/ExtraWP/SuperCellBuilder.svg</file>
+    </qresource>
+</RCC>
