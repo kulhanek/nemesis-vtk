@@ -41,9 +41,8 @@
 #include <GraphicsObject.hpp>
 #include <WorkPanelList.hpp>
 
-#include "ActiveProfileManagerWorkPanel.moc"
 #include "ActiveProfileManagerWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -55,9 +54,9 @@ CExtUUID        ActiveProfileManagerWorkPanelID(
                     "{ACTIVE_PROFILE_MANAGER_WORK_PANEL:340c9972-f129-4337-a375-e14f11632857}",
                     "Active Profile Manager");
 
-CPluginObject   ActiveProfileManagerWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   ActiveProfileManagerWorkPanelObject(&StandardWPPlugin,
                     ActiveProfileManagerWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/ActiveProfileInfo.svg",
+                    ":/images/StandardWP/ActiveProfileInfo.svg",
                     ActiveProfileManagerWorkPanelCB);
 
 // -----------------------------------------------------------------------------

@@ -39,10 +39,9 @@
 #include <HistoryList.hpp>
 #include <GeoMeasurement.hpp>
 
-#include "ExtraToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 
 #include "StructureInternalGeometry.hpp"
-#include "StructureInternalGeometry.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -54,9 +53,9 @@ CExtUUID        StructureInternalGeometryID(
                     "{STR_INTERNAL_GEO:412c1f0b-5675-4198-9687-a89555971110}",
                     "Internal Geometry");
 
-CPluginObject   StructureInternalGeometryObject(&ExtraToolsPlugin,
+CPluginObject   StructureInternalGeometryObject(&ExtraWPPlugin,
                     StructureInternalGeometryID,WORK_PANEL_CAT,
-                    ":/images/ExtraTools/StructureInternalGeometry.svg",
+                    ":/images/ExtraWP/StructureInternalGeometry.svg",
                     StructureInternalGeometryCB);
 
 // -----------------------------------------------------------------------------

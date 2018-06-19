@@ -24,7 +24,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="GlobalWorkPanels.qrc">:/images/GlobalWorkPanels/MainLogoRotated.png</pixmap>
+      <pixmap resource="AdminWP.qrc">:/images/AdminWP/MainLogoRotated.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -116,7 +116,7 @@
          </layout>
         </widget>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QLabel" name="label_2">
@@ -133,7 +133,6 @@
           </widget>
          </item>
         </layout>
-        <zorder>descriptionTE</zorder>
        </widget>
       </widget>
      </item>
@@ -150,7 +149,7 @@
  </widget>
  <layoutdefault spacing="6" margin="9"/>
  <resources>
-  <include location="GlobalWorkPanels.qrc"/>
+  <include location="AdminWP.qrc"/>
  </resources>
  <connections/>
  <designerdata>

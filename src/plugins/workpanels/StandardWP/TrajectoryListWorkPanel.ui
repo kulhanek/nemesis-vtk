@@ -152,8 +152,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="StandardWorkPanels.qrc">
-             <normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/ActivateTrajectory.svg</normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/ActivateTrajectory.svg</iconset>
+            <iconset resource="StandardWP.qrc">
+             <normaloff>:/images/StandardWP/TrajectoryListWorkPanel/ActivateTrajectory.svg</normaloff>:/images/StandardWP/TrajectoryListWorkPanel/ActivateTrajectory.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -178,8 +178,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="StandardWorkPanels.qrc">
-             <normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/TrajectoryInfo.svg</normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/TrajectoryInfo.svg</iconset>
+            <iconset resource="StandardWP.qrc">
+             <normaloff>:/images/StandardWP/TrajectoryListWorkPanel/TrajectoryInfo.svg</normaloff>:/images/StandardWP/TrajectoryListWorkPanel/TrajectoryInfo.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -217,8 +217,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="StandardWorkPanels.qrc">
-             <normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/RemoveTrajectory.svg</normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/RemoveTrajectory.svg</iconset>
+            <iconset resource="StandardWP.qrc">
+             <normaloff>:/images/StandardWP/TrajectoryListWorkPanel/RemoveTrajectory.svg</normaloff>:/images/StandardWP/TrajectoryListWorkPanel/RemoveTrajectory.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -243,8 +243,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="StandardWorkPanels.qrc">
-             <normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/NewTrajectory.svg</normaloff>:/images/StandardWorkPanels/TrajectoryListWorkPanel/NewTrajectory.svg</iconset>
+            <iconset resource="StandardWP.qrc">
+             <normaloff>:/images/StandardWP/TrajectoryListWorkPanel/NewTrajectory.svg</normaloff>:/images/StandardWP/TrajectoryListWorkPanel/NewTrajectory.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -266,7 +266,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="StandardWorkPanels.qrc"/>
+  <include location="StandardWP.qrc"/>
  </resources>
  <connections/>
 </ui>

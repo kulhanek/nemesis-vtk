@@ -48,8 +48,8 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="StandardWorkPanels.qrc">
-       <normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/SelectAtoms.svg</normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/SelectAtoms.svg</iconset>
+      <iconset resource="StandardWP.qrc">
+       <normaloff>:/images/StandardWP/SelectByMaskWorkPanel/SelectAtoms.svg</normaloff>:/images/StandardWP/SelectByMaskWorkPanel/SelectAtoms.svg</iconset>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -75,8 +75,8 @@
       <string>Select</string>
      </property>
      <property name="icon">
-      <iconset resource="StandardWorkPanels.qrc">
-       <normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/Execute.svg</normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/Execute.svg</iconset>
+      <iconset resource="StandardWP.qrc">
+       <normaloff>:/images/StandardWP/SelectByMaskWorkPanel/Execute.svg</normaloff>:/images/StandardWP/SelectByMaskWorkPanel/Execute.svg</iconset>
      </property>
     </widget>
    </item>
@@ -86,8 +86,8 @@
       <string>Clear current selection buffer</string>
      </property>
      <property name="icon">
-      <iconset resource="StandardWorkPanels.qrc">
-       <normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/ClearSelection.svg</normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/ClearSelection.svg</iconset>
+      <iconset resource="StandardWP.qrc">
+       <normaloff>:/images/StandardWP/SelectByMaskWorkPanel/ClearSelection.svg</normaloff>:/images/StandardWP/SelectByMaskWorkPanel/ClearSelection.svg</iconset>
      </property>
     </widget>
    </item>
@@ -100,15 +100,15 @@
       <string>...</string>
      </property>
      <property name="icon">
-      <iconset resource="StandardWorkPanels.qrc">
-       <normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/SelectNone.svg</normaloff>:/images/StandardWorkPanels/SelectByMaskWorkPanel/SelectNone.svg</iconset>
+      <iconset resource="StandardWP.qrc">
+       <normaloff>:/images/StandardWP/SelectByMaskWorkPanel/SelectNone.svg</normaloff>:/images/StandardWP/SelectByMaskWorkPanel/SelectNone.svg</iconset>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <resources>
-  <include location="StandardWorkPanels.qrc"/>
+  <include location="StandardWP.qrc"/>
  </resources>
  <connections/>
 </ui>

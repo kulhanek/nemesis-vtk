@@ -35,9 +35,8 @@
 #include <PropertyList.hpp>
 #include <WorkPanelList.hpp>
 
-#include "NewPropertyWorkPanel.moc"
 #include "NewPropertyWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -49,9 +48,9 @@ CExtUUID        NewPropertyWorkPanelID(
                     "{NEW_PROPERTY_WORK_PANEL:4a0b7079-006c-4c7b-a26a-2fec50413de5}",
                     "New Property Work Panel");
 
-CPluginObject   NewPropertyWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   NewPropertyWorkPanelObject(&StandardWPPlugin,
                     NewPropertyWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/PropertyAdd.svg",
+                    ":/images/StandardWP/PropertyAdd.svg",
                     NewPropertyWorkPanelCB);
 
 // -----------------------------------------------------------------------------

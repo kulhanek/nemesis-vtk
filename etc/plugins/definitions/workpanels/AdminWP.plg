@@ -1,0 +1,5 @@
+<!-- GlobalWorkPanels Plugin Setup -->
+<PLUGIN name="AdminWP"
+        uuid="{ADMIN_WP:17650e7a-50e1-426e-b913-a678c1d0b855}">
+    <!-- some local setup will be here -->
+</PLUGIN> 

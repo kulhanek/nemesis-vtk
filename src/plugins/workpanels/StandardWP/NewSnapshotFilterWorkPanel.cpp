@@ -35,9 +35,8 @@
 #include <SnapshotFilter.hpp>
 #include <WorkPanelList.hpp>
 
-#include "NewSnapshotFilterWorkPanel.moc"
 #include "NewSnapshotFilterWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -49,9 +48,9 @@ CExtUUID        NewSnapshotFilterWorkPanelID(
                     "{NEW_SNAPSHOT_FILTER_WORK_PANEL:7b037a7d-4330-4631-b702-9c90a19512c6}",
                     "New Snapshot Filter Work Panel");
 
-CPluginObject   NewSnapshotFilterWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   NewSnapshotFilterWorkPanelObject(&StandardWPPlugin,
                     NewSnapshotFilterWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/SnapshotFilterAdd.svg",
+                    ":/images/StandardWP/SnapshotFilterAdd.svg",
                     NewSnapshotFilterWorkPanelCB);
 
 // -----------------------------------------------------------------------------

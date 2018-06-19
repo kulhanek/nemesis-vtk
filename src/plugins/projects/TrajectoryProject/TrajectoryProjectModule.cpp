@@ -33,7 +33,7 @@ bool TrajectoryProjectPluginCB(EModuleRequest request,void* p_data);
 // -----------------------------------------------------------------------------
 
 CExtUUID        TrajectoryProjectPluginID(
-                    "{TRAJECTORY_PROJECT_MODULE:dbed1085-5ece-4e27-800e-c3924cf62d69}");
+                    "{TRAJECTORY_PROJECT_PLUGIN:dbed1085-5ece-4e27-800e-c3924cf62d69}");
 
 CPluginModule   TrajectoryProjectPlugin(
                     TrajectoryProjectPluginID,

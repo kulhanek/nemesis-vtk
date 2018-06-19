@@ -1,5 +1,0 @@
-<!-- GlobalWorkPanels Plugin Setup -->
-<PLUGIN name="GlobalWorkPanels"
-        uuid="{GLOBAL_WORK_PANELS:17650e7a-50e1-426e-b913-a678c1d0b855}">
-    <!-- some local setup will be here -->
-</PLUGIN> 

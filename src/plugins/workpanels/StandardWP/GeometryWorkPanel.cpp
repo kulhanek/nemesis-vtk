@@ -57,9 +57,8 @@
 #include <TorsionProperty.hpp>
 #include <DistanceToPositionProperty.hpp>
 
-#include "GeometryWorkPanel.moc"
 #include "GeometryWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -71,9 +70,9 @@ CExtUUID        GeometryWorkPanelID(
                     "{GEOMETRY_WORK_PANEL:63a0f336-31f4-4509-84b7-4218e5a84e9d}",
                     "Geometry");
 
-CPluginObject   GeometryWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   GeometryWorkPanelObject(&StandardWPPlugin,
                     GeometryWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/Geometry.svg",
+                    ":/images/StandardWP/Geometry.svg",
                     GeometryWorkPanelCB);
 
 // -----------------------------------------------------------------------------

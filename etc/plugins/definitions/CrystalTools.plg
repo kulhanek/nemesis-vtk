@@ -1,5 +1,0 @@
-<!-- CrystalTools Plugin Setup -->
-<PLUGIN name="CrystalTools"
-        uuid="{CRYSTAL_TOOLS_PLUGIN:c1370a80-b9db-4b82-9874-46de59ace080}">
-    <!-- some local setup will be here -->
-</PLUGIN> 

@@ -3,5 +3,5 @@
 # ==============================================================================
 
 # RMSD fit and isomorphism
-ADD_SUBDIRECTORY(RMSDProp)
+ADD_SUBDIRECTORY(RMSDTools)
 

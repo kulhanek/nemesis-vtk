@@ -3,9 +3,9 @@
 # ==============================================================================
 
 # objects in library -----------------------------------------------------------
-SET(STANDARD_WORK_PANELS_SRC
-        StandardWorkPanelsMainHeader.cpp
-        StandardWorkPanelsModule.cpp
+SET(STANDARD_WP_SRC
+        StandardWPMainHeader.cpp
+        StandardWPModule.cpp
         BuildWorkPanel.cpp
         DockingWorkPanel.cpp
         GeometryWorkPanel.cpp
@@ -25,7 +25,7 @@ SET(STANDARD_WORK_PANELS_SRC
         )
 
 # program windows --------------------------------------------------------------
-SET(STANDARD_WORK_PANELS_UIS
+SET(STANDARD_WP_UIS
         BuildWorkPanel.ui
         DockingWorkPanel.ui
         GeometryWorkPanel.ui
@@ -45,26 +45,26 @@ SET(STANDARD_WORK_PANELS_UIS
         )
 
 # program resources
-SET(STANDARD_WORK_PANELS_RESOURCES
-        StandardWorkPanels.qrc
+SET(STANDARD_WP_RESOURCES
+        StandardWP.qrc
         )
 
 # QT5 related binding ----------------------------------------------------------
-QT5_WRAP_UI(STANDARD_WORK_PANELS_SRC ${STANDARD_WORK_PANELS_UIS})
-QT5_ADD_RESOURCES(STANDARD_WORK_PANELS_SRC ${STANDARD_WORK_PANELS_RESOURCES})
+QT5_WRAP_UI(STANDARD_WP_SRC ${STANDARD_WP_UIS})
+QT5_ADD_RESOURCES(STANDARD_WP_SRC ${STANDARD_WP_RESOURCES})
 
 # Nemesis uses plugins, so dynamic linking is obligatory!
 
 # create shared library --------------------------------------------------------
-ADD_LIBRARY(standard_work_panels_shared SHARED ${STANDARD_WORK_PANELS_SRC})
-ADD_DEPENDENCIES(standard_work_panels_shared nemesis_core_shared)
+ADD_LIBRARY(standard_wp SHARED ${STANDARD_WP_SRC})
+ADD_DEPENDENCIES(standard_wp nemesis_core_shared)
 
-SET_TARGET_PROPERTIES(standard_work_panels_shared PROPERTIES
-                        OUTPUT_NAME StandardWorkPanels
+SET_TARGET_PROPERTIES(standard_wp PROPERTIES
+                        OUTPUT_NAME StandardWP
                         CLEAN_DIRECT_OUTPUT 1
                         VERSION ${NEMESIS_VERSION})
 
-TARGET_LINK_LIBRARIES(standard_work_panels_shared
+TARGET_LINK_LIBRARIES(standard_wp
                 NemesisCore
                 plusula
                 ${QT_LIBRARIES}
@@ -73,10 +73,10 @@ TARGET_LINK_LIBRARIES(standard_work_panels_shared
                 ${SYSTEM_LIBS}
                 )
 
-QT5_USE_MODULES(standard_work_panels_shared Core Widgets Gui)
+QT5_USE_MODULES(standard_wp Core Widgets Gui)
 
 INSTALL(TARGETS
-            standard_work_panels_shared
+            standard_wp
         DESTINATION
             lib
         )

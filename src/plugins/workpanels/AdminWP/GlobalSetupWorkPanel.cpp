@@ -37,7 +37,7 @@
 #include <QFileDialog>
 
 #include "GlobalSetupWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -49,9 +49,9 @@ CExtUUID        GlobalSetupWorkPanelID(
                     "{GLOBAL_SETUP_WORK_PANEL:6b9610e6-1c81-4b1c-9c2b-60f6af9a45be}",
                     "Global setup");
 
-CPluginObject   GlobalSetupWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   GlobalSetupWorkPanelObject(&AdminWPPlugin,
                     GlobalSetupWorkPanelID,WORK_PANEL_CAT,
-                    ":images/GlobalWorkPanels/GlobalConfig.svg",
+                    ":images/AdminWP/GlobalConfig.svg",
                     GlobalSetupWorkPanelCB);
 
 // -----------------------------------------------------------------------------

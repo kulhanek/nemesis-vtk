@@ -19,7 +19,7 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 #include "PeriodicTableWorkPanel.hpp"
 #include <PeriodicTableWidget.hpp>
 #include <QVBoxLayout>
@@ -39,9 +39,9 @@ CExtUUID        PeriodicTableWorkPanelID(
                     "Periodic Table",
                     "Panel with the periodic table of elements.");
 
-CPluginObject   PeriodicTableWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   PeriodicTableWorkPanelObject(&AdminWPPlugin,
                     PeriodicTableWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/GlobalWorkPanels/PeriodicTable.svg",
+                    ":/images/AdminWP/PeriodicTable.svg",
                     PeriodicTableWorkPanelCB);
 
 // -----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ CPeriodicTableWorkPanel::CPeriodicTableWorkPanel()
 {
     PeriodicTableWidget = new CPeriodicTableWidget(this);
 
-    setWindowIcon(QIcon(":images/StandardWorkPanels/periodic_table.png"));
+    setWindowIcon(QIcon(":images/AdminWP/periodic_table.png"));
 
     QVBoxLayout* p_layout = new QVBoxLayout();
     p_layout->addWidget(PeriodicTableWidget);

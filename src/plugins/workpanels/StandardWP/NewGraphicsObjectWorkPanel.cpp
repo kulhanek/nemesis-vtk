@@ -42,9 +42,8 @@
 #include <StructureList.hpp>
 #include <XMLElement.hpp>
 
-#include "NewGraphicsObjectWorkPanel.moc"
 #include "NewGraphicsObjectWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -56,9 +55,9 @@ CExtUUID        NewGraphicsObjectWorkPanelID(
                     "{NEW_GRAPHICS_OBJECT_WORK_PANEL:b0568e3a-c78b-44f3-aee5-1e4739cc4be9}",
                     "New Graphics Object");
 
-CPluginObject   NewGraphicsObjectWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   NewGraphicsObjectWorkPanelObject(&StandardWPPlugin,
                     NewGraphicsObjectWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/GraphicsObjectAdd.svg",
+                    ":/images/StandardWP/GraphicsObjectAdd.svg",
                     NewGraphicsObjectWorkPanelCB);
 
 // -----------------------------------------------------------------------------

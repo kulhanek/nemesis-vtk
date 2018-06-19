@@ -40,7 +40,7 @@
 #include <NemesisJScript.hpp>
 
 #include "NewProjectWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -52,9 +52,9 @@ CExtUUID        NewProjectWorkPanelID(
                     "{NEW_PROJECT_WORK_PANEL:4cf836af-c5ca-4799-b0b7-bd53209d969e}",
                     "New project");
 
-CPluginObject   NewProjectWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   NewProjectWorkPanelObject(&AdminWPPlugin,
                     NewProjectWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/GlobalWorkPanels/NewProject.svg",
+                    ":/images/AdminWP/NewProject.svg",
                     NewProjectWorkPanelCB);
 
 CNewProjectWorkPanel* p_new_project_window = NULL;

@@ -32,9 +32,8 @@
 #include <StructureList.hpp>
 #include <WorkPanelList.hpp>
 
-#include "RestraintsManagerWorkPanel.moc"
 #include "RestraintsManagerWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -46,9 +45,9 @@ CExtUUID        RestraintsManagerWorkPanelID(
                     "{RESTRAINTS_MANAGER_WP:e65b89fd-9724-4a33-ab70-e9acccca6d7a}",
                     "Restraints");
 
-CPluginObject   RestraintsManagerWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   RestraintsManagerWorkPanelObject(&StandardWPPlugin,
                     RestraintsManagerWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/RestraintManagement.svg",
+                    ":/images/StandardWP/RestraintManagement.svg",
                     RestraintsManagerWorkPanelCB);
 
 // -----------------------------------------------------------------------------

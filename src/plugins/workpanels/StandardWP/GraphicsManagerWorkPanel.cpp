@@ -40,9 +40,8 @@
 #include <GraphicsObject.hpp>
 #include <WorkPanelList.hpp>
 
-#include "GraphicsManagerWorkPanel.moc"
 #include "GraphicsManagerWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -54,9 +53,9 @@ CExtUUID        GraphicsManagerWorkPanelID(
                     "{GRAPHICS_MANAGER_WORK_PANEL:b202f126-3322-4cbe-8400-01899b71a818}",
                     "Graphics Manager");
 
-CPluginObject   GraphicsManagerWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   GraphicsManagerWorkPanelObject(&StandardWPPlugin,
                     GraphicsManagerWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/GraphicsManager.svg",
+                    ":/images/StandardWP/GraphicsManager.svg",
                     GraphicsManagerWorkPanelCB);
 
 // -----------------------------------------------------------------------------

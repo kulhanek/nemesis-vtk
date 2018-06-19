@@ -34,7 +34,7 @@
 #include <ProObject.hpp>
 
 #include "ObjectInspectorWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -46,9 +46,9 @@ CExtUUID        ObjectInspectorWorkPanelID(
                     "{OBJECT_INSPECTOR_WORK_PANEL:743b3270-c31e-4dfb-8ed4-583cbbf6f785}",
                     "Object Inspector");
 
-CPluginObject   ObjectInspectorWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   ObjectInspectorWorkPanelObject(&AdminWPPlugin,
                     ObjectInspectorWorkPanelID,WORK_PANEL_CAT,
-                    ":images/GlobalWorkPanels/ObjectInspector.svg",
+                    ":images/AdminWP/ObjectInspector.svg",
                     ObjectInspectorWorkPanelCB);
 
 // -----------------------------------------------------------------------------

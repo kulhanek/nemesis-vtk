@@ -30,7 +30,7 @@ bool SketchProjectPluginCB(EModuleRequest request,void* p_data);
 // -----------------------------------------------------------------------------
 
 CExtUUID        SketchProjectPluginID(
-                    "{SKETCH_PROJECT_MODULE:750de7b9-5345-4784-8f3b-4cfb2e488992}");
+                    "{SKETCH_PROJECT_PLUGIN:750de7b9-5345-4784-8f3b-4cfb2e488992}");
 
 CPluginModule   SketchProjectPlugin(
                     SketchProjectPluginID,

@@ -45,9 +45,8 @@
 #include <GraphicsObject.hpp>
 #include <GraphicsView.hpp>
 
-#include "BioToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 #include "ResidueWorkPanel.hpp"
-#include "ResidueWorkPanel.moc"
 
 //------------------------------------------------------------------------------
 
@@ -69,9 +68,9 @@ CExtUUID        ResidueWorkPanelID(
                     "{RESIDUE_WORK_PANEL:983992af-e31d-417a-bc21-0b35a32d855b}",
                     "Residue Editor");
 
-CPluginObject   ResidueWorkPanelObject(&BioToolsPlugin,
+CPluginObject   ResidueWorkPanelObject(&ExtraWPPlugin,
                     ResidueWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/BioTools/ResidueEditor.svg",
+                    ":/images/ExtraWP/ResidueEditor.svg",
                     ResidueWorkPanelCB);
 
 // -----------------------------------------------------------------------------

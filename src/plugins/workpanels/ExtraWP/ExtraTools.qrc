@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file>images/ExtraTools/CompareInternalGeometry.svg</file>
-    <file>images/ExtraTools/StructureInternalGeometry.svg</file>
-    <file>images/ExtraTools/AutoRotateWorkPanel.svg</file>
-  </qresource>
-</RCC>

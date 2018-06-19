@@ -44,9 +44,8 @@
 #include <Optimizer.hpp>
 #include <WorkPanelList.hpp>
 
-#include "StructurePaletteWorkPanel.moc"
 #include "StructurePaletteWorkPanel.hpp"
-#include "BioToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 
 #include <QGridLayout>
 
@@ -60,9 +59,9 @@ CExtUUID        StructurePaletteWorkPanelID(
                     "{STRUCTURE_PALETTE_WORK_PANEL:4055ad4a-4b46-4130-bad3-9192dee5c512}",
                     "Structure Palette");
 
-CPluginObject   StructurePaletteWorkPanelObject(&BioToolsPlugin,
+CPluginObject   StructurePaletteWorkPanelObject(&ExtraWPPlugin,
                      StructurePaletteWorkPanelID,WORK_PANEL_CAT,
-                     ":images/BioTools/StructurePaletteWP.svg",
+                     ":images/ExtraWP/StructurePaletteWP.svg",
                      StructurePaletteWorkPanelCB);
 
 // -----------------------------------------------------------------------------

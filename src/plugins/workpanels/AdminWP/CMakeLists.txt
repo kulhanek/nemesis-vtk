@@ -3,9 +3,9 @@
 # ==============================================================================
 
 # objects in library -----------------------------------------------------------
-SET(GLOBAL_WORK_PANELS_SRC
-        GlobalWorkPanelsMainHeader.cpp
-        GlobalWorkPanelsModule.cpp
+SET(ADMIN_WP_SRC
+        AdminWPMainHeader.cpp
+        AdminWPModule.cpp
         ErrorConsoleWorkPanel.cpp
         PluginDatabaseWorkPanel.cpp
         GlobalSetupWorkPanel.cpp
@@ -20,7 +20,7 @@ SET(GLOBAL_WORK_PANELS_SRC
         )
 
 # program windows --------------------------------------------------------------
-SET(GLOBAL_WORK_PANELS_UIS
+SET(ADMIN_WP_UIS
         ErrorConsoleWorkPanel.ui
         PluginDatabaseWorkPanel.ui
         GlobalSetupWorkPanel.ui
@@ -34,26 +34,26 @@ SET(GLOBAL_WORK_PANELS_UIS
         )
 
 # set resource files -----------------------------------------------------------
-SET(GLOBAL_WORK_PANELS_RCS
-        GlobalWorkPanels.qrc
+SET(ADMIN_WP_RCS
+        AdminWP.qrc
         )
 
 # QT5 related binding ----------------------------------------------------------
-QT5_WRAP_UI(GLOBAL_WORK_PANELS_SRC ${GLOBAL_WORK_PANELS_UIS})
-QT5_ADD_RESOURCES(GLOBAL_WORK_PANELS_SRC ${GLOBAL_WORK_PANELS_RCS})
+QT5_WRAP_UI(ADMIN_WP_SRC ${ADMIN_WP_UIS})
+QT5_ADD_RESOURCES(ADMIN_WP_SRC ${ADMIN_WP_RCS})
 
 # Nemesis uses plugins, so dynamic linking is obligatory!
 
 # create shared library --------------------------------------------------------
-ADD_LIBRARY(global_work_panels_shared SHARED ${GLOBAL_WORK_PANELS_SRC})
-ADD_DEPENDENCIES(global_work_panels_shared nemesis_core_shared)
+ADD_LIBRARY(admin_wp_shared SHARED ${ADMIN_WP_SRC})
+ADD_DEPENDENCIES(admin_wp_shared nemesis_core_shared)
 
-SET_TARGET_PROPERTIES(global_work_panels_shared PROPERTIES
-                        OUTPUT_NAME GlobalWorkPanels
+SET_TARGET_PROPERTIES(admin_wp_shared PROPERTIES
+                        OUTPUT_NAME AdminWP
                         CLEAN_DIRECT_OUTPUT 1
                         VERSION ${NEMESIS_VERSION})
 
-TARGET_LINK_LIBRARIES(global_work_panels_shared
+TARGET_LINK_LIBRARIES(admin_wp_shared
                 NemesisCore
                 plusula
                 ${QT_LIBRARIES}
@@ -62,10 +62,10 @@ TARGET_LINK_LIBRARIES(global_work_panels_shared
                 ${SYSTEM_LIBS}
                 )
 
-QT5_USE_MODULES(global_work_panels_shared Core Widgets Gui Script)
+QT5_USE_MODULES(admin_wp_shared Core Widgets Gui Script)
 
 INSTALL(TARGETS
-            global_work_panels_shared
+            admin_wp_shared
         DESTINATION
             lib
         )

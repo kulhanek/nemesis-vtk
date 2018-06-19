@@ -29,9 +29,8 @@
 #include <StructureSelection.hpp>
 #include <Structure.hpp>
 
-#include "CrystalToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 #include "SuperCellBuilderWorkPanel.hpp"
-#include "SuperCellBuilderWorkPanel.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -43,9 +42,9 @@ CExtUUID        SuperCellBuilderWorkPanelID(
                     "{SUPER_CELL_BUILDER_WORK_PANEL:ab06478c-26ca-49e3-871e-73239ea1042f}",
                     "Super Cell Builder");
 
-CPluginObject   SuperCellBuilderWorkPanelObject(&CrystalToolsPlugin,
+CPluginObject   SuperCellBuilderWorkPanelObject(&ExtraWPPlugin,
                     SuperCellBuilderWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/CrystalTools/SuperCellBuilder.svg",
+                    ":/images/ExtraWP/SuperCellBuilder.svg",
                     SuperCellBuilderWorkPanelCB);
 
 // -----------------------------------------------------------------------------

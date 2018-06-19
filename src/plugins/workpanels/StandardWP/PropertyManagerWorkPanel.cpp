@@ -31,8 +31,7 @@
 #include <ProjectList.hpp>
 
 #include "PropertyManagerWorkPanel.hpp"
-#include "PropertyManagerWorkPanel.moc"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -44,9 +43,9 @@ CExtUUID        PropertyManagerWorkPanelID(
                     "{PROPERTIES_MANAGER_WORK_PANEL:25843821-dab1-4b5a-a594-d1c0603f0dfd}",
                     "Property Manager Work Panel");
 
-CPluginObject   PropertyManagerWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   PropertyManagerWorkPanelObject(&StandardWPPlugin,
                     PropertyManagerWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/PropertiesManagement.svg",
+                    ":/images/StandardWP/PropertiesManagement.svg",
                     PropertyManagerWorkPanelCB);
 
 // -----------------------------------------------------------------------------

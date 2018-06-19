@@ -46,9 +46,8 @@
 #include <Optimizer.hpp>
 #include <WorkPanelList.hpp>
 
-#include "BuildWorkPanel.moc"
 #include "BuildWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 #include <QGridLayout>
 
@@ -62,9 +61,9 @@ CExtUUID        BuildWorkPanelID(
                     "{BUILD_WORK_PANEL:e5c311d6-73f7-4091-a6e3-1d73024fe27d}",
                     "Build Panel");
 
-CPluginObject   BuildWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   BuildWorkPanelObject(&StandardWPPlugin,
                      BuildWorkPanelID,WORK_PANEL_CAT,
-                     ":images/StandardWorkPanels/StructureBuildStructure.svg",
+                     ":images/StandardWP/StructureBuildStructure.svg",
                      BuildWorkPanelCB);
 
 // -----------------------------------------------------------------------------

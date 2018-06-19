@@ -36,9 +36,8 @@
 #include <ContainerModel.hpp>
 #include <WorkPanelList.hpp>
 
-#include "BatchJobWorkPanel.moc"
 #include "BatchJobWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -50,9 +49,9 @@ CExtUUID        BatchJobWorkPanelID(
                     "{BATCH_JOB_WORK_PANEL:b2afd501-90ad-4e59-94e3-bd8ad4ce7668}",
                     "Batch Jobs");
 
-CPluginObject   BatchJobWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   BatchJobWorkPanelObject(&StandardWPPlugin,
                     BatchJobWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/BatchJobs.svg",
+                    ":/images/StandardWP/BatchJobs.svg",
                     BatchJobWorkPanelCB);
 
 // -----------------------------------------------------------------------------

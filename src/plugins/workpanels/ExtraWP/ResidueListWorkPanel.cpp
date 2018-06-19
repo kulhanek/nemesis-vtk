@@ -41,9 +41,8 @@
 #include <PhysicalQuantity.hpp>
 #include <PluginDatabase.hpp>
 
-#include "BioToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 #include "ResidueListWorkPanel.hpp"
-#include "ResidueListWorkPanel.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -55,9 +54,9 @@ CExtUUID        ResidueListWorkPanelID(
                     "{RESIDUE_LIST_WORK_PANEL:9a26a97a-7ac0-4d64-bbc7-8aa627b5d6b4}",
                     "Edit Residues");
 
-CPluginObject   ResidueListWorkPanelObject(&BioToolsPlugin,
+CPluginObject   ResidueListWorkPanelObject(&ExtraWPPlugin,
                     ResidueListWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/BioTools/ResidueListEditor.svg",
+                    ":/images/ExtraWP/ResidueListEditor.svg",
                     ResidueListWorkPanelCB);
 
 // -----------------------------------------------------------------------------

@@ -5,12 +5,12 @@
 
 if [ $# -eq 0 ]; then
   echo "Available plugins:"
-  for A in `ls definitions/*.plg`; do
-        NAME="`basename $A .plg`"
-	if [ -L "$NAME.plg" ]; then
-		printf "   %-30s [CONNECTED]\n" "$NAME"
+  for NAME in `find definitions -name '*.plg' | sort`; do
+    BASE=`basename $NAME .plg`
+	if [ -L "$BASE.plg" ]; then
+		printf "   %-60s [CONNECTED]\n" "$NAME"
 	else
-		printf "   %-30s\n" "$NAME"
+		printf "   %-60s\n" "$NAME"
 	fi
   done 
   exit
@@ -19,14 +19,15 @@ fi
 echo "Linking plugins:" $*
 
 if [ "$1" == "all" ]; then
-  for A in `ls definitions/*.plg`; do
+  for A in `find definitions -name '*.plg'`; do
      NAME="`basename $A .plg`"
-     ln -s definitions/$NAME.plg $NAME.plg 
+     ln -s $A $NAME.plg 2> /dev/null
   done
 else
   for A in $*; do
-    if [ -f definitions/$A.plg ]; then
-       ln -s definitions/$A.plg $A.plg
+    NAME=`find definitions -name "${A}.plg"`
+    if [ -f "$NAME" ]; then
+       ln -s "$NAME" $A.plg
     fi
   done
 fi

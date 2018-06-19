@@ -33,9 +33,8 @@
 #include <AtomListSelection.hpp>
 #include <ResidueListSelection.hpp>
 
-#include "SelectByMaskWorkPanel.moc"
 #include "SelectByMaskWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -47,9 +46,9 @@ CExtUUID        SelectByMaskWorkPanelID(
                     "{SELECT_BY_MASK_WORK_PANEL:4501cda8-1db7-4634-8eeb-95ca0aa11e6a}",
                     "Select by Mask");
 
-CPluginObject   SelectByMaskWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   SelectByMaskWorkPanelObject(&StandardWPPlugin,
                     SelectByMaskWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/SelectByMask.svg",
+                    ":/images/StandardWP/SelectByMask.svg",
                     SelectByMaskWorkPanelCB);
 
 CSelectByMaskWorkPanel* p_selbm_wp = NULL;
@@ -136,9 +135,9 @@ void CSelectByMaskWorkPanel::ClearMask(void)
 void CSelectByMaskWorkPanel::TypeChanged(bool set)
 {
     if( set ){
-        WidgetUI.typeTB->setIcon(QIcon(":/images/StandardWorkPanels/SelectByMaskWorkPanel/SelectResidue.svg"));
+        WidgetUI.typeTB->setIcon(QIcon(":/images/StandardWP/SelectByMaskWorkPanel/SelectResidue.svg"));
     } else {
-        WidgetUI.typeTB->setIcon(QIcon(":/images/StandardWorkPanels/SelectByMaskWorkPanel/SelectAtoms.svg"));
+        WidgetUI.typeTB->setIcon(QIcon(":/images/StandardWP/SelectByMaskWorkPanel/SelectAtoms.svg"));
     }
 }
 

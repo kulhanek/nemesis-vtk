@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/images/StandardWorkPanels/build.png</normaloff>:/images/StandardWorkPanels/build.png</iconset>
+    <normaloff>:/images/StandardWP/build.png</normaloff>:/images/StandardWP/build.png</iconset>
   </property>
   <property name="whatsThis">
    <string/>
@@ -108,7 +108,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_1_0.png</normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_1_0.png</iconset>
+          <normaloff>:/images/StandardWP/BuildWorkPanel/bond_1_0.png</normaloff>:/images/StandardWP/BuildWorkPanel/bond_1_0.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -146,7 +146,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_1_5.png</normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_1_5.png</iconset>
+          <normaloff>:/images/StandardWP/BuildWorkPanel/bond_1_5.png</normaloff>:/images/StandardWP/BuildWorkPanel/bond_1_5.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -187,7 +187,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_2_0.png</normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_2_0.png</iconset>
+          <normaloff>:/images/StandardWP/BuildWorkPanel/bond_2_0.png</normaloff>:/images/StandardWP/BuildWorkPanel/bond_2_0.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -228,7 +228,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_3_0.png</normaloff>:/images/StandardWorkPanels/BuildWorkPanel/bond_3_0.png</iconset>
+          <normaloff>:/images/StandardWP/BuildWorkPanel/bond_3_0.png</normaloff>:/images/StandardWP/BuildWorkPanel/bond_3_0.png</iconset>
         </property>
         <property name="iconSize">
          <size>

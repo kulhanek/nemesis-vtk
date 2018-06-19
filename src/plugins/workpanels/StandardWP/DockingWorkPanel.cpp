@@ -38,14 +38,13 @@
 #include <QMessageBox>
 #include <ContainerModel.hpp>
 
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 #include <Structure.hpp>
 #include <StructureList.hpp>
 #include <Trajectory.hpp>
 #include <TrajectoryList.hpp>
 
-#include "DockingWorkPanel.moc"
 #include "DockingWorkPanel.hpp"
 #include <PODesignerDockingTabsResults.hpp>
 
@@ -59,9 +58,9 @@ CExtUUID        DockingWorkPanelID(
                     "{DOCKING_WORK_PANEL:10ee3f51-9e18-45c0-827c-5d65f161c535}",
                     "Results of Docking Panel");
 
-CPluginObject   DockingWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   DockingWorkPanelObject(&StandardWPPlugin,
                      DockingWorkPanelID,WORK_PANEL_CAT,
-                     ":images/StandardWorkPanels/StructureBuildStructure.svg",
+                     ":images/StandardWP/StructureBuildStructure.svg",
                      DockingWorkPanelCB);
 
 // -----------------------------------------------------------------------------

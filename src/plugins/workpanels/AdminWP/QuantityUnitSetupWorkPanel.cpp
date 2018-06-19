@@ -20,7 +20,7 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 #include "QuantityUnitSetupWorkPanel.hpp"
 
 #include <PluginObject.hpp>
@@ -45,9 +45,9 @@ CExtUUID        QuantityUnitSetupWorkPanelID(
                     "{QUANTITY_UNIT_SETUP_WORK_PANEL:98627045-b118-49e1-ab08-e779c19e2423}",
                     "Quantity Unit Setup" );
 
-CPluginObject   QuantityUnitSetupWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   QuantityUnitSetupWorkPanelObject(&AdminWPPlugin,
                     QuantityUnitSetupWorkPanelID,WORK_PANEL_CAT,
-                    ":images/GlobalWorkPanels/QuantitySetup.svg",
+                    ":images/AdminWP/QuantitySetup.svg",
                     QuantityUnitSetupWorkPanelCB);
 
 // -----------------------------------------------------------------------------

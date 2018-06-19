@@ -36,9 +36,8 @@
 #include <PhysicalQuantity.hpp>
 #include <GeoDescriptor.hpp>
 
-#include "GeoManipWorkPanel.moc"
 #include "GeoManipWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -50,9 +49,9 @@ CExtUUID        GeoManipWorkPanelID(
                     "{GEO_MANIP_WORK_PANEL:b2865e28-8b2c-4e40-bb45-e9a705f8f7d6}",
                     "GeoManip");
 
-CPluginObject   GeoManipWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   GeoManipWorkPanelObject(&StandardWPPlugin,
                     GeoManipWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/GeoManip.svg",
+                    ":/images/StandardWP/GeoManip.svg",
                     GeoManipWorkPanelCB);
 
 // -----------------------------------------------------------------------------

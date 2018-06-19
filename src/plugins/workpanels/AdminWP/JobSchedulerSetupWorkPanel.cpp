@@ -31,7 +31,7 @@
 #include <ContainerModel.hpp>
 
 #include "JobSchedulerSetupWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -43,9 +43,9 @@ CExtUUID        JobSchedulerSetupWorkPanelID(
                     "{JOB_SCHEDULER_SETUP:ae11c09c-1b53-4ac7-826e-2a19a3471681}",
                     "Job Scheduler Setup");
 
-CPluginObject   JobSchedulerSetupWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   JobSchedulerSetupWorkPanelObject(&AdminWPPlugin,
                     JobSchedulerSetupWorkPanelID,WORK_PANEL_CAT,
-                    ":images/GlobalWorkPanels/JobSchedulerSetup.svg",
+                    ":images/AdminWP/JobSchedulerSetup.svg",
                     JobSchedulerSetupWorkPanelCB);
 
 // -----------------------------------------------------------------------------

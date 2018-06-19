@@ -31,9 +31,8 @@
 #include <ContainerModel.hpp>
 #include <ErrorSystem.hpp>
 
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 #include "StructureListWorkPanel.hpp"
-#include "StructureListWorkPanel.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -45,9 +44,9 @@ CExtUUID        StructureListWorkPanelID(
                     "{STRUCTURE_LIST_WORK_PANEL:a48ddecd-4a95-4dfe-96e1-dd2de8a0fd5e}",
                     "Manage Structures");
 
-CPluginObject   StructureListWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   StructureListWorkPanelObject(&StandardWPPlugin,
                     StructureListWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/StructureManageStructures.svg",
+                    ":/images/StandardWP/StructureManageStructures.svg",
                     StructureListWorkPanelCB);
 
 // -----------------------------------------------------------------------------

@@ -29,10 +29,9 @@
 #include <Graphics.hpp>
 #include <GraphicsView.hpp>
 
-#include "ExtraToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 
 #include "AutoRotateWorkPanel.hpp"
-#include "AutoRotateWorkPanel.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -44,9 +43,9 @@ CExtUUID        AutoRotateWorkPanelID(
                     "{AUTO_ROTATE_WP:751acdb4-1309-41a3-a4fe-92b53fa38180}",
                     "Autorotate");
 
-CPluginObject   AutoRotateWorkPanelObject(&ExtraToolsPlugin,
+CPluginObject   AutoRotateWorkPanelObject(&ExtraWPPlugin,
                     AutoRotateWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/ExtraTools/AutoRotateWorkPanel.svg",
+                    ":/images/ExtraWP/AutoRotateWorkPanel.svg",
                     AutoRotateWorkPanelCB);
 
 // -----------------------------------------------------------------------------

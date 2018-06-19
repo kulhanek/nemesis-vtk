@@ -27,7 +27,7 @@
 #include <QVBoxLayout>
 
 #include "JSTerminalWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 #include <TerminalWidget.hpp>
 #include <TerminalOStream.hpp>
@@ -44,9 +44,9 @@ CExtUUID        JSTerminalWorkPanelID(
                     "{JS_TERMINAL_WORK_PANEL:4329f25a-6268-4478-a9c1-7bbb3dd44c20}",
                     "Java Script Console");
 
-CPluginObject   JSTerminalWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   JSTerminalWorkPanelObject(&AdminWPPlugin,
                     JSTerminalWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/GlobalWorkPanels/JavaScriptConsole.svg",
+                    ":/images/AdminWP/JavaScriptConsole.svg",
                     JSTerminalWorkPanelCB);
 
 // -----------------------------------------------------------------------------

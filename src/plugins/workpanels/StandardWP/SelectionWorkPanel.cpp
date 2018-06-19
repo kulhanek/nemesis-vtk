@@ -31,9 +31,8 @@
 #include <WorkPanelList.hpp>
 #include <SelectionList.hpp>
 
-#include "SelectionWorkPanel.moc"
 #include "SelectionWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -45,9 +44,9 @@ CExtUUID        SelectionWorkPanelID(
                     "{SELECTION_WORK_PANEL:afec4a64-48c0-4b7e-84d0-e6af678fb3df}",
                     "Selection list");
 
-CPluginObject   SelectionWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   SelectionWorkPanelObject(&StandardWPPlugin,
                     SelectionWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/SelectionList.svg",
+                    ":/images/StandardWP/SelectionList.svg",
                     SelectionWorkPanelCB);
 
 // -----------------------------------------------------------------------------

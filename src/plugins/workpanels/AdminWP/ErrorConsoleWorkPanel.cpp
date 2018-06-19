@@ -33,7 +33,7 @@
 #include <QPushButton>
 
 #include "ErrorConsoleWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -45,9 +45,9 @@ CExtUUID        ErrorConsoleWorkPanelID(
                     "{ERROR_CONSOLE_WORK_PANEL:7dc0630c-19e5-48bc-9130-904cc8640900}",
                     "Error Console");
 
-CPluginObject   ErrorConsoleWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   ErrorConsoleWorkPanelObject(&AdminWPPlugin,
                     ErrorConsoleWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/GlobalWorkPanels/ErrorConsole.svg",
+                    ":/images/AdminWP/ErrorConsole.svg",
                     ErrorConsoleWorkPanelCB);
 
 // -----------------------------------------------------------------------------

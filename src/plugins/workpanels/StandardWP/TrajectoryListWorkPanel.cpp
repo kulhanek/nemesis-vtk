@@ -31,9 +31,8 @@
 #include <ContainerModel.hpp>
 #include <ErrorSystem.hpp>
 
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 #include "TrajectoryListWorkPanel.hpp"
-#include "TrajectoryListWorkPanel.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -45,9 +44,9 @@ CExtUUID        TrajectoryListWorkPanelID(
                     "{TRAJECTORY_LIST_WORK_PANEL:ff57f787-40f2-4d62-94c8-ce52bfe3257d}",
                     "Manage Trajectories");
 
-CPluginObject   TrajectoryListWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   TrajectoryListWorkPanelObject(&StandardWPPlugin,
                     TrajectoryListWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/ManageTrajectories.svg",
+                    ":/images/StandardWP/ManageTrajectories.svg",
                     TrajectoryListWorkPanelCB);
 
 // -----------------------------------------------------------------------------

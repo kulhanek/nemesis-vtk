@@ -37,9 +37,8 @@
 #include <ContainerModel.hpp>
 #include <WorkPanelList.hpp>
 
-#include "JobWorkPanel.moc"
 #include "JobWorkPanel.hpp"
-#include "StandardWorkPanelsModule.hpp"
+#include "StandardWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -51,9 +50,9 @@ CExtUUID        JobWorkPanelID(
                     "{JOB_WORK_PANEL:69932eda-d93f-4dda-ae40-4695da5dda96}",
                     "Jobs");
 
-CPluginObject   JobWorkPanelObject(&StandardWorkPanelsPlugin,
+CPluginObject   JobWorkPanelObject(&StandardWPPlugin,
                     JobWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWorkPanels/Jobs.svg",
+                    ":/images/StandardWP/Jobs.svg",
                     JobWorkPanelCB);
 
 // -----------------------------------------------------------------------------

@@ -29,7 +29,7 @@
 #include <ExtComObjectDesigner.hpp>
 
 #include "GraphicsSetupWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -41,9 +41,9 @@ CExtUUID        GraphicsSetupWorkPanelID(
                     "{GRAPHICS_SETUP_WORK_PANEL:bff6fd65-eeea-4468-ac92-14b548906511}",
                     "Graphics setup");
 
-CPluginObject   GraphicsSetupWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   GraphicsSetupWorkPanelObject(&AdminWPPlugin,
                     GraphicsSetupWorkPanelID,WORK_PANEL_CAT,
-                    ":images/GlobalWorkPanels/GraphicsSetup.svg",
+                    ":images/AdminWP/GraphicsSetup.svg",
                     GraphicsSetupWorkPanelCB);
 
 // -----------------------------------------------------------------------------

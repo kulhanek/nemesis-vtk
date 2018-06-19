@@ -31,7 +31,7 @@
 #include <XMLElement.hpp>
 
 #include "PluginDatabaseWorkPanel.hpp"
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -43,9 +43,9 @@ CExtUUID    PluginDatabaseWorkPanelID(
                 "{PLUGIN_DATABASE_WORK_PANEL:4428c905-e31c-4d8a-9720-1e6738b70601}",
                 "Plugin Database");
 
-CPluginObject   PluginDatabaseWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   PluginDatabaseWorkPanelObject(&AdminWPPlugin,
                 PluginDatabaseWorkPanelID,WORK_PANEL_CAT,
-                ":images/GlobalWorkPanels/PluginDatabase.svg",
+                ":images/AdminWP/PluginDatabase.svg",
                 PluginDatabaseWorkPanelCB );
 
 // -----------------------------------------------------------------------------

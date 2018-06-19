@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/images/StandardWorkPanels/geom_measure.png</normaloff>:/images/StandardWorkPanels/geom_measure.png</iconset>
+    <normaloff>:/images/StandardWP/geom_measure.png</normaloff>:/images/StandardWP/geom_measure.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"> QPushButton {

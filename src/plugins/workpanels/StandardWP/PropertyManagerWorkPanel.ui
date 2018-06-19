@@ -118,7 +118,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/PropertiesManagerWorkPanel/property-add.svg</normaloff>:/images/StandardWorkPanels/PropertiesManagerWorkPanel/property-add.svg</iconset>
+          <normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-add.svg</normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-add.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -147,7 +147,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/PropertiesManagerWorkPanel/property-remove.svg</normaloff>:/images/StandardWorkPanels/PropertiesManagerWorkPanel/property-remove.svg</iconset>
+          <normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-remove.svg</normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-remove.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -176,7 +176,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/StandardWorkPanels/PropertiesManagerWorkPanel/property-info.svg</normaloff>:/images/StandardWorkPanels/PropertiesManagerWorkPanel/property-info.svg</iconset>
+          <normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-info.svg</normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-info.svg</iconset>
         </property>
         <property name="iconSize">
          <size>

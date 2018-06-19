@@ -193,7 +193,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/NewStructure.svg</normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/NewStructure.svg</iconset>
+              <normaloff>:/images/StandardWP/StructureListWorkPanel/NewStructure.svg</normaloff>:/images/StandardWP/StructureListWorkPanel/NewStructure.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -219,7 +219,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/ActivateStructure.svg</normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/ActivateStructure.svg</iconset>
+              <normaloff>:/images/StandardWP/StructureListWorkPanel/ActivateStructure.svg</normaloff>:/images/StandardWP/StructureListWorkPanel/ActivateStructure.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -242,7 +242,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/ActiveStructureInfo.svg</normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/ActiveStructureInfo.svg</iconset>
+              <normaloff>:/images/StandardWP/StructureListWorkPanel/ActiveStructureInfo.svg</normaloff>:/images/StandardWP/StructureListWorkPanel/ActiveStructureInfo.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -281,7 +281,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/RemoveStructure.svg</normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/RemoveStructure.svg</iconset>
+              <normaloff>:/images/StandardWP/StructureListWorkPanel/RemoveStructure.svg</normaloff>:/images/StandardWP/StructureListWorkPanel/RemoveStructure.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -304,7 +304,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/DuplicateStructure.svg</normaloff>:/images/StandardWorkPanels/StructureListWorkPanel/DuplicateStructure.svg</iconset>
+              <normaloff>:/images/StandardWP/StructureListWorkPanel/DuplicateStructure.svg</normaloff>:/images/StandardWP/StructureListWorkPanel/DuplicateStructure.svg</iconset>
             </property>
             <property name="iconSize">
              <size>

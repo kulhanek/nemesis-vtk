@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/images/StandardWorkPanels/build.png</normaloff>:/images/StandardWorkPanels/build.png</iconset>
+    <normaloff>:/images/StandardWP/build.png</normaloff>:/images/StandardWP/build.png</iconset>
   </property>
   <property name="whatsThis">
    <string/>

@@ -21,7 +21,7 @@
 
 #include "ColorSetupWorkPanel.hpp"
 
-#include "GlobalWorkPanelsModule.hpp"
+#include "AdminWPModule.hpp"
 
 #include <ElementColorsList.hpp>
 #include <ElementColors.hpp>
@@ -42,9 +42,9 @@ CExtUUID        ColorSetupWorkPanelID(
                     "Color setup",
                     "Panel with setup of colors for model and elements.");
 
-CPluginObject   ColorSetupWorkPanelObject(&GlobalWorkPanelsPlugin,
+CPluginObject   ColorSetupWorkPanelObject(&AdminWPPlugin,
                     ColorSetupWorkPanelID,WORK_PANEL_CAT,
-                    ":images/GlobalWorkPanels/ColorPreferences.svg",
+                    ":images/AdminWP/ColorPreferences.svg",
                     ColorSetupWorkPanelCB);
 
 CColorSetupWorkPanel* p_s6_window = NULL;

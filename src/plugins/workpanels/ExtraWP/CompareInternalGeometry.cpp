@@ -40,10 +40,9 @@
 #include <GeoMeasurement.hpp>
 #include <QMessageBox>
 
-#include "ExtraToolsModule.hpp"
+#include "ExtraWPModule.hpp"
 
 #include "CompareInternalGeometry.hpp"
-#include "CompareInternalGeometry.moc"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -55,9 +54,9 @@ CExtUUID        CompareInternalGeometryID(
                     "{CMP_INTERNAL_GEO:2c451d0a-b794-4b38-a362-71417987c7a8}",
                     "Compare Internal Geometry");
 
-CPluginObject   CompareInternalGeometryObject(&ExtraToolsPlugin,
+CPluginObject   CompareInternalGeometryObject(&ExtraWPPlugin,
                     CompareInternalGeometryID,WORK_PANEL_CAT,
-                    ":/images/ExtraTools/CompareInternalGeometry.svg",
+                    ":/images/ExtraWP/CompareInternalGeometry.svg",
                     CompareInternalGeometryCB);
 
 // -----------------------------------------------------------------------------

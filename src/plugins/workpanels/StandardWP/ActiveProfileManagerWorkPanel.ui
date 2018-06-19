@@ -180,7 +180,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-new.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-new.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-new.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-new.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -209,7 +209,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-remove.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-remove.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-remove.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-remove.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -238,7 +238,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-showhide.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-showhide.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-showhide.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-showhide.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -280,7 +280,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/go-up.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/go-up.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/go-up.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/go-up.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -309,7 +309,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/go-down.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/go-down.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/go-down.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/go-down.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -338,7 +338,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-delete.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-delete.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-delete.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-delete.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -367,7 +367,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-info.svg</normaloff>:/images/StandardWorkPanels/GraphicsManagerWorkPanel/object-info.svg</iconset>
+             <normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-info.svg</normaloff>:/images/StandardWP/GraphicsManagerWorkPanel/object-info.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

@@ -33,7 +33,7 @@ bool BuildProjectPluginCB(EModuleRequest request,void* p_data);
 // -----------------------------------------------------------------------------
 
 CExtUUID        BuildProjectPluginID(
-                    "{BUILD_PROJECT_MODULE:f3529c8a-fd15-4906-95b9-cfb24e71197d}");
+                    "{BUILD_PROJECT_PLUGIN:f3529c8a-fd15-4906-95b9-cfb24e71197d}");
 
 CPluginModule   BuildProjectPlugin(
                     BuildProjectPluginID,
