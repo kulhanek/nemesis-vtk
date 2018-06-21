@@ -211,6 +211,21 @@ bool CPluginObject::HasAttribute(const QString& attrname)
     return( Attributes.indexOf(attrname) >= 0 );
 }
 
+// -----------------------------------------------------------------------------
+
+const QString CPluginObject::GetAttributeValue(const QString& attrname)
+{
+    for(int i=0; i < Attributes.size(); i++){
+        QString str = Attributes[i];
+        QStringList list;   // 'KEY=VALUE'
+        list = str.split('=');
+        if( list.size() == 2 ){
+            if( list[0] == attrname ) return(list[1]);
+        }
+    }
+    return("");
+}
+
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================

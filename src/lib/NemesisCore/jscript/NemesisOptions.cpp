@@ -34,6 +34,7 @@ CNemesisOptions::CNemesisOptions(void)
 {
     SetShowMiniUsage(true);
     SetAllowProgArgs(true);
+    SetUnrecognizedOptsAsArgs(true);
     IsError = false;
 }
 
@@ -72,14 +73,6 @@ int CNemesisOptions::FinalizeOptions(void)
 
 int CNemesisOptions::CheckArguments(void)
 {
-    if( GetNumberOfProgArgs() > 1 ) {
-        if( IsError == false ) fprintf(stderr,"\n");
-        fprintf(stderr,"%s: illegal number of arguments - only one allowed but %d provided\n",
-                (const char*)GetProgramName(),GetNumberOfProgArgs() );
-        IsError = true;
-        return(SO_OPTS_ERROR);
-    }
-
     return(SO_CONTINUE);
 }
 

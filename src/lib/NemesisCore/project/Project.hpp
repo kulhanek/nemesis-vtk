@@ -238,6 +238,9 @@ public:
     /// save data
     virtual void SaveData(CXMLElement* p_ele);
 
+    /// process arguments
+    virtual bool ProcessArguments(int& narg);
+
 // object index management -----------------------------------------------------
     /// find object
     CProObject* FindObject(int object_id);

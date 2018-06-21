@@ -121,6 +121,40 @@ void CBuildProject::NewData(void)
     CProject::NewData();
 }
 
+//------------------------------------------------------------------------------
+
+bool CBuildProject::ProcessArguments(int& narg)
+{
+//    while( nargs < NemesisOptions.GetNumberOfArgs() ){
+//        CSmallString arg = NemesisOptions.GetProgArg(nargs);
+//        nargs++;
+
+//        // is option?
+//        if( (arg.GetLength() < 1) || (arg[0] != '-') ) continue;
+
+//        // find
+
+
+
+//    CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
+//    CPluginObject*                     p_obj;
+//    while( (p_obj = I.Current()) != NULL ) {
+//        if (p_obj->GetCategoryUUID() == IMPORT_STRUCTURE_CAT ) {
+//            if( p_obj->HasAttribute("EPF_IMPORT_STRUCTURE") ){
+//                impitems.push_back(p_obj);
+//            }
+//            if( p_obj->HasAttribute("EPF_INJECT_COORDINATES") ){
+//                injitems.push_back(p_obj);
+//            }
+//        }
+//        if (p_obj->GetCategoryUUID() == EXPORT_STRUCTURE_CAT ) {
+//            expitems.push_back(p_obj);
+//        }
+//        I++;
+//    }
+    return(false);
+}
+
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================

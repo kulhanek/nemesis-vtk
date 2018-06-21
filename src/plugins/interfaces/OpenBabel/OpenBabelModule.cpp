@@ -33,7 +33,8 @@ bool OpenBabelPluginCB(EModuleRequest request,void* p_data);
 // -----------------------------------------------------------------------------
 
 CExtUUID        OpenBabelPluginID(
-                    "{OPEN_BABEL_PLUGIN:24de00c0-dd72-467c-978e-fbd10eb648d2}");
+                    "{OPEN_BABEL_PLUGIN:24de00c0-dd72-467c-978e-fbd10eb648d2}",
+                    "OpenBabel Plugin");
 
 CPluginModule   OpenBabelPlugin(
                     OpenBabelPluginID,

@@ -22,7 +22,7 @@
 
 #include <MainWindow.hpp>
 #include <QToolBar>
-#include <QWebEngineView>
+#include <QWebView>
 
 #include "ui_SketchProjectWindow.h"
 

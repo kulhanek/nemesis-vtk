@@ -78,6 +78,7 @@ CExtUUID        Mol2ImportJobID(
 
 CPluginObject   Mol2ImportJobObject(&ExtraImpexPlugin,
                     Mol2ImportJobID,JOB_CAT,
+                    QStringList() << "EPF_IMPORT_STRUCTURE" << "FORMAT=mol2",
                     Mol2ImportJobCB);
 
 // -----------------------------------------------------------------------------

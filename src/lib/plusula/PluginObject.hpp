@@ -99,6 +99,9 @@ public:
     /// has attribute?
     bool HasAttribute(const QString& attrname);
 
+    /// get attribute value
+    const QString GetAttributeValue(const QString& attrname);
+
 // setup management ------------------------------------------------------------
     /// find config value
     bool FindObjectConfigValue(const QString& key, CUUID& value) const;

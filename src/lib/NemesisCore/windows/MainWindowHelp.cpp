@@ -59,7 +59,7 @@ void CMainWindow::AboutNemesis(void)
 
 void CMainWindow::NemesisHelp(void)
 {
-    QDesktopServices::openUrl(QUrl("https://lcc.ncbr.muni.cz/whitezone/development/nemesis/"));
+    QDesktopServices::openUrl(QUrl("https://nemesis.ncbr.muni.cz"));
 }
 
 //==============================================================================

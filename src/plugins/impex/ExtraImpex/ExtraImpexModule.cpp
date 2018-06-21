@@ -31,7 +31,8 @@ bool ExtraImpexPluginCB(EModuleRequest request,void* p_data);
 // -----------------------------------------------------------------------------
 
 CExtUUID        ExtraImpexPluginID(
-                    "{EXTRA_IMPEX:362e7412-b31e-46dd-b263-86a424a083aa}");
+                    "{EXTRA_IMPEX:362e7412-b31e-46dd-b263-86a424a083aa}",
+                    "ImpEx Plugin");
 
 CPluginModule   ExtraImpexPlugin(
                     ExtraImpexPluginID,

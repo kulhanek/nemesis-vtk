@@ -38,6 +38,7 @@
 #include <PluginDatabase.hpp>
 
 #include <iostream>
+#include <iomanip>
 
 #include <JScriptFunctions.hpp>
 #include <RootList.hpp>
@@ -236,14 +237,23 @@ int CNemesisJScript::InitSubsystems(void)
 {
     QApplication::setWindowIcon(QIcon(":/images/NemesisCore/MainIcon.svg"));
 
+    bool gui = true;
+    if( (NemesisOptions.IsOptPrintIFormatsSet()) || (NemesisOptions.IsOptPrintOBExtensionsSet()) ){
+        gui = false;
+    }
+
     CWelcomeWindow* p_ww = NULL;
 
-    // create welcome window
-    if( ! NemesisOptions.GetOptNoGUI() ) {
+    if( gui ){
+        // create welcome window
         p_ww = new CWelcomeWindow();
         p_ww->SetMaxProgressSteps(9);
         connect(this,SIGNAL(SetupLevelChanged(const QString&)),p_ww,SLOT(IncrementProgress(const QString&)));
         connect(this,SIGNAL(SetupNotificationChanged(const QString&)),p_ww,SLOT(ChangeNotification(const QString&)));
+    } else {
+        connect(this,SIGNAL(SetupLevelChanged(const QString&)),this,SLOT(IncrementProgressNoGUI(const QString&)));
+        cout << endl;
+        cout << "Initializing Nemesis subsystems ..." << endl;
     }
 
     emit SetupLevelChanged(tr("Global objects ...."));
@@ -306,12 +316,14 @@ int CNemesisJScript::InitSubsystems(void)
     JobScheduler->StartScheduler();
 
     emit SetupLevelChanged(tr("Init OpenBabel ...."));
-    CNemesisPlugNotification* p_obn = new CNemesisPlugNotification(p_ww,tr("Loading OpenBabel plugin %1 ...."));
+    CNemesisPlugNotification* p_obn = NULL;
+    if( gui ) {
+       p_obn = new CNemesisPlugNotification(p_ww,tr("Loading OpenBabel plugin %1 ...."));
+    }
     OpenBabel::OBPlugNotification::PlugNotification = p_obn;
     OpenBabel::OBPlugin::LoadAllPlugins();    // this will initialize OBPlugin subsystem
     OpenBabel::OBPlugNotification::PlugNotification = NULL;
     delete p_obn;
-    // do not remove above line - it is necessary for OB 2.3.0
 
     emit SetupLevelChanged(tr("Global desktop ...."));
     RecentFiles->Load();
@@ -320,11 +332,184 @@ int CNemesisJScript::InitSubsystems(void)
 
     emit SetupLevelChanged("All done.");
 
+    bool exit = false;
+
+    if( NemesisOptions.IsOptPrintIFormatsSet() ){
+        PrintIFormats();
+        exit = true;
+    }
+
+    if( NemesisOptions.IsOptPrintOBExtensionsSet() ){
+        PrintOBExtensions();
+        exit = true;
+    }
+
+    if( exit ){
+        QApplication::quit();
+        return(SO_CONTINUE);
+    }
+
     // and finaly create initial project and restore global workpanels
-    GlobalDesktop->RestoreInitialProject();
+    if( NemesisOptions.GetNumberOfProgArgs() == 0 ) {
+        // only if no extra argument is provided
+        GlobalDesktop->RestoreInitialProject();
+    } else {
+        ParseArguments();
+    }
+
     GlobalDesktop->RestoreWorkPanels();
 
     return(SO_CONTINUE);
+}
+
+//------------------------------------------------------------------------------
+
+void CNemesisJScript::PrintIFormats(void)
+{
+    cout << endl;
+    cout << "  Format          Plugin        Description                                                 " << endl;
+    cout << "---------- -------------------- ------------------------------------------------------------" << endl;
+
+    CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
+    CPluginObject*                     p_obj;
+    while( (p_obj = I.Current()) != NULL ) {
+        if (p_obj->GetCategoryUUID() == JOB_CAT ) {
+            if( p_obj->HasAttribute("EPF_IMPORT_STRUCTURE") ){
+                QString format = p_obj->GetAttributeValue("FORMAT");
+                if( ! format.isEmpty() ){
+                    cout << left << setw(10) << format.toStdString() << " ";
+                    cout << setw(20) << p_obj->GetPluginModule()->GetModuleUUID().GetName().toStdString() << " ";
+                    cout << p_obj->GetName().toStdString() << endl;
+                }
+            }
+        }
+        I++;
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void CNemesisJScript::PrintOBExtensions(void)
+{
+    cout << endl;
+    cout << "  Format          Plugin        Description                                                 " << endl;
+    cout << "---------- -------------------- ------------------------------------------------------------" << endl;
+}
+
+//------------------------------------------------------------------------------
+
+void CNemesisJScript::IncrementProgressNoGUI(const QString& text)
+{
+    cout << " >>> " << text.toStdString() << endl;
+}
+
+//------------------------------------------------------------------------------
+
+void CNemesisJScript::ParseArguments(void)
+{
+    CProject* p_project = NULL;
+
+    int narg = 0;
+    while( narg < NemesisOptions.GetNumberOfProgArgs() ){
+        CSmallString arg = NemesisOptions.GetProgArg(narg);
+        narg++;
+        if( arg == "-build" ) {
+            // create build project
+            CExtUUID mp_uuid(NULL);
+            mp_uuid.LoadFromString("{BUILD_PROJECT:b64d16f0-b73f-4747-9a13-212ab9a15d38}");
+            p_project = Projects->NewProject(mp_uuid);
+            if( p_project == NULL ){
+                ES_ERROR("unable to create build project");
+                QMessageBox::StandardButton result = QMessageBox::critical(NULL, tr("New Build Project"),
+                                      tr("An error occurred during project opening!"),
+                                      QMessageBox::Ok | QMessageBox::Cancel,
+                                      QMessageBox::Ok);
+                if( result == QMessageBox::Cancel ) return;
+                continue;
+            }
+            p_project->ShowProject();
+            continue;
+        }
+        if( arg == "-traj" ){
+            // create trajectory project
+            CExtUUID mp_uuid(NULL);
+            mp_uuid.LoadFromString("{TRAJECTORY_PROJECT:c4dd64d9-da20-413d-a2df-6f38697e4d2d}");
+            p_project = Projects->NewProject(mp_uuid);
+            if( p_project == NULL ){
+                ES_ERROR("unable to create trajectory project");
+                QMessageBox::StandardButton result = QMessageBox::critical(NULL, tr("New Trajectory Project"),
+                                      tr("An error occurred during project opening!"),
+                                      QMessageBox::Ok | QMessageBox::Cancel,
+                                      QMessageBox::Ok);
+                if( result == QMessageBox::Cancel ) return;
+                continue;
+            }
+            p_project->ShowProject();
+            continue;
+        }
+
+        if( arg == "-sketch" ){
+            // create sketch project
+            CExtUUID mp_uuid(NULL);
+            mp_uuid.LoadFromString("{SKETCH_PROJECT:6b047926-9a91-4e5f-884a-500db358ddb2}");
+            p_project = Projects->NewProject(mp_uuid);
+            if( p_project == NULL ){
+                ES_ERROR("unable to create sketch project");
+                QMessageBox::StandardButton result = QMessageBox::critical(NULL, tr("New Sketch Project"),
+                                      tr("An error occurred during project opening!"),
+                                      QMessageBox::Ok | QMessageBox::Cancel,
+                                      QMessageBox::Ok);
+                if( result == QMessageBox::Cancel ) return;
+                continue;
+            }
+            p_project->ShowProject();
+            continue;
+        }
+
+        if( arg.GetLength() > 1 ){
+            if( arg[0] != '-' ){
+                CSmallString error;
+                error << "Incorrect argument provided: " << arg;
+                ES_ERROR(error);
+                QMessageBox::StandardButton result = QMessageBox::critical(NULL, tr("Illegal argument"),
+                                      QString(error),
+                                      QMessageBox::Ok | QMessageBox::Cancel,
+                                      QMessageBox::Ok);
+                if( result == QMessageBox::Cancel ) return;
+                continue;
+            }
+            // if no project - create BuildProject
+            if( p_project == NULL ){
+                // create build project
+                CExtUUID mp_uuid(NULL);
+                mp_uuid.LoadFromString("{BUILD_PROJECT:b64d16f0-b73f-4747-9a13-212ab9a15d38}");
+                p_project = Projects->NewProject(mp_uuid);
+                if( p_project == NULL ){
+                    ES_ERROR("unable to create build project");
+                    QMessageBox::StandardButton result = QMessageBox::critical(NULL, tr("New Build Project"),
+                                          tr("An error occurred during project opening!"),
+                                          QMessageBox::Ok | QMessageBox::Cancel,
+                                          QMessageBox::Ok);
+                    if( result == QMessageBox::Cancel ) return;
+                    continue;
+                }
+                p_project->ShowProject();
+            }
+            // import data if supported by project
+            if( p_project->ProcessArguments(narg) == false ){
+                CSmallString error;
+                error << "Unable to process argument: " << arg;
+                ES_ERROR(error);
+                QMessageBox::StandardButton result = QMessageBox::critical(NULL, tr("Wrong argument"),
+                                      QString(error),
+                                      QMessageBox::Ok | QMessageBox::Cancel,
+                                      QMessageBox::Ok);
+                if( result == QMessageBox::Cancel ) return;
+                continue;
+            }
+        }
+
+    }
 }
 
 //------------------------------------------------------------------------------

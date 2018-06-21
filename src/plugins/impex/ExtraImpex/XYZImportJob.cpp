@@ -71,6 +71,7 @@ CExtUUID        XYZImportJobID(
 
 CPluginObject   XYZImportJobObject(&ExtraImpexPlugin,
                     XYZImportJobID,JOB_CAT,
+                    QStringList() << "EPF_IMPORT_STRUCTURE" << "FORMAT=xyz",
                     XYZImportJobCB);
 
 // -----------------------------------------------------------------------------

@@ -42,35 +42,48 @@ public:
     CSO_PROG_DESC_END
 
     CSO_PROG_ARGS_SHORT_DESC_BEGIN
-    "[FILE]"
+    "[ARGS]"
     CSO_PROG_ARGS_SHORT_DESC_END
 
     CSO_PROG_ARGS_LONG_DESC_BEGIN
-    "Arguments:\n"
-    "   FILE                      file to be interpretted\n"
+    "<b>Arguments:</b>\n"
+    "   -build          create build project\n"
+    "   -traj           create trajectory project\n"
+    "   -sketch         create sketch project\n"
+    "   -format file    load structure from file in given format to the current project\n"
     CSO_PROG_ARGS_LONG_DESC_END
 
 // list of all options and arguments ------------------------------------------
     CSO_LIST_BEGIN
     // options ------------------------------
-    CSO_OPT(bool,NoGUI)
+    CSO_OPT(bool,PrintIFormats)
+    CSO_OPT(bool,PrintOBExtensions)
     CSO_OPT(bool,Help)
     CSO_OPT(bool,Version)
     CSO_OPT(bool,Verbose)
     CSO_LIST_END
 
     CSO_MAP_BEGIN
-// description of arguments ---------------------------------------------------
 // description of options -----------------------------------------------------
     //----------------------------------------------------------------------
     CSO_MAP_OPT(bool,                           /* option type */
-                NoGUI,                        /* option name */
+                PrintIFormats,                        /* option name */
                 false,                          /* default value */
                 false,                          /* is option mandatory */
-                0,                           /* short option name */
-                "nogui",                      /* long option name */
+                'i',                           /* short option name */
+                "printiformats",                      /* long option name */
                 NULL,                           /* parametr name */
-                "do not use GUI")   /* option description */
+                "print import formats")   /* option description */
+
+    //----------------------------------------------------------------------
+    CSO_MAP_OPT(bool,                           /* option type */
+                PrintOBExtensions,                        /* option name */
+                false,                          /* default value */
+                false,                          /* is option mandatory */
+                'o',                           /* short option name */
+                "printobextensions",                      /* long option name */
+                NULL,                           /* parametr name */
+                "print OpenBabel format extensions")   /* option description */
     //----------------------------------------------------------------------
     CSO_MAP_OPT(bool,                           /* option type */
                 Verbose,                        /* option name */

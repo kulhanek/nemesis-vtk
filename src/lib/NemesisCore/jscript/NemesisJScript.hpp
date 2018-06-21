@@ -48,6 +48,9 @@ public:
     /// post close event to MainWindow
     void PostCloseEvent(void);
 
+    /// parse command arguments
+    void ParseArguments(void);
+
 // section of signals ----------------------------------------------------------
 signals:
     void SetupLevelChanged(const QString& text);
@@ -63,6 +66,9 @@ public slots:
 
     /// plugin loaded
     void PluginLoaded(const QString& base_name);
+
+    /// increment counter of initializations steps
+    void IncrementProgressNoGUI(const QString& text);
 
 // section of private data -----------------------------------------------------
 private:
@@ -83,6 +89,12 @@ private:
 
     /// register all JScript objects and constructors
     void RegisterObjects(void);
+
+    /// print import formats
+    void PrintIFormats(void);
+
+    /// print openbabel format extensions
+    void PrintOBExtensions(void);
 };
 
 //------------------------------------------------------------------------------

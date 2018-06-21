@@ -42,6 +42,9 @@ public:
     virtual CMainWindow*    GetMainWindow(void);
     virtual void            NewData(void);
 
+    /// process arguments
+    virtual bool ProcessArguments(int& narg);
+
 // section of private data ----------------------------------------------------
 private:
     CBuildProjectWindow*    MainWindow;

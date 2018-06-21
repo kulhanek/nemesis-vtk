@@ -67,6 +67,7 @@ CExtUUID        OpenBabelImportJobID(
 CPluginObject   OpenBabelImportJobObject(&OpenBabelPlugin,
                     OpenBabelImportJobID,JOB_CAT,
                     ":/images/OpenBabel/Openbabel.png",
+                    QStringList() << "EPF_IMPORT_STRUCTURE" << "FORMAT=ob",
                     OpenBabelImportJobCB);
 
 // -----------------------------------------------------------------------------

@@ -147,10 +147,8 @@ bool CProject::SaveProject(void)
     }
 
     // update project layout data
-    if( ! NemesisOptions.GetOptNoGUI() ){
-        if( GetMainWindow() ){
-            GetMainWindow()->SaveDesktop();
-        }
+    if( GetMainWindow() ){
+        GetMainWindow()->SaveDesktop();
     }
 
     CXMLDocument xml_document;
@@ -242,10 +240,8 @@ void CProject::CreateMainWindow(void)
 void CProject::ShowProject(void)
 {
     if( GetMainWindow() != NULL ) return;
+    CreateMainWindow();
 
-    if( ! NemesisOptions.GetOptNoGUI() ){
-        CreateMainWindow();
-    }
     BringToFront();
     OpenScheduledObjectDesigners();
 }
@@ -531,6 +527,13 @@ void CProject::SaveData(CXMLElement* p_ele)
     }
 
     // currently we do not save other data
+}
+
+//------------------------------------------------------------------------------
+
+bool CProject::ProcessArguments(int& narg)
+{
+    return(false);
 }
 
 //==============================================================================
