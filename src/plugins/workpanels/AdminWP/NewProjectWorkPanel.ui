@@ -20,7 +20,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="AdminWP.qrc">:/images/AdminWP/MainLogoRotated.png</pixmap>
+      <pixmap resource="AdminWP.qrc">:/images/NemesisCore/MainLogoRotated.svg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>

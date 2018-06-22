@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="/">
-    <file>images/NemesisCore/MainLogo.png</file>
+    <file>images/NemesisCore/MainLogo.svg</file>
+    <file>images/NemesisCore/MainLogoRotated.svg</file>
     <file>images/NemesisCore/trajectory/MoveDownTrajectoryFilter.svg</file>
     <file>images/NemesisCore/trajectory/MoveUpTrajectoryFilter.svg</file>
     <file>images/NemesisCore/trajectory/NewTrajectoryFilter.svg</file>

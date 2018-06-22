@@ -11,7 +11,5 @@
     <file>images/AdminWP/PluginDatabase.svg</file>
     <file>images/AdminWP/ObjectInspector.svg</file>
     <file>images/AdminWP/QuantitySetup.svg</file>
-    <file>images/AdminWP/MainLogo.png</file>
-    <file>images/AdminWP/MainLogoRotated.png</file>
   </qresource>
 </RCC>

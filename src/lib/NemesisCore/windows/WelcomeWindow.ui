@@ -99,7 +99,7 @@
          <enum>Qt::RichText</enum>
         </property>
         <property name="pixmap">
-         <pixmap>:/images/NemesisCore/MainLogo.png</pixmap>
+         <pixmap>:/images/NemesisCore/MainLogo.svg</pixmap>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
