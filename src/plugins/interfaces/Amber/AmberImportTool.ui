@@ -107,7 +107,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/AmberPlugin/fileclose.png</normaloff>:/images/AmberPlugin/fileclose.png</iconset>
+          <normaloff>:/images/Amber/Close.svg</normaloff>:/images/Amber/Close.svg</iconset>
         </property>
        </widget>
       </item>
@@ -118,7 +118,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/images/AmberPlugin/fileopen.png</normaloff>:/images/AmberPlugin/fileopen.png</iconset>
+          <normaloff>:/images/Amber/Open.svg</normaloff>:/images/Amber/Open.svg</iconset>
         </property>
        </widget>
       </item>

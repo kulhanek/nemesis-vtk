@@ -46,7 +46,7 @@ CExtUUID        TrajectoryListWorkPanelID(
 
 CPluginObject   TrajectoryListWorkPanelObject(&StandardWPPlugin,
                     TrajectoryListWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWP/ManageTrajectories.svg",
+                    ":/images/StandardWP/TrajectoryWP.svg",
                     TrajectoryListWorkPanelCB);
 
 // -----------------------------------------------------------------------------

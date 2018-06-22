@@ -26,7 +26,7 @@ SET(OPEN_BABEL_UIS
 
 # program resources ------------------------------------------------------------
 SET(OPEN_BABEL_RESOURCES
-        OpenBabel.rc
+        OpenBabel.qrc
         )
 
 # QT5 related binding ----------------------------------------------------------

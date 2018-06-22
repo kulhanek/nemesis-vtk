@@ -45,7 +45,7 @@ CExtUUID        GeoPropertySetupDesignerID(
 
 CPluginObject   GeoPropertySetupDesignerObject(&NemesisCorePlugin,
                     GeoPropertySetupDesignerID,DESIGNER_CAT,
-                    ":/images/NemesisCore/graphics/Geo.svg",
+                    ":/images/NemesisCore/properties/Geo.svg",
                     GeoPropertySetupDesignerCB);
 
 // -----------------------------------------------------------------------------

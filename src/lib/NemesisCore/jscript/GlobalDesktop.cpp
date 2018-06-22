@@ -163,9 +163,7 @@ void CGlobalDesktop::RestoreInitialProject(void)
                                       QMessageBox::Ok);
                 break;
             }
-            //if( p_wp != NULL ) p_wp->ShowAsDialog();
             p_wp->Show();
-            //delete p_wp;
         }
         break;
         case EDPRM_USER: {
@@ -173,13 +171,15 @@ void CGlobalDesktop::RestoreInitialProject(void)
             mp_uuid = GetInitialProjectType();
 
             CProject* p_project = Projects->NewProject(mp_uuid);
-            if( p_project != NULL ) break;
-
-            ES_ERROR("unable to create initial project");
-            QMessageBox::critical(NULL,tr("Error"),
-                                  tr("An error occurred during new project opening!"),
-                                  QMessageBox::Ok,
-                                  QMessageBox::Ok);
+            if( p_project == NULL ) {
+                ES_ERROR("unable to create initial project");
+                QMessageBox::critical(NULL,tr("Error"),
+                                      tr("An error occurred during new project opening!"),
+                                      QMessageBox::Ok,
+                                      QMessageBox::Ok);
+                break;
+            }
+            p_project->ShowProject();
         }
         break;
     }
@@ -226,8 +226,8 @@ bool CGlobalDesktop::IsInitialProjectEnabledAfterLastIsClosed(void)
 {
     CXMLElement* p_root = DesktopData.GetChildElementByPath("desktop/main");
 
-    // by default InitialProjectAfterLastIsClosed is enabled
-    bool setup = true;
+    // by default InitialProjectAfterLastIsClosed is disabled
+    bool setup = false;
 
     if( p_root ) {
         p_root->GetAttribute("InitialProjectEnabledAfterLastIsClosed", setup);

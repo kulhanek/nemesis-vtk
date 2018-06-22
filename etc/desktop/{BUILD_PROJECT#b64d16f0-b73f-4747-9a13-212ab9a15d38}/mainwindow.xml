@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--NEMESIS mainwindow setup-->
+<desktop>
+    <mainwindow>
+        <toolbars/>
+        <shortcuts>
+            <shortcut action="actionNewMolecule" key="Ctrl+N"/>
+            <shortcut action="actionOpen" key="Ctrl+O"/>
+            <shortcut action="actionSave" key="Ctrl+S"/>
+            <shortcut action="actionNewProject" key="Ctrl+P"/>
+            <shortcut action="actionSaveAll" key="Ctrl+L"/>
+            <shortcut action="actionUndo" key="Ctrl+Z"/>
+            <shortcut action="actionRedo" key="Ctrl+Shift+Z"/>
+            <shortcut action="actionProjectInfo" key="Ctrl+I"/>
+            <shortcut action="actionPasteStructure" key="Ctrl+V"/>
+            <shortcut action="actionAutofitScene" key="A"/>
+            <shortcut action="actionCopyActiveStructure" key="Ctrl+C"/>
+        </shortcuts>
+    </mainwindow>
+</desktop>

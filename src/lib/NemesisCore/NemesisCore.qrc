@@ -13,6 +13,9 @@
     <file>images/NemesisCore/trajectory/MoveUpTrajectorySegment.svg</file>
     <file>images/NemesisCore/trajectory/Trajectory.svg</file>
     <file>images/NemesisCore/trajectory/TrajectoryList.svg</file>
+    <file>images/NemesisCore/trajectory/segments/XYZTrajSegment.svg</file>
+    <file>images/NemesisCore/trajectory/segments/PDBQTTrajSegment.svg</file>
+    <file>images/NemesisCore/trajectory/segments/VibTrajSegment.svg</file>
     <file>images/NemesisCore/graphics/shadow/Save.svg</file>
     <file>images/NemesisCore/graphics/shadow/Fit.svg</file>
     <file>images/NemesisCore/graphics/shadow/Close.svg</file>

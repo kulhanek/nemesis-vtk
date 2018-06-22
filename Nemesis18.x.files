@@ -1,3 +1,4 @@
+src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.ui
 README.md
 etc/CMakeLists.txt
 etc/CMakeLists.txt
@@ -65,6 +66,8 @@ src/plugins/workpanels/StandardWP/NewSnapshotFilterWorkPanel.ui
 src/plugins/workpanels/StandardWP/PropertyManagerWorkPanel.cpp
 src/plugins/workpanels/StandardWP/PropertyManagerWorkPanel.hpp
 src/plugins/workpanels/StandardWP/PropertyManagerWorkPanel.ui
+src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.cpp
+src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.hpp
 src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.ui
 src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.hpp
 src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.cpp

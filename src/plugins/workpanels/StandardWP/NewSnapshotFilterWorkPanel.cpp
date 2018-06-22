@@ -50,7 +50,7 @@ CExtUUID        NewSnapshotFilterWorkPanelID(
 
 CPluginObject   NewSnapshotFilterWorkPanelObject(&StandardWPPlugin,
                     NewSnapshotFilterWorkPanelID,WORK_PANEL_CAT,
-                    ":/images/StandardWP/SnapshotFilterAdd.svg",
+                    ":/images/StandardWP/TrajectoryFilterWP.svg",
                     NewSnapshotFilterWorkPanelCB);
 
 // -----------------------------------------------------------------------------

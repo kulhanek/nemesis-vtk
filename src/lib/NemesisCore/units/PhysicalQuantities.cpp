@@ -95,14 +95,14 @@ CPhysicalQuantities::CPhysicalQuantities(CExtComObject* p_parent)
 
     PQ_UNITY = new CStdPhysicalQuantity(this,"unity","",'f',3);
     PQ_TIME = new CStdPhysicalQuantity(this,"time","fs",'f',1);
-    PQ_DISTANCE = new CStdPhysicalQuantity(this,"distance","A",'f',3);
-    PQ_DIMENSION = new CStdPhysicalQuantity(this,"dimension","A",'f',1);
-    PQ_ANGLE = new CStdPhysicalQuantity(this,"angle","deg",'f',1,0,1);
+    PQ_DISTANCE = new CStdPhysicalQuantity(this,"distance","Å",'f',3);
+    PQ_DIMENSION = new CStdPhysicalQuantity(this,"dimension","Å",'f',1);
+    PQ_ANGLE = new CStdPhysicalQuantity(this,"angle","°",'f',1,0,180.0/M_PI);
     PQ_PERCENTAGE = new CStdPhysicalQuantity(this,"percentage","%",'f',1,0,100);
     PQ_ENERGY = new CStdPhysicalQuantity(this,"energy","kcal/mol",'f',2);
     PQ_TEMPERATURE = new CStdPhysicalQuantity(this,"temperature","K",'f',1);
     PQ_CHARGE = new CStdPhysicalQuantity(this,"charge","",'f',3);
-    PQ_VOLUME = new CStdPhysicalQuantity(this,"volume","A^3",'f',1);
+    PQ_VOLUME = new CStdPhysicalQuantity(this,"volume","Å^3",'f',1);
     PQ_MASS = new CStdPhysicalQuantity(this,"mass","g/mol",'f',1);
     PQ_VELOCITY = new CStdPhysicalQuantity(this,"velocity","A/fs",'f',1);
     PQ_FREQUENCY = new CStdPhysicalQuantity(this,"frequency","1/cm",'f',1);

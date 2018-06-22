@@ -44,7 +44,7 @@ CExtUUID        TrajectoryListDesignerID(
 CPluginObject   TrajectoryListDesignerObject(&NemesisCorePlugin,
                     TrajectoryListDesignerID,
                     DESIGNER_CAT,
-                    ":/images/NemesisCore/structure/TrajectoryList.svg",
+                    ":/images/NemesisCore/trajectory/TrajectoryList.svg",
                     TrajectoryListDesignerCB);
 
 // -----------------------------------------------------------------------------

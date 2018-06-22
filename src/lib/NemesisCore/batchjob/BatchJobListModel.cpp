@@ -36,7 +36,7 @@ CExtUUID        BatchJobListModelID(
 
 CPluginObject   BatchJobListModelObject(&NemesisCorePlugin,
                     BatchJobListModelID,MODEL_CAT,
-                    ":/images/NemesisCore/job/BatchJobList.svg",
+                    ":/images/NemesisCore/batchjob/BatchJobList.svg",
                     BatchJobListModelCB);
 
 //------------------------------------------------------------------------------
