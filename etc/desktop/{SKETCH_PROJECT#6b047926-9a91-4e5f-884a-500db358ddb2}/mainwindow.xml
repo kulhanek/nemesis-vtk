@@ -14,6 +14,7 @@
             <shortcut action="actionCutStructure" key="Ctrl+X"/>
             <shortcut action="actionPasteStructure" key="Ctrl+V"/>
             <shortcut action="actionCopyStructure" key="Ctrl+C"/>
+            <shortcut action="actionClean" key="A"/>
             <shortcut action="actionZoomIn" key="Num++"/>
             <shortcut action="actionZoomOut" key="Num+-"/>
             <shortcut action="actionSelectAll" key="Ctrl+A"/>
