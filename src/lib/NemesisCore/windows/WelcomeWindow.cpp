@@ -24,6 +24,7 @@
 
 #include <QDesktopWidget>
 #include <QThread>
+#include <QTimer>
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -95,10 +96,17 @@ void CWelcomeWindow::IncrementProgress(const QString& text)
     WidgetUI.progressBar->setValue(CurrProgessStep);
     WidgetUI.progressLabel->setText(text);
 
+    // FIXME
     // slow down for problem with unity launcher icons
     QThread::msleep(100);
     QCoreApplication::processEvents(QEventLoop::AllEvents);
-    if( CurrProgessStep >= MaxProgessSteps ) close();
+    if( CurrProgessStep >= MaxProgessSteps ){
+        // FIXME
+        // solve unity problem with app icons?
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(close()));
+        timer->start(1000);
+    }
 }
 
 //------------------------------------------------------------------------------

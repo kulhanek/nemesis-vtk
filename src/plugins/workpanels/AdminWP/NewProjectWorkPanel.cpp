@@ -288,11 +288,16 @@ void CNewProjectWorkPanel::ProjectNew(void)
         return;
     }
 
-    // first to close this dialog
-    close();
     // then show project window
     // this is necessary for correct update of active window order in UNITY?
     p_project->ShowProject();
+
+    // FIXME
+    // solve unity problem with app icons?
+    setEnabled(false);
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(close()));
+    timer->start(1000);
 }
 
 //------------------------------------------------------------------------------
@@ -323,11 +328,16 @@ void CNewProjectWorkPanel::ProjectOpen(void)
         return;
     }
 
-    // first to close this dialog
-    close();
     // then show project window
     // this is necessary for correct update of active window order in UNITY?
     p_project->ShowProject();
+
+    // FIXME
+    // solve unity problem with app icons?
+    setEnabled(false);
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(close()));
+    timer->start(1000);
 }
 
 //==============================================================================

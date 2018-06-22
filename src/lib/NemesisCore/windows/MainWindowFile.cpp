@@ -332,7 +332,7 @@ void CMainWindow::NewProject(void)
 {
     CExtUUID mp_uuid;
     mp_uuid.LoadFromString("{NEW_PROJECT_WORK_PANEL:4cf836af-c5ca-4799-b0b7-bd53209d969e}");
-    ShowAsDialog(mp_uuid);
+    OpenToolPanel(mp_uuid,true);
 }
 
 //==============================================================================
