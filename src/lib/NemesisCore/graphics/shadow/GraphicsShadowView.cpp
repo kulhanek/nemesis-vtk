@@ -36,6 +36,8 @@
 #include <NemesisCoreModule.hpp>
 #include <QGraphicsItem>
 #include <QDesktopWidget>
+#include <GraphicsSetupProfile.hpp>
+#include <GraphicsCommonGLScene.hpp>
 
 #include <GraphicsShadowView.hpp>
 
@@ -300,6 +302,7 @@ void CGraphicsShadowView::ShowNormal(void)
     showNormal();
     SetDockWidget(true);
     Show();
+
     ControlsW->WidgetUI.viewInfoPB->setEnabled(true);
 }
 
@@ -320,7 +323,7 @@ bool CGraphicsShadowView::SetDockWidget(bool set)
     // remove dock window if requested
     if( set == false ) {
         setParent(NULL);
-        if( DockWidget ) delete DockWidget;
+        if( DockWidget ) DockWidget->deleteLater();
         DockWidget = NULL;
         return(true);
     }
@@ -338,11 +341,11 @@ bool CGraphicsShadowView::SetDockWidget(bool set)
         return(false);
     }
 
-    DockWidget->setWidget(this);
     if( p_mainwin ) p_mainwin->addDockWidget(Qt::RightDockWidgetArea, DockWidget);
     DockWidget->setFloating(true);
     DockWidget->setObjectName(GetType().GetFullStringForm());
     if( p_mainwin ) p_mainwin->restoreDockWidget(DockWidget);
+    DockWidget->setWidget(this);
 
     return(true);
 }

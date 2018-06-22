@@ -35,11 +35,16 @@ CGraphicsCommonView::CGraphicsCommonView(QWidget* p_widget)
     GraphicsView = NULL;
     MouseHandler = NULL;
 
-    QGLFormat format(QGL::DepthBuffer|QGL::Rgba|QGL::DoubleBuffer);
+    QSurfaceFormat format;
+    format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
     format.setStereo(GraphicsSetupProfile->QuadStereoEnabled);
-    format.setSampleBuffers(GraphicsSetupProfile->MultiSamplingEnabled);
+    if( GraphicsSetupProfile->MultiSamplingEnabled ){
+        // FIXME
+        format.setSamples(2);
+    }
 
-    OpenGLViewport = new QGLWidget(format);
+    OpenGLViewport = new QOpenGLWidget();
+    OpenGLViewport->setFormat(format);
     setViewport(OpenGLViewport); // it will take ownership
 
     setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
@@ -53,7 +58,7 @@ CGraphicsCommonView::CGraphicsCommonView(QWidget* p_widget)
 CGraphicsCommonView::~CGraphicsCommonView()
 {
     // make OpenGL context active
-    OpenGLViewport->makeCurrent();
+    if( OpenGLViewport) OpenGLViewport->makeCurrent();
     if( GraphicsView ){
         GraphicsView->ShadowView = NULL;
         GraphicsView->DetachOpenGLCanvas();
@@ -70,7 +75,7 @@ CGraphicsCommonView::~CGraphicsCommonView()
 void CGraphicsCommonView::SetGraphicsView(CGraphicsView* p_view)
 {
     GraphicsView = p_view;
-    OpenGLViewport->makeCurrent();
+    if( OpenGLViewport ) OpenGLViewport->makeCurrent();
     if( GraphicsView ){
         Project = GraphicsView->GetProject();
         MouseHandler = Project->GetMouseHandler();
@@ -90,7 +95,7 @@ void CGraphicsCommonView::UpdateScene(void)
 
 //------------------------------------------------------------------------------
 
-QGLWidget* CGraphicsCommonView::GetOpenGL(void)
+QOpenGLWidget* CGraphicsCommonView::GetOpenGL(void)
 {
     return(OpenGLViewport);
 }
@@ -99,14 +104,15 @@ QGLWidget* CGraphicsCommonView::GetOpenGL(void)
 
 void CGraphicsCommonView::ActivateGLContext(void)
 {
-    OpenGLViewport->makeCurrent();
+    if( OpenGLViewport ) OpenGLViewport->makeCurrent();
 }
 
 //------------------------------------------------------------------------------
 
-QGLFormat CGraphicsCommonView::GetFormat(void)
+QSurfaceFormat CGraphicsCommonView::GetFormat(void)
 {
-    return(OpenGLViewport->format());
+    if( OpenGLViewport ) return(OpenGLViewport->format());
+    return(QSurfaceFormat());
 }
 
 //==============================================================================

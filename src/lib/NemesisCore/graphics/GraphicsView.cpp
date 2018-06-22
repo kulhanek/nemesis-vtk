@@ -243,7 +243,7 @@ bool CGraphicsView::IsQuadBufferStereoAvailable(void)
 bool CGraphicsView::IsMultiSamplingAvailable(void)
 {
     if( DrawGLCanvas == NULL ) return(0);
-    return(DrawGLCanvas->GetFormat().sampleBuffers());
+    return(DrawGLCanvas->GetFormat().samples() > 1);
 }
 
 //------------------------------------------------------------------------------
@@ -616,12 +616,13 @@ QImage CGraphicsView::Render(int width,int height)
     if( width <= 0 ) width = DrawGLCanvas->width();
     if( height <= 0 ) height = DrawGLCanvas->height();
 
-    QGLPixelBuffer pbuffer(width,height,QGLFormat::defaultFormat(),DrawGLCanvas->GetOpenGL());
-    pbuffer.makeCurrent();
-    DrawGL();
-    FTGLFontCache.DestroyFonts();
+    // FIXME
+//    QGLPixelBuffer pbuffer(width,height,QGLFormat::defaultFormat(),DrawGLCanvas->GetOpenGL());
+//    pbuffer.makeCurrent();
+//    DrawGL();
+//    FTGLFontCache.DestroyFonts();
 
-    image = pbuffer.toImage();
+  //  image = pbuffer.toImage();
 
     return(image);
 }

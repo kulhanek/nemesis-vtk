@@ -22,7 +22,7 @@
 
 #include <NemesisCoreMainHeader.hpp>
 #include <QGraphicsView>
-#include <QGLWidget>
+#include <QOpenGLWidget>
 
 // -----------------------------------------------------------------------------
 
@@ -49,13 +49,13 @@ public:
     void UpdateScene(void);
 
     /// get underline opengl widget
-    QGLWidget* GetOpenGL(void);
+    QOpenGLWidget* GetOpenGL(void);
 
     /// get underline opengl context current
     void ActivateGLContext(void);
 
     /// get OpenGL format
-    QGLFormat GetFormat(void);
+    QSurfaceFormat GetFormat(void);
 
 // section of private data -----------------------------------------------------
 protected:
@@ -63,8 +63,8 @@ protected:
     CGraphicsView*          GraphicsView;
     CMouseHandler*          MouseHandler;
 
-private:
-    QGLWidget*              OpenGLViewport;
+protected:
+    QOpenGLWidget*          OpenGLViewport;
     CGraphicsCommonGLScene* Scene;
 
 protected:
