@@ -89,7 +89,7 @@ const QString CSketchProjectJSObject::cleanProject(const QString& inmol)
 void CSketchProjectJSObject::updateMenu(const QString& changed)
 {
     ProjectWindow->UpdateEditMenu();
-    ProjectWindow->UpdateViewMenu();
+    ProjectWindow->UpdateStructureMenu();
 
     // was the data changed
     if( changed == "notchanged" ){

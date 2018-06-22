@@ -75,9 +75,6 @@ public:
     /// remove all projects
     void RemoveAllProjects(void);
 
-    /// get number of projects
-    int  NumberOfProjects(void) const;
-
 // signals --------------------------------------------------------------------
 signals:
     /// emitted when new project is added into the list

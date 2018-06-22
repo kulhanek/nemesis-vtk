@@ -94,7 +94,7 @@ void CSketchProjectWindow::ConnectAllMenu(void)
     // restore desktop was already called
     ConnectFileMenu();
     ConnectEditMenu();
-    ConnectViewMenu();
+    ConnectStructureMenu();
     ConnectSetupMenu();
     ConnectHelpMenu();
 }

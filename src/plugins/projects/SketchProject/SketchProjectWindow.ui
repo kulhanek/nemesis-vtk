@@ -35,7 +35,7 @@
      <x>0</x>
      <y>0</y>
      <width>655</width>
-     <height>23</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -106,7 +106,7 @@
    </widget>
    <widget class="QMenu" name="menuStructure">
     <property name="title">
-     <string>View</string>
+     <string>Structure</string>
     </property>
     <widget class="QMenu" name="menuInsert">
      <property name="title">
@@ -133,7 +133,7 @@
   </widget>
   <action name="actionNewMolecule">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/NewStructure.svg</normaloff>:/images/SketchProject/01.file/NewStructure.svg</iconset>
    </property>
    <property name="text">
@@ -145,7 +145,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/Open.svg</normaloff>:/images/SketchProject/01.file/Open.svg</iconset>
    </property>
    <property name="text">
@@ -157,7 +157,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/Save.svg</normaloff>:/images/SketchProject/01.file/Save.svg</iconset>
    </property>
    <property name="text">
@@ -166,7 +166,7 @@
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/Quit.svg</normaloff>:/images/SketchProject/01.file/Quit.svg</iconset>
    </property>
    <property name="text">
@@ -178,7 +178,7 @@
   </action>
   <action name="actionAboutNemesis">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/06.help/NemesisAbout.svg</normaloff>:/images/SketchProject/06.help/NemesisAbout.svg</iconset>
    </property>
    <property name="text">
@@ -187,7 +187,7 @@
   </action>
   <action name="actionNewProject">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/NewProject.svg</normaloff>:/images/SketchProject/01.file/NewProject.svg</iconset>
    </property>
    <property name="text">
@@ -199,7 +199,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/SaveAs.svg</normaloff>:/images/SketchProject/01.file/SaveAs.svg</iconset>
    </property>
    <property name="text">
@@ -211,7 +211,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/SaveAs.svg</normaloff>:/images/SketchProject/01.file/SaveAs.svg</iconset>
    </property>
    <property name="text">
@@ -223,7 +223,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/Close.svg</normaloff>:/images/SketchProject/01.file/Close.svg</iconset>
    </property>
    <property name="text">
@@ -235,7 +235,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/CloseAll.svg</normaloff>:/images/SketchProject/01.file/CloseAll.svg</iconset>
    </property>
    <property name="text">
@@ -247,7 +247,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/02.edit/Undo.svg</normaloff>:/images/SketchProject/02.edit/Undo.svg</iconset>
    </property>
    <property name="text">
@@ -259,7 +259,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/02.edit/Redo.svg</normaloff>:/images/SketchProject/02.edit/Redo.svg</iconset>
    </property>
    <property name="text">
@@ -271,7 +271,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/06.help/OnlineDoc.svg</normaloff>:/images/SketchProject/06.help/OnlineDoc.svg</iconset>
    </property>
    <property name="text">
@@ -283,7 +283,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/01.file/Info.svg</normaloff>:/images/SketchProject/01.file/Info.svg</iconset>
    </property>
    <property name="text">
@@ -292,7 +292,7 @@
   </action>
   <action name="actionAboutQt">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/06.help/QTAbout.svg</normaloff>:/images/SketchProject/06.help/QTAbout.svg</iconset>
    </property>
    <property name="text">
@@ -304,7 +304,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/02.edit/Cut.svg</normaloff>:/images/SketchProject/02.edit/Cut.svg</iconset>
    </property>
    <property name="text">
@@ -316,7 +316,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/02.edit/Paste.svg</normaloff>:/images/SketchProject/02.edit/Paste.svg</iconset>
    </property>
    <property name="text">
@@ -328,7 +328,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/02.edit/Copy.svg</normaloff>:/images/SketchProject/02.edit/Copy.svg</iconset>
    </property>
    <property name="text">
@@ -337,7 +337,7 @@
   </action>
   <action name="actionSaveLayout">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/05.setup/SaveDesktop.svg</normaloff>:/images/SketchProject/05.setup/SaveDesktop.svg</iconset>
    </property>
    <property name="text">
@@ -346,7 +346,7 @@
   </action>
   <action name="actionToolbarsConfig">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/05.setup/ConfigToolBars.svg</normaloff>:/images/SketchProject/05.setup/ConfigToolBars.svg</iconset>
    </property>
    <property name="text">
@@ -360,7 +360,7 @@
   </action>
   <action name="actionClean">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/03.view/Clean.svg</normaloff>:/images/SketchProject/03.view/Clean.svg</iconset>
    </property>
    <property name="text">
@@ -379,7 +379,7 @@
   </action>
   <action name="actionZoomIn">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/03.view/ZoomIn.svg</normaloff>:/images/SketchProject/03.view/ZoomIn.svg</iconset>
    </property>
    <property name="text">
@@ -388,7 +388,7 @@
   </action>
   <action name="actionZoomOut">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/03.view/ZoomOut.svg</normaloff>:/images/SketchProject/03.view/ZoomOut.svg</iconset>
    </property>
    <property name="text">
@@ -422,7 +422,7 @@
   </action>
   <action name="actionGlobalSetup">
    <property name="icon">
-    <iconset>
+    <iconset resource="SketchProject.qrc">
      <normaloff>:/images/SketchProject/05.setup/GlobalConfig.svg</normaloff>:/images/SketchProject/05.setup/GlobalConfig.svg</iconset>
    </property>
    <property name="text">
@@ -430,6 +430,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="SketchProject.qrc"/>
+ </resources>
  <connections/>
 </ui>

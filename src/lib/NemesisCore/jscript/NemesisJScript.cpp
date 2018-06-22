@@ -142,8 +142,6 @@ int CNemesisJScript::Init(int argc,char* argv[])
     // init subsystems
     result = InitSubsystems();
 
-    emit SetupLevelChanged("All done.");
-
     InitStatus = result;
     return( result );
 }
@@ -152,9 +150,9 @@ int CNemesisJScript::Init(int argc,char* argv[])
 
 bool CNemesisJScript::Run(void)
 {
-    // run GUI event loop - only when some project is opened
+    // run GUI event loop - only when some project or WP is opened
     bool result = true;
-    if( Projects->NumberOfProjects() > 0 ){
+    if( (Projects->GetNumberOfProjects() > 0) || (WorkPanels->GetNumberOfWorkPanels() > 0) ){
         result = QApplication::exec() != 0;
     }
     return(result);
@@ -206,7 +204,6 @@ void CNemesisJScript::PrintWelcomeText(void)
     cout << endl;
     cout << "# ==============================================================================" << endl;
     cout << "#                     NEMESIS - Molecular Modelling Package                     " << endl;
-    cout << "#                            Graphical User Interface                           " << endl;
     cout << "# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "# Started at : " << time_and_date << endl;
     cout << "# ==============================================================================" << endl;
@@ -332,6 +329,9 @@ int CNemesisJScript::InitSubsystems(void)
 
     emit SetupLevelChanged("All done.");
 
+    // force quit the window
+    QGuiApplication::sync();
+
     bool exit = false;
 
     if( NemesisOptions.IsOptPrintIFormatsSet() ){
@@ -367,8 +367,8 @@ int CNemesisJScript::InitSubsystems(void)
 void CNemesisJScript::PrintIFormats(void)
 {
     cout << endl;
-    cout << "  Format          Plugin        Description                                                 " << endl;
-    cout << "---------- -------------------- ------------------------------------------------------------" << endl;
+    cout << "  Format          Plugin        Description                                     " << endl;
+    cout << "---------- -------------------- ------------------------------------------------" << endl;
 
     CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
     CPluginObject*                     p_obj;
@@ -392,8 +392,8 @@ void CNemesisJScript::PrintIFormats(void)
 void CNemesisJScript::PrintOBExtensions(void)
 {
     cout << endl;
-    cout << "  Format          Plugin        Description                                                 " << endl;
-    cout << "---------- -------------------- ------------------------------------------------------------" << endl;
+    cout << "  Format          Plugin        Description                                     " << endl;
+    cout << "---------- -------------------- ------------------------------------------------" << endl;
 }
 
 //------------------------------------------------------------------------------

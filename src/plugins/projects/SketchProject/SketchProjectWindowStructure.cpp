@@ -42,7 +42,7 @@ using namespace std;
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CSketchProjectWindow::ConnectViewMenu(void)
+void CSketchProjectWindow::ConnectStructureMenu(void)
 {
     connect(WidgetUI.actionInsertSMILES,SIGNAL(triggered(bool)),
             this,SLOT(InsertSMILES(void)));
@@ -70,7 +70,7 @@ void CSketchProjectWindow::ConnectViewMenu(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CSketchProjectWindow::UpdateViewMenu(void)
+void CSketchProjectWindow::UpdateStructureMenu(void)
 {
     QWebFrame* p_mf = WebView->page()->mainFrame();
     QVariant result;

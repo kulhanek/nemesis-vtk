@@ -17,6 +17,8 @@ etc/plugins/definitions/workpanels/ExtraWP.plg
 etc/plugins/definitions/workpanels/StandardWP.plg
 src/lib/NemesisCore/NemesisCoreMainHeaderConfig.hpp
 src/lib/NemesisCore/windows/AboutWindow.ui
+src/lib/NemesisCore/windows/WelcomeWindow.ui
+src/plugins/projects/SketchProject/SketchProjectWindowStructure.cpp
 src/plugins/properties/RMSDTools/CMakeLists.txt
 src/plugins/workpanels/AdminWP/AdminWP.qrc
 src/plugins/workpanels/AdminWP/GlobalWorkPanels.qrc
@@ -266,7 +268,6 @@ src/plugins/projects/SketchProject/SketchProjectWindow.cpp
 src/plugins/projects/SketchProject/SketchProjectWindow.hpp
 src/plugins/projects/SketchProject/SketchProjectWindow.ui
 src/plugins/projects/SketchProject/SketchProjectWindowEdit.cpp
-src/plugins/projects/SketchProject/SketchProjectWindowView.cpp
 src/plugins/projects/TrajectoryProject/CMakeLists.txt
 src/plugins/projects/TrajectoryProject/TrajectoryProject.cpp
 src/plugins/projects/TrajectoryProject/TrajectoryProject.hpp
@@ -373,7 +374,6 @@ src/plugins/workpanels/AdminWP/AdminWPModule.cpp
 src/plugins/workpanels/AdminWP/AdminWPModule.hpp
 src/plugins/workpanels/AdminWP/GraphicsSetupWorkPanel.cpp
 src/plugins/workpanels/AdminWP/GraphicsSetupWorkPanel.hpp
-src/plugins/workpanels/AdminWP/JSTerminalWorkPanel.cpp
 src/plugins/workpanels/AdminWP/JSTerminalWorkPanel.hpp
 src/plugins/workpanels/AdminWP/JobSchedulerSetupWorkPanel.cpp
 src/plugins/workpanels/AdminWP/JobSchedulerSetupWorkPanel.hpp

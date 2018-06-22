@@ -64,6 +64,9 @@ public:
     /// find first opened workpanel by its uuid
     CWorkPanel* Find(const CUUID& uuid,CProject* p_project);
 
+    /// get number of WPs
+    int  GetNumberOfWorkPanels(void) const;
+
 // signals ---------------------------------------------------------------------
 signals:
     /// emmited when WP is added into the list

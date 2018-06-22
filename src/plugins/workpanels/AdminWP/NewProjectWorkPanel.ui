@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>NEMESIS - New project</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>:/images/StandardWorkPanels/projectnew.png</normaloff>:/images/StandardWorkPanels/projectnew.png</iconset>
-  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QLabel" name="label">

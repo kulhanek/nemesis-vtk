@@ -73,7 +73,8 @@ QObject* NewProjectWorkPanelCB(void* p_data)
 //==============================================================================
 
 CNewProjectWorkPanel::CNewProjectWorkPanel(void)
-    : CWorkPanel(&NewProjectWorkPanelObject,NULL,EWPR_DIALOG)
+    // EWPR_DIALOG has a bug with save/restore window position
+    : CWorkPanel(&NewProjectWorkPanelObject,NULL,EWPR_WINDOW)
 {
     WidgetUI.setupUi(this);
     BuildProject = NULL;

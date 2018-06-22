@@ -23,6 +23,7 @@
 #include "WelcomeWindow.hpp"
 
 #include <QDesktopWidget>
+#include <QThread>
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ CWelcomeWindow::CWelcomeWindow(void)
 
     // set window title
     setWindowTitle("NEMESIS");
+
     setAttribute(Qt::WA_DeleteOnClose);
 
     MaxProgessSteps = 0;
@@ -93,10 +95,9 @@ void CWelcomeWindow::IncrementProgress(const QString& text)
     WidgetUI.progressBar->setValue(CurrProgessStep);
     WidgetUI.progressLabel->setText(text);
 
+    // slow down for problem with unity launcher icons
+    QThread::msleep(100);
     QCoreApplication::processEvents(QEventLoop::AllEvents);
-    //FIXME
-    //QApplication::syncX();
-
     if( CurrProgessStep >= MaxProgessSteps ) close();
 }
 
@@ -107,8 +108,6 @@ void CWelcomeWindow::ChangeNotification(const QString& text)
     WidgetUI.progressLabel->setText(text);
 
     QCoreApplication::processEvents(QEventLoop::AllEvents);
-    //FIXME
-    //QApplication::syncX();
 }
 
 //==============================================================================

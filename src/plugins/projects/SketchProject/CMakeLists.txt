@@ -10,7 +10,7 @@ SET(SKETCH_PROJECT_SRC
         SketchProjectDesigner.cpp
         SketchProjectWindow.cpp
         SketchProjectWindowEdit.cpp
-        SketchProjectWindowView.cpp
+        SketchProjectWindowStructure.cpp
         SketchProjectJSObject.cpp
         )
 

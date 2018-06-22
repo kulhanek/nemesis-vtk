@@ -12,7 +12,6 @@ SET(ADMIN_WP_SRC
         QuantityUnitSetupWorkPanel.cpp
         GraphicsSetupWorkPanel.cpp
         ColorSetupWorkPanel.cpp
-        JSTerminalWorkPanel.cpp
         JobSchedulerSetupWorkPanel.cpp
         ObjectInspectorWorkPanel.cpp
         PeriodicTableWorkPanel.cpp
@@ -27,7 +26,6 @@ SET(ADMIN_WP_UIS
         QuantityUnitSetupWorkPanel.ui
         GraphicsSetupWorkPanel.ui
         ColorSetupWorkPanel.ui
-        JSTerminalWorkPanel.ui
         ObjectInspectorWorkPanel.ui
         JobSchedulerSetupWorkPanel.ui
         NewProjectWorkPanel.ui

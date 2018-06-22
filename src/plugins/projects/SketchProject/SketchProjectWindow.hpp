@@ -73,12 +73,12 @@ private slots:
 
     void DeleteAll(void);
 
-// VIEW ========================================================================
+// STRUCTURE ====================================================================
 private:
-    void ConnectViewMenu(void);
+    void ConnectStructureMenu(void);
 
 private slots:
-    void UpdateViewMenu(void);
+    void UpdateStructureMenu(void);
 
     void InsertSMILES(void);
     void ShowSMILES(void);

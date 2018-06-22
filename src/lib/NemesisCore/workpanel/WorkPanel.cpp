@@ -518,6 +518,7 @@ void CWorkPanel::Show(void)
             }
             break;
     }
+    QApplication::processEvents();
 }
 
 //------------------------------------------------------------------------------
@@ -677,7 +678,7 @@ int  CWorkPanel::ShowAsDialog(void)
     Container.Widget.Dialog->setLayout(p_layout);
 
     LoadWorkPanelSetup();
-    Container.Widget.Dialog->setAttribute(Qt::WA_Moved);
+   // Container.Widget.Dialog->setAttribute(Qt::WA_Moved);
     int result = Container.Widget.Dialog->exec();
 
     SaveWorkPanelSetup();

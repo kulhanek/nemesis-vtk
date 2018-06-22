@@ -163,8 +163,9 @@ void CGlobalDesktop::RestoreInitialProject(void)
                                       QMessageBox::Ok);
                 break;
             }
-            if( p_wp != NULL ) p_wp->ShowAsDialog();
-            delete p_wp;
+            //if( p_wp != NULL ) p_wp->ShowAsDialog();
+            p_wp->Show();
+            //delete p_wp;
         }
         break;
         case EDPRM_USER: {
@@ -243,7 +244,8 @@ void CGlobalDesktop::RestoreWorkPanels(void)
     if( IsWPRestorationEnabled() == false ) return;
 
     // close all global work panels if any
-    WorkPanels->RemoveAllGlobalWorkPanels();
+    // FIXME
+    // WorkPanels->RemoveAllGlobalWorkPanels();
 
     // create new set of workpanels
     CXMLElement*    p_root = DesktopData.GetChildElementByPath("desktop/workpanels");
