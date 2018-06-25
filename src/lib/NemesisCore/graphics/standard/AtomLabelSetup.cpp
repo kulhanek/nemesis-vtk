@@ -58,9 +58,9 @@ QObject* AtomLabelSetupCB(void* p_data)
 CAtomLabelSetup::CAtomLabelSetup(CProObject* p_owner)
     : CGraphicsSetup(&CAtomLabelSetupObject,p_owner)
 {
-    LabelFontName = "LiberationSans-Regular";
-    LabelFontSize = 12;
-    LabelColor.SetRGB(1.0,1.0,1.0);
+    LabelFontName = "NotoSans-Regular";
+    LabelFontSize = 30;
+    LabelColor.SetRGB(1.0,0.0,0.0);
 
     LineStippleFactor = 2;
     LineStipplePattern = 0x5555;

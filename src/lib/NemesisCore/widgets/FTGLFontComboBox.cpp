@@ -69,7 +69,7 @@ void QFTGLFontComboBox::setFontName(const QString& name)
 QString QFTGLFontComboBox::getFontName(void) const
 {
     if( currentText().isEmpty() ){
-        return("LiberationSans-Regular");
+        return("NotoSans-Regular");
     }
     return(currentText());
 }

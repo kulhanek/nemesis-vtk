@@ -58,9 +58,9 @@ QObject* TextSetupCB(void* p_data)
 CTextSetup::CTextSetup(CProObject* p_owner)
     : CGraphicsSetup(&CTextSetupObject,p_owner)
 {
-    LabelFontName = "LiberationSans-Regular";
-    LabelFontSize = 12;
-    LabelColor.SetRGB(1.0,0.0,0.0);
+    LabelFontName = "NotoSans-Regular";
+    LabelFontSize = 30;
+    LabelColor.SetRGB(0.0,0.0,1.0);
 
     DepthTest = false;
 

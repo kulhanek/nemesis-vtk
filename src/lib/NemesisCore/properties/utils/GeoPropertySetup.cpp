@@ -62,8 +62,8 @@ CGeoPropertySetup::CGeoPropertySetup(CProObject* p_owner)
     LineWidth = 1;
     LineColor.SetRGB(0.8,0.1,0.0);
 
-    LabelFontName = "LiberationSans-Regular";
-    LabelFontSize = 28;
+    LabelFontName = "NotoSans-Regular";
+    LabelFontSize = 30;
     LabelColor.SetRGB(0.8,0.1,0.0);
 
     LabelQuotationColor.SetRGB(0.9,0.15,0.15,1.0);

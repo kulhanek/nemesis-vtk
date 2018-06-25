@@ -71,8 +71,8 @@ CGeometryLabelSetup::CGeometryLabelSetup(CProObject* p_owner)
     QuotationStipplePattern = 0x5555;
 
     LabelColor.SetRGB(0.8,0.8,0.15,1.0);
-    LabelFontName = "LiberationSans-Regular";
-    LabelFontSize = 18;
+    LabelFontName = "NotoSans-Regular";
+    LabelFontSize = 30;
     ShowUnit = true;
     DepthTest = false;
 

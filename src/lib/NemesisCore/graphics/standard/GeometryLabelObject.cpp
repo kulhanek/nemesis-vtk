@@ -553,7 +553,7 @@ void CGeometryLabelObject::LabelAngle(void)
     } else {
         v1 = pos2 + Norm(pos1-pos2)*Size(pos1-pos2)*Setup->AngleArcScope;
         v3 = pos2 + Norm(pos3-pos2)*Size(pos1-pos2)*Setup->AngleArcScope;
-        arc.Draw(v1,v2,v3,angle,str);
+        arc.Draw(v3,v2,v1,angle,str);
         glBegin(GL_LINE_STRIP);
         if(Size(pos1 - pos2) > Size(v1 - v2)) {
             glVertex3fv(pos1);
