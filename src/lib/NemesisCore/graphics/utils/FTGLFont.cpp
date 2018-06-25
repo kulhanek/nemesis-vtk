@@ -35,7 +35,7 @@ CFTGLFont::CFTGLFont(void)
 
 //------------------------------------------------------------------------------
 
-void CFTGLFont::Render(const char* string)
+void CFTGLFont::Render(const wchar_t* string)
 {
     FTPolygonFont* p_font = FTGLFontCache.GetFont(Name,Size);
     if( p_font ){

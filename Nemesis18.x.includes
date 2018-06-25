@@ -27,3 +27,4 @@ etc/plugins/definitions/properties
 src/lib/NemesisCore
 src/lib/NemesisCore/windows
 etc
+src/lib/NemesisCore/graphics/utils

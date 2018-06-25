@@ -96,10 +96,10 @@ void CWelcomeWindow::IncrementProgress(const QString& text)
     WidgetUI.progressBar->setValue(CurrProgessStep);
     WidgetUI.progressLabel->setText(text);
 
-    // FIXME
-    // slow down for problem with unity launcher icons
-    QThread::msleep(100);
     QCoreApplication::processEvents(QEventLoop::AllEvents);
+    // FIXME - for testing
+    QThread::msleep(100);
+
     if( CurrProgessStep >= MaxProgessSteps ){
         // FIXME
         // solve unity problem with app icons?
@@ -116,6 +116,8 @@ void CWelcomeWindow::ChangeNotification(const QString& text)
     WidgetUI.progressLabel->setText(text);
 
     QCoreApplication::processEvents(QEventLoop::AllEvents);
+    // FIXME - for testing
+    QThread::msleep(50);
 }
 
 //==============================================================================

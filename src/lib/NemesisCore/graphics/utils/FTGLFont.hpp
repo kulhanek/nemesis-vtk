@@ -34,7 +34,7 @@ public:
 
 // executive methods -----------------------------------------------------------
     /// render text
-    void Render(const char* string);
+    void Render(const wchar_t* string);
 
     /// setup font
     void Setup(const QString& name,int size);

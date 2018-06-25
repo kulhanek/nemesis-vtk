@@ -121,7 +121,7 @@ void CGeoProperty::DrawText(const CSimplePoint<float>& pos,const QString& label)
             glDisable(GL_DEPTH_TEST);
         }
 
-        Setup->FTGLFont.Render(label.toLatin1());
+        Setup->FTGLFont.Render(label.toStdWString().c_str());
     glPopMatrix();
 
     glEnable(GL_DEPTH_TEST);

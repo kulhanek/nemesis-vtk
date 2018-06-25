@@ -264,7 +264,7 @@ void CTextObject::Draw(void)
             glDisable(GL_DEPTH_TEST);
         }
 
-        p_setup->FTGLFont.Render(label.toLatin1());
+        p_setup->FTGLFont.Render(label.toStdWString().c_str());
     glPopMatrix();
 
     glEnable(GL_DEPTH_TEST);

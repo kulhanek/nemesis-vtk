@@ -203,7 +203,7 @@ void CNemesisJScript::PrintWelcomeText(void)
 
     cout << endl;
     cout << "# ==============================================================================" << endl;
-    cout << "#                     NEMESIS - Molecular Modelling Package                     " << endl;
+    cout << "#                     NEMESIS - A Molecular Modeling Package                     " << endl;
     cout << "# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "# Started at : " << time_and_date << endl;
     cout << "# ==============================================================================" << endl;

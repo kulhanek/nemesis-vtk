@@ -54,12 +54,16 @@ FTPolygonFont* CFTGLFontCache::GetFont(const QString& name,int size)
     // create new font
     CFileName full_name = GlobalSetup->GetFontPath() / name + ".ttf";
     font_ptr = FTPolygonFontPtr(new FTPolygonFont(full_name));
-    font_ptr->FaceSize(size);
+    if( ! font_ptr->Error() ){
+        font_ptr->CharMap(ft_encoding_unicode);
+        font_ptr->FaceSize(size);
 
-    // put it to cache
-    Cache[QGLContext::currentContext()][name][size] = font_ptr;
-
-    return(font_ptr.get());
+        // put it to cache
+        Cache[QGLContext::currentContext()][name][size] = font_ptr;
+        return(font_ptr.get());
+    } else {
+        return(NULL); // unable to load the font
+    }
 }
 
 //------------------------------------------------------------------------------
