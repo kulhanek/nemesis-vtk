@@ -296,6 +296,8 @@ void CTrajectoryProjectWindow::ImportTrajectoryAction(QAction* p_act)
     QVariant type = p_act->property("trajectory.uuid");
     uuid.LoadFromString(type.toString().toLatin1().constData());
 
+    Project->setProperty("impex.direct",false);
+
     // open dialog
     ExecuteObject(uuid,Project);
 }

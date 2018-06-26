@@ -20,9 +20,7 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <WorkPanel.hpp>
-#include <QFileDialog>
-#include "ui_GOptTrajImportTool.h"
+#include <ImportTrajectory.hpp>
 
 //------------------------------------------------------------------------------
 
@@ -32,23 +30,18 @@ class CStructure;
 
 /// import Gaussian geometry otimization tool
 
-class CGOptTrajImportTool : public CWorkPanel {
-    Q_OBJECT
+class CGOptTrajImportTool : public CImportTrajectory {
 public:
 // constructor and destructor -------------------------------------------------
     CGOptTrajImportTool(CProject* p_project);
-    ~CGOptTrajImportTool(void);
+
+public:
+    void ExecuteDialog(void);
+    virtual void LaunchJob(const QString& file);
 
 // section of private data ----------------------------------------------------
 private:
-    Ui::GOptTrajImportTool  WidgetUI;
-    QFileDialog*            Dialog;
-
-    void InitInternalDialog(void);
     bool ImportFirstStructure(CStructure* p_str,const QString& file);
-
-public slots:
-    void ReadData(void);
 };
 
 //------------------------------------------------------------------------------

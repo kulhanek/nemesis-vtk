@@ -114,7 +114,7 @@ void CXYZTrajImportTool::ExecuteDialog(void)
     p_dialog->setWindowTitle(XYZTrajImportToolObject.GetDescription());
 
     p_dialog->setNameFilters(filters);
-    p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath()));
+    p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(XYZTrajImportToolID)));
     p_dialog->setFileMode(QFileDialog::ExistingFile);
     p_dialog->setAcceptMode(QFileDialog::AcceptOpen);
 
@@ -131,6 +131,14 @@ void CXYZTrajImportTool::ExecuteDialog(void)
 
 void CXYZTrajImportTool::LaunchJob(const QString& file)
 {
+    // does file exist?
+    if( QFile::exists(file) == false ){
+        QMessageBox::information(GetProject()->GetMainWindow(),tr("Error"),
+                                   tr("The file does not exist!"),
+                                   QMessageBox::Abort, QMessageBox::Abort);
+        return;
+    }
+
     GlobalSetup->SetLastOpenFilePathFromFile(file,XYZTrajImportToolID);
 
     // is project locked?

@@ -47,10 +47,10 @@ public:
 
     CSO_PROG_ARGS_LONG_DESC_BEGIN
     "<b>Arguments:</b>\n"
-    "   -build          create build project\n"
-    "   -traj           create trajectory project\n"
-    "   -sketch         create sketch project\n"
-    "   -format file    load structure from file in given format to the current project\n"
+    "   -build          create a build project\n"
+    "   -traj           create a trajectory project\n"
+    "   -sketch         create a sketch project\n"
+    "   -format file    load a structure from the file in the format to the current project"
     CSO_PROG_ARGS_LONG_DESC_END
 
 // list of all options and arguments ------------------------------------------

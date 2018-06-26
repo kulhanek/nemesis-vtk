@@ -40,6 +40,7 @@ src/lib/NemesisCore/graphics/utils/GraphicsUtil.cpp
 src/lib/NemesisCore/graphics/utils/GraphicsUtil.hpp
 src/lib/NemesisCore/trajectory/ImportTrajectory.cpp
 src/lib/NemesisCore/trajectory/ImportTrajectory.hpp
+src/plugins/projects/TrajectoryProject/TrajectoryProjectWindowTrajectory.cpp
 src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.ui
 README.md
 etc/CMakeLists.txt
@@ -216,7 +217,6 @@ src/plugins/interfaces/CPMD/CPMDModule.qrc
 src/plugins/interfaces/Gaussian/CMakeLists.txt
 src/plugins/interfaces/Gaussian/GOptTrajImportTool.cpp
 src/plugins/interfaces/Gaussian/GOptTrajImportTool.hpp
-src/plugins/interfaces/Gaussian/GOptTrajImportTool.ui
 src/plugins/interfaces/Gaussian/GOptTrajSegment.cpp
 src/plugins/interfaces/Gaussian/GOptTrajSegment.hpp
 src/plugins/interfaces/Gaussian/GOptTrajSegmentDesigner.cpp
@@ -224,7 +224,6 @@ src/plugins/interfaces/Gaussian/GOptTrajSegmentDesigner.hpp
 src/plugins/interfaces/Gaussian/GOptTrajSegmentDesigner.ui
 src/plugins/interfaces/Gaussian/GVibTrajImportTool.cpp
 src/plugins/interfaces/Gaussian/GVibTrajImportTool.hpp
-src/plugins/interfaces/Gaussian/GVibTrajImportTool.ui
 src/plugins/interfaces/Gaussian/GVibTrajSegment.cpp
 src/plugins/interfaces/Gaussian/GVibTrajSegment.hpp
 src/plugins/interfaces/Gaussian/GaussianInputExportTool.cpp

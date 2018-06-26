@@ -37,6 +37,8 @@
 #include <GraphicsView.hpp>
 #include <fstream>
 #include <QMessageBox>
+#include <QFileDialog>
+#include <MainWindow.hpp>
 
 #include "GaussianUtils.hpp"
 #include "GaussianModule.hpp"
@@ -60,6 +62,7 @@ CExtUUID        GOptTrajImportToolID(
 
 CPluginObject   GOptTrajImportToolObject(&GaussianPlugin,
                     GOptTrajImportToolID,IMPORT_TRAJECTORY_CAT,
+                    QStringList() << "FORMAT=gopt",
                     GOptTrajImportToolCB);
 
 // -----------------------------------------------------------------------------
@@ -72,8 +75,15 @@ QObject* GOptTrajImportToolCB(void* p_data)
         return(NULL);
     }
 
-    QObject* p_build_wp = new CGOptTrajImportTool(p_project);
-    return(p_build_wp);
+
+    CGOptTrajImportTool* p_object = new CGOptTrajImportTool(p_project);
+    if( p_project->property("impex.direct") == false ){
+        p_object->ExecuteDialog();
+        delete p_object;
+        return(NULL);
+    } else {
+        return(p_object);
+    }
 }
 
 //==============================================================================
@@ -81,29 +91,15 @@ QObject* GOptTrajImportToolCB(void* p_data)
 //==============================================================================
 
 CGOptTrajImportTool::CGOptTrajImportTool(CProject* p_project)
-    : CWorkPanel(&GOptTrajImportToolObject,p_project,EWPR_DIALOG)
+    : CImportTrajectory(&GOptTrajImportToolObject,p_project)
 {
-    WidgetUI.setupUi(this);
-
-    // set up import and export widgets
-    InitInternalDialog();
-
-    // load work panel setup
-    LoadWorkPanelSetup();
-}
-
-//------------------------------------------------------------------------------
-
-CGOptTrajImportTool::~CGOptTrajImportTool()
-{
-    SaveWorkPanelSetup();
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajImportTool::InitInternalDialog(void)
+void CGOptTrajImportTool::ExecuteDialog(void)
 {
     // parse formats list ------------------------
     QStringList filters;
@@ -111,36 +107,39 @@ void CGOptTrajImportTool::InitInternalDialog(void)
     filters << "All Files (*)";
 
     // open qfiledialog for file open with filters set correctly
-    Dialog = new QFileDialog();
-    Dialog->setNameFilters(filters);
-    Dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath()));
-    Dialog->setFileMode(QFileDialog::ExistingFile);
-    Dialog->setAcceptMode(QFileDialog::AcceptOpen);
+    QFileDialog* p_dialog = new QFileDialog();
+    p_dialog->setNameFilters(filters);
+    p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath()));
+    p_dialog->setFileMode(QFileDialog::ExistingFile);
+    p_dialog->setAcceptMode(QFileDialog::AcceptOpen);
 
-    QVBoxLayout* p_layout = new QVBoxLayout;
-    p_layout->addWidget(Dialog);
-    WidgetUI.fileTab->setLayout(p_layout);
+    if( p_dialog->exec() == QDialog::Accepted ){
+        LaunchJob(p_dialog->selectedFiles().at(0));
+    }
 
-    connect(Dialog, SIGNAL(rejected()), this, SLOT(close()));
-    connect(Dialog, SIGNAL(accepted()), this, SLOT(ReadData()));
+    delete p_dialog;
+
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajImportTool::ReadData(void)
+void CGOptTrajImportTool::LaunchJob(const QString& file)
 {
-    // we must always close work panel
-    // since internal file dialog is already closed
-    close();
+    // does file exist?
+    if( QFile::exists(file) == false ){
+        QMessageBox::information(GetProject()->GetMainWindow(),tr("Error"),
+                                   tr("The file does not exist!"),
+                                   QMessageBox::Abort, QMessageBox::Abort);
+        return;
+    }
 
-    QString file = Dialog->selectedFiles().at(0);
     GlobalSetup->SetLastOpenFilePathFromFile(file,GOptTrajImportToolID);
 
     // is project locked?
     if( GetProject()->GetHistory()->IsLocked(EHCL_TRAJECTORIES) ){
-        QMessageBox::information(this,tr("Error"),
+        QMessageBox::information(GetProject()->GetMainWindow(),tr("Error"),
                                    tr("The current project is locked!"),
                                    QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -148,7 +147,7 @@ void CGOptTrajImportTool::ReadData(void)
 
     CTrajectoryList* p_tlist = GetProject()->GetTrajectories();
     if( p_tlist == NULL ) {
-        QMessageBox::critical(this,tr("Error"),
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
                               tr("The project does not provide trajectories!"),
                               QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -156,7 +155,7 @@ void CGOptTrajImportTool::ReadData(void)
 
     CTrajectory* p_traj = p_tlist->GetActiveTrajectory();
     if( p_traj == NULL ) {
-        QMessageBox::critical(this,tr("Error"),
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
                               tr("The project does not have any active trajectory!"),
                               QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -164,7 +163,7 @@ void CGOptTrajImportTool::ReadData(void)
 
     CStructure* p_str = p_traj->GetStructure();
     if( p_str == NULL ){
-        QMessageBox::critical(this,tr("Error"),
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
                               tr("The active trajectory does not have asigned structure!"),
                               QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -219,7 +218,7 @@ bool CGOptTrajImportTool::ImportFirstStructure(CStructure* p_str,const QString& 
 
         sin.open(file.toLatin1());
         if( !sin ) {
-            QMessageBox::critical(this,tr("Error"),tr("Unable to open file for reading!"),QMessageBox::Ok,QMessageBox::Ok);
+            QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to open file for reading!"),QMessageBox::Ok,QMessageBox::Ok);
             ES_ERROR("cannot open file to read");
             p_str->EndUpdate(true);
             return(false);
@@ -230,7 +229,7 @@ bool CGOptTrajImportTool::ImportFirstStructure(CStructure* p_str,const QString& 
         int                 lineno = 0;
 
         if( CGaussianUtils::ReadGeometry(sin,lineno,atoms) == false ){
-            QMessageBox::critical(this,tr("Error"),tr("Unable to read any structure from the gaussian output file"),QMessageBox::Ok,QMessageBox::Ok);
+            QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to read any structure from the gaussian output file"),QMessageBox::Ok,QMessageBox::Ok);
             ES_ERROR("unable to read any structure from the gaussian output file");
             p_str->EndUpdate(true);
             return(false);
@@ -238,7 +237,7 @@ bool CGOptTrajImportTool::ImportFirstStructure(CStructure* p_str,const QString& 
 
         // convert geometry to structure
         if( CGaussianUtils::ConvertToStructure(atoms,p_str) == false ){
-            QMessageBox::critical(this,tr("Error"),tr("Unable to convert geometry to Nemesis structure"),QMessageBox::Ok,QMessageBox::Ok);
+            QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to convert geometry to Nemesis structure"),QMessageBox::Ok,QMessageBox::Ok);
             ES_ERROR("unable to convert geometry to Nemesis structure");
             p_str->EndUpdate(true);
             return(false);
@@ -248,7 +247,7 @@ bool CGOptTrajImportTool::ImportFirstStructure(CStructure* p_str,const QString& 
         ES_ERROR("an exception occured");
         QString message(tr("Failed to read molecule from file %1"));
         message = message.arg(QString(file));
-        QMessageBox::critical(this,tr("Error"),message,QMessageBox::Ok,QMessageBox::Ok);
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),message,QMessageBox::Ok,QMessageBox::Ok);
         p_str->EndUpdate(true);
         return(false);
     }

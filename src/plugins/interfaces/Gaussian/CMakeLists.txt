@@ -19,8 +19,6 @@ SET(GAUSSIAN_SRC
 SET(GAUSSIAN_UIS
         GaussianInputExportTool.ui
         GOptTrajSegmentDesigner.ui
-        GOptTrajImportTool.ui
-        GVibTrajImportTool.ui
         )
 
 # program resources ------------------------------------------------------------

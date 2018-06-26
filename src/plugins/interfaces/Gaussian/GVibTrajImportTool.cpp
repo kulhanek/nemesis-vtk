@@ -33,10 +33,11 @@
 #include <Structure.hpp>
 #include <AtomList.hpp>
 #include <fstream>
+#include <QMessageBox>
+#include <QFileDialog>
 #include <Graphics.hpp>
 #include <GraphicsView.hpp>
-#include <QMessageBox>
-#include <QVBoxLayout>
+#include <MainWindow.hpp>
 
 #include "GaussianUtils.hpp"
 #include "GVibTrajImportTool.hpp"
@@ -56,6 +57,7 @@ CExtUUID        GVibTrajImportToolID(
 
 CPluginObject   GVibTrajImportToolObject(&GaussianPlugin,
                     GVibTrajImportToolID,IMPORT_TRAJECTORY_CAT,
+                    QStringList() << "FORMAT=gvib",
                     GVibTrajImportToolCB);
 
 // -----------------------------------------------------------------------------
@@ -68,8 +70,14 @@ QObject* GVibTrajImportToolCB(void* p_data)
         return(NULL);
     }
 
-    QObject* p_build_wp = new CGVibTrajImportTool(p_project);
-    return(p_build_wp);
+    CGVibTrajImportTool* p_object = new CGVibTrajImportTool(p_project);
+    if( p_project->property("impex.direct") == false ){
+        p_object->ExecuteDialog();
+        delete p_object;
+        return(NULL);
+    } else {
+        return(p_object);
+    }
 }
 
 //==============================================================================
@@ -77,65 +85,53 @@ QObject* GVibTrajImportToolCB(void* p_data)
 //==============================================================================
 
 CGVibTrajImportTool::CGVibTrajImportTool(CProject* p_project)
-    : CWorkPanel(&GVibTrajImportToolObject,p_project,EWPR_DIALOG)
+    : CImportTrajectory(&GVibTrajImportToolObject,p_project)
 {
-    WidgetUI.setupUi(this);
-
-    // set up import and export widgets
-    InitInternalDialog();
-
-    // load work panel setup
-    LoadWorkPanelSetup();
-}
-
-//------------------------------------------------------------------------------
-
-CGVibTrajImportTool::~CGVibTrajImportTool()
-{
-    SaveWorkPanelSetup();
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGVibTrajImportTool::InitInternalDialog(void)
+void CGVibTrajImportTool::ExecuteDialog(void)
 {
     // parse formats list ------------------------
     QStringList filters;
     filters << "Gaussian Vibrations (*.log)";
 
     // open qfiledialog for file open with filters set correctly
-    Dialog = new QFileDialog();
-    Dialog->setNameFilters(filters);
-    Dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(GVibTrajImportToolID)));
-    Dialog->setFileMode(QFileDialog::ExistingFile);
-    Dialog->setAcceptMode(QFileDialog::AcceptOpen);
+    QFileDialog* p_dialog = new QFileDialog();
+    p_dialog->setNameFilters(filters);
+    p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(GVibTrajImportToolID)));
+    p_dialog->setFileMode(QFileDialog::ExistingFile);
+    p_dialog->setAcceptMode(QFileDialog::AcceptOpen);
 
-    QVBoxLayout* p_layout = new QVBoxLayout;
-    p_layout->addWidget(Dialog);
-    setLayout(p_layout);
+    if( p_dialog->exec() == QDialog::Accepted ){
+        LaunchJob(p_dialog->selectedFiles().at(0));
+    }
 
-    connect(Dialog, SIGNAL(rejected()), this, SLOT(close()));
-    connect(Dialog, SIGNAL(accepted()), this, SLOT(ReadData()));
+    delete p_dialog;
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGVibTrajImportTool::ReadData(void)
+void CGVibTrajImportTool::LaunchJob(const QString& file)
 {
-    // we must always close work panel
-    // since internal file dialog is already closed
-    close();
+    // does file exist?
+    if( QFile::exists(file) == false ){
+        QMessageBox::information(GetProject()->GetMainWindow(),tr("Error"),
+                                   tr("The file does not exist!"),
+                                   QMessageBox::Abort, QMessageBox::Abort);
+        return;
+    }
 
-    QString file = Dialog->selectedFiles().at(0);
     GlobalSetup->SetLastOpenFilePathFromFile(file,GVibTrajImportToolID);
 
     // is project locked?
     if( GetProject()->GetHistory()->IsLocked(EHCL_TRAJECTORIES) ){
-        QMessageBox::information(this,tr("Error"),
+        QMessageBox::information(GetProject()->GetMainWindow(),tr("Error"),
                                    tr("The current project is locked!"),
                                    QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -143,7 +139,7 @@ void CGVibTrajImportTool::ReadData(void)
 
     CTrajectoryList* p_tlist = GetProject()->GetTrajectories();
     if( p_tlist == NULL ) {
-        QMessageBox::critical(this,tr("Error"),
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
                               tr("The project does not provide trajectories!"),
                               QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -151,7 +147,7 @@ void CGVibTrajImportTool::ReadData(void)
 
     CTrajectory* p_traj = p_tlist->GetActiveTrajectory();
     if( p_traj == NULL ) {
-        QMessageBox::critical(this,tr("Error"),
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
                               tr("The project does not have any active trajectory!"),
                               QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -159,7 +155,7 @@ void CGVibTrajImportTool::ReadData(void)
 
     CStructure* p_str = p_traj->GetStructure();
     if( p_str == NULL ){
-        QMessageBox::critical(this,tr("Error"),
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
                               tr("The active trajectory does not have assigned structure!"),
                               QMessageBox::Abort, QMessageBox::Abort);
         return;
@@ -216,7 +212,7 @@ bool CGVibTrajImportTool::ImportLastStructure(CStructure* p_str,const QString& f
 
         sin.open(file.toLatin1());
         if( !sin ) {
-            QMessageBox::critical(this,tr("Error"),tr("Unable to open file for reading!"),QMessageBox::Ok,QMessageBox::Ok);
+            QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to open file for reading!"),QMessageBox::Ok,QMessageBox::Ok);
             ES_ERROR("cannot open file to read");
             p_str->EndUpdate(true);
             return(false);
@@ -231,7 +227,7 @@ bool CGVibTrajImportTool::ImportLastStructure(CStructure* p_str,const QString& f
         for(;;){
             getline(sin,line);
             if( ! sin ){
-                QMessageBox::critical(this,tr("Error"),tr("Premature end of file!"),QMessageBox::Ok,QMessageBox::Ok);
+                QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Premature end of file!"),QMessageBox::Ok,QMessageBox::Ok);
                 ES_ERROR("premature end of file");
                 p_str->EndUpdate(true);
                 return(false);
@@ -244,7 +240,7 @@ bool CGVibTrajImportTool::ImportLastStructure(CStructure* p_str,const QString& f
             // is it geometry?
             if( CGaussianUtils::IsGeometry(line) ) {
                 if( CGaussianUtils::ReadGeometry(sin,lineno,atoms,true) == false ){
-                    QMessageBox::critical(this,tr("Error"),tr("Unable to read any structure from the gaussian output file"),QMessageBox::Ok,QMessageBox::Ok);
+                    QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to read any structure from the gaussian output file"),QMessageBox::Ok,QMessageBox::Ok);
                     ES_ERROR("unable to read any structure from the gaussian output file");
                     p_str->EndUpdate(true);
                     return(false);
@@ -254,7 +250,7 @@ bool CGVibTrajImportTool::ImportLastStructure(CStructure* p_str,const QString& f
 
         // convert last loaded geometry to structure
         if( CGaussianUtils::ConvertToStructure(atoms,p_str) == false ){
-            QMessageBox::critical(this,tr("Error"),tr("Unable to convert geometry to Nemesis structure"),QMessageBox::Ok,QMessageBox::Ok);
+            QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to convert geometry to Nemesis structure"),QMessageBox::Ok,QMessageBox::Ok);
             ES_ERROR("unable to convert geometry to Nemesis structure");
             p_str->EndUpdate(true);
             return(false);
@@ -264,7 +260,7 @@ bool CGVibTrajImportTool::ImportLastStructure(CStructure* p_str,const QString& f
         ES_ERROR("an exception occured");
         QString message(tr("Failed to read molecule from file %1"));
         message = message.arg(QString(file));
-        QMessageBox::critical(this,tr("Error"),message,QMessageBox::Ok,QMessageBox::Ok);
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),message,QMessageBox::Ok,QMessageBox::Ok);
         p_str->EndUpdate(true);
         return(false);
     }

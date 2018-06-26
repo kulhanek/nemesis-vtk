@@ -98,7 +98,7 @@ void CWelcomeWindow::IncrementProgress(const QString& text)
 
     QCoreApplication::processEvents(QEventLoop::AllEvents);
     // FIXME - for testing
-    QThread::msleep(100);
+    QThread::msleep(10);
 
     if( CurrProgessStep >= MaxProgessSteps ){
         // FIXME
@@ -117,7 +117,7 @@ void CWelcomeWindow::ChangeNotification(const QString& text)
 
     QCoreApplication::processEvents(QEventLoop::AllEvents);
     // FIXME - for testing
-    QThread::msleep(50);
+    QThread::msleep(5);
 }
 
 //==============================================================================

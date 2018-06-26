@@ -39,6 +39,9 @@ public:
 public:
     void ExecuteDialog(void);
     virtual void LaunchJob(const QString& file);
+
+// section of private data ----------------------------------------------------
+private:
     bool ImportXYZStructure(CStructure* p_str,const QString& file);
 };
 

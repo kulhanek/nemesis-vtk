@@ -20,9 +20,7 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <WorkPanel.hpp>
-#include "ui_GVibTrajImportTool.h"
-#include <QFileDialog>
+#include <ImportTrajectory.hpp>
 
 //------------------------------------------------------------------------------
 
@@ -30,25 +28,20 @@ class CStructure;
 
 //------------------------------------------------------------------------------
 
-/// import turbomole vibrations as trajectory segment
+/// import gaussian vibrations as trajectory segment
 
-class CGVibTrajImportTool : public CWorkPanel {
-    Q_OBJECT
+class CGVibTrajImportTool : public CImportTrajectory {
 public:
 // constructor and destructor -------------------------------------------------
     CGVibTrajImportTool(CProject* p_project);
-    ~CGVibTrajImportTool(void);
+
+public:
+    void ExecuteDialog(void);
+    virtual void LaunchJob(const QString& file);
 
 // section of private data ----------------------------------------------------
 private:
-    Ui::GVibTrajImportTool  WidgetUI;
-    QFileDialog*            Dialog;
-
-    void InitInternalDialog(void);
     bool ImportLastStructure(CStructure* p_str,const QString& file);
-
-public slots:
-    void ReadData(void);
 };
 
 //------------------------------------------------------------------------------

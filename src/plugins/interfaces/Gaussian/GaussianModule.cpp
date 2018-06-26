@@ -30,7 +30,8 @@ bool GaussianPluginCB(EModuleRequest request,void* p_data);
 // -----------------------------------------------------------------------------
 
 CExtUUID        GaussianPluginID(
-                    "{GAUSSIAN_PLUGIN:73dae1ed-3b1c-4f88-acd9-379d06bba68a}");
+                    "{GAUSSIAN_PLUGIN:73dae1ed-3b1c-4f88-acd9-379d06bba68a}",
+                    "Gaussian Plugin");
 
 CPluginModule   GaussianPlugin(
                     GaussianPluginID,
