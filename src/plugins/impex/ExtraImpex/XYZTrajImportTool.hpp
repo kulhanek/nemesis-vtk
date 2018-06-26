@@ -20,7 +20,7 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <ProObject.hpp>
+#include <ImportTrajectory.hpp>
 
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ class CStructure;
 
 /// import XYZ trajectory tool
 
-class CXYZTrajImportTool : public CProObject {
+class CXYZTrajImportTool : public CImportTrajectory {
 public:
 // constructor and destructor -------------------------------------------------
     CXYZTrajImportTool(CProject* p_project);
@@ -38,7 +38,7 @@ public:
 // section of public data -----------------------------------------------------
 public:
     void ExecuteDialog(void);
-    void LunchJob(const QString& file);
+    virtual void LaunchJob(const QString& file);
     bool ImportXYZStructure(CStructure* p_str,const QString& file);
 };
 

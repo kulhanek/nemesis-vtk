@@ -38,6 +38,8 @@ src/lib/NemesisCore/graphics/utils/GSDesignerRefBy.hpp
 src/lib/NemesisCore/graphics/utils/GSDesignerRefBy.ui
 src/lib/NemesisCore/graphics/utils/GraphicsUtil.cpp
 src/lib/NemesisCore/graphics/utils/GraphicsUtil.hpp
+src/lib/NemesisCore/trajectory/ImportTrajectory.cpp
+src/lib/NemesisCore/trajectory/ImportTrajectory.hpp
 src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.ui
 README.md
 etc/CMakeLists.txt

@@ -128,6 +128,7 @@ SET(NEMESIS_CORE_SRC
         trajectory/TrajectoryDesigner.cpp
         trajectory/TrajectorySegment.cpp
         trajectory/TrajectorySegmentHistory.cpp
+        trajectory/ImportTrajectory.cpp
 
         trajectory/segments/XYZTrajSegment.cpp
         trajectory/segments/XYZTrajSegmentDesigner.cpp

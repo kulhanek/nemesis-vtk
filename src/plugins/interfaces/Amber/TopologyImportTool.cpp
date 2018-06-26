@@ -101,7 +101,7 @@ void CTopologyImportTool::ExecuteDialog(void)
     p_dialog->setAcceptMode(QFileDialog::AcceptOpen);
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -111,7 +111,7 @@ void CTopologyImportTool::ExecuteDialog(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CTopologyImportTool::LunchJob(const QString& file)
+void CTopologyImportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,TopologyImportToolID);
 

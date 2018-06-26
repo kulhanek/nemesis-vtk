@@ -35,6 +35,10 @@
 #include <HistoryList.hpp>
 #include <StructureList.hpp>
 #include <StaticIndexes.hpp>
+#include <NemesisOptions.hpp>
+#include <PluginDatabase.hpp>
+#include <QMessageBox>
+#include <ImportJob.hpp>
 
 #include "BuildProjectWindow.hpp"
 #include "BuildProject.hpp"
@@ -125,34 +129,107 @@ void CBuildProject::NewData(void)
 
 bool CBuildProject::ProcessArguments(int& narg)
 {
-//    while( nargs < NemesisOptions.GetNumberOfArgs() ){
-//        CSmallString arg = NemesisOptions.GetProgArg(nargs);
-//        nargs++;
+    while( narg < NemesisOptions.GetNumberOfProgArgs() ){
 
-//        // is option?
-//        if( (arg.GetLength() < 1) || (arg[0] != '-') ) continue;
+        // is it supported import structure format?
+        QString arg = QString(NemesisOptions.GetProgArg(narg));
+        bool found = false;
+        CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
+        CPluginObject*                     p_obj = NULL;
+        while( (p_obj = I.Current()) != NULL ) {
+            if ( ((p_obj->GetCategoryUUID() == JOB_CAT) && (p_obj->HasAttribute("EPF_IMPORT_STRUCTURE")))
+                 || (p_obj->GetCategoryUUID() == IMPORT_STRUCTURE_CAT) ) {
+                QString format = p_obj->GetAttributeValue("FORMAT");
+                if( ! format.isEmpty() ){
+                    format = "-" + format;
+                    if( format == arg ){
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            I++;
+        }
 
-//        // find
+        if( found == false ){
+            return(false);
+        }
 
+        // do we have empty structure?
+        CStructure* p_str = GetActiveStructure();
+        if( p_str == NULL ){
+            p_str = GetStructures()->CreateStructure();
+        }
+        if( p_str == NULL ){
+            QMessageBox::critical(NULL, tr("Build project"),
+                                  QString("Unable to create a new structure for data import!"),
+                                  QMessageBox::Ok,
+                                  QMessageBox::Ok);
+            return(false);
+        }
+        // is it empty?
+        if( p_str->GetAtoms()->GetNumberOfAtoms() > 0 ){
+            p_str = GetStructures()->CreateStructure();
+        }
+        if( p_str == NULL ){
+            QMessageBox::critical(NULL, tr("Build project"),
+                                  QString("Unable to create a new empty structure for data import!"),
+                                  QMessageBox::Ok,
+                                  QMessageBox::Ok);
+            return(false);
+        }
+        narg++;
+        if( narg >= NemesisOptions.GetNumberOfProgArgs() ){
+            CSmallString error;
+            error << "Unable to process argument: " << arg << " - file name not provided!";
+            ES_ERROR(error);
+            QMessageBox::critical(NULL, tr("Build project"),
+                                  QString(error),
+                                  QMessageBox::Ok,
+                                  QMessageBox::Ok);
+            return(false);
+        }
 
+        // disable inject import
+        setProperty("impex.inject",false);
+        setProperty("impex.direct",true);
 
-//    CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
-//    CPluginObject*                     p_obj;
-//    while( (p_obj = I.Current()) != NULL ) {
-//        if (p_obj->GetCategoryUUID() == IMPORT_STRUCTURE_CAT ) {
-//            if( p_obj->HasAttribute("EPF_IMPORT_STRUCTURE") ){
-//                impitems.push_back(p_obj);
-//            }
-//            if( p_obj->HasAttribute("EPF_INJECT_COORDINATES") ){
-//                injitems.push_back(p_obj);
-//            }
-//        }
-//        if (p_obj->GetCategoryUUID() == EXPORT_STRUCTURE_CAT ) {
-//            expitems.push_back(p_obj);
-//        }
-//        I++;
-//    }
-    return(false);
+        // import via job
+        if( p_obj->GetCategoryUUID() == JOB_CAT ){
+
+            CImportJob* p_job = dynamic_cast<CImportJob*>(p_obj->CreateObject(GetProject()));
+            if( p_job == NULL ){
+                CSmallString error;
+                error << "Unable to create an import job for argument: " << arg << "!";
+                ES_ERROR(error);
+                QMessageBox::critical(NULL, tr("Build project"),
+                                      QString(error),
+                                      QMessageBox::Ok,
+                                      QMessageBox::Ok);
+                return(false);
+            }
+
+            QString filename = QString(NemesisOptions.GetProgArg(narg));
+            narg++;
+
+            // create job and setup job
+            p_job->SetImportedStructure(p_str,filename);
+
+            // submit job
+            if( p_job->SubmitJob() == false ){
+                delete p_job;
+            }
+
+            // wait for job termination
+            p_job->WaitForEndWithEventLoop();
+
+        } else if( p_obj->GetCategoryUUID() == IMPORT_STRUCTURE_CAT ) {
+            // FIXME - TODO
+
+        }
+
+    }
+    return(true);
 }
 
 //==============================================================================

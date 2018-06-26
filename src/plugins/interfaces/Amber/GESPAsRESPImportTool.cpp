@@ -101,7 +101,7 @@ void CGESPAsRESPImportTool::ExecuteDialog(void)
     p_dialog->setAcceptMode(QFileDialog::AcceptOpen);
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -111,7 +111,7 @@ void CGESPAsRESPImportTool::ExecuteDialog(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGESPAsRESPImportTool::LunchJob(const QString& file)
+void CGESPAsRESPImportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,GESPAsRESPImportToolID);
 
@@ -143,7 +143,7 @@ void CGESPAsRESPImportTool::LunchJob(const QString& file)
         }
     }
 
-    // create job and sutup job
+    // create job and setup job
     CGESPAsRESPImportJob* p_job = new CGESPAsRESPImportJob(GetProject());
     p_job->SetImportedStructure(p_str,file);
 

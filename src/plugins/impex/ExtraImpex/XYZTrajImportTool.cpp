@@ -64,6 +64,7 @@ CExtUUID        XYZTrajImportToolID(
 
 CPluginObject   XYZTrajImportToolObject(&ExtraImpexPlugin,
                     XYZTrajImportToolID,IMPORT_TRAJECTORY_CAT,
+                    QStringList() << "FORMAT=xyz",
                     XYZTrajImportToolCB);
 
 // -----------------------------------------------------------------------------
@@ -77,10 +78,13 @@ QObject* XYZTrajImportToolCB(void* p_data)
     }
 
     CXYZTrajImportTool* p_object = new CXYZTrajImportTool(p_project);
-    p_object->ExecuteDialog();
-    delete p_object;
-
-    return(NULL);
+    if( p_project->property("impex.direct") == false ){
+        p_object->ExecuteDialog();
+        delete p_object;
+        return(NULL);
+    } else {
+        return(p_object);
+    }
 }
 
 //==============================================================================
@@ -88,7 +92,7 @@ QObject* XYZTrajImportToolCB(void* p_data)
 //==============================================================================
 
 CXYZTrajImportTool::CXYZTrajImportTool(CProject* p_project)
-    : CProObject(&XYZTrajImportToolObject,NULL,p_project,true)
+    : CImportTrajectory(&XYZTrajImportToolObject,p_project)
 {
 }
 
@@ -115,7 +119,7 @@ void CXYZTrajImportTool::ExecuteDialog(void)
     p_dialog->setAcceptMode(QFileDialog::AcceptOpen);
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -125,7 +129,7 @@ void CXYZTrajImportTool::ExecuteDialog(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CXYZTrajImportTool::LunchJob(const QString& file)
+void CXYZTrajImportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,XYZTrajImportToolID);
 

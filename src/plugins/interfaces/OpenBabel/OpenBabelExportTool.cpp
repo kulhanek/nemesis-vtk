@@ -130,7 +130,7 @@ void COpenBabelExportTool::ExecuteDialog(void)
     p_dialog->setAcceptMode(QFileDialog::AcceptSave);
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0),p_dialog->selectedNameFilter().left((p_dialog->selectedNameFilter().indexOf("--"))-1));
+        LaunchJob(p_dialog->selectedFiles().at(0),p_dialog->selectedNameFilter().left((p_dialog->selectedNameFilter().indexOf("--"))-1));
     }
 
     delete p_dialog;
@@ -138,7 +138,7 @@ void COpenBabelExportTool::ExecuteDialog(void)
 
 //------------------------------------------------------------------------------
 
-void COpenBabelExportTool::LunchJob(const QString& file,const QString& ext)
+void COpenBabelExportTool::LaunchJob(const QString& file,const QString& ext)
 {
     QString myfile = file;
 

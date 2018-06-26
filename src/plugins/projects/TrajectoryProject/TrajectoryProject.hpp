@@ -43,6 +43,7 @@ public:
     virtual void                NewData(void);
     virtual CMainWindow*        GetMainWindow(void);
     virtual CTrajectoryList*    GetTrajectories(void);
+    virtual bool                ProcessArguments(int& narg);
 
 // section of private data ----------------------------------------------------
 private:

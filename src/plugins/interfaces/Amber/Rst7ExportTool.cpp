@@ -98,7 +98,7 @@ void CRst7ExportTool::ExecuteDialog(void)
     p_dialog->setDefaultSuffix("rst7");
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -106,7 +106,7 @@ void CRst7ExportTool::ExecuteDialog(void)
 
 //------------------------------------------------------------------------------
 
-void CRst7ExportTool::LunchJob(const QString& file)
+void CRst7ExportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,Rst7ExportToolID);
 

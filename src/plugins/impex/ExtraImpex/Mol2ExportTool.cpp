@@ -103,7 +103,7 @@ void CMol2ExportTool::ExecuteDialog(void)
     p_dialog->setDefaultSuffix("mol2");
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -111,7 +111,7 @@ void CMol2ExportTool::ExecuteDialog(void)
 
 //------------------------------------------------------------------------------
 
-void CMol2ExportTool::LunchJob(const QString& file)
+void CMol2ExportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,Mol2ExportToolID);
 

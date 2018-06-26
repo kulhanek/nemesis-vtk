@@ -99,7 +99,7 @@ void CChargesImportTool::ExecuteDialog(void)
     p_dialog->setFileMode(QFileDialog::ExistingFile);
 
     if( p_dialog->exec() == QDialog::Accepted ) {
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -109,7 +109,7 @@ void CChargesImportTool::ExecuteDialog(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CChargesImportTool::LunchJob(const QString& file)
+void CChargesImportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,ChargesImportToolID);
 

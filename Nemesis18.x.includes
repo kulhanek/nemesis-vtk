@@ -28,3 +28,4 @@ src/lib/NemesisCore
 src/lib/NemesisCore/windows
 etc
 src/lib/NemesisCore/graphics/utils
+src/lib/NemesisCore/trajectory

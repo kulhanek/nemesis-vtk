@@ -37,7 +37,7 @@ public:
 // section of public data -----------------------------------------------------
 public:
     void ExecuteDialog(void);
-    void LunchJob(const QString& file);
+    void LaunchJob(const QString& file);
 };
 
 //------------------------------------------------------------------------------

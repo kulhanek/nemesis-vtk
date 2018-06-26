@@ -103,7 +103,7 @@ void CPdbqtExportTool::ExecuteDialog(void)
     p_dialog->setDefaultSuffix("pdbqt");
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LunchJob(p_dialog->selectedFiles().at(0));
+        LaunchJob(p_dialog->selectedFiles().at(0));
     }
 
     delete p_dialog;
@@ -111,7 +111,7 @@ void CPdbqtExportTool::ExecuteDialog(void)
 
 //------------------------------------------------------------------------------
 
-void CPdbqtExportTool::LunchJob(const QString& file)
+void CPdbqtExportTool::LaunchJob(const QString& file)
 {
     GlobalSetup->SetLastOpenFilePathFromFile(file,PdbqtExportToolID);
 

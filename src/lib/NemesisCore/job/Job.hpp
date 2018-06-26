@@ -62,6 +62,9 @@ public:
     /// get job thread
     QThread* GetJobThread(void);
 
+    /// wait for termination
+    void WaitForEndWithEventLoop(void);
+
 // executive methods -----------------------------------------------------------
     /// submit job to scheduler
     bool SubmitJob(void);

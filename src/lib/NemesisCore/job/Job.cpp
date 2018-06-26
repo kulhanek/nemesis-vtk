@@ -22,6 +22,7 @@
 #include <JobList.hpp>
 #include <JobThread.hpp>
 #include <JobScheduler.hpp>
+#include <QApplication>
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -234,6 +235,15 @@ void CJob::FinalizeJobSlot(void)
     FinalizeJob();
     SetJobStatus(EJS_ENDED);
     deleteLater();
+}
+
+//------------------------------------------------------------------------------
+
+void CJob::WaitForEndWithEventLoop(void)
+{
+    while( (JobStatus != EJS_ABORTED) && (JobStatus != EJS_ENDED) ){
+        QApplication::processEvents();
+    }
 }
 
 //==============================================================================

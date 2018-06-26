@@ -59,9 +59,13 @@
 
 #include <MouseDriverSetup.hpp>
 
-#include "openbabel/plugin.h"
+#include <openbabel/plugin.h>
+#include <openbabel/obconversion.h>
+
+//------------------------------------------------------------------------------
 
 using namespace std;
+using namespace OpenBabel;
 
 //------------------------------------------------------------------------------
 
@@ -367,20 +371,41 @@ int CNemesisJScript::InitSubsystems(void)
 void CNemesisJScript::PrintIFormats(void)
 {
     cout << endl;
-    cout << "  Format          Plugin        Description                                     " << endl;
-    cout << "---------- -------------------- ------------------------------------------------" << endl;
+    cout << "# Structure import formats ..." << endl;
+    cout << endl;    
+    cout << "# Format         Plugin         Description                                     " << endl;
+    cout << "# -------- -------------------- ------------------------------------------------" << endl;
 
     CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
     CPluginObject*                     p_obj;
     while( (p_obj = I.Current()) != NULL ) {
-        if (p_obj->GetCategoryUUID() == JOB_CAT ) {
-            if( p_obj->HasAttribute("EPF_IMPORT_STRUCTURE") ){
-                QString format = p_obj->GetAttributeValue("FORMAT");
-                if( ! format.isEmpty() ){
-                    cout << left << setw(10) << format.toStdString() << " ";
-                    cout << setw(20) << p_obj->GetPluginModule()->GetModuleUUID().GetName().toStdString() << " ";
-                    cout << p_obj->GetName().toStdString() << endl;
-                }
+        if ( ((p_obj->GetCategoryUUID() == JOB_CAT)&&(p_obj->HasAttribute("EPF_IMPORT_STRUCTURE"))) ||
+             (p_obj->GetCategoryUUID() == IMPORT_STRUCTURE_CAT) ) {
+            QString format = p_obj->GetAttributeValue("FORMAT");
+            if( ! format.isEmpty() ){
+                cout << left << setw(10) << format.toStdString() << " ";
+                cout << setw(20) << p_obj->GetPluginModule()->GetModuleUUID().GetName().toStdString() << " ";
+                cout << p_obj->GetName().toStdString() << endl;
+            }
+        }
+        I++;
+    }
+
+    cout << endl;
+    cout << "# Trajectory import formats ..." << endl;
+    cout << endl;
+    cout << "# Format         Plugin         Description                                     " << endl;
+    cout << "# -------- -------------------- ------------------------------------------------" << endl;
+
+    I.SetToBegin();
+    while( (p_obj = I.Current()) != NULL ) {
+        if ( ((p_obj->GetCategoryUUID() == JOB_CAT)&&(p_obj->HasAttribute("EPF_IMPORT_TRAJECTORY"))) ||
+             (p_obj->GetCategoryUUID() == IMPORT_TRAJECTORY_CAT) ) {
+            QString format = p_obj->GetAttributeValue("FORMAT");
+            if( ! format.isEmpty() ){
+                cout << left << setw(10) << format.toStdString() << " ";
+                cout << setw(20) << p_obj->GetPluginModule()->GetModuleUUID().GetName().toStdString() << " ";
+                cout << p_obj->GetName().toStdString() << endl;
             }
         }
         I++;
@@ -392,8 +417,25 @@ void CNemesisJScript::PrintIFormats(void)
 void CNemesisJScript::PrintOBExtensions(void)
 {
     cout << endl;
-    cout << "  Format          Plugin        Description                                     " << endl;
-    cout << "---------- -------------------- ------------------------------------------------" << endl;
+    cout << "# OpenBabel imput file formats for -ob import plugin" << endl;
+    cout << endl;
+    cout << "# File Format  Description                                                      " << endl;
+    cout << "# ------------ -----------------------------------------------------------------" << endl;
+
+    OBConversion co;
+    vector<string> formats = co.GetSupportedInputFormat();
+
+    for(unsigned int i = 0; i < formats.size(); i++) {
+        CSmallString formatString, extension,description;
+        formatString = formats.at(i).c_str();
+        int pos = formatString.FindSubString("--");
+        if( pos != -1 ) {
+            extension = formatString.GetSubString(0, pos-1);
+            description = formatString.GetSubString(pos+3,formatString.GetLength()-pos+4);
+            cout << left << setw(14) << extension << " ";
+            cout << description << endl;
+        }
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -412,8 +454,8 @@ void CNemesisJScript::ParseArguments(void)
     int narg = 0;
     while( narg < NemesisOptions.GetNumberOfProgArgs() ){
         CSmallString arg = NemesisOptions.GetProgArg(narg);
-        narg++;
         if( arg == "-build" ) {
+            narg++;
             // create build project
             CExtUUID mp_uuid(NULL);
             mp_uuid.LoadFromString("{BUILD_PROJECT:b64d16f0-b73f-4747-9a13-212ab9a15d38}");
@@ -431,6 +473,7 @@ void CNemesisJScript::ParseArguments(void)
             continue;
         }
         if( arg == "-traj" ){
+            narg++;
             // create trajectory project
             CExtUUID mp_uuid(NULL);
             mp_uuid.LoadFromString("{TRAJECTORY_PROJECT:c4dd64d9-da20-413d-a2df-6f38697e4d2d}");
@@ -449,6 +492,7 @@ void CNemesisJScript::ParseArguments(void)
         }
 
         if( arg == "-sketch" ){
+            narg++;
             // create sketch project
             CExtUUID mp_uuid(NULL);
             mp_uuid.LoadFromString("{SKETCH_PROJECT:6b047926-9a91-4e5f-884a-500db358ddb2}");
@@ -468,6 +512,7 @@ void CNemesisJScript::ParseArguments(void)
 
         if( arg.GetLength() > 1 ){
             if( arg[0] != '-' ){
+                narg++;
                 CSmallString error;
                 error << "Incorrect argument provided: " << arg;
                 ES_ERROR(error);
@@ -497,6 +542,7 @@ void CNemesisJScript::ParseArguments(void)
             }
             // import data if supported by project
             if( p_project->ProcessArguments(narg) == false ){
+                narg++;
                 CSmallString error;
                 error << "Unable to process argument: " << arg;
                 ES_ERROR(error);

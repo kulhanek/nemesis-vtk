@@ -37,6 +37,10 @@
 #include <StructureList.hpp>
 #include <TrajectoryList.hpp>
 #include <StaticIndexes.hpp>
+#include <NemesisOptions.hpp>
+#include <PluginDatabase.hpp>
+#include <QMessageBox>
+#include <ImportTrajectory.hpp>
 
 #include "TrajectoryProject.hpp"
 #include "TrajectoryProjectModule.hpp"
@@ -96,6 +100,86 @@ CTrajectoryProject::~CTrajectoryProject(void)
         // delete visual part of project
         delete MainWindow;
     }
+}
+
+//------------------------------------------------------------------------------
+
+bool CTrajectoryProject::ProcessArguments(int& narg)
+{
+    while( narg < NemesisOptions.GetNumberOfProgArgs() ){
+
+        // is it supported import structure format?
+        QString arg = QString(NemesisOptions.GetProgArg(narg));
+        bool found = false;
+        CSimpleIteratorC<CPluginObject>    I(PluginDatabase.GetObjectList());
+        CPluginObject*                     p_obj = NULL;
+        while( (p_obj = I.Current()) != NULL ) {
+            if ( ((p_obj->GetCategoryUUID() == JOB_CAT) && (p_obj->HasAttribute("EPF_IMPORT_TRAJECTORY")))
+                 || (p_obj->GetCategoryUUID() == IMPORT_TRAJECTORY_CAT) ) {
+                QString format = p_obj->GetAttributeValue("FORMAT");
+                if( ! format.isEmpty() ){
+                    format = "-" + format;
+                    if( format == arg ){
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            I++;
+        }
+
+        if( found == false ){
+            return(false);
+        }
+
+        // enable direct import
+        setProperty("impex.direct",true);
+
+        narg++;
+        if( narg >= NemesisOptions.GetNumberOfProgArgs() ){
+            CSmallString error;
+            error << "Unable to process argument: " << arg << " - file name not provided!";
+            ES_ERROR(error);
+            QMessageBox::critical(NULL, tr("Build project"),
+                                  QString(error),
+                                  QMessageBox::Ok,
+                                  QMessageBox::Ok);
+            return(false);
+        }
+
+        QString filename = QString(NemesisOptions.GetProgArg(narg));
+        narg++;
+
+        // import via job
+        if( p_obj->GetCategoryUUID() == JOB_CAT ){
+            // FIXME - TODO
+
+
+        } else if( p_obj->GetCategoryUUID() == IMPORT_TRAJECTORY_CAT ) {
+
+            CImportTrajectory* p_job = dynamic_cast<CImportTrajectory*>(p_obj->CreateObject(GetProject()));
+            if( p_job == NULL ){
+                CSmallString error;
+                error << "Unable to create an import job for argument: " << arg << "!";
+                ES_ERROR(error);
+                QMessageBox::critical(NULL, tr("Trajectory project"),
+                                      QString(error),
+                                      QMessageBox::Ok,
+                                      QMessageBox::Ok);
+                return(false);
+            }
+
+
+
+            // create job and setup job
+            p_job->LaunchJob(filename);
+
+            // delete job
+            delete p_job;
+        }
+
+    }
+    return(true);
 }
 
 //==============================================================================

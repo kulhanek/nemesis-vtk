@@ -43,7 +43,7 @@ private:
     void InitInternalDialog(void);
 
 public slots:
-    void LunchJob(void);
+    void LaunchJob(void);
 };
 
 //------------------------------------------------------------------------------

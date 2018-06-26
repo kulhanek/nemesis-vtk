@@ -1,9 +1,7 @@
-#ifndef Mol2ImportToolH
-#define Mol2ImportToolH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2011 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2018 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -20,23 +18,26 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <ProObject.hpp>
+#include <ImportTrajectory.hpp>
+
+//==============================================================================
+//------------------------------------------------------------------------------
+//==============================================================================
+
+CImportTrajectory::CImportTrajectory(CPluginObject* p_objectinfo,CProject* p_project)
+    : CProObject(p_objectinfo,NULL,p_project,true)
+{
+
+}
 
 //------------------------------------------------------------------------------
 
-/// Mol2 import tool
+void CImportTrajectory::LaunchJob(const QString& file)
+{
 
-class CMol2ImportTool : public CProObject {
-public:
-// constructor and destructor -------------------------------------------------
-    CMol2ImportTool(CProject* p_project);
+}
 
-// section of public data -----------------------------------------------------
-public:
-    void ExecuteDialog(void);
-    void LaunchJob(const QString& file);
-};
-
+//==============================================================================
 //------------------------------------------------------------------------------
+//==============================================================================
 
-#endif

@@ -112,14 +112,14 @@ void CCoordImportTool::InitInternalDialog(void)
     setLayout(p_layout);
 
     connect(Dialog, SIGNAL(rejected()), this, SLOT(close()));
-    connect(Dialog, SIGNAL(accepted()), this, SLOT(LunchJob()));
+    connect(Dialog, SIGNAL(accepted()), this, SLOT(LaunchJob()));
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CCoordImportTool::LunchJob(void)
+void CCoordImportTool::LaunchJob(void)
 {
     // we must always close work panel
     // since internal file dialog is already closed
@@ -156,7 +156,7 @@ void CCoordImportTool::LunchJob(void)
         }
     }
 
-    // create job and sutup job
+    // create job and setup job
     CCoordImportJob* p_job = new CCoordImportJob(GetProject());
     p_job->SetImportedStructure(p_str,file);
 
