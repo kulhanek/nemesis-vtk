@@ -55,6 +55,9 @@ public:
     /// get property value - scalar value
     virtual double  GetScalarValue(void);
 
+    /// set property value - scalar value (for trajectory update)
+    virtual void SetScalarValue(double value);
+
     /// get energy
     double GetEnergy(void) const;
 

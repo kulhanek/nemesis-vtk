@@ -103,6 +103,9 @@ public:
     /// get property cartesian gradient and its value
     virtual double GetGradient(QVector<CAtomGrad>& grads);
 
+    /// set property value - scalar value (for trajectory update)
+    virtual void SetScalarValue(double value);
+
 // input/output methods --------------------------------------------------------
     /// load atom data
     virtual void LoadData(CXMLElement* p_ele);

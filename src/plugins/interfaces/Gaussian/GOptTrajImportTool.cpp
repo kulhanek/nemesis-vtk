@@ -39,6 +39,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <MainWindow.hpp>
+#include <BondList.hpp>
 
 #include "GaussianUtils.hpp"
 #include "GaussianModule.hpp"
@@ -169,11 +170,14 @@ void CGOptTrajImportTool::LaunchJob(const QString& file)
         return;
     }
 
+    bool imported_str = false;
+
     if( p_str->GetAtoms()->GetNumberOfAtoms() == 0 ){
         // structure does not contain any atoms - import initial structure
         if( ImportFirstStructure(p_str,file) == false ){
             return;
         }
+        imported_str = true;
     }
 
     // update trajectory indexes
@@ -200,10 +204,25 @@ void CGOptTrajImportTool::LaunchJob(const QString& file)
     // set last snapshot if necessary
     if( (p_traj->GetNumberOfSnapshots() > 0) && (p_traj->GetCurrentSnapshotIndex() == 0) ){
         p_traj->LastSnapshot();
+        if( imported_str ){
+            // recreate  bonds for the final structure
+            p_str->GetBonds()->RecreateBonds();
+        }
     }
 
     // and finaly open object designer
     p_seg->OpenObjectDesigner();
+
+    // does file exist?
+    if( CGaussianUtils::IsNormalTermination(file) == false ){
+        int result = QMessageBox::warning(GetProject()->GetMainWindow(),tr("Warning"),
+                                   tr("Normal termination of Gaussian not detected! Would you like to inspect the file?"),
+                                   QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+        if( result == QMessageBox::Yes ){
+            QUrl url( "file://" + file);
+            QDesktopServices::openUrl(url);
+        }
+    }
 }
 
 //------------------------------------------------------------------------------

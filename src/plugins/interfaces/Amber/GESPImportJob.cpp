@@ -282,6 +282,8 @@ bool CGESPImportJob::ImportStructure(void)
 
     // make bonds and convert to Nemesis data
     mol.ConnectTheDots();
+    mol.PerceiveBondOrders();
+
     COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
 
 

@@ -25,7 +25,7 @@
 #include <NemesisCoreMainHeader.hpp>
 #include <openbabel/mol.h>
 #include <QByteArray>
-
+#include <Bond.hpp>
 
 //------------------------------------------------------------------------------
 
@@ -67,6 +67,12 @@ public:
 
     /// convert InChI to CStructure
     static bool FromInChI(const QString& inchi,CStructure* p_mol,CHistoryNode* p_history=NULL);
+
+    /// convert bond order
+    static EBondOrder OBToNemesisBondOrder(int order);
+
+    /// convert bond order
+    static int NemesisToOBBondOrder(EBondOrder order);
 };
 
 //------------------------------------------------------------------------------

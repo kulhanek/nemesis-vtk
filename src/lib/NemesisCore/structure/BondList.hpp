@@ -81,6 +81,9 @@ public:
     /// change parentship of all bonds
     void MoveAllBondsFrom(CBondList* p_source,CHistoryNode* p_history=NULL);
 
+    /// recreate bonds
+    void RecreateBonds(void);
+
 // informational methods -------------------------------------------------------
     /// get structure pointer
     CStructure*  GetStructure(void) const;

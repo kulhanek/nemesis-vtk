@@ -197,6 +197,13 @@ double CProperty::GetScalarValue(void)
 
 //------------------------------------------------------------------------------
 
+void CProperty::SetScalarValue(double value)
+{
+    // nothing to be here
+}
+
+//------------------------------------------------------------------------------
+
 double CProperty::GetGradient(QVector<CAtomGrad>& grads)
 {
     grads.resize(0);    // no gradients by default

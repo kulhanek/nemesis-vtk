@@ -88,25 +88,8 @@ void COpenBabelUtils::Nemesis2OpenBabel(CStructure* p_mol,OpenBabel::OBMol& obmo
     foreach(QObject* p_qobj,p_mol->GetBonds()->children()) {
         CBond*  p_bond = static_cast<CBond*>(p_qobj);
         if( p_bond->IsInvalidBond() ) continue;
+        int order = COpenBabelUtils::NemesisToOBBondOrder(p_bond->GetBondOrder());
 
-        int order;
-        switch(p_bond->GetBondOrder()) {
-            // open babel : 1 = single, 2 = double, 5 = aromatic
-            // nemesis : BO_NONE = -1,BO_WEAK =0,BO_H=1,BO_SINGLE = 2,BO_SINGLE_H = 3,
-            // BO_DOUBLE = 4, BO_DOUBLE_H =5, BO_TRIPLE =6,
-        case BO_SINGLE:
-            order = 1;
-            break;
-        case BO_DOUBLE:
-            order = 2;
-            break;
-        case BO_TRIPLE:
-            order = 3;
-            break;
-        default:
-            order = 1;
-            break;
-        }
         // get begin and end atom indexes
         int a1_id = p_bond->GetFirstAtom()->GetIndex();
         int a2_id = p_bond->GetSecondAtom()->GetIndex();
@@ -180,24 +163,8 @@ void COpenBabelUtils::Nemesis2OpenBabel(CResidue* p_res,OpenBabel::OBMol& obmol,
     // add bonds
     foreach(CBond* p_bond,p_res->GetBonds(add_connectors)) {
         if( p_bond->IsInvalidBond() ) continue;
-        int order;
-        switch(p_bond->GetBondOrder()) {
-            // open babel : 1 = single, 2 = double, 5 = aromatic
-            // nemesis : BO_NONE = -1,BO_WEAK =0,BO_H=1,BO_SINGLE = 2,BO_SINGLE_H = 3,
-            // BO_DOUBLE = 4, BO_DOUBLE_H =5, BO_TRIPLE =6,
-        case BO_SINGLE:
-            order = 1;
-            break;
-        case BO_DOUBLE:
-            order = 2;
-            break;
-        case BO_TRIPLE:
-            order = 3;
-            break;
-        default:
-            order = 1;
-            break;
-        }
+        int order = COpenBabelUtils::NemesisToOBBondOrder(p_bond->GetBondOrder());
+
         // get begin and end atom indexes
         int a1_id = p_bond->GetFirstAtom()->GetIndex();
         int a2_id = p_bond->GetSecondAtom()->GetIndex();
@@ -284,27 +251,54 @@ void COpenBabelUtils::OpenBabel2Nemesis(OpenBabel::OBMol& obmol,CStructure* p_mo
     for( unsigned int i = 0; i < obmol.NumBonds(); i++) {
         OBBond* obBond = obmol.GetBond(i);
         // set new nemesis bond
-        // Bond order (1, 2, 3, 5=aromatic).
-        EBondOrder order;
-        switch(obBond->GetBondOrder()) {
-        case 1:
-            order = BO_SINGLE;
-            break;
-        case 2:
-            order = BO_DOUBLE;
-            break;
-        case 3:
-            order = BO_TRIPLE;
-            break;
-        case 5:
-            //break;
-        default:
-            order = BO_SINGLE;
-        }
+        EBondOrder order = COpenBabelUtils::OBToNemesisBondOrder(obBond->GetBondOrder());
         p_mol->GetBonds()->CreateBond(
             p_mol->GetAtoms()->SearchBySerIndex(top_index + obBond->GetBeginAtomIdx()),
             p_mol->GetAtoms()->SearchBySerIndex(top_index + obBond->GetEndAtomIdx()),
             order,p_history);
+    }
+}
+
+//------------------------------------------------------------------------------
+
+EBondOrder COpenBabelUtils::OBToNemesisBondOrder(int order)
+{
+    // Bond order (1, 2, 3, 5=aromatic).
+    switch(order) {
+    case 1:
+        return(BO_SINGLE);
+        break;
+    case 2:
+        return(BO_DOUBLE);
+        break;
+    case 3:
+        return(BO_TRIPLE);
+        break;
+    case 5:
+        return(BO_SINGLE_H);
+    default:
+        return(BO_SINGLE);
+    }
+}
+
+//------------------------------------------------------------------------------
+
+int COpenBabelUtils::NemesisToOBBondOrder(EBondOrder order)
+{
+    switch(order) {
+        // open babel : 1 = single, 2 = double, 5 = aromatic
+        // nemesis : BO_NONE = -1,BO_WEAK =0,BO_H=1,BO_SINGLE = 2,BO_SINGLE_H = 3,
+        // BO_DOUBLE = 4, BO_DOUBLE_H =5, BO_TRIPLE =6,
+    case BO_SINGLE:
+        return(1);
+    case BO_DOUBLE:
+        return(2);
+    case BO_TRIPLE:
+        return(3);
+    case BO_SINGLE_H:
+        return(5);
+    default:
+        return(1);
     }
 }
 

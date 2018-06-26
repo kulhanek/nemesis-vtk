@@ -45,6 +45,12 @@ public:
 class CGaussianUtils {
 public:
 
+    /// is normal termination?
+    static bool IsNormalTermination(const QString& file_name);
+
+    /// read method - cmd lines
+    static bool ReadMethod(std::istream& sin,QString& method);
+
     /// read geometry
     static bool ReadGeometry(std::istream& sin,int& lineno,std::vector<CGAtom>& atoms,
                              bool skipfirstline=false);

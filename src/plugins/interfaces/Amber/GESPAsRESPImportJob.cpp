@@ -272,6 +272,8 @@ bool CGESPAsRESPImportJob::ImportStructure(void)
 
     // make bonds and convert molecule to Nemesis data
     mol.ConnectTheDots();
+    mol.PerceiveBondOrders();
+
     COpenBabelUtils::OpenBabel2Nemesis(mol,Structure,History);
 
     // we do not need to sort the lists

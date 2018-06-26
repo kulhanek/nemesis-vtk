@@ -38,6 +38,60 @@ using namespace OpenBabel;
 //------------------------------------------------------------------------------
 //==============================================================================
 
+bool CGaussianUtils::IsNormalTermination(const QString& file_name)
+{
+    std::ifstream   sin;
+
+    sin.open(file_name.toLatin1());
+    if( !sin ) {
+        return(false);
+    }
+
+    string line;
+
+    while( sin ){
+        getline(sin,line);
+        if( line.find("Normal termination of Gaussian") != std::string::npos ) return(true);
+    }
+
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
+bool CGaussianUtils::ReadMethod(std::istream& sin,QString& method)
+{
+    method = "";
+
+    string line;
+
+    // find beginning
+    int count = 3;
+    while( sin ){
+        getline(sin,line);
+        if( line.size() < 2 ) continue;
+        if( line[1] == '-' ) count--;
+        if( count == 0 ) break;
+    }
+    // not found
+    if( count != 0 ) return(false);
+
+    // next lines are method
+    count = 0;
+    while( sin ){
+        getline(sin,line);
+        if( line.size() < 2 ) continue;
+        if( line[1] == '-' ) return(true);
+        if( count > 0 ) method += " ";
+        method += QString(line.c_str());
+        count++;
+    }
+
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
 bool CGaussianUtils::ReadGeometry(std::istream& sin,int& lineno,std::vector<CGAtom>& atoms,bool skipfirstline)
 {
     atoms.clear();

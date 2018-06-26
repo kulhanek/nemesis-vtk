@@ -79,6 +79,7 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
     QFileInfo fileinfo(Object->GetFileName());
     WidgetUI.fileNameLE->setText(fileinfo.fileName());
     WidgetUI.filePathLE->setText(fileinfo.path());
+    WidgetUI.methodLE->setText(Object->GetMethod());
 
     // models
     WidgetUI.energyTV->setModel(Object->GetEnergyModel());

@@ -112,6 +112,15 @@ void CEnergyProperty::SetEnergy(double energy,CHistoryNode* p_history)
 
 //------------------------------------------------------------------------------
 
+void CEnergyProperty::SetScalarValue(double value)
+{
+    if( Energy == value ) return;
+    Energy = value;
+    emit OnStatusChanged(ESC_OTHER);
+}
+
+//------------------------------------------------------------------------------
+
 void CEnergyProperty::SetMethod(const QString& method,CHistoryNode* p_history)
 {
     if( Method == method ) return;
@@ -154,14 +163,14 @@ const QString& CEnergyProperty::GetMethod(void) const
 
 void CEnergyProperty::LoadData(CXMLElement* p_ele)
 {
-
+    // FIXME
 }
 
 //------------------------------------------------------------------------------
 
 void CEnergyProperty::SaveData(CXMLElement* p_ele)
 {
-
+    // FIXME
 }
 
 //==============================================================================

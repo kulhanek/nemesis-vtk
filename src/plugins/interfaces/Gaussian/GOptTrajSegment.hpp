@@ -51,6 +51,9 @@ public:
     /// get energy model
     QAbstractItemModel* GetEnergyModel(void);
 
+    /// get method
+    const QString& GetMethod(void) const;
+
 // input/output methods --------------------------------------------------------
     /// load trajectory data
     virtual void LoadTrajectoryData(void);
@@ -60,6 +63,7 @@ private:
     QList<CSnapshot*>   Snapshots;
     int                 EnergyKey;
     QStandardItemModel* Model;
+    QString             Method; // QM method
 
     // read snapshot
     bool ReadSnapshot(std::istream& sin,CSnapshot* p_snap,int& lineno);

@@ -117,6 +117,13 @@ QAbstractItemModel* CGOptTrajSegment::GetEnergyModel(void)
 
 //------------------------------------------------------------------------------
 
+const QString& CGOptTrajSegment::GetMethod(void) const
+{
+    return(Method);
+}
+
+//------------------------------------------------------------------------------
+
 void CGOptTrajSegment::CreateModel(void)
 {
     if( Model == NULL ){
@@ -185,6 +192,9 @@ void CGOptTrajSegment::LoadTrajectoryData(void)
         return;
     }
 
+    // read method
+    if( CGaussianUtils::ReadMethod(sin,Method) == false ) return;
+
     // read snapshots
     int lineno = 0;
     while( sin.eof() == false ){
@@ -219,9 +229,11 @@ bool CGOptTrajSegment::ReadSnapshot(std::istream& sin,CSnapshot* p_snap,int& lin
     double energy;
     string type;
     if( CGaussianUtils::ReadEnergy(sin,lineno,energy,type) == false ) {
-        CSmallString error;
-        error << "unable to read snapshot energy at line " << lineno;
-        ES_ERROR(error);
+        if( sin ){
+            CSmallString error;
+            error << "unable to read snapshot energy at line " << lineno;
+            ES_ERROR(error);
+        }
         return(false);
     }
 

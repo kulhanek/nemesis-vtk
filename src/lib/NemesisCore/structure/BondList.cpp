@@ -92,6 +92,7 @@ bool CBondList::AddBondsWH(void)
 
     // newly added atoms are added to the end of molecule
     obmol.ConnectTheDots();
+    obmol.PerceiveBondOrders();
 
     // add added hydrogens new hydrogens
     for(unsigned int i= top_bond ; i < obmol.NumBonds(); i++) {
@@ -106,11 +107,48 @@ bool CBondList::AddBondsWH(void)
         CAtom* p_atom2 = static_cast<CAtom*>(GetStructure()->GetAtoms()->children()[p_obatom2->GetIdx()-1]);
 
         // bond
-        CreateBond(p_atom1,p_atom2,BO_SINGLE,p_history);
+        CreateBond(p_atom1,p_atom2,COpenBabelUtils::OBToNemesisBondOrder(p_obbond->GetBondOrder()),p_history);
     }
 
     EndChangeWH();
     return(true);
+}
+
+//------------------------------------------------------------------------------
+
+void CBondList::RecreateBonds(void)
+{
+    // delete old bonds
+    foreach(QObject* p_qobj,children()) {
+        CBond* p_bond = static_cast<CBond*>(p_qobj);
+        p_bond->RemoveFromBaseList(NULL);
+    }
+
+    // protonate structure by openbabel
+    OpenBabel::OBMol obmol;
+    COpenBabelUtils::Nemesis2OpenBabel(GetStructure(),obmol,true);
+
+    unsigned int top_bond = obmol.NumBonds();
+
+    // newly added atoms are added to the end of molecule
+    obmol.ConnectTheDots();
+    obmol.PerceiveBondOrders();
+
+    // add added hydrogens new hydrogens
+    for(unsigned int i= top_bond ; i < obmol.NumBonds(); i++) {
+        OpenBabel::OBBond* p_obbond = obmol.GetBond(i);
+
+        // atom 1
+        OpenBabel::OBAtom* p_obatom1 = p_obbond->GetBeginAtom();
+        CAtom* p_atom1 = static_cast<CAtom*>(GetStructure()->GetAtoms()->children()[p_obatom1->GetIdx()-1]);
+
+        // atom 2
+        OpenBabel::OBAtom* p_obatom2 = p_obbond->GetEndAtom();
+        CAtom* p_atom2 = static_cast<CAtom*>(GetStructure()->GetAtoms()->children()[p_obatom2->GetIdx()-1]);
+
+        // bond
+        CreateBond(p_atom1,p_atom2,COpenBabelUtils::OBToNemesisBondOrder(p_obbond->GetBondOrder()));
+    }
 }
 
 //------------------------------------------------------------------------------
