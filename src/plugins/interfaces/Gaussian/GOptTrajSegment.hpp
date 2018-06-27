@@ -29,6 +29,7 @@
 // -----------------------------------------------------------------------------
 
 class CTrajectory;
+class QCPGraph;
 
 // -----------------------------------------------------------------------------
 
@@ -53,6 +54,9 @@ public:
 
     /// get method
     const QString& GetMethod(void) const;
+
+    /// get data
+    void PopulateGraphData(QCPGraph* p_graph);
 
 // input/output methods --------------------------------------------------------
     /// load trajectory data

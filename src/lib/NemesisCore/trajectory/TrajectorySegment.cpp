@@ -289,6 +289,21 @@ bool CTrajectorySegment::MoveToSnapshot(long int index)
     return(true);
 }
 
+//------------------------------------------------------------------------------
+
+long int CTrajectorySegment::GetBaseSnapshopIndex(void)
+{
+    CTrajectory* p_trj = GetTrajectory();
+    if( p_trj == NULL ) return(-1);
+    long int baseidx = 0;
+    for(long int i = 1; i <= p_trj->GetNumberOfSegments(); i++){
+        CTrajectorySegment* p_sgm = p_trj->GetSegment(i);
+        if( p_sgm == this ) return(baseidx);
+        baseidx += p_sgm->GetNumberOfSnapshots();
+    }
+    return(-1);
+}
+
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================

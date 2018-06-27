@@ -104,6 +104,12 @@ INCLUDE_DIRECTORIES(${INDIGO_ROOT}/src/api)
 LINK_DIRECTORIES(${INDIGO_ROOT}/lib)
 SET(INDIGO_LIB indigo)
 
+# QCP -------------------------------------------
+SET(QCP_ROOT ${DEVELOPMENT_ROOT}/thirdparty/qcustomplot/2.0.1)
+INCLUDE_DIRECTORIES(${QCP_ROOT}/src/lib/qcustomplot/)
+LINK_DIRECTORIES(${QCP_ROOT}/lib)
+SET(QCP_LIB qcustomplot)
+
 # OpenGL -----------------------------------------
 FIND_PACKAGE(OpenGL REQUIRED)
 
@@ -116,7 +122,6 @@ FIND_PACKAGE(Qt5Script REQUIRED)
 FIND_PACKAGE(Qt5OpenGL REQUIRED)
 FIND_PACKAGE(Qt5Svg REQUIRED)
 FIND_PACKAGE(Qt5WebEngineWidgets REQUIRED)
-FIND_PACKAGE(Qt5Charts REQUIRED)
 SET(HAVE_QT5 1)
 ADD_DEFINITIONS(-DHAVE_QT5)
 

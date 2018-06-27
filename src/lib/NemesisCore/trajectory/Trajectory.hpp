@@ -110,10 +110,10 @@ public:
     /// move to last segment
     bool LastSegment(void);
 
-    /// last segment
+    /// move to given segment
     bool MoveToSegment(long int index);
 
-    /// last snapshot
+    /// move to given snapshot
     bool MoveToSnapshot(long int index);
 
 //------------------------------------------------------------------------------

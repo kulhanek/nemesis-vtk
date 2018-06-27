@@ -27,6 +27,7 @@
 #include <AtomList.hpp>
 #include <PhysicalQuantity.hpp>
 #include <PhysicalQuantities.hpp>
+#include <qcustomplot.h>
 
 #include "GaussianModule.hpp"
 #include "GaussianUtils.hpp"
@@ -151,7 +152,7 @@ void CGOptTrajSegment::CreateModel(void)
         double energy = p_snap->GetProperty(EnergyKey);
         double rel_energy = energy - first_energy;
         // convert to kcal/mol
-        rel_energy *= 627.509;
+        rel_energy *= 627.509608;
 
         QStandardItem*          p_item;
         QList<QStandardItem*>   items;
@@ -172,6 +173,32 @@ void CGOptTrajSegment::CreateModel(void)
 
         Model->appendRow(items);
 
+        i++;
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void CGOptTrajSegment::PopulateGraphData(QCPGraph* p_graph)
+{
+    // get first energy
+    double first_energy = 0;
+    if( Snapshots.count() > 0 ){
+        first_energy = Snapshots.first()->GetProperty(EnergyKey);
+    }
+
+    p_graph->data()->clear();
+
+    // load items
+    int i = 1;
+    foreach(CSnapshot* p_snap,Snapshots){
+
+        double energy = p_snap->GetProperty(EnergyKey);
+        double rel_energy = energy - first_energy;
+        // convert to kcal/mol
+        rel_energy *= 627.509608;
+
+        p_graph->addData(i,PQ_ENERGY->GetRealValue(rel_energy));
         i++;
     }
 }

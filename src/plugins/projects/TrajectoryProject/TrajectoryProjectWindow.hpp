@@ -69,6 +69,7 @@ private slots:
     void Pause(void);
     void Stop(void);
     void ManageTrajectories(void);
+    void OpenInBuildProject(void);
 
     void SliderValueChanged(int pos);
     void SpinBoxValueChanged(int pos);
@@ -88,6 +89,7 @@ private:
     QAction* actionPause;
     QAction* actionStop;
     QAction* actionManageTrajectories;
+    QAction* actionOpenInBuildProject;
 
     QMenu* menuImportTrajectory;
 

@@ -29,6 +29,7 @@
 class CGOptTrajSegment;
 class CPODesignerGeneral;
 class CPODesignerStructures;
+class QCustomPlot;
 
 //------------------------------------------------------------------------------
 
@@ -51,6 +52,7 @@ private:
     CGOptTrajSegment*           Object;
     Ui::GOptTrajSegmentDesigner WidgetUI;
     CPODesignerGeneral*         General;
+    QCustomPlot*                Plot;
 
 private slots:
     void ButtonBoxClicked(QAbstractButton* p_button);
@@ -58,6 +60,9 @@ private slots:
     void ApplyValues(void);
     void ProjectLockChanged(EHistoryChangeMessage message);
     void InitPointerValues(void);
+    void CreateGraph(void);
+    void SnapshotClicked(const QModelIndex& index);
+    void GraphClicked(void);
 };
 
 //------------------------------------------------------------------------------

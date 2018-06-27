@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>370</width>
-    <height>318</height>
+    <height>329</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -151,7 +151,7 @@
           <set>QAbstractItemView::NoEditTriggers</set>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::NoSelection</enum>
+          <enum>QAbstractItemView::SingleSelection</enum>
          </property>
          <property name="rootIsDecorated">
           <bool>false</bool>
@@ -159,6 +159,11 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="graphTab">
+      <attribute name="title">
+       <string>Graph</string>
+      </attribute>
      </widget>
      <widget class="QWidget" name="tab">
       <attribute name="title">

@@ -28,6 +28,7 @@
 #include <PluginObject.hpp>
 #include <Trajectory.hpp>
 #include <TrajectoryList.hpp>
+#include <QMessageBox>
 
 #include "TrajectoryProjectWindow.hpp"
 #include "TrajectoryProject.hpp"
@@ -60,6 +61,7 @@ void CTrajectoryProjectWindow::ConnectTrajectoryMenu(void)
     CONNECT_ACTION(Stop);
 
     CONNECT_ACTION(ManageTrajectories);
+    CONNECT_ACTION(OpenInBuildProject);
 
     BIND_MENU(menuImportTrajectory);
 
@@ -429,6 +431,26 @@ void CTrajectoryProjectWindow::ManageTrajectories(void)
     CExtUUID mp_uuid;
     mp_uuid.LoadFromString("{TRAJECTORY_LIST_WORK_PANEL:ff57f787-40f2-4d62-94c8-ce52bfe3257d}");
     OpenToolPanel(mp_uuid,true);
+}
+
+//------------------------------------------------------------------------------
+
+void CTrajectoryProjectWindow::OpenInBuildProject(void)
+{
+    // create build project
+    CExtUUID mp_uuid(NULL);
+    mp_uuid.LoadFromString("{BUILD_PROJECT:b64d16f0-b73f-4747-9a13-212ab9a15d38}");
+    CProject* p_project = Projects->NewProject(mp_uuid);
+    if( p_project == NULL ){
+        ES_ERROR("unable to create new build project");
+        QMessageBox::critical(NULL, tr("Build Structure"),
+                              tr("An error occurred during project opening!"),
+                              QMessageBox::Ok,
+                              QMessageBox::Ok);
+        return;
+    }
+    p_project->ShowProject();
+    QApplication::processEvents();
 }
 
 //==============================================================================

@@ -30,6 +30,9 @@
 #include <Project.hpp>
 #include <Structure.hpp>
 #include <Trajectory.hpp>
+#include <qcustomplot.h>
+#include <PhysicalQuantity.hpp>
+#include <PhysicalQuantities.hpp>
 
 #include "GaussianModule.hpp"
 #include "GOptTrajSegment.hpp"
@@ -100,6 +103,9 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
     //--------------
     connect(Object->GetTrajectory(), SIGNAL(OnTrajectorySegmentsChanged(void)),
             this, SLOT(InitPointerValues()));
+    //--------------
+    connect( WidgetUI.energyTV, SIGNAL(clicked(const QModelIndex&)),
+            this, SLOT(SnapshotClicked(const QModelIndex&)));
 
     //--------------
     if( Object->GetProject() ){
@@ -107,9 +113,51 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
                 this, SLOT(ProjectLockChanged(EHistoryChangeMessage)));
     }
 
+    // init graph
+    CreateGraph();
+
     // init all values ---------------------------
     ProjectLockChanged(EHCM_LOCK_LEVEL);
     InitAllValues();
+}
+
+//------------------------------------------------------------------------------
+
+void CGOptTrajSegmentDesigner::CreateGraph(void)
+{
+    Plot = new QCustomPlot(this);
+    Plot->setAutoAddPlottableToLegend(false);
+    Plot->setInteraction(QCP::iSelectPlottables,true);
+    Plot->setInteraction(QCP::iRangeZoom,true);
+    Plot->setInteraction(QCP::iRangeDrag,true);
+
+    connect( Plot, SIGNAL(selectionChangedByUser()),
+            this, SLOT(GraphClicked()));
+
+    QCPTextElement* p_title = new QCPTextElement(Plot, "Relative energy");
+    Plot->plotLayout()->insertRow(0);
+    Plot->plotLayout()->addElement(0, 0, p_title);
+
+    QSharedPointer<QCPAxisTickerFixed> fixedTicker(new QCPAxisTickerFixed);
+    Plot->xAxis->setTicker(fixedTicker);
+    fixedTicker->setTickStep(1.0);
+
+    Plot->xAxis->setLabel("step");
+    Plot->yAxis->setLabel("ΔEr [" + PQ_ENERGY->GetUnitName() + "]");
+
+    QCPGraph* p_graph = Plot->addGraph();
+    p_graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc));
+    p_graph->selectionDecorator()->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare),QCPScatterStyle::spAll);
+    Object->PopulateGraphData(p_graph);
+    Plot->rescaleAxes();
+
+    p_graph->setSelectable(QCP::stSingleData);
+
+    if( WidgetUI.graphTab->layout() ) delete WidgetUI.graphTab->layout();
+    QVBoxLayout* p_layout = new QVBoxLayout();
+    p_layout->setContentsMargins(0,0,0,0);
+    p_layout->addWidget(Plot);
+    WidgetUI.graphTab->setLayout(p_layout);
 }
 
 //==============================================================================
@@ -198,6 +246,16 @@ void CGOptTrajSegmentDesigner::InitPointerValues(void)
             WidgetUI.isActiveSegmentLA->setText(tr("no"));
         }
     }
+
+    // select snapshot
+    QModelIndex idx = Object->GetEnergyModel()->index(Object->GetCurrentSnapshotIndex()-1,0);
+    WidgetUI.energyTV->selectionModel()->select(idx,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+
+    // select graph
+    QCPDataRange dr(Object->GetCurrentSnapshotIndex()-1,Object->GetCurrentSnapshotIndex());
+    QCPDataSelection ds(dr);
+    Plot->graph()->setSelection(ds);
+    Plot->replot();
 }
 
 //------------------------------------------------------------------------------
@@ -212,7 +270,34 @@ void CGOptTrajSegmentDesigner::ApplyValues(void)
 void CGOptTrajSegmentDesigner::ProjectLockChanged(EHistoryChangeMessage message)
 {
     if( message != EHCM_LOCK_LEVEL ) return;
+}
 
+//------------------------------------------------------------------------------
+
+void CGOptTrajSegmentDesigner::SnapshotClicked(const QModelIndex& index)
+{
+    long int idx = Object->GetBaseSnapshopIndex() + index.row() + 1;
+    Object->GetTrajectory()->MoveToSnapshot(idx);
+}
+
+//------------------------------------------------------------------------------
+
+void CGOptTrajSegmentDesigner::GraphClicked(void)
+{
+    QCPGraph* p_graph = Plot->graph();
+    QCPDataSelection sd = p_graph->selection();
+
+    int selected_id = -1;
+    foreach (QCPDataRange dataRange, sd.dataRanges()) {
+        QCPGraphDataContainer::const_iterator begin = p_graph->data()->at(dataRange.begin()); // get range begin iterator from index
+        QCPGraphDataContainer::const_iterator end = p_graph->data()->at(dataRange.end()); // get range end iterator from index
+        for(QCPGraphDataContainer::const_iterator it=begin; it!=end; ++it) {
+            selected_id = it->key;
+        }
+    }
+
+    long int idx = Object->GetBaseSnapshopIndex() + selected_id;
+    Object->GetTrajectory()->MoveToSnapshot(idx);
 }
 
 //==============================================================================

@@ -84,6 +84,9 @@ public:
     /// last snapshot
     virtual bool MoveToSnapshot(long int index);
 
+    /// return base snapshot index for this segment
+    long int GetBaseSnapshopIndex(void);
+
 // information methods ---------------------------------------------------------
     /// get base list
     CTrajectory* GetTrajectory(void) const;

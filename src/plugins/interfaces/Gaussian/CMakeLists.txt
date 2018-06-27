@@ -44,6 +44,7 @@ SET_TARGET_PROPERTIES(gaussian_shared PROPERTIES
 TARGET_LINK_LIBRARIES(gaussian_shared
                 NemesisCore
                 plusula
+                ${QCP_LIB}
                 ${QT_LIBRARIES}
                 ${SCIMAFIC_CLIB_NAME}
                 ${HIPOLY_LIB_NAME}
