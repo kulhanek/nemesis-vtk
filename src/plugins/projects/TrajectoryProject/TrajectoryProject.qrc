@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>images/TrajectoryProject/04.structure/BuildProject.svg</file>
     <file>images/TrajectoryProject/05.trajectory/Play.svg</file>
     <file>images/TrajectoryProject/05.trajectory/Stop.svg</file>
     <file>images/TrajectoryProject/05.trajectory/FirstSnapshot.svg</file>

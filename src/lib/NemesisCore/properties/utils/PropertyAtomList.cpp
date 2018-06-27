@@ -290,6 +290,16 @@ bool CPropertyAtomList::ContainsAnyAtomFrom(CStructure* p_str)
 
 //------------------------------------------------------------------------------
 
+bool CPropertyAtomList::IsFromStructure(CStructure* p_str)
+{
+    foreach(CAtom* p_atom, Atoms){
+        if( p_atom->GetStructure() != p_str ) return(false);
+    }
+    return(Atoms.count() > 0);
+}
+
+//------------------------------------------------------------------------------
+
 CAtom* CPropertyAtomList::GetAtom(int index)
 {
     return(static_cast<CAtom*>(Atoms[index]));

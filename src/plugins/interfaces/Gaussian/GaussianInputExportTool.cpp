@@ -60,6 +60,13 @@
 #include <OpenBabelUtils.hpp>
 #include <openbabel/obiter.h>
 #include <list>
+#include <iomanip>
+#include <Property.hpp>
+#include <PropertyList.hpp>
+#include <DistanceProperty.hpp>
+#include <AngleProperty.hpp>
+#include <TorsionProperty.hpp>
+#include <PropertyAtomList.hpp>
 
 #include "GaussianInputExportTool.hpp"
 
@@ -112,7 +119,7 @@ CGaussianInputExportTool::CGaussianInputExportTool(CProject* p_project)
         this, SLOT(UpdatePreviewText()));
     //----------------
     connect(WidgetUI.calculationCB, SIGNAL(currentIndexChanged(int)),
-        this, SLOT(UpdatePreviewText()));
+        this, SLOT(SetMethod()));
     //----------------
     connect(WidgetUI.theoryCB, SIGNAL(currentIndexChanged(int)),
         this, SLOT(SetTheory()));
@@ -149,6 +156,15 @@ CGaussianInputExportTool::CGaussianInputExportTool(CProject* p_project)
     //----------------
     connect(WidgetUI.resetButton, SIGNAL(clicked()),
         this, SLOT(ResetSetup()));
+    //----------------
+    connect(WidgetUI.coordinateCB, SIGNAL(currentIndexChanged(int)),
+        this, SLOT(CoordinateChanged()));
+    //----------------
+    connect(WidgetUI.numOfStepsSB, SIGNAL(valueChanged(int)),
+        this, SLOT(CoordinateSetupChanged()));
+    //----------------
+    connect(WidgetUI.stepSizeSB, SIGNAL(valueChanged(double)),
+        this, SLOT(CoordinateSetupChanged()));
 
     // reset setup
     ResetSetup();
@@ -257,6 +273,7 @@ void CGaussianInputExportTool::ResetSetup(void)
 
     WidgetUI.controlsW->setEnabled(true);
 
+    SetMethod();
     SetTheory();
     UpdatePreviewText();
 }
@@ -354,10 +371,49 @@ QString CGaussianInputExportTool::GetCalculationType(void)
         case 3:
             return "Freq";
         case 4:
+            return "Opt=ModRedundant";
+        case 5:
             return "SCF=Tight Pop=chelpg IOp=(6/33=2,6/50=1)";
         default:
             return "SP";
     }
+}
+
+//------------------------------------------------------------------------------
+
+void CGaussianInputExportTool::SetMethod(void)
+{
+    if( WidgetUI.calculationCB->currentIndex() == 4 ){
+        // list properties
+        WidgetUI.coordinateCB->clear();
+        for(int i=0; i < Structure->GetProject()->GetProperties()->GetNumberOfProperties(); i++){
+            CProperty* p_prop = Structure->GetProject()->GetProperties()->GetProperty(i);
+            if( p_prop->IsReady() == false ) continue;
+            if( p_prop->IsFromStructure(Structure) == false ) continue;
+            if( p_prop->ComposedBySingleAtomGroups() == false ) continue;
+
+            // supported types?
+            bool supported = false;
+            supported |= p_prop->GetType() == DistancePropertyID;
+            supported |= p_prop->GetType() == AnglePropertyID;
+            supported |= p_prop->GetType() == TorsionPropertyID;
+            if( supported == false ) continue;
+
+            // add to the list
+            WidgetUI.coordinateCB->addItem(p_prop->GetName(),QVariant(i));
+        }
+
+        if( WidgetUI.coordinateCB->count() == 0 ){
+            WidgetUI.coordinateCB->addItem("-none available-",QVariant(-1));
+        }
+        WidgetUI.coordinateCB->setCurrentIndex(0);
+        WidgetUI.modSetupFR->show();
+    } else {
+        WidgetUI.modSetupFR->hide();
+    }
+
+    CoordinateChanged();
+    UpdatePreviewText();
 }
 
 //------------------------------------------------------------------------------
@@ -371,6 +427,77 @@ void CGaussianInputExportTool::SetTheory(void)
         WidgetUI.basisCB->setEnabled(false);
         WidgetUI.basisCB->hide();
     }
+    UpdatePreviewText();
+}
+
+//------------------------------------------------------------------------------
+
+void CGaussianInputExportTool::CoordinateChanged(void)
+{
+    int idx = WidgetUI.coordinateCB->currentData().toInt();
+    if( (idx < 0) || (WidgetUI.coordinateCB->count() == 0) ){
+        WidgetUI.numOfStepsSB->setValue(0);
+        WidgetUI.numOfStepsSB->setEnabled(false);
+        WidgetUI.stepSizeSB->setValue(0);
+        WidgetUI.stepSizeSB->setEnabled(false);
+        WidgetUI.initialValueSB->setValue(0);
+        WidgetUI.initialValueSB->setEnabled(false);
+        WidgetUI.finalValueSB->setValue(0);
+        WidgetUI.finalValueSB->setEnabled(false);
+        return;
+    }
+
+    WidgetUI.numOfStepsSB->setEnabled(true);
+    WidgetUI.stepSizeSB->setEnabled(true);
+    WidgetUI.initialValueSB->setEnabled(true);
+    WidgetUI.finalValueSB->setEnabled(true);
+
+    CProperty* p_prop = Structure->GetProject()->GetProperties()->GetProperty(idx);
+
+    WidgetUI.numOfStepsSB->setValue(25);
+
+    WidgetUI.stepSizeSB->setPhysicalQuantity(p_prop->GetPropertyUnit());
+    WidgetUI.initialValueSB->setPhysicalQuantity(p_prop->GetPropertyUnit());
+    WidgetUI.finalValueSB->setPhysicalQuantity(p_prop->GetPropertyUnit());
+
+    if( p_prop->GetType() == DistancePropertyID ){
+        WidgetUI.stepSizeSB->setInternalValue(0.1);
+    } else {
+        WidgetUI.stepSizeSB->setInternalValue(5.0/180.0*M_PI);
+    }
+    // automagic for the sign of the step :-)
+    if( p_prop->GetScalarValue() +
+            WidgetUI.numOfStepsSB->value()*WidgetUI.stepSizeSB->getInternalValue() < 0 ){
+        if( p_prop->GetType() == DistancePropertyID ){
+            WidgetUI.stepSizeSB->setInternalValue(-0.1);
+        } else {
+            WidgetUI.stepSizeSB->setInternalValue(-5.0/180.0*M_PI);
+        }
+    }
+
+    WidgetUI.initialValueSB->setInternalValue(p_prop->GetScalarValue());
+    WidgetUI.finalValueSB->setInternalValue(p_prop->GetScalarValue() +
+                                            WidgetUI.numOfStepsSB->value()*WidgetUI.stepSizeSB->getInternalValue());
+
+    UpdatePreviewText();
+}
+
+//------------------------------------------------------------------------------
+
+void CGaussianInputExportTool::CoordinateSetupChanged(void)
+{
+    int idx = WidgetUI.coordinateCB->currentData().toInt();
+    if( (idx < 0) || (WidgetUI.coordinateCB->count() == 0) ){
+        WidgetUI.initialValueSB->setValue(0);
+        WidgetUI.finalValueSB->setValue(0);
+        return;
+    }
+
+    CProperty* p_prop = Structure->GetProject()->GetProperties()->GetProperty(idx);
+
+    WidgetUI.initialValueSB->setInternalValue(p_prop->GetScalarValue());
+    WidgetUI.finalValueSB->setInternalValue(p_prop->GetScalarValue() +
+                                            WidgetUI.numOfStepsSB->value()*WidgetUI.stepSizeSB->getInternalValue());
 
     UpdatePreviewText();
 }
@@ -389,24 +516,14 @@ QString CGaussianInputExportTool::GetTheoryType(bool spinprefix)
             prefix = "R";
         }
     }
-    switch (WidgetUI.theoryCB->currentIndex()) {
-        case 0:
-            return(prefix + "AM1");
-        case 1:
-            return(prefix + "PM3");
-        case 2:
-            return(prefix + "PM6");
-        case 3:
-            return(prefix + "HF");
-        case 4:
-            return(prefix + "B3LYP");
-        case 5:
-            return(prefix + "PBEPBE");
-        case 6:
-            return(prefix + "MP2");
-        default:
-            return(prefix + "HF");
-    }
+    return( prefix + WidgetUI.theoryCB->currentText() );
+}
+
+//------------------------------------------------------------------------------
+
+QString CGaussianInputExportTool::GetTheoryExtras(void)
+{
+    return(""); // FIXME - D3BJ corrections for DFT
 }
 
 //------------------------------------------------------------------------------
@@ -423,17 +540,7 @@ bool CGaussianInputExportTool::IsBasisRequired(void)
 
 QString CGaussianInputExportTool::GetBasisType(void)
 {
-    // Translate the enum to text for the output generation
-    switch (WidgetUI.basisCB->currentIndex()) {
-        case 0:
-            return "6-31G*";
-        case 1:
-            return "6-31G**";
-        case 2:
-            return "6-31+G**";
-        default:
-            return "6-31G*";
-    }
+    return(WidgetUI.basisCB->currentText());
 }
 
 //------------------------------------------------------------------------------
@@ -456,8 +563,10 @@ void CGaussianInputExportTool::GenerateHeader(QTextStream& str)
       str << '/' << GetBasisType();
     }
 
+    str << GetTheoryExtras();
+
     // Now for the calculation type
-    str << ' ' << GetCalculationType();
+    str << " " << GetCalculationType();
 
     if( WidgetUI.multiplicitySB->value() > 1 ){
         str << " Guess=Mix";
@@ -636,9 +745,45 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
         }
         break;
     }
-    if(WidgetUI.calculationCB->currentIndex() == 4) {
+    if( WidgetUI.calculationCB->currentIndex() == 4 ){
+        Structure->UpdateAtomTrajIndexes();
+        // mod redundant section
+        int idx = WidgetUI.coordinateCB->currentData().toInt();
+        if( (idx >= 0) && (WidgetUI.coordinateCB->count() != 0) ){
+            CProperty* p_prop = Structure->GetProject()->GetProperties()->GetProperty(idx);
+            double fac = 1.0;
+            if( p_prop->GetType() == DistancePropertyID ){
+                CDistanceProperty* p_dp = dynamic_cast<CDistanceProperty*>(p_prop);
+                str << "B ";
+                str << p_dp->GetPointA()->GetAtom(0)->GetTrajIndex()+1 << " ";
+                str << p_dp->GetPointB()->GetAtom(0)->GetTrajIndex()+1 << " ";
+            }
+            if( p_prop->GetType() == AnglePropertyID ){
+                CAngleProperty* p_dp = dynamic_cast<CAngleProperty*>(p_prop);
+                str << "A ";
+                fac = 180.0/M_PI;
+                str << p_dp->GetPointA()->GetAtom(0)->GetTrajIndex()+1 << " ";
+                str << p_dp->GetPointB()->GetAtom(0)->GetTrajIndex()+1 << " ";
+                str << p_dp->GetPointC()->GetAtom(0)->GetTrajIndex()+1 << " ";
+            }
+            if( p_prop->GetType() == TorsionPropertyID ){
+                CTorsionProperty* p_dp = dynamic_cast<CTorsionProperty*>(p_prop);
+                str << "D ";
+                fac = 180.0/M_PI;
+                str << p_dp->GetPointA()->GetAtom(0)->GetTrajIndex()+1 << " ";
+                str << p_dp->GetPointB()->GetAtom(0)->GetTrajIndex()+1 << " ";
+                str << p_dp->GetPointC()->GetAtom(0)->GetTrajIndex()+1 << " ";
+                str << p_dp->GetPointD()->GetAtom(0)->GetTrajIndex()+1 << " ";
+            }
+            double value = WidgetUI.stepSizeSB->getInternalValue();
+            str << "S " << WidgetUI.numOfStepsSB->value() << " " << QString::number(value*fac, 'f', 2) << endl;
+            str << endl;
+        }
+
+    }
+    if( WidgetUI.calculationCB->currentIndex() == 5 ) {
         str << "gaussianESP.gesp" <<'\n' ;
-	str << '\n';
+        str << '\n';
     }
 }
 

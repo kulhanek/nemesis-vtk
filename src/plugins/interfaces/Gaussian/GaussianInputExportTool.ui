@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>661</width>
-    <height>489</height>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>Title:</string>
+         <string>&amp;Title:</string>
         </property>
         <property name="buddy">
          <cstring>titleLE</cstring>
@@ -42,7 +42,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Calculation:</string>
+         <string>Ca&amp;lculation:</string>
         </property>
         <property name="buddy">
          <cstring>calculationCB</cstring>
@@ -52,7 +52,7 @@
       <item row="1" column="2">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Processors:</string>
+         <string>P&amp;rocessors:</string>
         </property>
         <property name="buddy">
          <cstring>procSB</cstring>
@@ -62,7 +62,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Theory:</string>
+         <string>Theor&amp;y:</string>
         </property>
         <property name="buddy">
          <cstring>theoryCB</cstring>
@@ -131,7 +131,7 @@
       <item row="2" column="2">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Basis:</string>
+         <string>B&amp;asis:</string>
         </property>
         <property name="buddy">
          <cstring>basisCB</cstring>
@@ -201,6 +201,11 @@
           </item>
           <item>
            <property name="text">
+            <string>Single Coordinate Driving</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>ESP Calculation</string>
            </property>
           </item>
@@ -246,6 +251,16 @@
             <string>6-31+G**</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>def2SVP</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>def2TZVPP</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
@@ -266,7 +281,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Charge:</string>
+         <string>Char&amp;ge:</string>
         </property>
         <property name="buddy">
          <cstring>chargeSB</cstring>
@@ -303,7 +318,7 @@
       <item row="3" column="2">
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>Multiplicity:</string>
+         <string>M&amp;ultiplicity:</string>
         </property>
         <property name="buddy">
          <cstring>multiplicitySB</cstring>
@@ -388,6 +403,109 @@
          </spacer>
         </item>
        </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="modSetupFR">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="1">
+       <widget class="QQuantitySpinBox" name="initialValueSB">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Initial value:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Step size:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Number of steps:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Coordinate:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="numOfStepsSB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QQuantitySpinBox" name="stepSizeSB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Final value:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="3">
+       <widget class="QComboBox" name="coordinateCB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QQuantitySpinBox" name="finalValueSB">
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -534,6 +652,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuantitySpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header location="global">QuantitySpinBox.hpp</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>titleLE</tabstop>
   <tabstop>calculationCB</tabstop>

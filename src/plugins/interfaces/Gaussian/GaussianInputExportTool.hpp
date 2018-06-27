@@ -72,6 +72,7 @@ private:
     // Translate enums to strings
     QString GetCalculationType(void);
     QString GetTheoryType(bool spinprefix);
+    QString GetTheoryExtras(void);
     QString GetBasisType(void);
     bool IsBasisRequired(void);
 
@@ -85,11 +86,14 @@ private:
     virtual void  SaveWorkPanelSpecificData(CXMLElement* p_ele);
 
 private slots:
+    void SetMethod(void);
     void SetTheory(void);
     void UpdatePreviewText(void);
     void ResetSetup(void);
     void SaveInputFile(void);
     void PreviewEdited(void);
+    void CoordinateChanged(void);
+    void CoordinateSetupChanged(void);
 };
 
 //------------------------------------------------------------------------------

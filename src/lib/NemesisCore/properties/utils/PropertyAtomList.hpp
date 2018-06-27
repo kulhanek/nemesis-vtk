@@ -84,6 +84,9 @@ public:
     /// contains any atom from the structure
     bool ContainsAnyAtomFrom(CStructure* p_str);
 
+    /// conatins only atoms from given structure?
+    bool IsFromStructure(CStructure* p_str);
+
     /// get atom
     CAtom* GetAtom(int index);
 

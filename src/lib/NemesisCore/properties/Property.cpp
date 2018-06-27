@@ -183,6 +183,20 @@ bool CProperty::IsReady(void)
 
 //------------------------------------------------------------------------------
 
+bool CProperty::IsFromStructure(CStructure* p_str)
+{
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
+bool CProperty::ComposedBySingleAtomGroups(void)
+{
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
 bool CProperty::HasGradient(CStructure* p_structure)
 {
     return(PropFlags.testFlag(EPF_CARTESIAN_GRADIENT));

@@ -102,6 +102,32 @@ bool CAngleProperty::IsReady(void)
 
 //------------------------------------------------------------------------------
 
+bool CAngleProperty::IsFromStructure(CStructure* p_str)
+{
+    bool cready = true;
+
+    cready &= PointA->IsFromStructure(p_str);
+    cready &= PointB->IsFromStructure(p_str);
+    cready &= PointC->IsFromStructure(p_str);
+
+    return( cready );
+}
+
+//------------------------------------------------------------------------------
+
+bool CAngleProperty::ComposedBySingleAtomGroups(void)
+{
+    bool cready = true;
+
+    cready &= PointA->GetNumberOfAtoms() == 1;
+    cready &= PointB->GetNumberOfAtoms() == 1;
+    cready &= PointC->GetNumberOfAtoms() == 1;
+
+    return( cready );
+}
+
+//------------------------------------------------------------------------------
+
 double CAngleProperty::GetScalarValue(void)
 {
     if( IsReady() == false ) return(0.0);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.3.1, 2018-06-27T18:24:55. -->
+<!-- Written by QtCreator 4.3.1, 2018-06-27T22:05:10. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -167,7 +167,7 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Arguments">-traj -gopt ~/TS.log</value>
+    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Arguments">-build</value>
     <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Executable">/scratch/kulhanek/Development/linux/projects/nemesis/18.x/bin/nemesis</value>
     <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.WorkingDirectory">%{buildDir}</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Run /scratch/kulhanek/Development/linux/projects/nemesis/18.x/bin/nemesis</value>

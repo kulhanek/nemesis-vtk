@@ -96,6 +96,30 @@ bool CDistanceProperty::IsReady(void)
 
 //------------------------------------------------------------------------------
 
+bool CDistanceProperty::IsFromStructure(CStructure* p_str)
+{
+    bool cready = true;
+
+    cready &= PointA->IsFromStructure(p_str);
+    cready &= PointB->IsFromStructure(p_str);
+
+    return( cready );
+}
+
+//------------------------------------------------------------------------------
+
+bool CDistanceProperty::ComposedBySingleAtomGroups(void)
+{
+    bool cready = true;
+
+    cready &= PointA->GetNumberOfAtoms() == 1;
+    cready &= PointB->GetNumberOfAtoms() == 1;
+
+    return( cready );
+}
+
+//------------------------------------------------------------------------------
+
 double CDistanceProperty::GetScalarValue(void)
 {
     if( IsReady() == false ) return(0.0);

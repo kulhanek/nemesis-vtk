@@ -57,6 +57,8 @@
 #include <QMessageBox>
 #include <BatchJobList.hpp>
 
+#include <FTGLFontCache.hpp>
+
 #include <MouseDriverSetup.hpp>
 
 #include <openbabel/plugin.h>
@@ -615,6 +617,9 @@ void CNemesisJScript::FinalizeSubsystems(void)
     JobScheduler = NULL;
     GlobalDesktop = NULL;
     MouseDriverSetup = NULL;
+
+    // destroy cache
+    FTGLFontCache.DestroyFonts();
 
     // process all events in the loop
     qApp->processEvents();

@@ -91,7 +91,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/FirstSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/FirstSnapshot.svg</iconset>
         </property>
        </widget>
@@ -102,7 +102,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/PrevSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/PrevSnapshot.svg</iconset>
         </property>
        </widget>
@@ -113,7 +113,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/Play.svg</normaloff>:/images/TrajectoryProject/05.trajectory/Play.svg</iconset>
         </property>
        </widget>
@@ -124,7 +124,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/Pause.svg</normaloff>:/images/TrajectoryProject/05.trajectory/Pause.svg</iconset>
         </property>
        </widget>
@@ -135,7 +135,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/Stop.svg</normaloff>:/images/TrajectoryProject/05.trajectory/Stop.svg</iconset>
         </property>
        </widget>
@@ -146,7 +146,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/NextSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/NextSnapshot.svg</iconset>
         </property>
        </widget>
@@ -157,7 +157,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="TrajectoryProject.qrc">
           <normaloff>:/images/TrajectoryProject/05.trajectory/LastSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/LastSnapshot.svg</iconset>
         </property>
        </widget>
@@ -172,21 +172,21 @@
      <x>0</x>
      <y>0</y>
      <width>690</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>Fi&amp;le</string>
     </property>
     <widget class="QMenu" name="menuImportStructure">
      <property name="title">
-      <string>Import Structure from ...</string>
+      <string>&amp;Import Structure from ...</string>
      </property>
     </widget>
     <widget class="QMenu" name="menuExportStructure">
      <property name="title">
-      <string>Export Structure as ...</string>
+      <string>&amp;Export Structure as ...</string>
      </property>
     </widget>
     <widget class="QMenu" name="menuOpenRecent">
@@ -197,12 +197,12 @@
     </widget>
     <widget class="QMenu" name="menuImportTrajectory">
      <property name="title">
-      <string>Import Trajectory from ...</string>
+      <string>I&amp;mport Trajectory from ...</string>
      </property>
     </widget>
     <widget class="QMenu" name="menuImportProperty">
      <property name="title">
-      <string>Import Property from ...</string>
+      <string>Import Property &amp;from ...</string>
      </property>
     </widget>
     <addaction name="actionNewMolecule"/>
@@ -241,11 +241,11 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>E&amp;dit</string>
     </property>
     <widget class="QMenu" name="menuLock">
      <property name="title">
-      <string>Lock</string>
+      <string>&amp;Lock</string>
      </property>
      <addaction name="actionLockStructures"/>
      <addaction name="actionLockTopology"/>
@@ -273,23 +273,23 @@
      <rect>
       <x>591</x>
       <y>109</y>
-      <width>148</width>
+      <width>192</width>
       <height>396</height>
      </rect>
     </property>
     <property name="title">
-     <string>Graphics</string>
+     <string>&amp;Graphics</string>
     </property>
     <widget class="QMenu" name="menuNew_Object">
      <property name="title">
-      <string>New Object</string>
+      <string>&amp;New Object</string>
      </property>
      <addaction name="actionNewObjectGlobalScope"/>
      <addaction name="actionNewObjectActiveProfile"/>
     </widget>
     <widget class="QMenu" name="menuStereo">
      <property name="title">
-      <string>Stereo</string>
+      <string>&amp;Stereo</string>
      </property>
      <addaction name="actionStereoOff"/>
      <addaction name="actionStereoQuadBuffered"/>
@@ -299,7 +299,7 @@
     </widget>
     <widget class="QMenu" name="menuProjection">
      <property name="title">
-      <string>Projection</string>
+      <string>&amp;Projection</string>
      </property>
      <addaction name="actionPerspective"/>
      <addaction name="actionOrthographic"/>
@@ -325,7 +325,7 @@
    </widget>
    <widget class="QMenu" name="menuMouse">
     <property name="title">
-     <string>Mouse</string>
+     <string>&amp;Mouse</string>
     </property>
     <addaction name="actionSRTMode"/>
     <addaction name="actionSelectMode"/>
@@ -368,18 +368,18 @@
    </widget>
    <widget class="QMenu" name="menuSelection">
     <property name="title">
-     <string>Selection</string>
+     <string>Sele&amp;ction</string>
     </property>
     <widget class="QMenu" name="menuSelectResiduesBy">
      <property name="title">
-      <string>Select Residues by</string>
+      <string>Select Resid&amp;ues by</string>
      </property>
      <addaction name="actionSelectResiduesByName"/>
      <addaction name="actionSelectResiduesByMask"/>
     </widget>
     <widget class="QMenu" name="menuSelectAtomsBy">
      <property name="title">
-      <string>Select Atoms by</string>
+      <string>Select Atoms b&amp;y</string>
      </property>
      <addaction name="actionSelectAtomsBySymbol"/>
      <addaction name="actionSelectAtomsByName"/>
@@ -388,20 +388,20 @@
     </widget>
     <widget class="QMenu" name="menuSelectBondBy">
      <property name="title">
-      <string>Select Bonds by</string>
+      <string>Select Bon&amp;ds by</string>
      </property>
      <addaction name="actionSelectBondsByBondOrder"/>
      <addaction name="actionSelectBondsByName"/>
     </widget>
     <widget class="QMenu" name="menuSelectGraphicsObjectsBy">
      <property name="title">
-      <string>Select Graphics Objects by</string>
+      <string>Select Grap&amp;hics Objects by</string>
      </property>
      <addaction name="actionSelectGraphicsObjectsByType"/>
     </widget>
     <widget class="QMenu" name="menuFilters">
      <property name="title">
-      <string>Object Selection Mode</string>
+      <string>&amp;Object Selection Mode</string>
      </property>
      <addaction name="actionOnlyActiveStructureObjects"/>
      <addaction name="actionAlreadySelectedObjectsAsSeed"/>
@@ -437,7 +437,7 @@
    </widget>
    <widget class="QMenu" name="menuGeometry">
     <property name="title">
-     <string>Trajectory</string>
+     <string>&amp;Trajectory</string>
     </property>
     <addaction name="actionActiveTrajectoryInfo"/>
     <addaction name="actionAllTrajectoriesInfo"/>
@@ -460,14 +460,13 @@
    </widget>
    <widget class="QMenu" name="menuStructure">
     <property name="title">
-     <string>Structure</string>
+     <string>Str&amp;ucture</string>
     </property>
     <addaction name="actionActiveStructureInfo"/>
     <addaction name="actionAllStructuresInfo"/>
     <addaction name="separator"/>
     <addaction name="actionNewStructure"/>
     <addaction name="actionOpenInBuildProject"/>
-    <addaction name="actionClearStructure"/>
     <addaction name="separator"/>
     <addaction name="actionManageStructuresWP"/>
     <addaction name="actionGeometryWP"/>
@@ -486,11 +485,11 @@
   </widget>
   <action name="actionNewMolecule">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/NewStructure.svg</normaloff>:/images/TrajectoryProject/01.file/NewStructure.svg</iconset>
    </property>
    <property name="text">
-    <string>New Structure</string>
+    <string>&amp;New Structure</string>
    </property>
   </action>
   <action name="actionOpen">
@@ -498,11 +497,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/Open.svg</normaloff>:/images/TrajectoryProject/01.file/Open.svg</iconset>
    </property>
    <property name="text">
-    <string>Open ...</string>
+    <string>&amp;Open ...</string>
    </property>
   </action>
   <action name="actionSave">
@@ -510,20 +509,20 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/Save.svg</normaloff>:/images/TrajectoryProject/01.file/Save.svg</iconset>
    </property>
    <property name="text">
-    <string>Save</string>
+    <string>&amp;Save</string>
    </property>
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/Quit.svg</normaloff>:/images/TrajectoryProject/01.file/Quit.svg</iconset>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>&amp;Quit</string>
    </property>
    <property name="whatsThis">
     <string comment="Click to quit window"/>
@@ -531,20 +530,20 @@
   </action>
   <action name="actionAboutNemesis">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/11.help/NemesisAbout.svg</normaloff>:/images/TrajectoryProject/11.help/NemesisAbout.svg</iconset>
    </property>
    <property name="text">
-    <string>About Nemesis</string>
+    <string>About &amp;Nemesis</string>
    </property>
   </action>
   <action name="actionNewProject">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/NewProject.svg</normaloff>:/images/TrajectoryProject/01.file/NewProject.svg</iconset>
    </property>
    <property name="text">
-    <string>New Project ...</string>
+    <string>Ne&amp;w Project ...</string>
    </property>
   </action>
   <action name="actionSaveAs">
@@ -552,11 +551,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/SaveAs.svg</normaloff>:/images/TrajectoryProject/01.file/SaveAs.svg</iconset>
    </property>
    <property name="text">
-    <string>Save as ...</string>
+    <string>Sa&amp;ve as ...</string>
    </property>
   </action>
   <action name="actionSaveAll">
@@ -564,7 +563,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/SaveAll.svg</normaloff>:/images/TrajectoryProject/01.file/SaveAll.svg</iconset>
    </property>
    <property name="text">
@@ -576,11 +575,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/Close.svg</normaloff>:/images/TrajectoryProject/01.file/Close.svg</iconset>
    </property>
    <property name="text">
-    <string>Close</string>
+    <string>&amp;Close</string>
    </property>
   </action>
   <action name="actionCloseAll">
@@ -588,11 +587,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/CloseAll.svg</normaloff>:/images/TrajectoryProject/01.file/CloseAll.svg</iconset>
    </property>
    <property name="text">
-    <string>Close all</string>
+    <string>C&amp;lose all</string>
    </property>
   </action>
   <action name="actionUndo">
@@ -600,11 +599,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/02.edit/Undo.svg</normaloff>:/images/TrajectoryProject/02.edit/Undo.svg</iconset>
    </property>
    <property name="text">
-    <string>Undo</string>
+    <string>&amp;Undo</string>
    </property>
   </action>
   <action name="actionRedo">
@@ -612,11 +611,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/02.edit/Redo.svg</normaloff>:/images/TrajectoryProject/02.edit/Redo.svg</iconset>
    </property>
    <property name="text">
-    <string>Redo</string>
+    <string>&amp;Redo</string>
    </property>
   </action>
   <action name="actionNemesisHelp">
@@ -624,11 +623,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/11.help/OnlineDoc.svg</normaloff>:/images/TrajectoryProject/11.help/OnlineDoc.svg</iconset>
    </property>
    <property name="text">
-    <string>Online Documentation ...</string>
+    <string>&amp;Online Documentation ...</string>
    </property>
   </action>
   <action name="actionProjectInfo">
@@ -636,47 +635,47 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/01.file/Info.svg</normaloff>:/images/TrajectoryProject/01.file/Info.svg</iconset>
    </property>
    <property name="text">
-    <string>Project Info</string>
+    <string>&amp;Project Info</string>
    </property>
   </action>
   <action name="actionUnitSetup">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/QuantitySetup.svg</normaloff>:/images/TrajectoryProject/10.setup/QuantitySetup.svg</iconset>
    </property>
    <property name="text">
-    <string>Quantity Unit Preferences</string>
+    <string>&amp;Quantity Unit Preferences</string>
    </property>
   </action>
   <action name="actionGraphicsSetup">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/GraphicsSetup.svg</normaloff>:/images/TrajectoryProject/10.setup/GraphicsSetup.svg</iconset>
    </property>
    <property name="text">
-    <string>Graphics Preferences</string>
+    <string>&amp;Graphics Preferences</string>
    </property>
   </action>
   <action name="actionAboutQt">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/11.help/QTAbout.svg</normaloff>:/images/TrajectoryProject/11.help/QTAbout.svg</iconset>
    </property>
    <property name="text">
-    <string>About Qt</string>
+    <string>&amp;About Qt</string>
    </property>
   </action>
   <action name="actionGlobalSetup">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/GlobalConfig.svg</normaloff>:/images/TrajectoryProject/10.setup/GlobalConfig.svg</iconset>
    </property>
    <property name="text">
-    <string>Global Preferences</string>
+    <string>Global &amp;Preferences</string>
    </property>
   </action>
   <action name="actionPasteStructure">
@@ -684,25 +683,25 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Paste As It Is</string>
+    <string>&amp;Paste As It Is</string>
    </property>
   </action>
   <action name="actionAutofitScene">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/Fit.svg</normaloff>:/images/TrajectoryProject/07.graphics/Fit.svg</iconset>
    </property>
    <property name="text">
-    <string>Autofit Scene</string>
+    <string>&amp;Autofit Scene</string>
    </property>
   </action>
   <action name="actionColorSetup">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/ColorPreferences.svg</normaloff>:/images/TrajectoryProject/10.setup/ColorPreferences.svg</iconset>
    </property>
    <property name="text">
-    <string>Color Preferences</string>
+    <string>&amp;Color Preferences</string>
    </property>
   </action>
   <action name="actionCopyActiveStructure">
@@ -710,7 +709,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Copy active structure</string>
+    <string>&amp;Copy active structure</string>
    </property>
   </action>
   <action name="actionGeometryWP">
@@ -718,43 +717,43 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/04.structure/Geometry.svg</normaloff>:/images/TrajectoryProject/04.structure/Geometry.svg</iconset>
    </property>
    <property name="text">
-    <string>Measure Geometry</string>
+    <string>Measure &amp;Geometry</string>
    </property>
   </action>
   <action name="actionActiveProfileInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/ProfileInfo.svg</normaloff>:/images/TrajectoryProject/07.graphics/ProfileInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>Active Profile Info</string>
+    <string>A&amp;ctive Profile Info</string>
    </property>
   </action>
   <action name="actionSaveLayout">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/SaveDesktop.svg</normaloff>:/images/TrajectoryProject/10.setup/SaveDesktop.svg</iconset>
    </property>
    <property name="text">
-    <string>Save Default Layout</string>
+    <string>&amp;Save Default Layout</string>
    </property>
   </action>
   <action name="actionToolbarsConfig">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/ConfigToolBars.svg</normaloff>:/images/TrajectoryProject/10.setup/ConfigToolBars.svg</iconset>
    </property>
    <property name="text">
-    <string>Toolbars Config</string>
+    <string>&amp;Toolbars Config</string>
    </property>
   </action>
   <action name="actionEmptyRecentList">
    <property name="text">
-    <string>Clear list</string>
+    <string>&amp;Clear list</string>
    </property>
   </action>
   <action name="actionSelectMode">
@@ -762,11 +761,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/Select.svg</normaloff>:/images/TrajectoryProject/08.mouse/Select.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Mode</string>
+    <string>S&amp;elect Mode</string>
    </property>
   </action>
   <action name="actionRotateMode">
@@ -774,11 +773,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/Rotate.svg</normaloff>:/images/TrajectoryProject/08.mouse/Rotate.svg</iconset>
    </property>
    <property name="text">
-    <string>Rotate Mode</string>
+    <string>&amp;Rotate Mode</string>
    </property>
   </action>
   <action name="actionTranslateMode">
@@ -786,11 +785,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/Move.svg</normaloff>:/images/TrajectoryProject/08.mouse/Move.svg</iconset>
    </property>
    <property name="text">
-    <string>Translate Mode</string>
+    <string>&amp;Translate Mode</string>
    </property>
   </action>
   <action name="actionSRTMode">
@@ -798,11 +797,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/SRT.svg</normaloff>:/images/TrajectoryProject/08.mouse/SRT.svg</iconset>
    </property>
    <property name="text">
-    <string>SRT Mode</string>
+    <string>&amp;SRT Mode</string>
    </property>
   </action>
   <action name="actionObjectManipulation">
@@ -810,11 +809,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/ObjectManipulation.svg</normaloff>:/images/TrajectoryProject/08.mouse/ObjectManipulation.svg</iconset>
    </property>
    <property name="text">
-    <string>Graphics Object Manipulation</string>
+    <string>&amp;Graphics Object Manipulation</string>
    </property>
   </action>
   <action name="actionLockTopology">
@@ -822,7 +821,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Topology</string>
+    <string>&amp;Topology</string>
    </property>
   </action>
   <action name="actionLockGraphics">
@@ -830,7 +829,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Graphics</string>
+    <string>G&amp;raphics</string>
    </property>
   </action>
   <action name="actionObjectProperties">
@@ -838,29 +837,29 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/ObjectProperties.svg</normaloff>:/images/TrajectoryProject/08.mouse/ObjectProperties.svg</iconset>
    </property>
    <property name="text">
-    <string>Object Properties</string>
+    <string>&amp;Object Properties</string>
    </property>
   </action>
   <action name="actionActiveStructureInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/04.structure/ActiveStructureInfo.svg</normaloff>:/images/TrajectoryProject/04.structure/ActiveStructureInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>Active Structure Info</string>
+    <string>&amp;Active Structure Info</string>
    </property>
   </action>
   <action name="actionSelectNone">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectNone.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectNone.svg</iconset>
    </property>
    <property name="text">
-    <string>Select None</string>
+    <string>Select &amp;None</string>
    </property>
   </action>
   <action name="actionSelectStructures">
@@ -868,11 +867,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectStructure.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectStructure.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Structures</string>
+    <string>&amp;Select Structures</string>
    </property>
   </action>
   <action name="actionSelectAtoms">
@@ -880,11 +879,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectAtoms.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectAtoms.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Atoms</string>
+    <string>Se&amp;lect Atoms</string>
    </property>
   </action>
   <action name="actionSelectBonds">
@@ -892,20 +891,20 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectBonds.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectBonds.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Bonds</string>
+    <string>Select &amp;Bonds</string>
    </property>
   </action>
   <action name="actionInvertSelection">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/InvertSelection.svg</normaloff>:/images/TrajectoryProject/03.selection/InvertSelection.svg</iconset>
    </property>
    <property name="text">
-    <string>Invert Selection</string>
+    <string>&amp;Invert Selection</string>
    </property>
   </action>
   <action name="actionSelectGraphicsObjects">
@@ -913,11 +912,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectGraphicalObject.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectGraphicalObject.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Graphics Objects</string>
+    <string>Select &amp;Graphics Objects</string>
    </property>
   </action>
   <action name="actionSelectionListWP">
@@ -925,11 +924,11 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectionList.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectionList.svg</iconset>
    </property>
    <property name="text">
-    <string>View Selection List</string>
+    <string>&amp;View Selection List</string>
    </property>
   </action>
   <action name="actionSelectResidues">
@@ -937,16 +936,16 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectResidue.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectResidue.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Residues</string>
+    <string>Select &amp;Residues</string>
    </property>
   </action>
   <action name="actionCompleteMolecules">
    <property name="text">
-    <string>Complete Molecules</string>
+    <string>Complete &amp;Molecules</string>
    </property>
   </action>
   <action name="actionSelectAtomsAndBonds">
@@ -954,11 +953,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectAtomsBonds.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectAtomsBonds.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Atoms and Bonds</string>
+    <string>S&amp;elect Atoms and Bonds</string>
    </property>
   </action>
   <action name="actionRender">
@@ -966,7 +965,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Render ...</string>
+    <string>&amp;Render ...</string>
    </property>
   </action>
   <action name="actionCompleteBonds">
@@ -979,16 +978,16 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Description</string>
+    <string>&amp;Description</string>
    </property>
   </action>
   <action name="actionClearSelection">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/ClearSelection.svg</normaloff>:/images/TrajectoryProject/03.selection/ClearSelection.svg</iconset>
    </property>
    <property name="text">
-    <string>Clear Selection</string>
+    <string>&amp;Clear Selection</string>
    </property>
   </action>
   <action name="actionCompleteValences">
@@ -1001,7 +1000,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Geometry</string>
+    <string>&amp;Geometry</string>
    </property>
   </action>
   <action name="actionStereoOff">
@@ -1009,7 +1008,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Off</string>
+    <string>&amp;Off</string>
    </property>
   </action>
   <action name="actionStereoQuadBuffered">
@@ -1017,16 +1016,16 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>QuadBuffered</string>
+    <string>&amp;QuadBuffered</string>
    </property>
   </action>
   <action name="actionNewProfile">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/ProfileNew.svg</normaloff>:/images/TrajectoryProject/07.graphics/ProfileNew.svg</iconset>
    </property>
    <property name="text">
-    <string>New Profile</string>
+    <string>N&amp;ew Profile</string>
    </property>
   </action>
   <action name="actionNewObjectGlobalScope">
@@ -1034,12 +1033,12 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Global Scope</string>
+    <string>&amp;Global Scope</string>
    </property>
   </action>
   <action name="actionNewObjectActiveProfile">
    <property name="text">
-    <string>Active Profile</string>
+    <string>&amp;Active Profile</string>
    </property>
   </action>
   <action name="actionStereoAnaglyphRB">
@@ -1047,7 +1046,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Anaglyph Red/Blue</string>
+    <string>&amp;Anaglyph Red/Blue</string>
    </property>
   </action>
   <action name="actionStereoSwapEyes">
@@ -1055,7 +1054,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Swap eyes</string>
+    <string>&amp;Swap eyes</string>
    </property>
   </action>
   <action name="actionGraphicsManagerWP">
@@ -1063,56 +1062,56 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/GraphicsManager.svg</normaloff>:/images/TrajectoryProject/07.graphics/GraphicsManager.svg</iconset>
    </property>
    <property name="text">
-    <string>Graphics Manager</string>
+    <string>&amp;Graphics Manager</string>
    </property>
   </action>
   <action name="actionSelectAtomsBySymbol">
    <property name="text">
-    <string>Symbol ...</string>
+    <string>&amp;Symbol ...</string>
    </property>
   </action>
   <action name="actionSelectAtomsByName">
    <property name="text">
-    <string>Name ...</string>
+    <string>&amp;Name ...</string>
    </property>
   </action>
   <action name="actionSelectAtomsByType">
    <property name="text">
-    <string>Type ...</string>
+    <string>&amp;Type ...</string>
    </property>
   </action>
   <action name="actionSelectAtomsByMask">
    <property name="text">
-    <string>Mask ...</string>
+    <string>&amp;Mask ...</string>
    </property>
   </action>
   <action name="actionSelectBondsByBondOrder">
    <property name="text">
-    <string>Bond Order ...</string>
+    <string>&amp;Bond Order ...</string>
    </property>
   </action>
   <action name="actionSelectBondsByName">
    <property name="text">
-    <string>Name ...</string>
+    <string>&amp;Name ...</string>
    </property>
   </action>
   <action name="actionSelectResiduesByName">
    <property name="text">
-    <string>Name ...</string>
+    <string>&amp;Name ...</string>
    </property>
   </action>
   <action name="actionSelectResiduesByMask">
    <property name="text">
-    <string>Mask ...</string>
+    <string>&amp;Mask ...</string>
    </property>
   </action>
   <action name="actionSelectGraphicsObjectsByType">
    <property name="text">
-    <string>Type ...</string>
+    <string>&amp;Type ...</string>
    </property>
   </action>
   <action name="actionInsertSMILES">
@@ -1127,20 +1126,20 @@
   </action>
   <action name="actionNewProperty">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/06.properties/PropertyAdd.svg</normaloff>:/images/TrajectoryProject/06.properties/PropertyAdd.svg</iconset>
    </property>
    <property name="text">
-    <string>New Property</string>
+    <string>&amp;New Property</string>
    </property>
   </action>
   <action name="actionManagePropertiesWP">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/06.properties/PropertiesManagement.svg</normaloff>:/images/TrajectoryProject/06.properties/PropertiesManagement.svg</iconset>
    </property>
    <property name="text">
-    <string>Properties Manager</string>
+    <string>&amp;Properties Manager</string>
    </property>
   </action>
   <action name="actionLockProperties">
@@ -1148,7 +1147,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Properties</string>
+    <string>&amp;Properties</string>
    </property>
   </action>
   <action name="actionPasteStructureDoNotOverlap">
@@ -1158,12 +1157,12 @@
   </action>
   <action name="actionClearHistory">
    <property name="text">
-    <string>Clear History</string>
+    <string>Clear &amp;History</string>
    </property>
   </action>
   <action name="actionClearAllData">
    <property name="text">
-    <string>Clear All Data</string>
+    <string>Clear All &amp;Data</string>
    </property>
   </action>
   <action name="actionSelectProperties">
@@ -1171,29 +1170,29 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectProperties.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectProperties.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Properties</string>
+    <string>Select &amp;Properties</string>
    </property>
   </action>
   <action name="actionObjectListInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/AllObjectInfo.svg</normaloff>:/images/TrajectoryProject/07.graphics/AllObjectInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>All Objects Info</string>
+    <string>All &amp;Objects Info</string>
    </property>
   </action>
   <action name="actionNewView">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/ViewNew.svg</normaloff>:/images/TrajectoryProject/07.graphics/ViewNew.svg</iconset>
    </property>
    <property name="text">
-    <string>New View</string>
+    <string>New &amp;View</string>
    </property>
   </action>
   <action name="actionPerspective">
@@ -1201,7 +1200,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Perspective</string>
+    <string>&amp;Perspective</string>
    </property>
   </action>
   <action name="actionOrthographic">
@@ -1209,7 +1208,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Orthographic</string>
+    <string>&amp;Orthographic</string>
    </property>
   </action>
   <action name="actionDepthCueing">
@@ -1217,79 +1216,79 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Depth Cueing</string>
+    <string>&amp;Depth Cueing</string>
    </property>
   </action>
   <action name="actionViewListInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/AllViewInfo.svg</normaloff>:/images/TrajectoryProject/07.graphics/AllViewInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>All Views Info</string>
+    <string>All Views &amp;Info</string>
    </property>
   </action>
   <action name="actionPrimaryViewInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/ViewInfo.svg</normaloff>:/images/TrajectoryProject/07.graphics/ViewInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>Primary View Info</string>
+    <string>P&amp;rimary View Info</string>
    </property>
   </action>
   <action name="actionProfileListInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/AllProfileInfo.svg</normaloff>:/images/TrajectoryProject/07.graphics/AllProfileInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>All Profiles Info</string>
+    <string>A&amp;ll Profiles Info</string>
    </property>
   </action>
   <action name="actionAllStructuresInfo">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/04.structure/AllStructuresInfo.svg</normaloff>:/images/TrajectoryProject/04.structure/AllStructuresInfo.svg</iconset>
    </property>
    <property name="text">
-    <string>All Structures Info</string>
+    <string>All &amp;Structures Info</string>
    </property>
   </action>
   <action name="actionNewStructure">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/04.structure/NewStructure.svg</normaloff>:/images/TrajectoryProject/04.structure/NewStructure.svg</iconset>
    </property>
    <property name="text">
-    <string>New Structure</string>
+    <string>&amp;New Structure</string>
    </property>
   </action>
   <action name="actionManageStructuresWP">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/04.structure/ManageStructures.svg</normaloff>:/images/TrajectoryProject/04.structure/ManageStructures.svg</iconset>
    </property>
    <property name="text">
-    <string>Manage Structures</string>
+    <string>&amp;Manage Structures</string>
    </property>
   </action>
   <action name="actionProfileManagerWP">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/07.graphics/ProfileManager.svg</normaloff>:/images/TrajectoryProject/07.graphics/ProfileManager.svg</iconset>
    </property>
    <property name="text">
-    <string>Profile Manager</string>
+    <string>Profile &amp;Manager</string>
    </property>
   </action>
   <action name="actionJobSchedulerPreferences">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/10.setup/JobSchedulerSetup.svg</normaloff>:/images/TrajectoryProject/10.setup/JobSchedulerSetup.svg</iconset>
    </property>
    <property name="text">
-    <string>Job Scheduler Preferences</string>
+    <string>&amp;Job Scheduler Preferences</string>
    </property>
   </action>
   <action name="actionCompleteActiveStructure">
@@ -1305,7 +1304,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Only Active Structure Objects</string>
+    <string>&amp;Only Active Structure Objects</string>
    </property>
   </action>
   <action name="actionConsiderObjectsOfAllStructures">
@@ -1313,7 +1312,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Consider Objects of All Structures</string>
+    <string>&amp;Consider Objects of All Structures</string>
    </property>
   </action>
   <action name="actionAlreadySelectedObjectsAsSeed">
@@ -1321,12 +1320,12 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Already Selected Objects as Seed</string>
+    <string>&amp;Already Selected Objects as Seed</string>
    </property>
   </action>
   <action name="actionSelectRestraints">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/03.selection/SelectRestraints.svg</normaloff>:/images/TrajectoryProject/03.selection/SelectRestraints.svg</iconset>
    </property>
    <property name="text">
@@ -1338,26 +1337,26 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/Scale.svg</normaloff>:/images/TrajectoryProject/08.mouse/Scale.svg</iconset>
    </property>
    <property name="text">
-    <string>Scale Mode</string>
+    <string>Scale &amp;Mode</string>
    </property>
   </action>
   <action name="actionSelectedProperties">
    <property name="text">
-    <string>Delete Selected Properties</string>
+    <string>&amp;Delete Selected Properties</string>
    </property>
   </action>
   <action name="actionDeleteInvalidProperties">
    <property name="text">
-    <string>Delete Invalid Properties</string>
+    <string>Delete &amp;Invalid Properties</string>
    </property>
   </action>
   <action name="actionDeleteAllProperties">
    <property name="text">
-    <string>Delete All Properties</string>
+    <string>D&amp;elete All Properties</string>
    </property>
   </action>
   <action name="actionCompleteAll">
@@ -1370,66 +1369,66 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Structures</string>
+    <string>&amp;Structures</string>
    </property>
   </action>
   <action name="actionActiveTrajectoryInfo">
    <property name="text">
-    <string>Active Trajectory Info</string>
+    <string>&amp;Active Trajectory Info</string>
    </property>
   </action>
   <action name="actionFirstSnapshot">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/FirstSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/FirstSnapshot.svg</iconset>
    </property>
    <property name="text">
-    <string>First Snapshot</string>
+    <string>&amp;First Snapshot</string>
    </property>
   </action>
   <action name="actionPrevSnapshot">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/PrevSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/PrevSnapshot.svg</iconset>
    </property>
    <property name="text">
-    <string>Prev Snapshot</string>
+    <string>&amp;Prev Snapshot</string>
    </property>
   </action>
   <action name="actionNextSnapshot">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/NextSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/NextSnapshot.svg</iconset>
    </property>
    <property name="text">
-    <string>Next Snapshot</string>
+    <string>&amp;Next Snapshot</string>
    </property>
   </action>
   <action name="actionLastSnapshot">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/LastSnapshot.svg</normaloff>:/images/TrajectoryProject/05.trajectory/LastSnapshot.svg</iconset>
    </property>
    <property name="text">
-    <string>Last Snapshot</string>
+    <string>&amp;Last Snapshot</string>
    </property>
   </action>
   <action name="actionPlay">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/Play.svg</normaloff>:/images/TrajectoryProject/05.trajectory/Play.svg</iconset>
    </property>
    <property name="text">
-    <string>Play</string>
+    <string>Pla&amp;y</string>
    </property>
   </action>
   <action name="actionStop">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/Stop.svg</normaloff>:/images/TrajectoryProject/05.trajectory/Stop.svg</iconset>
    </property>
    <property name="text">
-    <string>Stop</string>
+    <string>&amp;Stop</string>
    </property>
   </action>
   <action name="actionPlayOnce">
@@ -1463,21 +1462,25 @@
   </action>
   <action name="actionPause">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/05.trajectory/Pause.svg</normaloff>:/images/TrajectoryProject/05.trajectory/Pause.svg</iconset>
    </property>
    <property name="text">
-    <string>Pause</string>
+    <string>Pa&amp;use</string>
    </property>
   </action>
   <action name="actionExportPropertiesWP">
    <property name="text">
-    <string>Export Properties as ...</string>
+    <string>E&amp;xport Properties as ...</string>
    </property>
   </action>
   <action name="actionOpenInBuildProject">
+   <property name="icon">
+    <iconset resource="TrajectoryProject.qrc">
+     <normaloff>:/images/TrajectoryProject/04.structure/BuildProject.svg</normaloff>:/images/TrajectoryProject/04.structure/BuildProject.svg</iconset>
+   </property>
    <property name="text">
-    <string>Open in Build Project</string>
+    <string>&amp;Open in Build Project</string>
    </property>
   </action>
   <action name="actionClearStructure">
@@ -1487,27 +1490,27 @@
   </action>
   <action name="actionAllTrajectoriesInfo">
    <property name="text">
-    <string>All Trajectories Info</string>
+    <string>All Trajectories &amp;Info</string>
    </property>
   </action>
   <action name="actionManageTrajectories">
    <property name="text">
-    <string>Manage Trajectories</string>
+    <string>&amp;Manage Trajectories</string>
    </property>
   </action>
   <action name="actionPrevSegment">
    <property name="text">
-    <string>Prev Segment</string>
+    <string>P&amp;rev Segment</string>
    </property>
   </action>
   <action name="actionNextSegment">
    <property name="text">
-    <string>Next Segment</string>
+    <string>N&amp;ext Segment</string>
    </property>
   </action>
   <action name="actionLastSegment">
    <property name="text">
-    <string>Last Segment</string>
+    <string>Last Se&amp;gment</string>
    </property>
   </action>
   <action name="actionFirstSegment">
@@ -1517,14 +1520,16 @@
   </action>
   <action name="actionSelectRotationCentre">
    <property name="icon">
-    <iconset>
+    <iconset resource="TrajectoryProject.qrc">
      <normaloff>:/images/TrajectoryProject/08.mouse/SelectRotationCentre.svg</normaloff>:/images/TrajectoryProject/08.mouse/SelectRotationCentre.svg</iconset>
    </property>
    <property name="text">
-    <string>Select Rotation Centre</string>
+    <string>Select Rotation &amp;Centre</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="TrajectoryProject.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -29,6 +29,9 @@
 #include <Trajectory.hpp>
 #include <TrajectoryList.hpp>
 #include <QMessageBox>
+#include <Structure.hpp>
+#include <Graphics.hpp>
+#include <GraphicsView.hpp>
 
 #include "TrajectoryProjectWindow.hpp"
 #include "TrajectoryProject.hpp"
@@ -451,6 +454,19 @@ void CTrajectoryProjectWindow::OpenInBuildProject(void)
     }
     p_project->ShowProject();
     QApplication::processEvents();
+
+    // copy active snasphot to the project
+    CXMLDocument xml_doc;
+    CXMLElement* p_xml = xml_doc.CreateChildElement("structure");
+    CStructure* p_istr = GetProject()->GetActiveStructure();
+    CStructure* p_ostr = p_project->GetActiveStructure();
+    if( (p_istr != NULL) && (p_ostr != NULL) ){
+        p_istr->SaveData(p_xml);
+        p_ostr->LoadData(p_xml);
+    }
+
+    // autofit scene
+    p_project->GetGraphics()->GetPrimaryView()->FitScene(false);
 }
 
 //==============================================================================

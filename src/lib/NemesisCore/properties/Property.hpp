@@ -91,6 +91,12 @@ public:
     /// is property completed?
     virtual bool IsReady(void);
 
+    /// is property from given structure?
+    virtual bool IsFromStructure(CStructure* p_str);
+
+    /// composed from single atom groups?
+    virtual bool ComposedBySingleAtomGroups(void);
+
     /// has cartesian gradient for given structure
     virtual bool HasGradient(CStructure* p_structure);
 

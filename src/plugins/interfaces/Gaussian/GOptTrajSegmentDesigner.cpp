@@ -234,8 +234,8 @@ void CGOptTrajSegmentDesigner::InitValues(void)
 
 void CGOptTrajSegmentDesigner::InitPointerValues(void)
 {
-    WidgetUI.currentSnapshotSB->setValue(Object->GetCurrentSnapshotIndex());
     WidgetUI.numberOfSnapshotsSB->setValue(Object->GetNumberOfSnapshots());
+    WidgetUI.currentSnapshotSB->setValue(Object->GetCurrentSnapshotIndex());
 
     // this might be called during the segment destuction
     // in CYXZTrajSegment::~CYXZTrajSegment
@@ -247,14 +247,27 @@ void CGOptTrajSegmentDesigner::InitPointerValues(void)
         }
     }
 
-    // select snapshot
-    QModelIndex idx = Object->GetEnergyModel()->index(Object->GetCurrentSnapshotIndex()-1,0);
-    WidgetUI.energyTV->selectionModel()->select(idx,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+    long int sidx = Object->GetTrajectory()->GetCurrentSnapshotIndex();
+    long int segb = Object->GetBaseSnapshopIndex();
+    long int sege = segb + Object->GetNumberOfSnapshots();
 
-    // select graph
-    QCPDataRange dr(Object->GetCurrentSnapshotIndex()-1,Object->GetCurrentSnapshotIndex());
-    QCPDataSelection ds(dr);
-    Plot->graph()->setSelection(ds);
+    if( (segb < sidx) && (sidx <= sege) ){
+        // select snapshot
+        QModelIndex idx = Object->GetEnergyModel()->index(Object->GetCurrentSnapshotIndex()-1,0);
+        if( idx.isValid() ){
+            WidgetUI.energyTV->selectionModel()->select(idx,QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+        }
+        // select graph
+        QCPDataRange dr(Object->GetCurrentSnapshotIndex()-1,Object->GetCurrentSnapshotIndex());
+        QCPDataSelection ds(dr);
+        Plot->graph()->setSelection(ds);
+    } else {
+        // clear selection
+        WidgetUI.energyTV->selectionModel()->clearSelection();
+        QCPDataSelection ds;
+        Plot->graph()->setSelection(ds);
+        }
+
     Plot->replot();
 }
 

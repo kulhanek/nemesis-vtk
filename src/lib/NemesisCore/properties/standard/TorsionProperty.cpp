@@ -107,6 +107,34 @@ bool CTorsionProperty::IsReady(void)
 
 //------------------------------------------------------------------------------
 
+bool CTorsionProperty::IsFromStructure(CStructure* p_str)
+{
+    bool cready = true;
+
+    cready &= PointA->IsFromStructure(p_str);
+    cready &= PointB->IsFromStructure(p_str);
+    cready &= PointC->IsFromStructure(p_str);
+    cready &= PointD->IsFromStructure(p_str);
+
+    return( cready );
+}
+
+//------------------------------------------------------------------------------
+
+bool CTorsionProperty::ComposedBySingleAtomGroups(void)
+{
+    bool cready = true;
+
+    cready &= PointA->GetNumberOfAtoms() == 1;
+    cready &= PointB->GetNumberOfAtoms() == 1;
+    cready &= PointC->GetNumberOfAtoms() == 1;
+    cready &= PointD->GetNumberOfAtoms() == 1;
+
+    return( cready );
+}
+
+//------------------------------------------------------------------------------
+
 template <typename T> int sgn(T val) {
     return (T(0) < val) - (val < T(0));
 }
