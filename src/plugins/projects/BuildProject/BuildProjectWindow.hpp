@@ -56,6 +56,8 @@ private:
 // events -----------------------------------
     // process ESC key to stop project running jobs
     virtual void keyPressEvent(QKeyEvent* p_event);
+
+    friend class CBuildProject;
 };
 
 //------------------------------------------------------------------------------

@@ -87,7 +87,9 @@ CBuildProject::~CBuildProject(void)
 {
     if( MainWindow ){
         // delete visual part of project
-        delete MainWindow;
+        MainWindow->Project = NULL;
+        MainWindow->deleteLater();
+        MainWindow = NULL;
     }
 }
 

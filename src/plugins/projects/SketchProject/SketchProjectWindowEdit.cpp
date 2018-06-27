@@ -20,7 +20,7 @@
 
 #include <ProjectList.hpp>
 #include <Project.hpp>
-#include <QWebFrame>
+#include <QWebEnginePage>
 
 #include "SketchProjectWindow.hpp"
 #include "SketchProject.hpp"
@@ -60,39 +60,18 @@ void CSketchProjectWindow::ConnectEditMenu(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CSketchProjectWindow::UpdateEditMenu(void)
-{
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    QVariant result;
-    result = p_mf->evaluateJavaScript("$('undo').hasClassName('buttonDisabled');");
-    WidgetUI.actionUndo->setEnabled(!result.toBool());
-    result = p_mf->evaluateJavaScript("$('redo').hasClassName('buttonDisabled');");
-    WidgetUI.actionRedo->setEnabled(!result.toBool());
-
-    result = p_mf->evaluateJavaScript("$('cut').hasClassName('buttonDisabled');");
-    WidgetUI.actionCutStructure->setEnabled(!result.toBool());
-    result = p_mf->evaluateJavaScript("$('copy').hasClassName('buttonDisabled');");
-    WidgetUI.actionCopyStructure->setEnabled(!result.toBool());
-    result = p_mf->evaluateJavaScript("$('paste').hasClassName('buttonDisabled');");
-    WidgetUI.actionPasteStructure->setEnabled(!result.toBool());
-}
-
-//==============================================================================
-//------------------------------------------------------------------------------
-//==============================================================================
-
 void CSketchProjectWindow::UndoChange(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_Undo.call($('undo'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_Undo.call($('undo'));");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::RedoChange(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_Redo.call($('redo'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_Redo.call($('redo'));");
 }
 
 //==============================================================================
@@ -101,16 +80,16 @@ void CSketchProjectWindow::RedoChange(void)
 
 void CSketchProjectWindow::SelectAll(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.selectMode('selector_lasso'); ui.selectAll();");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.selectMode('selector_lasso'); ui.selectAll();");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::ClearSelection(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.clearSelection();");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.clearSelection();");
 }
 
 //==============================================================================
@@ -119,32 +98,32 @@ void CSketchProjectWindow::ClearSelection(void)
 
 void CSketchProjectWindow::CutStructure(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_Cut.call($('cut'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_Cut.call($('cut'));");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::CopyStructure(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_Copy.call($('copy'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_Copy.call($('copy'));");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::PasteStructure(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_Paste.call($('paste'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_Paste.call($('paste'));");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::DeleteAll(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_DeleteAll.call($('delete_all'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_DeleteAll.call($('delete_all'));");
 }
 
 //==============================================================================

@@ -20,7 +20,7 @@
 
 #include <ProjectList.hpp>
 #include <Project.hpp>
-#include <QWebFrame>
+#include <QWebEnginePage>
 #include <QMessageBox>
 #include <Structure.hpp>
 #include <Graphics.hpp>
@@ -70,20 +70,6 @@ void CSketchProjectWindow::ConnectStructureMenu(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CSketchProjectWindow::UpdateStructureMenu(void)
-{
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    QVariant result;
-    result = p_mf->evaluateJavaScript("$('zoom_in').hasClassName('buttonDisabled');");
-    WidgetUI.actionZoomIn->setEnabled(!result.toBool());
-    result = p_mf->evaluateJavaScript("$('zoom_out').hasClassName('buttonDisabled');");
-    WidgetUI.actionZoomOut->setEnabled(!result.toBool());
-}
-
-//==============================================================================
-//------------------------------------------------------------------------------
-//==============================================================================
-
 void CSketchProjectWindow::InsertSMILES(void)
 {
     // get smiles from user
@@ -96,9 +82,7 @@ void CSketchProjectWindow::InsertSMILES(void)
     if( new_smiles.isEmpty() ) return;
 
     // get current smiles
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    QVariant result = p_mf->evaluateJavaScript("ui.saveAsSMILES();");
-    QString current_smiles = result.toString();
+    QString current_smiles = JSObject->getSMILESData();
 
     // mix smiles
     QString final_smiles;
@@ -127,15 +111,16 @@ void CSketchProjectWindow::InsertSMILES(void)
     script << "];";
     script << "ui.loadMolecule(data.join('\\n'),false);";
 
-    p_mf->evaluateJavaScript(script.join("\n"));
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript(script.join("\n"));
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::ShowSMILES(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_ShowSMILES.call($('show_smiles'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_ShowSMILES.call($('show_smiles'));");
 }
 
 //==============================================================================
@@ -144,24 +129,24 @@ void CSketchProjectWindow::ShowSMILES(void)
 
 void CSketchProjectWindow::ZoomIn(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_ZoomIn.call($('zoom_in'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_ZoomIn.call($('zoom_in'));");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::ZoomOut(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_ZoomOut.call($('zoom_out'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_ZoomOut.call($('zoom_out'));");
 }
 
 //------------------------------------------------------------------------------
 
 void CSketchProjectWindow::CleanStructure(void)
 {
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript("ui.onClick_CleanUp.call($('clean_up'));");
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript("ui.onClick_CleanUp.call($('clean_up'));");
 }
 
 //------------------------------------------------------------------------------
@@ -183,11 +168,11 @@ void CSketchProjectWindow::ConvertTo3D(void)
     p_project->ShowProject();
     QApplication::processEvents();
 
-    // save structure as SMILES
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    QVariant result = p_mf->evaluateJavaScript("ui.saveAsSMILES();");
+    // synchronize data
+    JSObject->updateSMILESData();
 
-    QString smiles = result.toString();
+    // get actual data
+    QString smiles = JSObject->getSMILESData();
 
     // set structure from smiles
     CStructure* p_mol = p_project->GetActiveStructure();
@@ -202,11 +187,11 @@ void CSketchProjectWindow::ConvertTo3D(void)
 
 void CSketchProjectWindow::CopyAsSVG(void)
 {
-    // save structure as SVG
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    QVariant result = p_mf->evaluateJavaScript("ui.saveAsSVG();");
+    // update data - blocking
+    JSObject->updateSVGData();
 
-    QString svg = result.toString();
+    // get data
+    QString svg = JSObject->getSVGData();
 
     QByteArray byte_array;
 

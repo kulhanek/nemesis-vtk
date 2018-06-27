@@ -32,10 +32,12 @@
 #include <HistoryList.hpp>
 #include <StructureList.hpp>
 #include <StaticIndexes.hpp>
+#include <QWebChannel>
 
 #include "SketchProjectWindow.hpp"
 #include "SketchProject.hpp"
 #include "SketchProjectModule.hpp"
+#include "SketchProjectJSObject.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -83,7 +85,9 @@ CSketchProject::~CSketchProject(void)
 {
     if( MainWindow ){
         // delete visual part of project
-        delete MainWindow;
+        MainWindow->Project = NULL;
+        MainWindow->deleteLater();  // need to be as it crash otherwise
+        MainWindow = NULL;
     }
 }
 

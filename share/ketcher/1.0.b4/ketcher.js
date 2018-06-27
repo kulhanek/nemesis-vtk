@@ -10,6 +10,51 @@
  * WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  ***************************************************************************/
 
+// nemesis is global variable
+var nemesis = {};
+
+function init_nemesis() {
+
+    // init webchannel to C++ application
+    new QWebChannel(qt.webChannelTransport, function (channel) {
+                // now you retrieve your object
+                nemesis = channel.objects.nemesis;
+
+                // update smiles data
+                nemesis.onUpdateSMILESData.connect(function() {
+                    nemesis.smilesData = ui.saveAsSMILES();
+                });
+
+                // update svg data
+                nemesis.onUpdateSVGData.connect(function() {
+                    nemesis.svgData = ui.saveAsSVG();
+                });
+
+                // update menu
+                nemesis.onMenuUpdate.connect(function() {
+                    nemesis.setUndoEnabled( ! $('undo').hasClassName('buttonDisabled'));
+                    nemesis.setRedoEnabled( ! $('redo').hasClassName('buttonDisabled'));
+                    nemesis.setCutEnabled( ! $('cut').hasClassName('buttonDisabled'));
+                    nemesis.setCopyEnabled( ! $('copy').hasClassName('buttonDisabled'));
+                    nemesis.setPasteEnabled( ! $('paste').hasClassName('buttonDisabled'));
+
+                    nemesis.setZoomInEnabled( ! $('zoom_in').hasClassName('buttonDisabled'));
+                    nemesis.setZoomOutEnabled( ! $('zoom_out').hasClassName('buttonDisabled'));
+                });
+
+            // load initial structure and update menu
+            if( nemesis.smilesData ) {
+                ui.loadMolecule(nemesis.smilesData);
+            }
+            nemesis.updateMenu("notchanged");
+
+            }
+        );
+}
+
+// -----------------------------------------------------------------------------------------------
+
+
 ketcher = function () {
     this.render = null;
 };

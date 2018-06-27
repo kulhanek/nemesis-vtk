@@ -229,10 +229,7 @@ ui.init = function ()
     // kulhanek
     this.selectMode(ui.defaultSelector);
     this.initialized = true;
-
-    // load initial structure
-    ui.loadMolecule(nemesis.getInitialStructure());
-    nemesis.updateMenu("notchanged");
+    init_nemesis();
 };
 
 // -----------------------------------------------------------------------------
@@ -399,6 +396,8 @@ ui.onResize_Window = function ()
 {
     ui.client_area.style.height = '0px'; // this is neccessary for height shrinking
     document.getElementById('wrapper_win').style.height = window.innerHeight + 'px';
+    // FIXME - size hack for Chrome renderer
+    document.getElementById('bottom_row').style.height = (window.innerHeight - 11*40) + 'px';
     ui.onResize_Ketcher();
 };
 
@@ -1205,8 +1204,10 @@ ui.loadMolecule = function (mol_string, force_layout)
 {
     // kulhanek
     if( force_layout ){
-        var new_string = nemesis.cleanProject(mol_string);
-        ui.updateMolecule(ui.parseMolfile(new_string));
+        var new_string = nemesis.cleanProject(mol_string, function(returnValue) {
+                ui.updateMolecule(ui.parseMolfile(returnValue));
+                }
+            );
     } else {
         ui.updateMolecule(ui.parseMolfile(mol_string));
     }

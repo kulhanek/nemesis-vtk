@@ -49,7 +49,7 @@ TARGET_LINK_LIBRARIES(sketch_project_shared
                 ${SYSTEM_LIBS}
                 )
 
-QT5_USE_MODULES(sketch_project_shared Core Widgets Gui Script OpenGL Svg WebKitWidgets)
+QT5_USE_MODULES(sketch_project_shared Core Widgets Gui Script OpenGL Svg WebEngineWidgets)
 
 INSTALL(TARGETS
             sketch_project_shared

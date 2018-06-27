@@ -23,12 +23,14 @@
 #include <ErrorSystem.hpp>
 #include <GlobalSetup.hpp>
 #include <QCloseEvent>
-#include <QWebFrame>
 #include <Project.hpp>
 #include <WorkPanelList.hpp>
 #include <DesktopSystem.hpp>
 #include <ProjectStatusBar.hpp>
 #include <JobScheduler.hpp>
+#include <QWebEnginePage>
+#include <QWebEngineSettings>
+#include <QWebChannel>
 
 #include "SketchProjectJSObject.hpp"
 #include "SketchProject.hpp"
@@ -55,8 +57,16 @@ CSketchProjectWindow::CSketchProjectWindow(CSketchProject* p_project)
     Project = p_project;
     HistoryList = Project->GetHistory();
 
-    // setup Ketcher area
-    WebView = new QWebView(this);
+    // js engine
+    JSObject = new CSketchProjectJSObject(this);
+    JSObject->getInitialStructure(); // init loaded structure if any
+
+    // setup Ketcher area and webchannel to JSObject
+    WebView = new QWebEngineView(this);
+    WebChannel = new QWebChannel(this);
+    WebChannel->registerObject("nemesis",JSObject);
+    WebView->page()->setWebChannel(WebChannel);
+
     // load page
     CFileName ketcher_index = GlobalSetup->GetSystemSharePath() / "ketcher" / KETCHER_VERSION / "ketcher.html";
     QUrl url = QUrl::fromLocalFile(QString(ketcher_index));
@@ -67,12 +77,10 @@ CSketchProjectWindow::CSketchProjectWindow(CSketchProject* p_project)
 
     setCentralWidget(WebView);
     WebView->load(url);
-    // attach nemesis JS object
-    JSObject = new CSketchProjectJSObject(this);
-    WebView->page()->mainFrame()->addToJavaScriptWindowObject("nemesis",JSObject);
+
     // no scrollbars
-    WebView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
-    WebView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    // FIXME
+    // WebView->settings()->setAttribute(QWebEngineSettings::ShowScrollBars,false);
     WebView->setContextMenuPolicy(Qt::CustomContextMenu);
 
     // status bar
@@ -84,7 +92,7 @@ CSketchProjectWindow::CSketchProjectWindow(CSketchProject* p_project)
 
 CSketchProjectWindow::~CSketchProjectWindow(void)
 {
-
+    WebChannel->deregisterObject(JSObject);
 }
 
 //------------------------------------------------------------------------------
@@ -121,19 +129,19 @@ void CSketchProjectWindow::LoadData(const QString& smiles)
     script << "];";
     script << "ui.loadMolecule(data.join('\\n'),false);";
 
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    p_mf->evaluateJavaScript(script.join("\n"));
+    QWebEnginePage* p_mf = WebView->page();
+    p_mf->runJavaScript(script.join("\n"));
 }
 
 //------------------------------------------------------------------------------
 
 const QString CSketchProjectWindow::SaveData(void)
 {
-    // save structure as SMILES
-    QWebFrame* p_mf = WebView->page()->mainFrame();
-    QVariant result = p_mf->evaluateJavaScript("ui.saveAsSMILES();");
+    // update data - blocking
+    JSObject->updateSMILESData();
 
-    return(result.toString());
+    // get data
+    return(JSObject->getSMILESData());
 }
 
 //------------------------------------------------------------------------------

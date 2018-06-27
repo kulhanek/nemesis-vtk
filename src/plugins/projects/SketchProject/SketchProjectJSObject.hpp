@@ -34,6 +34,21 @@ public:
 // constructor and destructor --------------------------------------------------
     CSketchProjectJSObject(CSketchProjectWindow* p_owner);
 
+public:
+    /// get initial structure from project
+    void getInitialStructure(void);
+
+    /// update smiles data - synchronously
+    void updateSMILESData(void);
+
+    /// update SVG data - synchronously
+    void updateSVGData(void);
+
+// properties ------------------------------------------------------------------
+public:
+    Q_PROPERTY(QString smilesData READ getSMILESData WRITE setSMILESData NOTIFY onSetSMILEData)
+    Q_PROPERTY(QString svgData READ getSVGData WRITE setSVGData NOTIFY onSetSVGData)
+
 // environment exposed to ketcher javascript -----------------------------------
 public slots:
     /// open new project dialog
@@ -51,12 +66,40 @@ public slots:
     /// update menu
     void updateMenu(const QString& changed);
 
-    /// get initial structure
-    const QString getInitialStructure(void);
+    /// save data
+    const QString saveData(void);
+
+    /// set/get data
+    void setSMILESData(const QString& data);
+    const QString& getSMILESData(void);
+
+    /// set svg data
+    void setSVGData(const QString& data);
+    const QString& getSVGData(void);
+
+    /// update ui
+    void setUndoEnabled(bool set);
+    void setRedoEnabled(bool set);
+    void setCutEnabled(bool set);
+    void setCopyEnabled(bool set);
+    void setPasteEnabled(bool set);
+    void setZoomInEnabled(bool set);
+    void setZoomOutEnabled(bool set); 
+
+// signals ---------------------------------------------------------------------
+signals:
+    void onUpdateSMILESData(void);
+    void onUpdateSVGData(void);
+    void onMenuUpdate(void);
+    void onSetSMILEData(void);
+    void onSetSVGData(void);
 
 // section of private data -----------------------------------------------------
 private:
     CSketchProjectWindow*   ProjectWindow;
+    QString                 SMILESData;
+    QString                 SVGData;
+    int                     DataVersion;    // reflect asynchronous update
 };
 
 //------------------------------------------------------------------------------

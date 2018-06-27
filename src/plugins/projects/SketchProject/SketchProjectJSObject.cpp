@@ -39,6 +39,38 @@ CSketchProjectJSObject::CSketchProjectJSObject(CSketchProjectWindow* p_owner)
     : QObject(p_owner)
 {   
     ProjectWindow = p_owner;
+    DataVersion = 0;
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::getInitialStructure(void)
+{
+    QString initialmol = cleanProject(ProjectWindow->Project->LoadedSmiles);
+    ProjectWindow->Project->LoadedSmiles = "";
+    SMILESData = initialmol;
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::updateSMILESData(void)
+{
+    int version = DataVersion;
+    emit onUpdateSMILESData();
+    while( version == DataVersion ){
+        QApplication::processEvents();
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::updateSVGData(void)
+{
+    int version = DataVersion;
+    emit onUpdateSVGData();
+    while( version == DataVersion ){
+        QApplication::processEvents();
+    }
 }
 
 //==============================================================================
@@ -88,8 +120,7 @@ const QString CSketchProjectJSObject::cleanProject(const QString& inmol)
 
 void CSketchProjectJSObject::updateMenu(const QString& changed)
 {
-    ProjectWindow->UpdateEditMenu();
-    ProjectWindow->UpdateStructureMenu();
+    emit onMenuUpdate();
 
     // was the data changed
     if( changed == "notchanged" ){
@@ -101,11 +132,81 @@ void CSketchProjectJSObject::updateMenu(const QString& changed)
 
 //------------------------------------------------------------------------------
 
-const QString CSketchProjectJSObject::getInitialStructure(void)
+void CSketchProjectJSObject::setSMILESData(const QString& data)
 {
-    QString initialmol = cleanProject(ProjectWindow->Project->LoadedSmiles);
-    ProjectWindow->Project->LoadedSmiles = "";
-    return(initialmol);
+    SMILESData = data;
+    DataVersion++;
+}
+
+//------------------------------------------------------------------------------
+
+const QString& CSketchProjectJSObject::getSMILESData(void)
+{
+    return(SMILESData);
+}
+
+//------------------------------------------------------------------------------
+
+void  CSketchProjectJSObject::setSVGData(const QString& data)
+{
+    SVGData = data;
+    DataVersion++;
+}
+
+//------------------------------------------------------------------------------
+
+const QString& CSketchProjectJSObject::getSVGData(void)
+{
+    return(SVGData);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setUndoEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionUndo->setEnabled(set);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setRedoEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionRedo->setEnabled(set);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setCutEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionCutStructure->setEnabled(set);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setCopyEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionCopyStructure->setEnabled(set);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setPasteEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionPasteStructure->setEnabled(set);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setZoomInEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionZoomIn->setEnabled(set);
+}
+
+//------------------------------------------------------------------------------
+
+void CSketchProjectJSObject::setZoomOutEnabled(bool set)
+{
+    ProjectWindow->WidgetUI.actionZoomOut->setEnabled(set);
 }
 
 //==============================================================================

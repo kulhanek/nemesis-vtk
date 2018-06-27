@@ -22,7 +22,7 @@
 
 #include <MainWindow.hpp>
 #include <QToolBar>
-#include <QWebView>
+#include <QWebEngineView>
 
 #include "ui_SketchProjectWindow.h"
 
@@ -59,8 +59,6 @@ private:
     void ConnectEditMenu(void);
 
 private slots:
-    void UpdateEditMenu(void);
-
     void UndoChange(void);
     void RedoChange(void);
 
@@ -78,8 +76,6 @@ private:
     void ConnectStructureMenu(void);
 
 private slots:
-    void UpdateStructureMenu(void);
-
     void InsertSMILES(void);
     void ShowSMILES(void);
 
@@ -92,16 +88,18 @@ private slots:
 // section of private data -----------------------------------------------------
 private:
     CSketchProject*         Project;
-    QWebView*               WebView;
-    CSketchProjectJSObject* JSObject;
+    QWebEngineView*         WebView;
+    QWebChannel*            WebChannel;
     CProjectStatusBar*      ProjectStatusBar;
     Ui::SketchProjectWindow WidgetUI;           // ui of main window
+    CSketchProjectJSObject* JSObject;
 
 // events -----------------------------------
     // process ESC key to stop project running jobs
     virtual void keyPressEvent(QKeyEvent* p_event);
 
     friend class CSketchProjectJSObject;
+    friend class CSketchProject;
 };
 
 //------------------------------------------------------------------------------
