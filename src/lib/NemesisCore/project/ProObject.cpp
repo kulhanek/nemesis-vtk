@@ -111,11 +111,6 @@ CProObject::CProObject(CPluginObject* objectinfo,
 
 CProObject::~CProObject(void)
 {
-    // last safety update
-    if( Project ){
-        Project->OpenedDesigners.removeAll(this);
-    }
-
     // we need to remove record in ObjectMap
     if( (Project != NULL) && (Project != this) ){
         // we cannot work with ObjectMap for Project object since

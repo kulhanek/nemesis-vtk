@@ -47,6 +47,9 @@ public:
     /// destroy all cached fonts for current OpenGL context
     void DestroyFonts(void);
 
+    /// destroy all fonts
+    void DestroyAllFonts(void);
+
 // section of private data ----------------------------------------------------
 private:
     QMap<const QGLContext*, QMap<QString, QMap<int,FTPolygonFontPtr> > > Cache;

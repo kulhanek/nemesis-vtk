@@ -326,6 +326,7 @@ protected:
 
     friend class CProjectList;
     friend class CProObject;
+    friend class CProObjectDesigner;
 };
 
 //------------------------------------------------------------------------------

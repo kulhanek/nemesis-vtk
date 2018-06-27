@@ -619,7 +619,7 @@ void CNemesisJScript::FinalizeSubsystems(void)
     MouseDriverSetup = NULL;
 
     // destroy cache
-    FTGLFontCache.DestroyFonts();
+    FTGLFontCache.DestroyAllFonts();
 
     // process all events in the loop
     qApp->processEvents();
