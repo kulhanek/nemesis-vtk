@@ -618,7 +618,9 @@ void CNemesisJScript::FinalizeSubsystems(void)
     GlobalDesktop = NULL;
     MouseDriverSetup = NULL;
 
-    // destroy cache
+    // destroy cache - if not destroyed here
+    // then there can be a race condition due to unspecific
+    // order of static object destructions
     FTGLFontCache.DestroyAllFonts();
 
     // process all events in the loop
