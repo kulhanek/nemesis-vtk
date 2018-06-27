@@ -98,6 +98,8 @@ private:
     CGraphicsPrimaryView*           OpenGL;
     CProjectStatusBar*              ProjectStatusBar;
     Ui::TrajectoryProjectWindow     WidgetUI;
+
+    friend class CTrajectoryProject;
 };
 
 //------------------------------------------------------------------------------

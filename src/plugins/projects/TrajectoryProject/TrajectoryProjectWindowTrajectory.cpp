@@ -92,6 +92,7 @@ void CTrajectoryProjectWindow::ConnectTrajectoryMenu(void)
 
 void CTrajectoryProjectWindow::UpdateTrajectoryMenu(void)
 {
+    if( Project == NULL ) return;
     CTrajectory* p_traj = Project->GetTrajectories()->GetActiveTrajectory();
     if( p_traj == NULL ){
         actionFirstSnapshot->setEnabled(false);
