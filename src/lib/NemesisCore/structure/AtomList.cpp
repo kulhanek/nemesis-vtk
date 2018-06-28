@@ -1185,39 +1185,6 @@ CSnapshot* CAtomList::GetSnapshot(void)
     return(Snapshot);
 }
 
-//------------------------------------------------------------------------------
-
-void CAtomList::UpdateAtomTrajIndexes(void)
-{
-    int i=0;
-    foreach(CAtom* p_atom,findChildren<CAtom*>()){
-        p_atom->TrajIndex = i;
-        i++;
-    }
-}
-
-//------------------------------------------------------------------------------
-
-bool CAtomList::UpdateAtomTrajIndexesWH(void)
-{
-    CHistoryNode*    p_history;
-    p_history = BeginChangeWH(EHCL_TOPOLOGY,tr("set trajectory indexes"));
-    if( p_history == NULL ) return (false);
-
-    BeginUpdate();
-
-    // add to atoms traj index
-    int i=0;
-    foreach(CAtom* p_atom,findChildren<CAtom*>()){
-        p_atom->SetTrajIndex(i,p_history);
-        i++;
-    }
-
-    EndUpdate();
-    EndChangeWH();
-    return(true);
-}
-
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================

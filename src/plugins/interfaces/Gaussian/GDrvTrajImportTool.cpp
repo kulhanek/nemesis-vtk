@@ -43,8 +43,8 @@
 
 #include "GaussianUtils.hpp"
 #include "GaussianModule.hpp"
-#include "GOptTrajImportTool.hpp"
-#include "GOptTrajSegment.hpp"
+#include "GDrvTrajImportTool.hpp"
+#include "GDrvTrajSegment.hpp"
 
 //------------------------------------------------------------------------------
 
@@ -54,30 +54,30 @@ using namespace std;
 //------------------------------------------------------------------------------
 //==============================================================================
 
-QObject* GOptTrajImportToolCB(void* p_data);
+QObject* GDrvTrajImportToolCB(void* p_data);
 
-CExtUUID        GOptTrajImportToolID(
-                    "{GOPT_TRAJ_IMPORT_TOOL:41e1e91f-e8d1-4f11-b6d9-f725304a7efb}",
-                    "Geometry Optimization File (*.log)",
-                    "Import Gaussian geometry optimization");
+CExtUUID        GDrvTrajImportToolID(
+                    "{GDRV_TRAJ_IMPORT_TOOL:85b168fd-3aad-4bc7-ac01-271d2d5a7ff0}",
+                    "Geometry 1D Driving File (*.log)",
+                    "Import Gaussian single coordinate driving");
 
-CPluginObject   GOptTrajImportToolObject(&GaussianPlugin,
-                    GOptTrajImportToolID,IMPORT_TRAJECTORY_CAT,
-                    QStringList() << "FORMAT=gopt",
-                    GOptTrajImportToolCB);
+CPluginObject   GDrvTrajImportToolObject(&GaussianPlugin,
+                    GDrvTrajImportToolID,IMPORT_TRAJECTORY_CAT,
+                    QStringList() << "FORMAT=gdrv",
+                    GDrvTrajImportToolCB);
 
 // -----------------------------------------------------------------------------
 
-QObject* GOptTrajImportToolCB(void* p_data)
+QObject* GDrvTrajImportToolCB(void* p_data)
 {
     CProject* p_project = static_cast<CProject*>(p_data);
     if( p_project == NULL ){
-        ES_ERROR("CGOptTrajImportTool requires active project");
+        ES_ERROR("CGDrvTrajImportTool requires active project");
         return(NULL);
     }
 
 
-    CGOptTrajImportTool* p_object = new CGOptTrajImportTool(p_project);
+    CGDrvTrajImportTool* p_object = new CGDrvTrajImportTool(p_project);
     if( p_project->property("impex.direct") == false ){
         p_object->ExecuteDialog();
         delete p_object;
@@ -91,8 +91,8 @@ QObject* GOptTrajImportToolCB(void* p_data)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-CGOptTrajImportTool::CGOptTrajImportTool(CProject* p_project)
-    : CImportTrajectory(&GOptTrajImportToolObject,p_project)
+CGDrvTrajImportTool::CGDrvTrajImportTool(CProject* p_project)
+    : CImportTrajectory(&GDrvTrajImportToolObject,p_project)
 {
 }
 
@@ -100,7 +100,7 @@ CGOptTrajImportTool::CGOptTrajImportTool(CProject* p_project)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajImportTool::ExecuteDialog(void)
+void CGDrvTrajImportTool::ExecuteDialog(void)
 {
     // parse formats list ------------------------
     QStringList filters;
@@ -126,7 +126,7 @@ void CGOptTrajImportTool::ExecuteDialog(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajImportTool::LaunchJob(const QString& file)
+void CGDrvTrajImportTool::LaunchJob(const QString& file)
 {
     // does file exist?
     if( QFile::exists(file) == false ){
@@ -136,7 +136,7 @@ void CGOptTrajImportTool::LaunchJob(const QString& file)
         return;
     }
 
-    GlobalSetup->SetLastOpenFilePathFromFile(file,GOptTrajImportToolID);
+    GlobalSetup->SetLastOpenFilePathFromFile(file,GDrvTrajImportToolID);
 
     // is project locked?
     if( GetProject()->GetHistory()->IsLocked(EHCL_TRAJECTORIES) ){
@@ -187,7 +187,7 @@ void CGOptTrajImportTool::LaunchJob(const QString& file)
     if( p_history == NULL ) return;
 
     // create segment
-    CTrajectorySegment* p_seg = new CGOptTrajSegment(p_traj);
+    CTrajectorySegment* p_seg = new CGDrvTrajSegment(p_traj);
 
     // setup segment
     p_seg->SetFileName(file);
@@ -227,7 +227,7 @@ void CGOptTrajImportTool::LaunchJob(const QString& file)
 
 //------------------------------------------------------------------------------
 
-bool CGOptTrajImportTool::ImportFirstStructure(CStructure* p_str,const QString& file)
+bool CGDrvTrajImportTool::ImportFirstStructure(CStructure* p_str,const QString& file)
 {
     p_str->BeginUpdate();
 

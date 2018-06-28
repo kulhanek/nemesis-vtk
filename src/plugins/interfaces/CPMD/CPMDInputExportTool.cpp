@@ -48,7 +48,8 @@ QObject* CPMDInputExportToolCB(void* p_data);
 
 CExtUUID        CPMDInputExportToolID(
                     "{CPMD_INPUT_EXPORT_TOOL:032882c3-3b99-4a59-abb8-c116047a108f}",
-                    "CPMD Input");
+                    "CPMD Input (*.inp)",
+                    "Create CPMD input file");
 
 CPluginObject   CPMDInputExportToolObject(&CPMDPlugin,
                     CPMDInputExportToolID,EXPORT_STRUCTURE_CAT,

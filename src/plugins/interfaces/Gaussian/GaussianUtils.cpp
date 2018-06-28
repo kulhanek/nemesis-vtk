@@ -59,7 +59,7 @@ bool CGaussianUtils::IsNormalTermination(const QString& file_name)
 
 //------------------------------------------------------------------------------
 
-bool CGaussianUtils::ReadMethod(std::istream& sin,QString& method)
+bool CGaussianUtils::ReadMethod(std::istream& sin,int& lineno,QString& method)
 {
     method = "";
 
@@ -69,6 +69,7 @@ bool CGaussianUtils::ReadMethod(std::istream& sin,QString& method)
     int count = 3;
     while( sin ){
         getline(sin,line);
+        lineno++;
         if( line.size() < 2 ) continue;
         if( line[1] == '-' ) count--;
         if( count == 0 ) break;
@@ -80,6 +81,7 @@ bool CGaussianUtils::ReadMethod(std::istream& sin,QString& method)
     count = 0;
     while( sin ){
         getline(sin,line);
+        lineno++;
         if( line.size() < 2 ) continue;
         if( line[1] == '-' ) return(true);
         if( count > 0 ) method += " ";
@@ -92,26 +94,119 @@ bool CGaussianUtils::ReadMethod(std::istream& sin,QString& method)
 
 //------------------------------------------------------------------------------
 
-bool CGaussianUtils::ReadGeometry(std::istream& sin,int& lineno,std::vector<CGAtom>& atoms,bool skipfirstline)
+bool CGaussianUtils::ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QString& mod)
+{
+    scd = "";
+    mod = "";
+
+    string line;
+
+    // find spec
+    while( getline(sin,line) ){
+        lineno++;
+        if( line.find(" The following ModRedundant input section has been read:") == 0 ){
+            getline(sin,line);
+            lineno++;
+            if( ! sin ) return(false);
+            scd = QString(line.c_str());
+            stringstream str(line);
+            char smod;
+            int  a1,a2,a3,a4;
+            str >> smod;
+            switch(smod){
+                case 'B':
+                    str >> a1 >> a2;
+                    mod = QString("R(%1,%2)").arg(a1).arg(a2);
+                    return(true);
+                case 'A':
+                    str >> a1 >> a2 >> a3;
+                    mod = QString("A(%1,%2,%3)").arg(a1).arg(a2).arg(a3);
+                    return(true);
+                case 'D':
+                    str >> a1 >> a2 >> a3 >> a4;
+                    mod = QString("D(%1,%2,%3,%4)").arg(a1).arg(a2).arg(a3).arg(a4);
+                    return(true);
+            }
+        }
+    }
+
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
+bool CGaussianUtils::ReadSCDValue(std::istream& sin,int& lineno,const QString& mod,double& value)
+{
+    value = 0.0;
+
+    string line;
+
+    // find SCD value
+    while( getline(sin,line) ){
+        lineno++;
+        if( (line.find(mod.toStdString().c_str()) != string::npos) && (line.find("-DE/DX =") != string::npos) ){
+            stringstream str(line);
+            string buff;
+            str >> buff >> buff >> buff >> value;
+            return(true);
+        }
+    }
+
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
+bool CGaussianUtils::FindGeometry(std::istream& sin,int& lineno)
+{
+    string line;
+
+    // find beginning
+    for(;;){
+        getline(sin,line);
+        if( ! sin ) {
+            CSmallString error;
+            error << "no geometry header found - end of file";
+            ES_WARNING(error);
+            return(false);
+        }
+        lineno++;
+        if( IsGeometry(line) == true ) break;
+    }
+
+    return(true);
+}
+
+//------------------------------------------------------------------------------
+
+bool CGaussianUtils::FindGeometryOrOptEnd(std::istream& sin,int& lineno)
+{
+    string line;
+
+    // find beginning
+    for(;;){
+        getline(sin,line);
+        if( ! sin ) {
+            CSmallString error;
+            error << "no geometry header found - end of file";
+            ES_WARNING(error);
+            return(false);
+        }
+        lineno++;
+        if( IsGeometry(line) == true ) break;
+        if( IsOptEnd(line) == true ) return(false);
+    }
+
+    return(true);
+}
+
+//------------------------------------------------------------------------------
+
+bool CGaussianUtils::ReadGeometry(std::istream& sin,int& lineno,std::vector<CGAtom>& atoms)
 {
     atoms.clear();
 
     string line;
-
-    // find beginning
-    if( ! skipfirstline ) {
-        for(;;){
-            getline(sin,line);
-            if( ! sin ) {
-                CSmallString error;
-                error << "no geometry header found - end of file";
-                ES_WARNING(error);
-                return(false);
-            }
-            lineno++;
-            if( IsGeometry(line) == true ) break;
-        }
-    }
 
     // skip header
     getline(sin,line);
@@ -160,9 +255,20 @@ bool CGaussianUtils::IsGeometry(const std::string& line)
 
 //------------------------------------------------------------------------------
 
+bool CGaussianUtils::IsOptEnd(const std::string& line)
+{
+    if( line.find("-- Stationary point found.") != string::npos ) return(true);
+    if( line.find("-- Number of steps exceeded") != string::npos ) return(true);
+    return(false);
+}
+
+//------------------------------------------------------------------------------
+
 bool CGaussianUtils::IsEnergy(const std::string& line)
 {
     if( line.find(" SCF Done: ") == 0 ) return(true);
+    if( line.find(" Energy= ") == 0 )  return(true);
+    if( line.find(" ONIOM: extrapolated energy = ") == 0 )  return(true);
     return(false);
 }
 
@@ -196,6 +302,21 @@ bool CGaussianUtils::ParseEnergy(std::string& line,double& energy,std::string& t
     energy = 0.0;
     string buffer;
     stringstream str(line);
+
+    if( line.find(" Energy= ") == 0 ) {
+        type = "";
+        str >> buffer >> buffer >> energy;
+        return( ! str.fail() );
+    }
+
+    if( line.find(" ONIOM: extrapolated energy = ") == 0 ) {
+        type = "oniom";
+        str >> buffer >> buffer >> buffer >> buffer >> energy;
+        return( ! str.fail() );
+    }
+
+//    if( line.find(" SCF Done: ") == 0 ) return(true);
+
     str >> buffer >> buffer >> type >> buffer >> energy;
     return( ! str.fail() );
 }

@@ -61,7 +61,8 @@ QObject* NStrExportJobCB(void* p_data);
 
 CExtUUID        NStrExportJobID(
                     "{NSTR_EXPORT_JOB:d0c3fded-2d48-45e5-b437-8dcadb30b226}",
-                    "Nemesis Structure Export");
+                    "Nemesis Structure File (*.str)",
+                    "Export Nemesis structure file");
 
 CPluginObject   NStrExportJobObject(&ExtraImpexPlugin,
                     NStrExportJobID,JOB_CAT,

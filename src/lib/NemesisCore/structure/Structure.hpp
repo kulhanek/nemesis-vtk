@@ -27,6 +27,7 @@
 #include <Manipulator.hpp>
 #include <ProObject.hpp>
 #include <PBCInfo.hpp>
+#include <QMap>
 
 //------------------------------------------------------------------------------
 
@@ -38,6 +39,7 @@ class CBondList;
 class CResidueList;
 class CRestraintList;
 class CTrajectory;
+class CAtom;
 
 /// \defgroup structure Describe the structure
 
@@ -93,9 +95,6 @@ public:
     /// set sequence index
     bool SetSeqIndexWH(int seqidx);
 
-    /// set trajectory indexes
-    bool SetTrajIndexesWH(int trajidxes);
-
 // informational methods -------------------------------------------------------
     /// get base list
     CStructureList* GetStructures(void) const;
@@ -123,9 +122,6 @@ public:
 
     /// get sequence index
     int GetSeqIndex(void) const;
-
-    /// get trajectory index
-    int GetTrajIndexes(void) const;
 
 // executive methods  ----------------------------------------------------------
     /// delete entire molecule contents
@@ -165,9 +161,6 @@ public:
 
     /// set sequential index
     void SetSeqIndex(int seqidx,CHistoryNode* p_history=NULL);
-
-    /// set trajectory indexes
-    void SetTrajIndexes(int trajidxes,CHistoryNode* p_history=NULL);
 
 //------------------------------------------------------------------------------
     /// set box parameters
@@ -216,11 +209,11 @@ public:
     /// set trajectory
     void SetTrajectory(CTrajectory* p_trajectory,CHistoryNode* p_history=NULL);
 
-    /// update atom indexes
-    void UpdateAtomTrajIndexes(void);
+    /// set trajectory indexes
+    void SetTrajIndexes(void);
 
-    /// update atom indexes with history
-    bool UpdateAtomTrajIndexesWH(void);
+    /// get atom by traj index
+    CAtom* GetAtomByTrajIndex(int idx);
 
 // section of public data ------------------------------------------------------
 public:
@@ -228,14 +221,14 @@ public:
 
 // section of private data -----------------------------------------------------
 private:
-    CAtomList*      Atoms;
-    CBondList*      Bonds;
-    CResidueList*   Residues;
-    CRestraintList* Restraints;
-    CTrajectory*    Trajectory;
-    int             SeqIndex;
-    int             GeometryUpdateLevel;
-    int             TrajIndexes;
+    CAtomList*          Atoms;
+    CBondList*          Bonds;
+    CResidueList*       Residues;
+    CRestraintList*     Restraints;
+    CTrajectory*        Trajectory;
+    int                 SeqIndex;
+    int                 GeometryUpdateLevel;
+    QMap<int,CAtom*>    TrajIndexMap;
 
     friend class CAtom;
 };

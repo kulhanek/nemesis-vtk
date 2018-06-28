@@ -10,6 +10,9 @@ SET(GAUSSIAN_SRC
         GOptTrajSegment.cpp
         GOptTrajSegmentDesigner.cpp
         GOptTrajImportTool.cpp
+        GDrvTrajSegment.cpp
+        GDrvTrajSegmentDesigner.cpp
+        GDrvTrajImportTool.cpp
         GaussianUtils.cpp
         GVibTrajImportTool.cpp
         GVibTrajSegment.cpp
@@ -19,6 +22,7 @@ SET(GAUSSIAN_SRC
 SET(GAUSSIAN_UIS
         GaussianInputExportTool.ui
         GOptTrajSegmentDesigner.ui
+        GDrvTrajSegmentDesigner.ui
         )
 
 # program resources ------------------------------------------------------------

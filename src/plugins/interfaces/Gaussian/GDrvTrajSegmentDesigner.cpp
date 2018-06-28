@@ -35,31 +35,31 @@
 #include <PhysicalQuantities.hpp>
 
 #include "GaussianModule.hpp"
-#include "GOptTrajSegment.hpp"
-#include "GOptTrajSegmentDesigner.hpp"
+#include "GDrvTrajSegment.hpp"
+#include "GDrvTrajSegmentDesigner.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-QObject* GOptTrajSegmentDesignerCB(void* p_data);
+QObject* GDrvTrajSegmentDesignerCB(void* p_data);
 
-CExtUUID        GOptTrajSegmentDesignerID(
-                    "{GOPT_TRAJ_SEGMENT_DESIGNER:1a5c5755-2b22-49d0-9c29-df2ac7f038ee}",
-                    "Gaussian Geometry Optimization");
+CExtUUID        GDrvTrajSegmentDesignerID(
+                    "{GDRV_TRAJ_SEGMENT_DESIGNER:639fdf1a-9bc0-4667-a208-901d6ee46b0a}",
+                    "Gaussian Single Coordinate Driving");
 
-CPluginObject   GOptTrajSegmentDesignerObject(&GaussianPlugin,
-                    GOptTrajSegmentDesignerID,
+CPluginObject   GDrvTrajSegmentDesignerObject(&GaussianPlugin,
+                    GDrvTrajSegmentDesignerID,
                     DESIGNER_CAT,
-                    ":/images/Gaussian/GOptTrajSegment.svg",
-                    GOptTrajSegmentDesignerCB);
+                    ":/images/Gaussian/GDrvTrajSegment.svg",
+                    GDrvTrajSegmentDesignerCB);
 
 // -----------------------------------------------------------------------------
 
-QObject* GOptTrajSegmentDesignerCB(void* p_data)
+QObject* GDrvTrajSegmentDesignerCB(void* p_data)
 {
-    CGOptTrajSegment* p_pro_object = static_cast<CGOptTrajSegment*>(p_data);
-    QObject* p_object = new CGOptTrajSegmentDesigner(p_pro_object);
+    CGDrvTrajSegment* p_pro_object = static_cast<CGDrvTrajSegment*>(p_data);
+    QObject* p_object = new CGDrvTrajSegmentDesigner(p_pro_object);
     return(p_object);
 }
 
@@ -67,11 +67,10 @@ QObject* GOptTrajSegmentDesignerCB(void* p_data)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
-    : CProObjectDesigner(&GOptTrajSegmentDesignerObject,p_owner)
+CGDrvTrajSegmentDesigner::CGDrvTrajSegmentDesigner(CGDrvTrajSegment* p_owner)
+    : CProObjectDesigner(&GDrvTrajSegmentDesignerObject,p_owner)
 {   
     Object = p_owner;
-    Plot = NULL;
 
     WidgetUI.setupUi(this);
 
@@ -84,6 +83,7 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
     WidgetUI.fileNameLE->setText(fileinfo.fileName());
     WidgetUI.filePathLE->setText(fileinfo.path());
     WidgetUI.methodLE->setText(Object->GetMethod());
+    WidgetUI.CVLE->setText(Object->GetCVDef());
 
     // models
     WidgetUI.energyTV->setModel(Object->GetEnergyModel());
@@ -108,15 +108,19 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
     connect( WidgetUI.energyTV, SIGNAL(clicked(const QModelIndex&)),
             this, SLOT(SnapshotClicked(const QModelIndex&)));
 
+    // response to energy unit change
+    connect(PQ_ENERGY,SIGNAL(OnUnitChanged(void)),
+            this,SLOT(UpdateGraph(void)));
+
+    // response to energy unit change
+    connect(Object->GetCVUnit(),SIGNAL(OnUnitChanged(void)),
+            this,SLOT(UpdateGraph(void)));
+
     //--------------
     if( Object->GetProject() ){
         connect(Object->GetProject()->GetHistory(), SIGNAL(OnHistoryChanged(EHistoryChangeMessage)),
                 this, SLOT(ProjectLockChanged(EHistoryChangeMessage)));
     }
-
-    // response to energy unit change
-    connect(PQ_ENERGY,SIGNAL(OnUnitChanged(void)),
-            this,SLOT(UpdateGraph(void)));
 
     // init graph
     CreateGraph();
@@ -128,7 +132,7 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::CreateGraph(void)
+void CGDrvTrajSegmentDesigner::CreateGraph(void)
 {
     Plot = new QCustomPlot(this);
     Plot->setAutoAddPlottableToLegend(false);
@@ -143,11 +147,7 @@ void CGOptTrajSegmentDesigner::CreateGraph(void)
     Plot->plotLayout()->insertRow(0);
     Plot->plotLayout()->addElement(0, 0, p_title);
 
-    QSharedPointer<QCPAxisTickerFixed> fixedTicker(new QCPAxisTickerFixed);
-    Plot->xAxis->setTicker(fixedTicker);
-    fixedTicker->setTickStep(1.0);
-
-    Plot->xAxis->setLabel("step");
+    Plot->xAxis->setLabel("CV [" + Object->GetCVUnit()->GetUnitName() + "]" );
     Plot->yAxis->setLabel("ΔEr [" + PQ_ENERGY->GetUnitName() + "]");
 
     QCPGraph* p_graph = Plot->addGraph();
@@ -167,19 +167,21 @@ void CGOptTrajSegmentDesigner::CreateGraph(void)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::UpdateGraph(void)
+void CGDrvTrajSegmentDesigner::UpdateGraph(void)
 {
     if( Plot == NULL ) return;
+    Plot->xAxis->setLabel("CV [" + Object->GetCVUnit()->GetUnitName() + "]" );
     Plot->yAxis->setLabel("ΔEr [" + PQ_ENERGY->GetUnitName() + "]");
     Object->PopulateGraphData(Plot->graph());
     Plot->replot();
 }
 
+
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajSegmentDesigner::InitAllValues(void)
+void CGDrvTrajSegmentDesigner::InitAllValues(void)
 {
     if( IsItChangingContent() == true ) return;
 
@@ -191,7 +193,7 @@ void CGOptTrajSegmentDesigner::InitAllValues(void)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::ApplyAllValues(void)
+void CGDrvTrajSegmentDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
@@ -214,7 +216,7 @@ void CGOptTrajSegmentDesigner::ApplyAllValues(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajSegmentDesigner::ButtonBoxClicked(QAbstractButton* p_button)
+void CGDrvTrajSegmentDesigner::ButtonBoxClicked(QAbstractButton* p_button)
 {
     if( WidgetUI.buttonBox->standardButton(p_button) == QDialogButtonBox::Reset ) {
         InitAllValues();
@@ -234,7 +236,7 @@ void CGOptTrajSegmentDesigner::ButtonBoxClicked(QAbstractButton* p_button)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::InitValues(void)
+void CGDrvTrajSegmentDesigner::InitValues(void)
 {
     if( IsItChangingContent() ) return;
 
@@ -247,7 +249,7 @@ void CGOptTrajSegmentDesigner::InitValues(void)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::InitPointerValues(void)
+void CGDrvTrajSegmentDesigner::InitPointerValues(void)
 {
     WidgetUI.numberOfSnapshotsSB->setValue(Object->GetNumberOfSnapshots());
     WidgetUI.currentSnapshotSB->setValue(Object->GetCurrentSnapshotIndex());
@@ -288,21 +290,21 @@ void CGOptTrajSegmentDesigner::InitPointerValues(void)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::ApplyValues(void)
+void CGDrvTrajSegmentDesigner::ApplyValues(void)
 {
     Object->SetSeqIndexWH(WidgetUI.seqIndexSB->value());
 }
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::ProjectLockChanged(EHistoryChangeMessage message)
+void CGDrvTrajSegmentDesigner::ProjectLockChanged(EHistoryChangeMessage message)
 {
     if( message != EHCM_LOCK_LEVEL ) return;
 }
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::SnapshotClicked(const QModelIndex& index)
+void CGDrvTrajSegmentDesigner::SnapshotClicked(const QModelIndex& index)
 {
     long int idx = Object->GetBaseSnapshopIndex() + index.row() + 1;
     Object->GetTrajectory()->MoveToSnapshot(idx);
@@ -310,7 +312,7 @@ void CGOptTrajSegmentDesigner::SnapshotClicked(const QModelIndex& index)
 
 //------------------------------------------------------------------------------
 
-void CGOptTrajSegmentDesigner::GraphClicked(void)
+void CGDrvTrajSegmentDesigner::GraphClicked(void)
 {
     QCPGraph* p_graph = Plot->graph();
     QCPDataSelection sd = p_graph->selection();
@@ -329,7 +331,7 @@ void CGOptTrajSegmentDesigner::GraphClicked(void)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CGOptTrajSegmentDesigner::keyPressEvent(QKeyEvent *event)
+void CGDrvTrajSegmentDesigner::keyPressEvent(QKeyEvent *event)
 {
     if( WidgetUI.tabWidget->currentWidget() != WidgetUI.graphTab ){
         CProObjectDesigner::keyPressEvent(event);

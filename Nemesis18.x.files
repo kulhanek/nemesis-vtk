@@ -155,6 +155,13 @@ src/lib/NemesisCore/graphics/utils/GraphicsUtil.cpp
 src/lib/NemesisCore/graphics/utils/GraphicsUtil.hpp
 src/lib/NemesisCore/trajectory/ImportTrajectory.cpp
 src/lib/NemesisCore/trajectory/ImportTrajectory.hpp
+src/plugins/interfaces/Gaussian/GDrvTrajImportTool.cpp
+src/plugins/interfaces/Gaussian/GDrvTrajImportTool.hpp
+src/plugins/interfaces/Gaussian/GDrvTrajSegment.cpp
+src/plugins/interfaces/Gaussian/GDrvTrajSegment.hpp
+src/plugins/interfaces/Gaussian/GDrvTrajSegmentDesigner.cpp
+src/plugins/interfaces/Gaussian/GDrvTrajSegmentDesigner.hpp
+src/plugins/interfaces/Gaussian/GDrvTrajSegmentDesigner.ui
 src/plugins/projects/TrajectoryProject/TrajectoryProjectWindowTrajectory.cpp
 src/plugins/workpanels/StandardWP/TrajectoryListWorkPanel.ui
 README.md

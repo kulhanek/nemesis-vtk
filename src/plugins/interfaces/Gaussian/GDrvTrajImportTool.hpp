@@ -1,5 +1,5 @@
-#ifndef GOptTrajSegmentDesignerH
-#define GOptTrajSegmentDesignerH
+#ifndef GDrvTrajImportToolH
+#define GDrvTrajImportToolH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
@@ -20,52 +20,28 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <ProObjectDesigner.hpp>
-#include "ui_GOptTrajSegmentDesigner.h"
-#include <HistoryList.hpp>
+#include <ImportTrajectory.hpp>
 
 //------------------------------------------------------------------------------
 
-class CGOptTrajSegment;
-class CPODesignerGeneral;
-class CPODesignerStructures;
-class QCustomPlot;
+class CStructure;
 
 //------------------------------------------------------------------------------
 
-/// xyz trajectory segment designer
+/// import Gaussian geometry otimization tool
 
-class CGOptTrajSegmentDesigner : public CProObjectDesigner {
-Q_OBJECT
+class CGDrvTrajImportTool : public CImportTrajectory {
 public:
 // constructor and destructor -------------------------------------------------
-    CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner);
+    CGDrvTrajImportTool(CProject* p_project);
 
-    /// initialize visualization of properties
-    void InitAllValues(void);
-
-    /// update object properties according to visual setup
-    void ApplyAllValues(void);
+public:
+    void ExecuteDialog(void);
+    virtual void LaunchJob(const QString& file);
 
 // section of private data ----------------------------------------------------
 private:
-    CGOptTrajSegment*           Object;
-    Ui::GOptTrajSegmentDesigner WidgetUI;
-    CPODesignerGeneral*         General;
-    QCustomPlot*                Plot;
-
-    virtual void keyPressEvent(QKeyEvent *event);
-
-private slots:
-    void ButtonBoxClicked(QAbstractButton* p_button);
-    void InitValues(void);
-    void ApplyValues(void);
-    void ProjectLockChanged(EHistoryChangeMessage message);
-    void InitPointerValues(void);
-    void CreateGraph(void);
-    void UpdateGraph(void);
-    void SnapshotClicked(const QModelIndex& index);
-    void GraphClicked(void);
+    bool ImportFirstStructure(CStructure* p_str,const QString& file);
 };
 
 //------------------------------------------------------------------------------

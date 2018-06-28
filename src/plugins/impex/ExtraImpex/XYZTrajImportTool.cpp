@@ -181,7 +181,7 @@ void CXYZTrajImportTool::LaunchJob(const QString& file)
     }
 
     // update trajectory indexes
-    p_str->UpdateAtomTrajIndexes();
+    p_str->SetTrajIndexes();
 
     CHistoryNode* p_history = p_traj->BeginChangeWH(EHCL_TRAJECTORIES,"import XYZ trajectory");
     if( p_history == NULL ) return;

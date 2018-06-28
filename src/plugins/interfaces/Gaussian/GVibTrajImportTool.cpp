@@ -169,7 +169,7 @@ void CGVibTrajImportTool::LaunchJob(const QString& file)
     }
 
     // update trajectory indexes
-    p_str->UpdateAtomTrajIndexes();
+    p_str->SetTrajIndexes();
 
     CHistoryNode* p_history = p_traj->BeginChangeWH(EHCL_TRAJECTORIES,"import Gaussian vibrations");
     if( p_history == NULL ) return;
@@ -239,7 +239,7 @@ bool CGVibTrajImportTool::ImportLastStructure(CStructure* p_str,const QString& f
 
             // is it geometry?
             if( CGaussianUtils::IsGeometry(line) ) {
-                if( CGaussianUtils::ReadGeometry(sin,lineno,atoms,true) == false ){
+                if( CGaussianUtils::ReadGeometry(sin,lineno,atoms) == false ){
                     QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),tr("Unable to read any structure from the gaussian output file"),QMessageBox::Ok,QMessageBox::Ok);
                     ES_ERROR("unable to read any structure from the gaussian output file");
                     p_str->EndUpdate(true);

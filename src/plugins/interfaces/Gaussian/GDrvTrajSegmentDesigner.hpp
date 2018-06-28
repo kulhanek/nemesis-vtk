@@ -1,5 +1,5 @@
-#ifndef GOptTrajSegmentDesignerH
-#define GOptTrajSegmentDesignerH
+#ifndef GDrvTrajSegmentDesignerH
+#define GDrvTrajSegmentDesignerH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
@@ -21,12 +21,12 @@
 // =============================================================================
 
 #include <ProObjectDesigner.hpp>
-#include "ui_GOptTrajSegmentDesigner.h"
+#include "ui_GDrvTrajSegmentDesigner.h"
 #include <HistoryList.hpp>
 
 //------------------------------------------------------------------------------
 
-class CGOptTrajSegment;
+class CGDrvTrajSegment;
 class CPODesignerGeneral;
 class CPODesignerStructures;
 class QCustomPlot;
@@ -35,11 +35,11 @@ class QCustomPlot;
 
 /// xyz trajectory segment designer
 
-class CGOptTrajSegmentDesigner : public CProObjectDesigner {
+class CGDrvTrajSegmentDesigner : public CProObjectDesigner {
 Q_OBJECT
 public:
 // constructor and destructor -------------------------------------------------
-    CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner);
+    CGDrvTrajSegmentDesigner(CGDrvTrajSegment* p_owner);
 
     /// initialize visualization of properties
     void InitAllValues(void);
@@ -49,8 +49,8 @@ public:
 
 // section of private data ----------------------------------------------------
 private:
-    CGOptTrajSegment*           Object;
-    Ui::GOptTrajSegmentDesigner WidgetUI;
+    CGDrvTrajSegment*           Object;
+    Ui::GDrvTrajSegmentDesigner WidgetUI;
     CPODesignerGeneral*         General;
     QCustomPlot*                Plot;
 

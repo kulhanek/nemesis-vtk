@@ -44,16 +44,26 @@ public:
 
 class CGaussianUtils {
 public:
-
     /// is normal termination?
     static bool IsNormalTermination(const QString& file_name);
 
     /// read method - cmd lines
-    static bool ReadMethod(std::istream& sin,QString& method);
+    static bool ReadMethod(std::istream& sin,int& lineno,QString& method);
+
+    /// read SCD definition
+    static bool ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QString& mod);
+
+    /// read SCD value
+    static bool ReadSCDValue(std::istream& sin,int& lineno,const QString& mod,double& value);
+
+    /// find geometry or optimization end
+    static bool FindGeometryOrOptEnd(std::istream& sin,int& lineno);
+
+    /// find geometry
+    static bool FindGeometry(std::istream& sin,int& lineno);
 
     /// read geometry
-    static bool ReadGeometry(std::istream& sin,int& lineno,std::vector<CGAtom>& atoms,
-                             bool skipfirstline=false);
+    static bool ReadGeometry(std::istream& sin,int& lineno,std::vector<CGAtom>& atoms);
 
     /// get energy
     static bool ReadEnergy(std::istream& sin,int& lineno,double& energy,std::string& type);
@@ -64,14 +74,14 @@ public:
     /// is geometry
     static bool IsGeometry(const std::string& line);
 
+    /// is opt end
+    static bool IsOptEnd(const std::string& line);
+
     /// is energy
     static bool IsEnergy(const std::string& line);
 
     /// convert geometry to CStructure
     static bool ConvertToStructure(std::vector<CGAtom>& atoms,CStructure* p_str);
-
-    /// import the first structure found
-
 };
 
 //------------------------------------------------------------------------------

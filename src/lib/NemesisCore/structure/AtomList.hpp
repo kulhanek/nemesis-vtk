@@ -220,12 +220,6 @@ public:
     /// get associated snapshot
     CSnapshot*      GetSnapshot(void);
 
-    /// update atom indexes
-    void UpdateAtomTrajIndexes(void);
-
-    /// update atom indexes with history save
-    bool UpdateAtomTrajIndexesWH(void);
-
 // input/output methods --------------------------------------------------------
     /// load all atoms with history recording
     void LoadData(CXMLElement* p_ele,CHistoryNode* p_history);

@@ -20,7 +20,16 @@
    <item>
     <widget class="QWidget" name="projectNameW" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -63,6 +72,9 @@
      <property name="rootIsDecorated">
       <bool>false</bool>
      </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
    <item>
@@ -89,7 +101,16 @@
       <property name="spacing">
        <number>2</number>
       </property>
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -117,7 +138,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="StandardWP.qrc">
           <normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-add.svg</normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-add.svg</iconset>
         </property>
         <property name="iconSize">
@@ -146,7 +167,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="StandardWP.qrc">
           <normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-remove.svg</normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-remove.svg</iconset>
         </property>
         <property name="iconSize">
@@ -175,7 +196,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
+         <iconset resource="StandardWP.qrc">
           <normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-info.svg</normaloff>:/images/StandardWP/PropertiesManagerWorkPanel/property-info.svg</iconset>
         </property>
         <property name="iconSize">
@@ -194,6 +215,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="StandardWP.qrc"/>
+ </resources>
  <connections/>
 </ui>

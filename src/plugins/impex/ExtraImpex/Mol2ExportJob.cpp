@@ -60,7 +60,8 @@ QObject* Mol2ExportJobCB(void* p_data);
 
 CExtUUID        Mol2ExportJobID(
                     "{MOL2_EXPORT_JOB:0e45101d-9c25-450e-8a80-e7602a633d26}",
-                    "Mol2 Export");
+                    "Tripos Mol2 File (*.mol2)",
+                    "Export Tripos Mol2 file");
 
 CPluginObject   Mol2ExportJobObject(&ExtraImpexPlugin,
                     Mol2ExportJobID,JOB_CAT,

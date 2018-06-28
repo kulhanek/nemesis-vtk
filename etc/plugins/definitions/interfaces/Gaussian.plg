@@ -5,6 +5,9 @@
     <OBJECT uuid="{GOPT_TRAJ_SEGMENT:d40ec150-1757-4dff-8f74-a053460bf9fa}">
         <CONFIG key="_designer" value="{GOPT_TRAJ_SEGMENT_DESIGNER:1a5c5755-2b22-49d0-9c29-df2ac7f038ee}"/>
     </OBJECT>
+    <OBJECT uuid="{GDRV_TRAJ_SEGMENT:9e765d39-5702-446f-bf71-2564b8a39dcd}">
+        <CONFIG key="_designer" value="{GDRV_TRAJ_SEGMENT_DESIGNER:639fdf1a-9bc0-4667-a208-901d6ee46b0a}"/>
+    </OBJECT>
     <OBJECT uuid="{GVIB_TRAJ_SEGMENT:4e92c43e-b74c-4bda-a80d-804a561b6f03}">
         <CONFIG key="_designer" value="{VIB_TRAJ_SEGMENT_DESIGNER:02d468c7-8cc7-4295-92cf-eeae2ae9c653}"/>
     </OBJECT>
@@ -12,6 +15,9 @@
         <CONFIG key="_category" value="Gaussian"/>
     </OBJECT>
     <OBJECT uuid="{GVIB_TRAJ_IMPORT_TOOL:db41ebd2-4e2f-4ef6-9a83-06138fc034a1}">
+        <CONFIG key="_category" value="Gaussian"/>
+    </OBJECT>
+    <OBJECT uuid="{GDRV_TRAJ_IMPORT_TOOL:85b168fd-3aad-4bc7-ac01-271d2d5a7ff0}">
         <CONFIG key="_category" value="Gaussian"/>
     </OBJECT>
 </PLUGIN> 

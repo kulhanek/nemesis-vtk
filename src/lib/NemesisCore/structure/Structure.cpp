@@ -68,7 +68,6 @@ CStructure::CStructure(CStructureList* p_list)
     Residues = new CResidueList(this);
     Restraints = new CRestraintList(this);
     Trajectory = NULL;
-    TrajIndexes = 0;
 
     GeometryUpdateLevel=0;
     SeqIndex = 1;
@@ -86,7 +85,6 @@ CStructure::CStructure(CProject* p_project)
     Residues = new CResidueList(this);
     Restraints = new CRestraintList(this);
     Trajectory = NULL;
-    TrajIndexes = 0;
 
     GeometryUpdateLevel=0;
     SeqIndex = 1;
@@ -573,21 +571,6 @@ bool CStructure::SetSeqIndexWH(int seqidx)
     return(true);
 }
 
-//------------------------------------------------------------------------------
-
-bool CStructure::SetTrajIndexesWH(int trajidxes)
-{
-    if( GetTrajIndexes() == trajidxes ) return(true);
-
-    CHistoryNode* p_history = BeginChangeWH(EHCL_TRAJECTORIES,"structure trajectory indexes");
-    if( p_history == NULL ) return (false);
-
-    SetTrajIndexes(trajidxes,p_history);
-
-    EndChangeWH();
-    return(true);
-}
-
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
@@ -621,13 +604,6 @@ const QString CStructure::GetSMILES(void)
 int CStructure::GetSeqIndex(void) const
 {
     return(SeqIndex);
-}
-
-//------------------------------------------------------------------------------
-
-int CStructure::GetTrajIndexes(void) const
-{
-    return(TrajIndexes);
 }
 
 //==============================================================================
@@ -712,25 +688,6 @@ void CStructure::SetSeqIndex(int seqidx,CHistoryNode* p_history)
     }
 
     SeqIndex = seqidx;
-    emit OnStatusChanged(ESC_OTHER);
-    GetStructures()->ForceSorting = true;
-    GetStructures()->EmitOnStructureListChanged();
-    GetStructures()->EndUpdate();
-}
-
-//------------------------------------------------------------------------------
-
-void CStructure::SetTrajIndexes(int trajidxes,CHistoryNode* p_history)
-{
-    if( TrajIndexes == trajidxes ) return;
-
-    GetStructures()->BeginUpdate();
-    if( p_history ){
-        CStructureTrajIndexesHI* p_item = new CStructureTrajIndexesHI(this,trajidxes);
-        p_history->Register(p_item);
-    }
-
-    TrajIndexes = trajidxes;
     emit OnStatusChanged(ESC_OTHER);
     GetStructures()->ForceSorting = true;
     GetStructures()->EmitOnStructureListChanged();
@@ -1377,7 +1334,6 @@ void CStructure::SetTrajectory(CTrajectory* p_trajectory,CHistoryNode* p_history
         Trajectory->SetStructure(NULL,p_history);
     }
     Trajectory = p_trajectory;
-    TrajIndexes = 0;
     if( Trajectory ){
         GetAtoms()->SetSnapshot(Trajectory->GetCurrentSnapshot());
         Trajectory->SetStructure(this,p_history);       
@@ -1389,32 +1345,24 @@ void CStructure::SetTrajectory(CTrajectory* p_trajectory,CHistoryNode* p_history
 
 //------------------------------------------------------------------------------
 
-void CStructure::UpdateAtomTrajIndexes(void)
+void CStructure::SetTrajIndexes(void)
 {
-    if( TrajIndexes <= 0 ){
-        GetAtoms()->UpdateAtomTrajIndexes();
-        TrajIndexes = GetAtoms()->GetNumberOfAtoms();
+    TrajIndexMap.clear();
+
+    int i=0;
+    foreach(CAtom* p_atom,Atoms->findChildren<CAtom*>()){
+        p_atom->SetTrajIndex(i);
+        TrajIndexMap[i] = p_atom;
+        i++;
     }
 }
 
 //------------------------------------------------------------------------------
 
-bool CStructure::UpdateAtomTrajIndexesWH(void)
+CAtom* CStructure::GetAtomByTrajIndex(int idx)
 {
-    if( TrajIndexes <= 0 ){
-
-        CHistoryNode* p_history = BeginChangeWH(EHCL_TRAJECTORIES,tr("associate trajectory with structure"));
-        if( p_history == NULL ) return (false);
-
-        GetAtoms()->UpdateAtomTrajIndexesWH();
-        SetTrajIndexesWH( GetAtoms()->GetNumberOfAtoms() );
-
-        EndChangeWH();
-        return(true);
-
-    } else {
-        return(false);
-    }
+    if( (idx < 0) || (idx >= TrajIndexMap.count()) ) return(NULL);
+    return(TrajIndexMap[idx]);
 }
 
 //==============================================================================

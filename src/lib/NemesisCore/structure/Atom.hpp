@@ -220,7 +220,7 @@ public:
     void SetVel(const CPoint& vel,CHistoryNode* p_history=NULL);
 
     /// set atom trajectory index
-    void SetTrajIndex(int traj_idx,CHistoryNode* p_history=NULL);
+    void SetTrajIndex(int traj_idx);
 
     /// change parent, see CAtomList::MoveAllAtomsFrom
     void ChangeParent(CAtomList* p_newparent);
@@ -274,7 +274,7 @@ private:
     CPoint              Pos;                ///< position
     CPoint              Vel;                ///< velocity
     QList<CBond*>       Bonds;              /*!< bond list */
-    int                 TrajIndex;          ///< trajectory atom index
+    int                 TrajIndex;          ///< trajectory index for accessing data in snapshot
 
     /// helper method
     CBond*  RemoveBondFromBegin(void);

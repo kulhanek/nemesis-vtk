@@ -74,7 +74,8 @@ QObject* Mol2ImportJobCB(void* p_data);
 
 CExtUUID        Mol2ImportJobID(
                     "{MOL2_IMPORT_JOB:29d3aa01-9cff-4e0a-bd4c-5ba5936e5c59}",
-                    "Mol2 Import");
+                    "Tripos Mol2 File (*.mol2)",
+                    "Import Tripos Mol2 file");
 
 CPluginObject   Mol2ImportJobObject(&ExtraImpexPlugin,
                     Mol2ImportJobID,JOB_CAT,

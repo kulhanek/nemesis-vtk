@@ -67,7 +67,8 @@ QObject* XYZImportJobCB(void* p_data);
 
 CExtUUID        XYZImportJobID(
                     "{XYZ_IMPORT_JOB:7f8a1822-0d5c-4e51-8162-2a43e430254c}",
-                    "XYZ Import");
+                    "XYZ File (*.xyz)",
+                    "Import/inject XYZ file");
 
 CPluginObject   XYZImportJobObject(&ExtraImpexPlugin,
                     XYZImportJobID,JOB_CAT,

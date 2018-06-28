@@ -160,35 +160,4 @@ private:
 //------------------------------------------------------------------------------
 //==============================================================================
 
-class CStructureTrajIndexesHI : public CHistoryItem {
-public:
-// constructors and destructors ------------------------------------------------
-    CStructureTrajIndexesHI(CProject* p_object);
-    CStructureTrajIndexesHI(CStructure* p_res, int newtrajidxes);
-
-// section of private data -----------------------------------------------------
-private:
-    int StructureIndex;
-    int NewTrajIndexes;
-    int OldTrajIndexes;
-
-// executive methods -----------------------------------------------------------
-    /// perform the change in the forward direction
-    virtual void Forward(void);
-
-    /// perform the change in the backward direction
-    virtual void Backward(void);
-
-// input/output methods --------------------------------------------------------
-    /// load data
-    virtual void LoadData(CXMLElement* p_ele);
-
-    /// save data
-    virtual void SaveData(CXMLElement* p_ele);
-};
-
-//==============================================================================
-//------------------------------------------------------------------------------
-//==============================================================================
-
 #endif

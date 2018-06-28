@@ -61,7 +61,8 @@ QObject* PdbqtExportJobCB(void* p_data);
 
 CExtUUID        PdbqtExportJobID(
                     "{PDBQT_EXPORT_JOB:6ed616e8-c969-4ed5-9b36-39aa82e5098a}",
-                    "PDBQT Export");
+                    "PDBQT File (*.pdbqt)",
+                    "Export PDBQT file");
 
 CPluginObject   PdbqtExportJobObject(&ExtraImpexPlugin,
                     PdbqtExportJobID,JOB_CAT,

@@ -438,6 +438,8 @@ int CAtom::GetLocIndex(void) const
     return(LocIndex);
 }
 
+//------------------------------------------------------------------------------
+
 int CAtom::GetTrajIndex(void) const
 {
     return(TrajIndex);
@@ -733,21 +735,10 @@ void CAtom::SetVel(const CPoint& vel,CHistoryNode* p_history)
 
 //------------------------------------------------------------------------------
 
-void CAtom::SetTrajIndex(int traj_idx,CHistoryNode* p_history)
+void CAtom::SetTrajIndex(int manip_idx)
 {
-    if( TrajIndex == traj_idx ) return;
-
-    if( p_history ){
-        CAtomTrajIndexHI* p_hnode = new CAtomTrajIndexHI(this,traj_idx);
-        p_history->Register(p_hnode);
-    }
-
-    TrajIndex = traj_idx;
-    emit OnStatusChanged(ESC_OTHER);
-    GetAtoms()->EmitOnAtomListChanged();
-    if( GetResidue() ){
-        GetResidue()->EmitOnAtomListChanged();
-    }
+    if( TrajIndex == manip_idx ) return;
+    TrajIndex = manip_idx;
 }
 
 //------------------------------------------------------------------------------

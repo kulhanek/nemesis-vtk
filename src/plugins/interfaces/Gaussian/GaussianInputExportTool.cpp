@@ -81,7 +81,8 @@ QObject* GaussianInputExportToolCB(void* p_data);
 
 CExtUUID        GaussianInputExportToolID(
                     "{GAUSSIAN_INPUT_EXPORT_TOOL:9067cbb2-772b-4acb-b66f-3732e0775b2c}",
-                    "Gaussian Input (*.com)");
+                    "Gaussian Input (*.com)",
+                    "Create Gaussian imput file");
 
 CPluginObject   GaussianInputExportToolObject(&GaussianPlugin,
                     GaussianInputExportToolID,EXPORT_STRUCTURE_CAT,
@@ -746,7 +747,7 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
         break;
     }
     if( WidgetUI.calculationCB->currentIndex() == 4 ){
-        Structure->UpdateAtomTrajIndexes();
+        Structure->SetTrajIndexes();
         // mod redundant section
         int idx = WidgetUI.coordinateCB->currentData().toInt();
         if( (idx >= 0) && (WidgetUI.coordinateCB->count() != 0) ){

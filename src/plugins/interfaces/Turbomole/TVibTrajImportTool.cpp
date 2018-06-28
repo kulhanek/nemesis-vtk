@@ -168,7 +168,7 @@ void CTVibTrajImportTool::ReadData(void)
     }
 
     // update trajectory indexes
-    p_str->UpdateAtomTrajIndexes();
+    p_str->SetTrajIndexes();
 
     CHistoryNode* p_history = p_traj->BeginChangeWH(EHCL_TRAJECTORIES,"import Turbomole vibrations");
     if( p_history == NULL ) return;
