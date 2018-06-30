@@ -84,6 +84,10 @@ CGOptTrajSegmentDesigner::CGOptTrajSegmentDesigner(CGOptTrajSegment* p_owner)
     WidgetUI.fileNameLE->setText(fileinfo.fileName());
     WidgetUI.filePathLE->setText(fileinfo.path());
     WidgetUI.methodLE->setText(Object->GetMethod());
+    WidgetUI.methodLE->setCursorPosition(0);
+    double fenergy = Object->GetFinalEnergy();
+    WidgetUI.energyLE->setPhysicalQuantity(PQ_ABSOLUTE_ENERGY);
+    WidgetUI.energyLE->setInternalValue(fenergy);
 
     // models
     WidgetUI.energyTV->setModel(Object->GetEnergyModel());
@@ -282,7 +286,6 @@ void CGOptTrajSegmentDesigner::InitPointerValues(void)
         QCPDataSelection ds;
         Plot->graph()->setSelection(ds);
         }
-
     Plot->replot();
 }
 

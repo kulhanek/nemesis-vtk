@@ -456,6 +456,29 @@ void CNemesisJScript::ParseArguments(void)
     int narg = 0;
     while( narg < NemesisOptions.GetNumberOfProgArgs() ){
         CSmallString arg = NemesisOptions.GetProgArg(narg);
+        if( arg == "-npr" ) {
+            narg++;
+            CSmallString file = NemesisOptions.GetProgArg(narg);
+            narg++;
+
+            // update last open path
+            GlobalSetup->SetLastOpenFilePathFromFile(QString(file),GenericProjectID);
+
+            // load project
+            CProject* p_project = Projects->OpenProject(file);
+
+            if( p_project == NULL ){
+                ES_ERROR("unable to load project");
+                QMessageBox::critical(NULL, tr("Open Project"),
+                                      tr("An error occurred during project opening!"),
+                                      QMessageBox::Ok,
+                                      QMessageBox::Ok);
+                return;
+            }
+
+            p_project->ShowProject();
+            continue;
+        }
         if( arg == "-build" ) {
             narg++;
             // create build project

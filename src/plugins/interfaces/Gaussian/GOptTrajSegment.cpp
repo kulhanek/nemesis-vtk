@@ -74,8 +74,11 @@ CGOptTrajSegment::CGOptTrajSegment(CTrajectory* p_traj)
     EnergyKey = GetProject()->GetFreeObjectIndex();
     Model = NULL;
 
-    // response to energy unit change
+    // response to energy unit changes
     connect(PQ_ENERGY,SIGNAL(OnUnitChanged(void)),
+            this,SLOT(CreateModel(void)));
+
+    connect(PQ_ABSOLUTE_ENERGY,SIGNAL(OnUnitChanged(void)),
             this,SLOT(CreateModel(void)));
 }
 
@@ -125,6 +128,15 @@ const QString& CGOptTrajSegment::GetMethod(void) const
 
 //------------------------------------------------------------------------------
 
+double CGOptTrajSegment::GetFinalEnergy(void) const
+{
+    if( Snapshots.count() == 0 ) return(0.0);
+    CSnapshot* p_snap = Snapshots.last();
+    return(p_snap->GetProperty(EnergyKey));
+}
+
+//------------------------------------------------------------------------------
+
 void CGOptTrajSegment::CreateModel(void)
 {
     if( Model == NULL ){
@@ -163,7 +175,7 @@ void CGOptTrajSegment::CreateModel(void)
         items << p_item;
 
         // absolute energy
-        p_item = new QStandardItem(QString().sprintf("%.9f",energy));
+        p_item = new QStandardItem(PQ_ABSOLUTE_ENERGY->GetRealValueText(energy));
         p_item->setTextAlignment(Qt::AlignRight);
         items << p_item;
 

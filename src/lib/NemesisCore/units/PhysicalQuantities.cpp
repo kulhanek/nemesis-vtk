@@ -62,6 +62,7 @@ CPhysicalQuantity* PQ_DISTANCE = NULL;
 CPhysicalQuantity* PQ_DIMENSION = NULL;
 CPhysicalQuantity* PQ_ANGLE = NULL;
 CPhysicalQuantity* PQ_PERCENTAGE = NULL;
+CPhysicalQuantity* PQ_ABSOLUTE_ENERGY = NULL;
 CPhysicalQuantity* PQ_ENERGY = NULL;
 CPhysicalQuantity* PQ_TEMPERATURE = NULL;
 CPhysicalQuantity* PQ_CHARGE = NULL;
@@ -99,6 +100,7 @@ CPhysicalQuantities::CPhysicalQuantities(CExtComObject* p_parent)
     PQ_DIMENSION = new CStdPhysicalQuantity(this,"dimension","Å",'f',1);
     PQ_ANGLE = new CStdPhysicalQuantity(this,"angle","°",'f',1,0,180.0/M_PI);
     PQ_PERCENTAGE = new CStdPhysicalQuantity(this,"percentage","%",'f',1,0,100);
+    PQ_ABSOLUTE_ENERGY = new CStdPhysicalQuantity(this,"absolute energy","au",'f',9);
     PQ_ENERGY = new CStdPhysicalQuantity(this,"energy","kcal/mol",'f',2);
     PQ_TEMPERATURE = new CStdPhysicalQuantity(this,"temperature","K",'f',1);
     PQ_CHARGE = new CStdPhysicalQuantity(this,"charge","",'f',3);

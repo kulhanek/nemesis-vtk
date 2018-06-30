@@ -55,6 +55,9 @@ public:
     /// get method
     const QString& GetMethod(void) const;
 
+    /// get final absolute energy
+    double GetFinalEnergy(void) const;
+
     /// get data
     void PopulateGraphData(QCPGraph* p_graph);
 
