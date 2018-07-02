@@ -47,7 +47,7 @@ public:
 
     CSO_PROG_ARGS_LONG_DESC_BEGIN
     "<b>Arguments:</b>\n"
-    "   -npr file       open nemesis project file\n"
+    "   -npr file       open a nemesis project file\n"
     "   -build          create a build project\n"
     "   -traj           create a trajectory project\n"
     "   -sketch         create a sketch project\n"
