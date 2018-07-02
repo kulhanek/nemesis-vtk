@@ -68,6 +68,9 @@ public:
     /// load trajectory data
     virtual void LoadTrajectoryData(void);
 
+    /// create visual apparance of CV
+    bool CreateGeoProperty(void);
+
 // section of private data -----------------------------------------------------
 private:
     QList<CSnapshot*>   Snapshots;
@@ -81,9 +84,6 @@ private:
 
     // read snapshot
     bool ReadSnapshot(std::istream& sin,CSnapshot* p_snap,int& lineno,const QString& mod);
-
-    // create property
-    bool CreateProperty(void);
 
 private slots:
     // create model

@@ -256,13 +256,6 @@ void CGDrvTrajSegment::LoadTrajectoryData(void)
     QString mod;
     if( CGaussianUtils::ReadSCDDef(sin,lineno,SCDDef,mod) == false ) return;
 
-    // create property
-    if( CreateProperty() == false ){
-        CSmallString error;
-        error << "unable to create property";
-        ES_ERROR(error);
-    }
-
     // read snapshots
     while( sin.eof() == false ){
         CSnapshot* p_snap = new CSnapshot(this);
@@ -345,7 +338,7 @@ bool CGDrvTrajSegment::ReadSnapshot(std::istream& sin,CSnapshot* p_snap,int& lin
 
 //------------------------------------------------------------------------------
 
-bool CGDrvTrajSegment::CreateProperty(void)
+bool CGDrvTrajSegment::CreateGeoProperty(void)
 {
     CStructure* p_str = GetStructure();
     if( p_str == NULL ) return(false);

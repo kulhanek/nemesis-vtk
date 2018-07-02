@@ -187,7 +187,7 @@ void CGDrvTrajImportTool::LaunchJob(const QString& file)
     if( p_history == NULL ) return;
 
     // create segment
-    CTrajectorySegment* p_seg = new CGDrvTrajSegment(p_traj);
+    CGDrvTrajSegment* p_seg = new CGDrvTrajSegment(p_traj);
 
     // setup segment
     p_seg->SetFileName(file);
@@ -209,6 +209,9 @@ void CGDrvTrajImportTool::LaunchJob(const QString& file)
             p_str->GetBonds()->RecreateBonds();
         }
     }
+
+    // create viasual apparance of CV
+    p_seg->CreateGeoProperty();
 
     // and finaly open object designer
     p_seg->OpenObjectDesigner();
