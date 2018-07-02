@@ -38,6 +38,9 @@
 #include <QString>
 #include <PhysicalQuantities.hpp>
 #include <PhysicalQuantity.hpp>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <MainWindow.hpp>
 
 #include "OpenBabelModule.hpp"
 
@@ -195,19 +198,29 @@ void CAutomorphismWorkPanel::GenerateAutomorphism(void)
     std::vector<OBIsomorphismMapper::Mapping>::iterator     uit = aut.begin();
     std::vector<OBIsomorphismMapper::Mapping>::iterator     uie = aut.end();
 
-    size_t i=0;
+    int i=1;
     while( uit != uie ){
         QList<QStandardItem*> items;
         QStandardItem* p_item;
 
         // label
         QString label;
-        label.sprintf("%d",(int)i+1);
+        label.sprintf("%d",i);
         p_item = new QStandardItem(label);
         items << p_item;
 
         // map
-        p_item = new QStandardItem();
+        OBIsomorphismMapper::Mapping::iterator  mit = (*uit).begin();
+        OBIsomorphismMapper::Mapping::iterator  eit = (*uit).end();
+        QString map;
+        int j = 0;
+        while( mit != eit ){
+            if( j > 0 ) map += ",";
+            map += QString().sprintf("%d:%d",mit->first+1,mit->second+1);
+            mit++;
+            j++;
+        }
+        p_item = new QStandardItem(map);
         items << p_item;
 
         VerticesModel->appendRow(items);
@@ -240,6 +253,40 @@ void CAutomorphismWorkPanel::ClearAllVertices(void)
 
 void CAutomorphismWorkPanel::SaveMapPatterns(void)
 {
+    QStringList filters;
+    // Send format to dialog
+    filters << "CSV File (*.txt *.csv)";
+
+    // --------------------------------
+    QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
+    p_dialog->setNameFilters(filters);
+    p_dialog->setFileMode(QFileDialog::AnyFile);
+    p_dialog->setAcceptMode(QFileDialog::AcceptSave);
+
+    if( p_dialog->exec() != QDialog::Accepted ){
+        delete p_dialog;
+        return;
+    }
+    QString filename = p_dialog->selectedFiles().at(0);
+    delete p_dialog;
+
+    QFile file(filename);
+    if( ! file.open(QFile::WriteOnly) ){
+        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
+                              tr("Unable to open the file for writing!"),QMessageBox::Ok,QMessageBox::Ok);
+        return;
+    }
+
+    QTextStream stream(&file);
+
+    // save model
+    for(int i=0; i < VerticesModel->rowCount(); i++){
+        QStandardItem* p_item = VerticesModel->item(i,1);
+        if( p_item != NULL ){
+            stream << p_item->text() << endl;
+        }
+
+    }
 
 }
 
