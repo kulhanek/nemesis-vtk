@@ -377,8 +377,8 @@ void CGeometryLabelObject::LabelDistance(void)
        case EGDT_ONE_POINT:
            pos1 = geo1.GetPoint1();
            break;
-       case EGDT_TWO_POINT:
-       case EGDT_TWO_POINT_ORIENTED:
+       case EGDT_TWO_POINTS:
+       case EGDT_TWO_POINTS_ORIENTED:
            pos1 = geo1.GetPoint1();
            pos2 = geo2.GetPoint2();
            completed = true;
@@ -474,8 +474,8 @@ void CGeometryLabelObject::LabelAngle(void)
        case EGDT_ONE_POINT:
            pos1 = geo1.GetPoint1();
            break;
-       case EGDT_TWO_POINT:
-       case EGDT_TWO_POINT_ORIENTED:
+       case EGDT_TWO_POINTS:
+       case EGDT_TWO_POINTS_ORIENTED:
            pos1 = geo1.GetPoint1();
            pos2 = geo2.GetPoint2();
            break;
@@ -619,8 +619,8 @@ void CGeometryLabelObject::LabelDihedral(void)
        case EGDT_ONE_POINT:
            pos1 = geo1.GetPoint1();
            break;
-       case EGDT_TWO_POINT:
-       case EGDT_TWO_POINT_ORIENTED:
+       case EGDT_TWO_POINTS:
+       case EGDT_TWO_POINTS_ORIENTED:
            pos1 = geo1.GetPoint1();
            pos2 = geo2.GetPoint2();
            break;
@@ -850,8 +850,8 @@ void CGeometryLabelObject::GetObjectMetricsDistance(CObjMetrics& metrics)
        case EGDT_ONE_POINT:
            pos1 = geo1.GetPoint1();
            break;
-       case EGDT_TWO_POINT:
-       case EGDT_TWO_POINT_ORIENTED:
+       case EGDT_TWO_POINTS:
+       case EGDT_TWO_POINTS_ORIENTED:
            pos1 = geo1.GetPoint1();
            pos2 = geo2.GetPoint2();
            completed = true;
@@ -903,8 +903,8 @@ void CGeometryLabelObject::GetObjectMetricsAngle(CObjMetrics& metrics)
        case EGDT_ONE_POINT:
            pos1 = geo1.GetPoint1();
            break;
-       case EGDT_TWO_POINT:
-       case EGDT_TWO_POINT_ORIENTED:
+       case EGDT_TWO_POINTS:
+       case EGDT_TWO_POINTS_ORIENTED:
            pos1 = geo1.GetPoint1();
            pos2 = geo2.GetPoint2();
            break;
@@ -971,8 +971,8 @@ void CGeometryLabelObject::GetObjectMetricsDihedral(CObjMetrics& metrics)
        case EGDT_ONE_POINT:
            pos1 = geo1.GetPoint1();
            break;
-       case EGDT_TWO_POINT:
-       case EGDT_TWO_POINT_ORIENTED:
+       case EGDT_TWO_POINTS:
+       case EGDT_TWO_POINTS_ORIENTED:
            pos1 = geo1.GetPoint1();
            pos2 = geo2.GetPoint2();
            break;

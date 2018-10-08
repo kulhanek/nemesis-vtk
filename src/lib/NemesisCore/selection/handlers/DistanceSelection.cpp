@@ -75,8 +75,8 @@ ESelResult CDistanceSelection::RegisterObject(CSelectionList* p_sel,const CSelOb
         // no object selected so far
         descrip1 = p_obj->GetGeoDescriptor();
         switch(descrip1.GetType()) {
-        case EGDT_TWO_POINT:
-        case EGDT_TWO_POINT_ORIENTED:
+        case EGDT_TWO_POINTS:
+        case EGDT_TWO_POINTS_ORIENTED:
             p_sel->AddObject(obj);
             return(ESR_SELECTED_OBJECTS_END);
 

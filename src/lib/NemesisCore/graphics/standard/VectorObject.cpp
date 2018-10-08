@@ -362,7 +362,7 @@ CGeoDescriptor CVectorObject::GetGeoDescriptor(void)
     CPoint pos1 = GetPosition();
     CPoint pos2 = GetDirection();
 
-    descrip.SetType(EGDT_TWO_POINT_ORIENTED);
+    descrip.SetType(EGDT_TWO_POINTS_ORIENTED);
     descrip.SetPoint1(pos1);
     descrip.SetPoint2(pos1+pos2);
 

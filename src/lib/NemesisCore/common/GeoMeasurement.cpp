@@ -85,8 +85,8 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
 
     // two points
     if( numofobjects == 1 ) {
-        if( (descrip1.GetType() == EGDT_TWO_POINT)
-                || (descrip1.GetType() == EGDT_TWO_POINT_ORIENTED)  ) {
+        if( (descrip1.GetType() == EGDT_TWO_POINTS)
+                || (descrip1.GetType() == EGDT_TWO_POINTS_ORIENTED)  ) {
             return(GetDistance(descrip1.GetPoint1(),descrip1.GetPoint2()));
         }
         return(0);
@@ -121,7 +121,7 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
         ES_ERROR("not implemented");
         return(0);
 
-    case EGDT_TWO_POINT_ORIENTED:
+    case EGDT_TWO_POINTS_ORIENTED:
         ES_ERROR("not implemented");
         return(0);
 
@@ -150,7 +150,7 @@ double CGeoMeasurement::GetAngle(CSelectionList* p_selection)
     object1 = p_selection->GetSelectedObject(0);
     descrip1 = object1->GetGeoDescriptor();
 
-    if( descrip1.GetType() == EGDT_THREE_POINT) {
+    if( descrip1.GetType() == EGDT_THREE_POINTS) {
         return(GetAngle(descrip1.GetPoint1(),descrip1.GetPoint2(),descrip1.GetPoint3()));
     }
 
@@ -159,7 +159,7 @@ double CGeoMeasurement::GetAngle(CSelectionList* p_selection)
 
     switch(descrip1.GetType()) {
     case EGDT_ONE_POINT: {
-        if( descrip2.GetType() == EGDT_TWO_POINT_ORIENTED) {
+        if( descrip2.GetType() == EGDT_TWO_POINTS_ORIENTED) {
             return(GetAngle(descrip1.GetPoint1(),descrip2.GetPoint1(),descrip2.GetPoint1()));
         }
         if( descrip2.GetType() != EGDT_ONE_POINT ) return(0);
@@ -173,7 +173,7 @@ double CGeoMeasurement::GetAngle(CSelectionList* p_selection)
             ES_ERROR("not implemented");
             return(0);
         }
-        if( descrip2.GetType() == EGDT_TWO_POINT_ORIENTED) {
+        if( descrip2.GetType() == EGDT_TWO_POINTS_ORIENTED) {
             ES_ERROR("not implemented");
             return(0);
         }
@@ -206,7 +206,7 @@ double CGeoMeasurement::GetTorsion(CSelectionList* p_selection)
     descrip1 = object1->GetGeoDescriptor();
 
     switch(descrip1.GetType()) {
-    case EGDT_FOUR_POINT: {
+    case EGDT_FOUR_POINTS: {
         return(GetTorsion(descrip1.GetPoint1(),descrip1.GetPoint2(),
                           descrip1.GetPoint3(),descrip1.GetPoint4()));
     }
@@ -233,12 +233,12 @@ double CGeoMeasurement::GetTorsion(CSelectionList* p_selection)
                           descrip3.GetPoint1(),descrip4.GetPoint1()));
     }
 
-    case EGDT_TWO_POINT_ORIENTED: {
+    case EGDT_TWO_POINTS_ORIENTED: {
         CProObject* object2;
         CGeoDescriptor descrip2;
         object2 = p_selection->GetSelectedObject(2);
         descrip2 = object2->GetGeoDescriptor();
-        if(descrip2.GetType() != EGDT_TWO_POINT_ORIENTED) return(0);
+        if(descrip2.GetType() != EGDT_TWO_POINTS_ORIENTED) return(0);
         return(GetTorsion(descrip1.GetPoint1(),descrip1.GetPoint2(),
                           descrip2.GetPoint1(),descrip2.GetPoint2()));
     }

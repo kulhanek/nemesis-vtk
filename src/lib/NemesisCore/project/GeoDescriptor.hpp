@@ -48,10 +48,10 @@ enum EAxisType {
 enum EGetDescriptorType {
     EGDT_NILL,
     EGDT_ONE_POINT,
-    EGDT_TWO_POINT,
-    EGDT_TWO_POINT_ORIENTED,
-    EGDT_THREE_POINT,
-    EGDT_FOUR_POINT,
+    EGDT_TWO_POINTS,
+    EGDT_TWO_POINTS_ORIENTED,
+    EGDT_THREE_POINTS,
+    EGDT_FOUR_POINTS,
     EGDT_LINE,
     EGDT_PLANE      // determined by point and normal vector
 };

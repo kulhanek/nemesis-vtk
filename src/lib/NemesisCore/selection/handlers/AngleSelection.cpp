@@ -75,12 +75,12 @@ ESelResult CAngleSelection::RegisterObject(CSelectionList* p_sel,const CSelObjec
         // no object selected so far
         descrip1 = p_obj->GetGeoDescriptor();
         switch(descrip1.GetType()) {
-        case EGDT_THREE_POINT:
+        case EGDT_THREE_POINTS:
             p_sel->AddObject(obj);
             return(ESR_SELECTED_OBJECTS_END);
 
         case EGDT_ONE_POINT:
-        case EGDT_TWO_POINT_ORIENTED:
+        case EGDT_TWO_POINTS_ORIENTED:
         case EGDT_LINE:
         case EGDT_PLANE:
             p_sel->AddObject(obj);
@@ -104,14 +104,14 @@ ESelResult CAngleSelection::RegisterObject(CSelectionList* p_sel,const CSelObjec
             case EGDT_ONE_POINT:
                 p_sel->AddObject(obj);
                 return(ESR_SELECTED_OBJECTS_CHANGED);
-            case EGDT_TWO_POINT_ORIENTED:
+            case EGDT_TWO_POINTS_ORIENTED:
                 p_sel->AddObject(obj);
                 return(ESR_SELECTED_OBJECTS_END);
             default:
                 return(ESR_NONE_SELECTED);
             }
 
-        case EGDT_TWO_POINT_ORIENTED:
+        case EGDT_TWO_POINTS_ORIENTED:
             p_sel->AddObject(obj);
             return(ESR_SELECTED_OBJECTS_END);
 

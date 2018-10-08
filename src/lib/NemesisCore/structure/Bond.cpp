@@ -706,7 +706,7 @@ CGeoDescriptor  CBond::GetGeoDescriptor(void)
     CGeoDescriptor descrip;
 
     if( (A1 != NULL) && (A2 != NULL) ) {
-        descrip.SetType(EGDT_TWO_POINT);
+        descrip.SetType(EGDT_TWO_POINTS);
         descrip.SetPoint1(A1->GetPos());
         descrip.SetPoint2(A2->GetPos());
     }

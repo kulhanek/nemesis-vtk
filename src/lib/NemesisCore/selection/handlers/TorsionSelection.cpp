@@ -63,20 +63,31 @@ ESelResult CTorsionSelection::RegisterObject(CSelectionList* p_sel,const CSelObj
     // test structure object selection mode
     if( TestStrObjectSelMode(p_sel,p_obj) == false )  return(ESR_NONE_SELECTED);
 
-    // only sequence of four atoms is permitted
-    CAtom* p_atom = dynamic_cast<CAtom*>(p_obj);
-    if( p_atom != NULL ) {
-        if( p_sel->IsInList(obj) == true ) {
-            p_sel->RemoveObject(obj);
-            return(ESR_SELECTED_OBJECTS_CHANGED);
-        }
-
-        p_sel->AddObject(obj);
-        if( p_sel->NumOfSelectedObjects() == 4 ) return(ESR_SELECTED_OBJECTS_END);
+    // is it already in selection list?
+    if( p_sel->IsInList(obj) == true ) {
+        p_sel->RemoveObject(obj);
         return(ESR_SELECTED_OBJECTS_CHANGED);
     }
 
-    return(ESR_NONE_SELECTED);
+    CGeoDescriptor descrip;
+    descrip = p_obj->GetGeoDescriptor();
+
+    // accept four points
+    switch(descrip.GetType()) {
+
+        case EGDT_ONE_POINT:
+            p_sel->AddObject(obj);
+            if( p_sel->NumOfSelectedObjects() == 4 ) return(ESR_SELECTED_OBJECTS_END);
+            return(ESR_SELECTED_OBJECTS_CHANGED);
+
+        case EGDT_FOUR_POINTS:
+            p_sel->AddObject(obj);
+            return(ESR_SELECTED_OBJECTS_END);
+
+        // FIXME - sync with GeoMeasurement
+        default:
+            return(ESR_NONE_SELECTED);
+    }
 }
 
 //==============================================================================
