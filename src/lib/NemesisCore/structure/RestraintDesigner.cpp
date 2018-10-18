@@ -178,7 +178,7 @@ void CRestraintDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
-    if( Object->BeginChangeWH(EHCL_COMPOSITE,tr("restraint setup")) == false ) return;
+    if( Object->BeginChangeWH(EHCL_COMPOSITE,tr("restraint setup")) == NULL ) return;
 
     Changing = true;
         General->ApplyValues();

@@ -709,7 +709,7 @@ CGraphicsObject* CProject::AddGraphicsObject(const CUUID& uuid, CGraphicsProfile
         error << "unable to create object " << uuid.GetStringForm();
         RUNTIME_ERROR(error);
     }
-    if( p_profile->AddObject(p_obj) == false) {
+    if( p_profile->AddObject(p_obj) == NULL) {
         delete p_obj;
         CSmallString error;
         error << "unable to add object " << uuid.GetStringForm() << " into a profile";

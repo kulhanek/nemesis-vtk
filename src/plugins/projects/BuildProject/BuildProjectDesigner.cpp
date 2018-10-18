@@ -104,7 +104,7 @@ void CBuildProjectDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
-    if( Project->BeginChangeWH(EHCL_COMPOSITE,Project->GetType().GetName()) == false ) return;
+    if( Project->BeginChangeWH(EHCL_COMPOSITE,Project->GetType().GetName()) == NULL ) return;
 
     Changing = true;
         General->ApplyValues();

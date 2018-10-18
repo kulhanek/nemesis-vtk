@@ -213,7 +213,7 @@ void CNewGraphicsObjectWorkPanel::CreateObject(const QModelIndex & index)
 
     CGraphicsObject* p_object = NULL;
 
-    if( GetProject()->BeginChangeWH(EHCL_GRAPHICS,"New graphics object") == false ) {
+    if( GetProject()->BeginChangeWH(EHCL_GRAPHICS,"New graphics object") == NULL ) {
         ES_ERROR("it is not allowed to add a new graphics object");
         QMessageBox::critical(NULL, tr("New Graphics Object"),
                               tr("It is not allowed to add a new graphics object!"),

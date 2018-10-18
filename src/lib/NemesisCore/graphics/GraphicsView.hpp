@@ -213,7 +213,6 @@ signals:
 private:
     CGraphicsProfile*       Profile;            // graphics profile to use
     CGraphicsCommonView*    DrawGLCanvas;       // attached OpenGL canvas
-    GLScontext*             StereoContext;      // libgls stereo context
     bool                    SyncToPrimaryView;  // synchronize with primary view
 
     // selection data
@@ -280,9 +279,6 @@ private:
 
     /// init monoscopic view for selection
     void InitMonoSelection(int x,int y,int w,int h);
-
-    /// init stereo view
-    void InitStereo(GLSview view);
 
 // raw scene painting by manipulator
 public:

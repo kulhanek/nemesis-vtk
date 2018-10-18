@@ -380,25 +380,25 @@ bool CStructure::BuildSuperCellWH(int ka,int kb,int kc)
                     CAtom* p_b2a2 = p_b2->GetSecondAtom();
                     bool found = false;
                     CBond* p_nbond = NULL;
-                    if( (p_b1a1->IsBondedWith(p_b2a1) == false) &&
+                    if( (p_b1a1->IsBondedWith(p_b2a1) == NULL) &&
                         (Size(p_b1a1->GetPos()-p_b2a1->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a1,p_b2a1,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a2,p_b2a2,p_b1->GetBondOrder(),p_history);
                         found = true;
                     }
-                    if( (p_b1a1->IsBondedWith(p_b2a2) == false) &&
+                    if( (p_b1a1->IsBondedWith(p_b2a2) == NULL) &&
                         (Size(p_b1a1->GetPos()-p_b2a2->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a1,p_b2a2,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a2,p_b2a1,p_b1->GetBondOrder(),p_history);
                         found = true;
                     }
-                    if( (p_b1a2->IsBondedWith(p_b2a1) == false) &&
+                    if( (p_b1a2->IsBondedWith(p_b2a1) == NULL) &&
                         (Size(p_b1a2->GetPos()-p_b2a1->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a2,p_b2a1,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a1,p_b2a2,p_b1->GetBondOrder(),p_history);
                         found = true;
                     }
-                    if( (p_b1a2->IsBondedWith(p_b2a2) == false) &&
+                    if( (p_b1a2->IsBondedWith(p_b2a2) == NULL) &&
                         (Size(p_b1a2->GetPos()-p_b2a2->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a2,p_b2a2,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a1,p_b2a1,p_b1->GetBondOrder(),p_history);
@@ -496,25 +496,25 @@ bool CStructure::BuildSuperCellWH(int va,int vb,int vc,int n)
                     CAtom* p_b2a2 = p_b2->GetSecondAtom();
                     bool found = false;
                     CBond* p_nbond = NULL;
-                    if( (p_b1a1->IsBondedWith(p_b2a1) == false) &&
+                    if( (p_b1a1->IsBondedWith(p_b2a1) == NULL) &&
                         (Size(p_b1a1->GetPos()-p_b2a1->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a1,p_b2a1,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a2,p_b2a2,p_b1->GetBondOrder(),p_history);
                         found = true;
                     }
-                    if( (p_b1a1->IsBondedWith(p_b2a2) == false) &&
+                    if( (p_b1a1->IsBondedWith(p_b2a2) == NULL) &&
                         (Size(p_b1a1->GetPos()-p_b2a2->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a1,p_b2a2,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a2,p_b2a1,p_b1->GetBondOrder(),p_history);
                         found = true;
                     }
-                    if( (p_b1a2->IsBondedWith(p_b2a1) == false) &&
+                    if( (p_b1a2->IsBondedWith(p_b2a1) == NULL) &&
                         (Size(p_b1a2->GetPos()-p_b2a1->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a2,p_b2a1,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a1,p_b2a2,p_b1->GetBondOrder(),p_history);
                         found = true;
                     }
-                    if( (p_b1a2->IsBondedWith(p_b2a2) == false) &&
+                    if( (p_b1a2->IsBondedWith(p_b2a2) == NULL) &&
                         (Size(p_b1a2->GetPos()-p_b2a2->GetPos()) <= minlen) ){
                         GetBonds()->CreateBond(p_b1a2,p_b2a2,p_b1->GetBondOrder(),p_history);
                         p_nbond = GetBonds()->CreateBond(p_b1a1,p_b2a1,p_b1->GetBondOrder(),p_history);

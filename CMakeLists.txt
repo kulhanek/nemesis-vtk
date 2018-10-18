@@ -78,10 +78,6 @@ INCLUDE_DIRECTORIES(${OPEN_BABEL_ROOT}/include)
 LINK_DIRECTORIES(${OPEN_BABEL_ROOT}/lib)
 SET(OPEN_BABEL_LIB obcore)
 
-# GLEW -------------------------------------------
-FIND_PACKAGE(GLEW REQUIRED)
-INCLUDE_DIRECTORIES(${GLEW_INCLUDE_DIRS})
-
 # FreeType ---------------------------------------
 FIND_PACKAGE(Freetype REQUIRED)
 INCLUDE_DIRECTORIES(${FREETYPE_INCLUDE_DIRS})
@@ -91,12 +87,6 @@ SET(FTGL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/ftgl/2.1.3rc5)
 INCLUDE_DIRECTORIES(${FTGL_ROOT}/src/lib/ftgl)
 LINK_DIRECTORIES(${FTGL_ROOT}/lib)
 SET(FTGL_LIB ftgl)
-
-# GLS -------------------------------------------
-SET(GLS_ROOT ${DEVELOPMENT_ROOT}/thirdparty/gls/1.0.0)
-INCLUDE_DIRECTORIES(${GLS_ROOT}/include)
-LINK_DIRECTORIES(${GLS_ROOT}/lib)
-SET(GLS_LIB gls)
 
 # Indigo -----------------------------------------
 SET(INDIGO_ROOT ${DEVELOPMENT_ROOT}/thirdparty/indigo/1.2.3)

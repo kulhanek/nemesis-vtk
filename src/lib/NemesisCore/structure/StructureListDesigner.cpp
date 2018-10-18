@@ -99,7 +99,7 @@ void CStructureListDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
-    if( List->BeginChangeWH(EHCL_COMPOSITE,List->GetType().GetName()) == false ) return;
+    if( List->BeginChangeWH(EHCL_COMPOSITE,List->GetType().GetName()) == NULL ) return;
 
     Changing = true;
         General->ApplyValues();

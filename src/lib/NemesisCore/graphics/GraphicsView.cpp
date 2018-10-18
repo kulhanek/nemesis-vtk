@@ -18,7 +18,6 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <GL/glew.h>
 #include <GraphicsView.hpp>
 #include <ErrorSystem.hpp>
 #include <PluginDatabase.hpp>
@@ -72,7 +71,7 @@ CGraphicsView::CGraphicsView(CGraphicsViewList* p_owner,bool primary)
     DrawGLCanvas = NULL;
     SyncToPrimaryView = false;
     SelAreaSize = 4;
-    SelBuffSize = 5000;
+    SelBuffSize = 50000;
     SelBuffer = new GLuint[SelBuffSize];
 
     FitSceneTimer = new QTimer;
@@ -114,9 +113,6 @@ CGraphicsView::CGraphicsView(CGraphicsViewList* p_owner,bool primary)
             this,SLOT(GraphicsProfileListChanged(void)));
 
     SyncWithPrimaryView(true);
-
-    // create gls context
-    StereoContext = NULL;
 
     // init glsl modes
     CGraphicsViewStereo::InitGLSModes();
@@ -686,11 +682,7 @@ void CGraphicsView::TryToAttachShadowView(void)
 void CGraphicsView::AttachOpenGLCanvas(CGraphicsCommonView* p_scene)
 {
     DrawGLCanvas = p_scene;
-    if( DrawGLCanvas ){
-        if( StereoContext == NULL ){
-            StereoContext = glsCreateContext();
-        }
-    }
+
     emit OnStatusChanged(ESC_OTHER);
     if( GetViews() ) GetViews()->EmitOnGraphicsViewListChanged();
 }
@@ -707,10 +699,7 @@ void CGraphicsView::DetachOpenGLCanvas(void)
     if( DrawGLCanvas ){
         DrawGLCanvas->SetGraphicsView(NULL);
     }
-    if( StereoContext == NULL ){
-        glsDestroyContext(StereoContext);
-        StereoContext = NULL;
-    }
+
     DrawGLCanvas = NULL;
     emit OnStatusChanged(ESC_OTHER);
     if( GetViews() ) GetViews()->EmitOnGraphicsViewListChanged();
@@ -739,7 +728,7 @@ void CGraphicsView::SetCursor(const QCursor& cursor)
 void CGraphicsView::DrawGL(void)
 {
     if( DrawGLCanvas == NULL ) return;
-    if( StereoContext == NULL ) return;
+//    if( StereoContext == NULL ) return;
 
     GetViews()->RegisterCurrentView(this);
 
@@ -784,27 +773,6 @@ void CGraphicsView::DrawGL(void)
             glDrawBuffer(GL_BACK);
             InitMono();
             ManipDraw();
-        } else {
-            GLboolean gls_swap_eyes = GL_FALSE;
-            if( SwapEyes ){
-                gls_swap_eyes = GL_TRUE;
-            }
-            glsClear(StereoContext);
-            glsSetViewportScreenCoords(StereoContext,DrawGLCanvas->width(),DrawGLCanvas->height());
-
-            if( glsIsViewRequired(StereoContext, CGraphicsViewStereo::GetGLSMode(StereoMode), gls_swap_eyes, GLS_VIEW_LEFT) ) {
-                InitStereo(GLS_VIEW_LEFT);
-                ManipDraw();
-                glsSubmitView(StereoContext, GLS_VIEW_LEFT);
-            }
-
-            if( glsIsViewRequired(StereoContext, CGraphicsViewStereo::GetGLSMode(StereoMode), gls_swap_eyes, GLS_VIEW_RIGHT) ) {
-                InitStereo(GLS_VIEW_RIGHT);
-                ManipDraw();
-                glsSubmitView(StereoContext, GLS_VIEW_RIGHT);
-            }
-
-            glsDrawSubmittedViews(StereoContext, CGraphicsViewStereo::GetGLSMode(StereoMode), gls_swap_eyes);
         }
     } catch(...){
         ES_ERROR("exception in CGraphicsView::DrawGL");
@@ -819,7 +787,8 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
 {
     if( DrawGLCanvas == NULL ) return(CSelObject());
 
-    DrawGLCanvas->ActivateGLContext();
+    // this cases segfault on Intel GPU
+    // DrawGLCanvas->ActivateGLContext();
 
     // selection is disbaled in stereo mode
     if( StereoMode != ESM_OFF ){
@@ -849,7 +818,6 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
         glPushName((GLint)~0);
 
         // init camera
-        glDrawBuffer(GL_BACK);
         InitMonoSelection(mousex,mousey,4,4);
         ManipDraw();
 
@@ -974,46 +942,6 @@ void CGraphicsView::InitMonoSelection(int x,int y,int w,int h)
     gluLookAt(Position.x,Position.y,Position.z,
               Reference.x,Reference.y,Reference.z,
               ViewUp.x,ViewUp.y,ViewUp.z);
-}
-
-//------------------------------------------------------------------------------
-
-void CGraphicsView::InitStereo(GLSview view)
-{
-    // Misc stuff
-    double aspect  = 1.0;
-    if( DrawGLCanvas->height() > 0 ){
-        aspect = DrawGLCanvas->width() / (double)DrawGLCanvas->height();
-    }
-    double radians = (M_PI / 180.0) * Fovy / 2.0;
-    double wd2     = Near * tan(radians);
-
-    double left, right, top, bottom;
-    left    = -aspect * wd2;
-    right   =  aspect * wd2;
-    top     =  wd2;
-    bottom  = -wd2;
-
-    glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
-    switch(ProjectionMode){
-        case EPM_PERSPECTIVE:
-            glsFrustum(left,right,bottom,top,Near,Far,Focal,EyeSep,view);
-            break;
-        case EPM_ORTHOGRAPHIC:
-            //glOrtho(left,right,bottom,top,Near,Far);
-            break;
-    }
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    glsLookAt(Position.x,Position.y,Position.z,
-              Reference.x,Reference.y,Reference.z,
-              ViewUp.x,ViewUp.y,ViewUp.z,EyeSep,view);
 }
 
 //------------------------------------------------------------------------------

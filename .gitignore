@@ -4,6 +4,7 @@ moc_*
 *.moc
 ui_*
 *.depends
+*_autogen
 qrc_*
 *automoc*
 CMakeCache.txt
@@ -19,3 +20,4 @@ Nemesis15.x.*
 NemesisWin.*
 /test/*
 src/lib/NemesisCore/NemesisCoreMainHeaderConfig.hpp
+Nemesis18.x.creator.user

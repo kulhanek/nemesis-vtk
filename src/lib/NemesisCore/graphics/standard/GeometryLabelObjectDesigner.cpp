@@ -150,7 +150,7 @@ void CGeometryLabelObjectDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
-    if( Object->BeginChangeWH(EHCL_DESCRIPTION,"background change") == false ) return;
+    if( Object->BeginChangeWH(EHCL_DESCRIPTION,"background change") == NULL ) return;
 
     Changing = true;
         General->ApplyValues();

@@ -180,7 +180,7 @@ void CNewSnapshotFilterWorkPanel::CreateObject(const QModelIndex & index)
     CExtUUID mp_uuid(NULL);
     mp_uuid.LoadFromString((const char*) data.toString().toLatin1().constData());
 
-    if( GetProject()->BeginChangeWH(EHCL_PROPERTY,"New Snapshot Filter") == false ) {
+    if( GetProject()->BeginChangeWH(EHCL_PROPERTY,"New Snapshot Filter") == NULL ) {
         ES_ERROR("it is not allowed to add a new snapshot filter");
         QMessageBox::critical(NULL, tr("New Snapshot Filter"),
                               tr("It is not allowed to add a new snapshot filter!"),

@@ -21,7 +21,6 @@
 // =============================================================================
 
 #include <NemesisCoreMainHeader.hpp>
-#include <gls/gls.h>
 #include <QString>
 #include <map>
 
@@ -30,30 +29,11 @@
 /// supported stereo modes
 enum EStereoMode {
     ESM_OFF = 0,
-    ESM_QUAD_BUFFER_STEREO,
-    ESM_MONO_LEFT,
-    ESM_MONO_RIGHT,
-    ESM_LEFT_RIGHT,
-    ESM_TOP_BOTTOM,
-    ESM_HDMI_FRAME_PACK,
-    ESM_EVEN_ODD_ROWS,
-    ESM_EVEN_ODD_COLUMNS,
-    ESM_CHECKERBOARD,
-    ESM_RED_CYAN_MONOCHROME,
-    ESM_RED_CYAN_HALF_COLOR,
-    ESM_RED_CYAN_FULL_COLOR,
-    ESM_RED_CYAN_DUBOIS,
-    ESM_GREEN_MAGENTA_MONOCHROME,
-    ESM_GREEN_MAGENTA_HALF_COLOR,
-    ESM_GREEN_MAGENTA_FULL_COLOR,
-    ESM_GREEN_MAGENTA_DUBOIS,
-    ESM_AMBER_BLUE_MONOCHROME,
-    ESM_AMBER_BLUE_HALF_COLOR,
-    ESM_AMBER_BLUE_FULL_COLOR,
-    ESM_AMBER_BLUE_DUBOIS,
-    ESM_RED_GREEN_MONOCHROME,
-    ESM_RED_BLUE_MONOCHROME
 };
+
+// compatibility
+typedef int GLSmode;
+typedef int GLSview;
 
 //------------------------------------------------------------------------------
 

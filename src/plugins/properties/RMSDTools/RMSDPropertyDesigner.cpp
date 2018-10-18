@@ -234,7 +234,7 @@ void CRMSDPropertyDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
-    if( Property->BeginChangeWH(EHCL_COMPOSITE,Property->GetType().GetName()) == false ) return;
+    if( Property->BeginChangeWH(EHCL_COMPOSITE,Property->GetType().GetName()) == NULL ) return;
 
     Changing = true;
         General->ApplyValues();

@@ -178,7 +178,7 @@ void CNewPropertyWorkPanel::CreateObject(const QModelIndex & index)
     CExtUUID mp_uuid(NULL);
     mp_uuid.LoadFromString((const char*) data.toString().toLatin1().constData());
 
-    if( GetProject()->BeginChangeWH(EHCL_PROPERTY,"New Property") == false ) {
+    if( GetProject()->BeginChangeWH(EHCL_PROPERTY,"New Property") == NULL ) {
         ES_ERROR("it is not allowed to add a new property");
         QMessageBox::critical(NULL, tr("New Property"),
                               tr("It is not allowed to add a new property!"),

@@ -167,7 +167,7 @@ void CSpecAxesObjectDesigner::ApplyAllValues(void)
 {
     if( IsChangedFlagSet() == false ) return;
 
-    if( Object->BeginChangeWH(EHCL_DESCRIPTION,"special axes change") == false ) return;
+    if( Object->BeginChangeWH(EHCL_DESCRIPTION,"special axes change") == NULL ) return;
 
     Changing = true;
         General->ApplyValues();
