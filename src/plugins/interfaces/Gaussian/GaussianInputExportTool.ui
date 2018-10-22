@@ -407,7 +407,12 @@
           </item>
           <item>
            <property name="text">
-            <string>ESP Calculation</string>
+            <string>ESP Calculation (CHELPG)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MK Charges</string>
            </property>
           </item>
          </widget>

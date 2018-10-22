@@ -374,7 +374,9 @@ QString CGaussianInputExportTool::GetCalculationType(void)
         case 4:
             return "Opt=ModRedundant";
         case 5:
-            return "SCF=Tight Pop=chelpg IOp=(6/33=2,6/50=1)";
+            return "SCF=Tight Pop=CHELPG IOp=(6/33=2,6/50=1)";
+        case 6:
+            return "SCF=Tight Pop=MK";
         default:
             return "SP";
     }
