@@ -263,7 +263,7 @@ void CMainWindow::CreateImpexAction(QActionGroup* p_actGroup,QMenu* p_menu,
     CImpexFormats*  p_formats;
     if( (PluginDatabase.FindObjectConfigValue(p_pod->GetObjectUUID(),"_formats",idfmts,true) == true) &&
         (p_formats = static_cast<CImpexFormats*>(PluginDatabase.CreateObject(idfmts,NULL)))  ){
-        QMenu* p_actmenu = p_finmenu->addMenu(p_pod->GetName());
+        QMenu* p_actmenu = p_finmenu->addMenu(p_pod->GetName());     
         p_actmenu->setStyleSheet("* { menu-scrollable: 1 }");
         QStringList formats;
         if( myimport ){

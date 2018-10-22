@@ -100,16 +100,18 @@ COpenBabelExportTool::COpenBabelExportTool(CProject* p_project)
 void COpenBabelExportTool::ExecuteDialog(void)
 {
     OpenBabel::OBConversion     co;
-    std::vector< std::string>   formats = co.GetSupportedOutputFormat ();
+    std::vector<std::string>   formats = co.GetSupportedOutputFormat();
 
     // parse formats list ------------------------
     QStringList filters;
+    QStringList extensions;
     // Extract format from mouse click in Menu->File/export structure as... /OpenBabel/ THIS
     QVariant choosenFormatOpenBabelExport(GetProject()->property("impex.format"));
 
     // Send format to dialog
     filters << choosenFormatOpenBabelExport.toString();
-    filters << "Common formats (*.pdb *.xyz)";
+    filters << "Common formats (*.xyz *.pdb)";
+    extensions << "xyz";
 
     for(unsigned int i = 0; i < formats.size(); i++) {
         CSmallString formatString, extension;
@@ -118,6 +120,7 @@ void COpenBabelExportTool::ExecuteDialog(void)
         if( pos != -1 ) {
             extension = formatString.GetSubString(0, pos-1);
             formatString << " (*." << extension << ")";
+            extensions << extension.GetBuffer();
             filters << formatString.GetBuffer();
         }
     }
@@ -130,7 +133,14 @@ void COpenBabelExportTool::ExecuteDialog(void)
     p_dialog->setAcceptMode(QFileDialog::AcceptSave);
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LaunchJob(p_dialog->selectedFiles().at(0),p_dialog->selectedNameFilter().left((p_dialog->selectedNameFilter().indexOf("--"))-1));
+        QString ext = "xyz";
+        for(int i=0; i < filters.count(); i++){
+            if( filters[i] == p_dialog->selectedNameFilter() ) {
+                ext = extensions[i];
+                break;
+            }
+        }
+        LaunchJob(p_dialog->selectedFiles().at(0),ext);
     }
 
     delete p_dialog;
@@ -165,20 +175,20 @@ void COpenBabelExportTool::LaunchJob(const QString& file,const QString& ext)
     ofstream ofs;
     OpenBabel::OBConversion conv(&cin, &ofs);
     OpenBabel::OBFormat*    obFormat = conv.FormatFromExt(myfile.toLatin1().constData());
-    if(obFormat == NULL) {
+    if((obFormat == NULL)||(!conv.SetOutFormat(obFormat))) {
         // if there is wrong or no extension - set it from filter
         myfile = myfile + "." + ext;
         if( ! conv.SetOutFormat(ext.toLatin1()) ) {
             QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
-                                  tr("Unable to set export format!"),QMessageBox::Ok,QMessageBox::Ok);
+                                  tr("Unable to set export format from selected extension!"),QMessageBox::Ok,QMessageBox::Ok);
             return;
         }
-    }
-
-    if (!conv.SetOutFormat(obFormat)) {
-        QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
-                              tr("Unable to set export format!"),QMessageBox::Ok,QMessageBox::Ok);
-        return;
+    } else {
+        if (!conv.SetOutFormat(obFormat)) {
+            QMessageBox::critical(GetProject()->GetMainWindow(),tr("Error"),
+                                  tr("Unable to set export format from file name!"),QMessageBox::Ok,QMessageBox::Ok);
+            return;
+        }
     }
 
     // open myfile

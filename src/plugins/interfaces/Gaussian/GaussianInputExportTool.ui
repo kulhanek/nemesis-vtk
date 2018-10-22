@@ -217,6 +217,46 @@
             <string>def2TZVPP</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>cc-pVDZ</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>cc-pVTZ</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>cc-pVQZ</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>cc-pV5Z</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>aug-cc-pVDZ</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>aug-cc-pVTZ</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>aug-cc-pVQZ</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>aug-cc-pV5Z</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
