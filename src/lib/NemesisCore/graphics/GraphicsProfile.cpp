@@ -647,9 +647,12 @@ void CGraphicsProfile::Draw(void)
     }
 
     // disable all clipping planes
-    for(int i=0; i < GL_MAX_CLIP_PLANES; i++){
-        glDisable(GL_CLIP_PLANE0+i);
-    }
+    glDisable(GL_CLIP_PLANE0);
+    glDisable(GL_CLIP_PLANE1);
+    glDisable(GL_CLIP_PLANE2);
+    glDisable(GL_CLIP_PLANE3);
+    glDisable(GL_CLIP_PLANE4);
+    glDisable(GL_CLIP_PLANE5);
 
     // normal scene draw
     CGraphicsProfileObject* p_gpo = FirstObject;

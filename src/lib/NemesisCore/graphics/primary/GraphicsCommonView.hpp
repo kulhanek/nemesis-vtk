@@ -23,6 +23,7 @@
 #include <NemesisCoreMainHeader.hpp>
 #include <QGraphicsView>
 #include <QOpenGLWidget>
+#include <SmallString.hpp>
 
 // -----------------------------------------------------------------------------
 
@@ -54,6 +55,9 @@ public:
     /// get underline opengl context current
     void ActivateGLContext(void);
 
+    /// finish underline opengl context current
+    void DoneGLContext(void);
+
     /// get OpenGL format
     QSurfaceFormat GetFormat(void);
 
@@ -66,6 +70,11 @@ protected:
 protected:
     QOpenGLWidget*          OpenGLViewport;
     CGraphicsCommonGLScene* Scene;
+
+    bool            IntelGPU;
+    CSmallString    GLVendor;
+    CSmallString    GLRenderer;
+    CSmallString    GLVersion;
 
 protected:
     // events ------------------------------------
@@ -82,6 +91,8 @@ protected:
 
     virtual void enterEvent(QEvent* p_event);
     virtual void leaveEvent(QEvent* p_event);
+
+    virtual void showEvent(QShowEvent *event);
 };
 
 // -----------------------------------------------------------------------------

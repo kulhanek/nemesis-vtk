@@ -23,6 +23,15 @@
 #include <Project.hpp>
 #include <GraphicsCommonGLScene.hpp>
 #include <GraphicsSetupProfile.hpp>
+#include <NemesisOptions.hpp>
+#include <QOpenGLContext>
+#include <iostream>
+#include <QOpenGLDebugLogger>
+#include <NemesisJScript.hpp>
+
+//------------------------------------------------------------------------------
+
+using namespace std;
 
 //==============================================================================
 //------------------------------------------------------------------------------
@@ -35,9 +44,17 @@ CGraphicsCommonView::CGraphicsCommonView(QWidget* p_widget)
     GraphicsView = NULL;
     MouseHandler = NULL;
 
+    IntelGPU = false;
+
     QSurfaceFormat format;
     format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
-    format.setStereo(GraphicsSetupProfile->QuadStereoEnabled);
+    // disabled 2018-11-12
+    // format.setStereo(GraphicsSetupProfile->QuadStereoEnabled);
+
+    // enable OpenGL debugging
+    if( NemesisOptions.IsOptGLDebugSet() == true ){
+        format.setOption(QSurfaceFormat::DebugContext);
+    }
     if( GraphicsSetupProfile->MultiSamplingEnabled ){
         // FIXME
         format.setSamples(2);
@@ -45,6 +62,7 @@ CGraphicsCommonView::CGraphicsCommonView(QWidget* p_widget)
 
     OpenGLViewport = new QOpenGLWidget();
     OpenGLViewport->setFormat(format);
+
     setViewport(OpenGLViewport); // it will take ownership
 
     setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
@@ -84,6 +102,7 @@ void CGraphicsCommonView::SetGraphicsView(CGraphicsView* p_view)
         MouseHandler = NULL;
     }
     if( Scene ) Scene->GraphicsView = GraphicsView;
+
 }
 
 //------------------------------------------------------------------------------
@@ -104,7 +123,20 @@ QOpenGLWidget* CGraphicsCommonView::GetOpenGL(void)
 
 void CGraphicsCommonView::ActivateGLContext(void)
 {
-    if( OpenGLViewport ) OpenGLViewport->makeCurrent();
+    if( OpenGLViewport ){
+        // on IntelGPU this cases crashes
+        // on NVIDIA it is required
+        if( ! IntelGPU ) OpenGLViewport->makeCurrent();
+    }
+}
+
+//------------------------------------------------------------------------------
+
+void CGraphicsCommonView::DoneGLContext(void)
+{
+    if( OpenGLViewport ){
+        if( ! IntelGPU ) OpenGLViewport->doneCurrent();
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -208,6 +240,44 @@ void CGraphicsCommonView::leaveEvent(QEvent* p_event)
     if( GraphicsView == NULL ) return;
     MouseHandler->LeaveEvent(p_event,GraphicsView);
     QGraphicsView::leaveEvent(p_event);
+}
+
+//------------------------------------------------------------------------------
+
+void CGraphicsCommonView::showEvent(QShowEvent *event)
+{
+    if( NemesisOptions.IsOptGLDebugSet() == true ){
+        if( QOpenGLContext::currentContext() != OpenGLViewport->context() ) return;
+        QOpenGLContext* p_ctx = OpenGLViewport->context();
+        if( p_ctx ){
+            if( p_ctx->hasExtension(QByteArrayLiteral("GL_KHR_debug")) == true ){
+                cout << "OpenGLDebug: GL_KHR_debug - present" << endl;
+                QOpenGLDebugLogger* p_logger = new QOpenGLDebugLogger(this);
+                connect(p_logger, SIGNAL(messageLogged(const QOpenGLDebugMessage&)),
+                        NemesisJScript, SLOT(OpenGLMessageLogged(const QOpenGLDebugMessage&)));
+                p_logger->initialize();
+                p_logger->startLogging();
+                cout << "OpenGLDebug: start logging ..." << endl;
+            } else {
+                cout << "OpenGLDebug: GL_KHR_debug - absent" << endl;
+            }
+        } else {
+            cout << "OpenGLDebug: no context" << endl;
+        }
+    }
+
+    // OpenGL status
+    GLVendor = (const char*)(glGetString(GL_VENDOR));
+    GLRenderer = (const char*)(glGetString(GL_RENDERER));
+    GLVersion = (const char*)(glGetString(GL_VERSION));
+    if( NemesisOptions.IsOptVerboseSet() ){
+        cout << "OpenGL Vendor:   " << GLVendor << endl;
+        cout << "OpenGL Renderer: " << GLRenderer << endl;
+        cout << "OpenGL Version:  " << GLVersion << endl;
+    }
+    if( (GLVendor != NULL) && (strstr(GLVendor,"Intel") != NULL) ){
+        IntelGPU = true;
+    }
 }
 
 //==============================================================================

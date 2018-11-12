@@ -25,6 +25,7 @@
 #include <QTextStream>
 #include <NemesisOptions.hpp>
 #include <TerminalOStream.hpp>
+#include <QOpenGLDebugLogger>
 
 //------------------------------------------------------------------------------
 
@@ -70,10 +71,13 @@ public slots:
     /// increment counter of initializations steps
     void IncrementProgressNoGUI(const QString& text);
 
+    /// receive OpenGLDebug message
+    void OpenGLMessageLogged(const QOpenGLDebugMessage& debugMessage);
+
 // section of private data -----------------------------------------------------
 private:
-    QString     Contents;   // command line contents
-    int         InitStatus; // initialization status
+    QString         Contents;   // command line contents
+    int             InitStatus; // initialization status
 
     /// print welcome text to console
     void PrintWelcomeText(void);

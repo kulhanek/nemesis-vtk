@@ -59,6 +59,7 @@ public:
     // options ------------------------------
     CSO_OPT(bool,PrintIFormats)
     CSO_OPT(bool,PrintOBExtensions)
+    CSO_OPT(bool,GLDebug)
     CSO_OPT(bool,Help)
     CSO_OPT(bool,Version)
     CSO_OPT(bool,Verbose)
@@ -85,6 +86,16 @@ public:
                 "printobextensions",                      /* long option name */
                 NULL,                           /* parametr name */
                 "print OpenBabel format extensions")   /* option description */
+
+    //----------------------------------------------------------------------
+    CSO_MAP_OPT(bool,                           /* option type */
+                GLDebug,                        /* option name */
+                false,                          /* default value */
+                false,                          /* is option mandatory */
+                '\0',                           /* short option name */
+                "gldebug",                      /* long option name */
+                NULL,                           /* parametr name */
+                "enable OpenGL debugging")   /* option description */
     //----------------------------------------------------------------------
     CSO_MAP_OPT(bool,                           /* option type */
                 Verbose,                        /* option name */

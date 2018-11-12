@@ -655,9 +655,7 @@ void CGraphicsView::RepaintOnlyThisView(void)
 void CGraphicsView::AttachShadowView(void)
 {
     if( IsOpenGLCanvasAttached() ) return;
-
-    CGraphicsShadowView* p_wp = new CGraphicsShadowView(this);
-    // FIXME
+    new CGraphicsShadowView(this);
 }
 
 //------------------------------------------------------------------------------
@@ -751,7 +749,6 @@ void CGraphicsView::DrawGL(void)
 #endif
         glEnable(GL_COLOR_MATERIAL);
         glShadeModel(GL_SMOOTH);
-        glEnable(GL_POLYGON_MODE);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
         //glEnable(GL_CULL_FACE);
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -762,9 +759,14 @@ void CGraphicsView::DrawGL(void)
         glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE);
 
         // disable all lights
-        for(GLenum i=0; i < GL_MAX_LIGHTS-1;i++){
-            glDisable(GL_LIGHT0+i);
-        }
+        glDisable(GL_LIGHT0);
+        glDisable(GL_LIGHT1);
+        glDisable(GL_LIGHT2);
+        glDisable(GL_LIGHT3);
+        glDisable(GL_LIGHT4);
+        glDisable(GL_LIGHT5);
+        glDisable(GL_LIGHT6);
+        glDisable(GL_LIGHT7);
 
         // setup mode
         glRenderMode(GL_RENDER);
@@ -787,14 +789,17 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
 {
     if( DrawGLCanvas == NULL ) return(CSelObject());
 
-    // this cases segfault on Intel GPU
-    DrawGLCanvas->ActivateGLContext();
-
     // selection is disabled in stereo mode
     if( StereoMode != ESM_OFF ){
         GetProject()->TextNotification(ETNT_WARNING,"selection is disabled in the stereo mode",ETNT_WARNING_DELAY);
         return(CSelObject());
     }
+
+    // this is problematic part ...
+    // NVIDIA - cause problems with swapBuffer(), wrong rendering
+    // Intel - cause later crashes
+    // see inside for workaround
+    DrawGLCanvas->ActivateGLContext();
 
     GetViews()->RegisterCurrentView(this);
 
@@ -811,7 +816,6 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
         glDisable(GL_LIGHTING);
         glDisable(GL_COLOR_MATERIAL);
         glShadeModel(GL_SMOOTH);
-        glDisable(GL_POLYGON_MODE);
 
         glRenderMode(GL_SELECT);
         glInitNames();
@@ -829,6 +833,11 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
 
     // get object
     int top_in_buffer = glRenderMode(GL_RENDER);
+
+    // this is problematic part ...
+    // see inside for workaround
+    DrawGLCanvas->DoneGLContext();
+
     if( top_in_buffer < 1 ) {
         CSelObject obj = LoadedObjects.FindObject(0);
         LoadedObjects.Clear();

@@ -333,6 +333,11 @@ int CNemesisJScript::InitSubsystems(void)
     GlobalDesktop->LoadDefaultDesktop();
     MouseDriverSetup->LoadUserSetup();
 
+    // OpenGLDebugging
+    if( NemesisOptions.IsOptGLDebugSet() ){
+        cout << "OpenGLDebug: requested" << endl;
+    }
+
     emit SetupLevelChanged("All done.");
 
     // force quit the window
@@ -445,6 +450,13 @@ void CNemesisJScript::PrintOBExtensions(void)
 void CNemesisJScript::IncrementProgressNoGUI(const QString& text)
 {
     cout << " >>> " << text.toStdString() << endl;
+}
+
+//------------------------------------------------------------------------------
+
+void CNemesisJScript::OpenGLMessageLogged(const QOpenGLDebugMessage& debugMessage)
+{
+   cout << debugMessage.message().toStdString() << endl;
 }
 
 //------------------------------------------------------------------------------
