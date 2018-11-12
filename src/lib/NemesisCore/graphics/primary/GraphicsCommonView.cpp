@@ -52,7 +52,7 @@ CGraphicsCommonView::CGraphicsCommonView(QWidget* p_widget)
     // format.setStereo(GraphicsSetupProfile->QuadStereoEnabled);
 
     // enable OpenGL debugging
-    if( NemesisOptions.IsOptGLDebugSet() == true ){
+    if( NemesisOptions.GetOptGLDebug() == true ){
         format.setOption(QSurfaceFormat::DebugContext);
     }
     if( GraphicsSetupProfile->MultiSamplingEnabled ){
@@ -246,7 +246,7 @@ void CGraphicsCommonView::leaveEvent(QEvent* p_event)
 
 void CGraphicsCommonView::showEvent(QShowEvent *event)
 {
-    if( NemesisOptions.IsOptGLDebugSet() == true ){
+    if( NemesisOptions.GetOptGLDebug() == true ){
         if( QOpenGLContext::currentContext() != OpenGLViewport->context() ) return;
         QOpenGLContext* p_ctx = OpenGLViewport->context();
         if( p_ctx ){
@@ -270,7 +270,7 @@ void CGraphicsCommonView::showEvent(QShowEvent *event)
     GLVendor = (const char*)(glGetString(GL_VENDOR));
     GLRenderer = (const char*)(glGetString(GL_RENDERER));
     GLVersion = (const char*)(glGetString(GL_VERSION));
-    if( NemesisOptions.IsOptVerboseSet() ){
+    if( NemesisOptions.GetOptVerbose() ){
         cout << "OpenGL Vendor:   " << GLVendor << endl;
         cout << "OpenGL Renderer: " << GLRenderer << endl;
         cout << "OpenGL Version:  " << GLVersion << endl;

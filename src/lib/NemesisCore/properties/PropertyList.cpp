@@ -62,7 +62,11 @@ CPropertyList::CPropertyList(CProject* p_project,bool no_index)
 
 CPropertyList::~CPropertyList(void)
 {
-
+    // this is necessary as setParent(NULL) is called in Property destructor
+    while( ! children().isEmpty() ){
+        QObject* p_obj = children().first();
+        delete p_obj;
+    }
 }
 
 //==============================================================================

@@ -46,7 +46,6 @@ public:
     CSO_PROG_ARGS_SHORT_DESC_END
 
     CSO_PROG_ARGS_LONG_DESC_BEGIN
-    "<b>Arguments:</b>\n"
     "   -npr file       open a nemesis project file\n"
     "   -build          create a build project\n"
     "   -traj           create a trajectory project\n"
@@ -59,6 +58,7 @@ public:
     // options ------------------------------
     CSO_OPT(bool,PrintIFormats)
     CSO_OPT(bool,PrintOBExtensions)
+    CSO_OPT(bool,KeepLastDir)
     CSO_OPT(bool,GLDebug)
     CSO_OPT(bool,Help)
     CSO_OPT(bool,Version)
@@ -86,7 +86,15 @@ public:
                 "printobextensions",                      /* long option name */
                 NULL,                           /* parametr name */
                 "print OpenBabel format extensions")   /* option description */
-
+    //----------------------------------------------------------------------
+    CSO_MAP_OPT(bool,                           /* option type */
+                KeepLastDir,                        /* option name */
+                false,                          /* default value */
+                false,                          /* is option mandatory */
+                '\0',                           /* short option name */
+                "keeplastdir",                      /* long option name */
+                NULL,                           /* parametr name */
+                "keep the last directory for Open/Save otherwise use the current working directory")   /* option description */
     //----------------------------------------------------------------------
     CSO_MAP_OPT(bool,                           /* option type */
                 GLDebug,                        /* option name */

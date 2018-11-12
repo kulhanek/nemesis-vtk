@@ -30,6 +30,7 @@
 #include <QTextStream>
 #include <QFile>
 #include <QFileInfo>
+#include <QDir>
 
 #include <WelcomeWindow.hpp>
 #include <AboutWindow.hpp>
@@ -263,6 +264,11 @@ int CNemesisJScript::InitSubsystems(void)
     GlobalSetup = new CGlobalSetup();
     GlobalSetup->Init();
 
+    if( NemesisOptions.GetOptKeepLastDir() == false ){
+        QString pwd = QDir::currentPath();
+        GlobalSetup->SetLastOpenFilePath(pwd,GenericProjectID);
+    }
+
     if( NemesisOptions.GetOptVerbose() ){
         GlobalSetup->PrintSetup();
     }
@@ -334,7 +340,7 @@ int CNemesisJScript::InitSubsystems(void)
     MouseDriverSetup->LoadUserSetup();
 
     // OpenGLDebugging
-    if( NemesisOptions.IsOptGLDebugSet() ){
+    if( NemesisOptions.GetOptGLDebug() ){
         cout << "OpenGLDebug: requested" << endl;
     }
 
