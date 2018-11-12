@@ -108,7 +108,7 @@ void CGDrvTrajImportTool::ExecuteDialog(void)
     filters << "All Files (*)";
 
     // open qfiledialog for file open with filters set correctly
-    QFileDialog* p_dialog = new QFileDialog();
+    QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
     p_dialog->setNameFilters(filters);
     p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath()));
     p_dialog->setFileMode(QFileDialog::ExistingFile);

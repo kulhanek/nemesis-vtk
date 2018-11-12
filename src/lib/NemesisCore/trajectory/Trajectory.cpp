@@ -68,6 +68,9 @@ CTrajectory::CTrajectory(CTrajectoryList* p_list)
     PlayStatus = ETPS_STOP;
     PlayTickTime = 10;
     PlayForward = false;
+
+    PlayTimer = new QTimer(this);
+    connect(PlayTimer, SIGNAL(timeout()), this, SLOT(PlayTick(void)));
 }
 
 //------------------------------------------------------------------------------
@@ -89,12 +92,17 @@ CTrajectory::CTrajectory(CTrajectoryList* p_list,bool no_index)
     PlayStatus = ETPS_STOP;
     PlayTickTime = 10;
     PlayForward = false;
+
+    PlayTimer = new QTimer(this);
+    connect(PlayTimer, SIGNAL(timeout()), this, SLOT(PlayTick(void)));
 }
 
 //------------------------------------------------------------------------------
 
 CTrajectory::~CTrajectory(void)
 {
+    PlayTimer->stop();
+
     CTrajectoryList* p_list = GetTrajectories();
     if( p_list ) p_list->BeginUpdate();
 
@@ -554,7 +562,7 @@ void CTrajectory::Play(void)
     PlayStatus = ETPS_PLAY;
     PlayForward = true;
     EmitOnSnapshotChanged();
-    QTimer::singleShot(PlayTickTime,this,SLOT(PlayTick(void)));
+    PlayTimer->start(10);
 }
 
 //------------------------------------------------------------------------------
@@ -565,6 +573,7 @@ void CTrajectory::Pause(void)
     if( PlayStatus == ETPS_PAUSE ){
         Play();
     } else {
+        PlayTimer->stop();
         PlayStatus = ETPS_PAUSE;
         EmitOnSnapshotChanged();
     }
@@ -574,6 +583,7 @@ void CTrajectory::Pause(void)
 
 void CTrajectory::Stop(void)
 {
+    PlayTimer->stop();
     PlayStatus = ETPS_STOP;
     EmitOnSnapshotChanged();
 }
@@ -657,7 +667,6 @@ void CTrajectory::PlayTick(void)
             }
         }
     }
-    QTimer::singleShot(PlayTickTime,this,SLOT(PlayTick(void)));
 }
 
 //==============================================================================

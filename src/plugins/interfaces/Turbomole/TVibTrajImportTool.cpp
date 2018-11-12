@@ -35,6 +35,8 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 
+#include <MainWindow.hpp>
+
 #include "TVibTrajImportTool.hpp"
 #include "TVibTrajSegment.hpp"
 #include "TurbomoleModule.hpp"
@@ -101,7 +103,7 @@ void CTVibTrajImportTool::InitInternalDialog(void)
     filters << "Turbomole Vibrations (control)";
 
     // open qfiledialog for file open with filters set correctly
-    Dialog = new QFileDialog();
+    Dialog = new QFileDialog(GetProject()->GetMainWindow());
     Dialog->setNameFilters(filters);
     Dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(TVibTrajImportToolID)));
     Dialog->setFileMode(QFileDialog::ExistingFile);

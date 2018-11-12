@@ -67,6 +67,7 @@
 #include <AngleProperty.hpp>
 #include <TorsionProperty.hpp>
 #include <PropertyAtomList.hpp>
+#include <MainWindow.hpp>
 
 #include "GaussianInputExportTool.hpp"
 
@@ -306,7 +307,7 @@ void CGaussianInputExportTool::SaveInputFile(void)
     filters << "Gaussian input file (*.com)";
     filters << "All files (*)";
 
-    QFileDialog* p_dialog = new QFileDialog();
+    QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
     p_dialog->setDirectory (QString(GlobalSetup->GetLastOpenFilePath(GaussianInputExportToolID)));
     p_dialog->setNameFilters(filters);
     p_dialog->setFileMode(QFileDialog::AnyFile);

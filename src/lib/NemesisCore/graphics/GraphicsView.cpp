@@ -788,9 +788,9 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
     if( DrawGLCanvas == NULL ) return(CSelObject());
 
     // this cases segfault on Intel GPU
-    // DrawGLCanvas->ActivateGLContext();
+    DrawGLCanvas->ActivateGLContext();
 
-    // selection is disbaled in stereo mode
+    // selection is disabled in stereo mode
     if( StereoMode != ESM_OFF ){
         GetProject()->TextNotification(ETNT_WARNING,"selection is disabled in the stereo mode",ETNT_WARNING_DELAY);
         return(CSelObject());

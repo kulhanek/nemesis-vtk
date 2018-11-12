@@ -23,6 +23,7 @@
 #include <NemesisCoreMainHeader.hpp>
 #include <ProObject.hpp>
 #include <IndexCounter.hpp>
+#include <QTimer>
 
 // -----------------------------------------------------------------------------
 
@@ -271,6 +272,7 @@ private:
     ETrajectoryPlayStatus   PlayStatus;
     int                     PlayTickTime;
     bool                    PlayForward;
+    QTimer*                 PlayTimer;
 
     /// lists - ordered by seqindex
     QList<CTrajectorySegment*>  Segments;

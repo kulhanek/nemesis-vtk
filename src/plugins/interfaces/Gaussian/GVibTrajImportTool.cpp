@@ -100,7 +100,7 @@ void CGVibTrajImportTool::ExecuteDialog(void)
     filters << "Gaussian Vibrations (*.log)";
 
     // open qfiledialog for file open with filters set correctly
-    QFileDialog* p_dialog = new QFileDialog();
+    QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
     p_dialog->setNameFilters(filters);
     p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(GVibTrajImportToolID)));
     p_dialog->setFileMode(QFileDialog::ExistingFile);
