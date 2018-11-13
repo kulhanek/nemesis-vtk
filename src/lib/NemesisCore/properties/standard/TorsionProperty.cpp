@@ -212,8 +212,10 @@ double CTorsionProperty::GetScalarValue(void)
 //    ! value of coordinate
 
     double s1 = (rkjy*rklz - rkjz*rkly)*rijx + (rkjz*rklx - rkjx*rklz)*rijy + (rkjx*rkly - rkjy*rklx)*rijz;
-
-    double value = sgn<double>(s1)*acos( (dx*gx + dy*gy + dz*gz)/sqrt(d2*g2) );
+    double rt = (dx*gx + dy*gy + dz*gz)/sqrt(d2*g2);
+    if( rt < -1.0 ) rt = -1.0;
+    if( rt > 1.0 ) rt = 1.0;
+    double value = sgn<double>(s1)*acos( rt );
 
     return(value);
 }

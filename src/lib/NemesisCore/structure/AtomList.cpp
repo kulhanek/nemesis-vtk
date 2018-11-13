@@ -517,19 +517,19 @@ bool CAtomList::AlignPrincipalAxesWH(EAxisType axis,EGeometryScope scope)
     CPoint  aaxis, baxis, caxis;
     switch(axis) {
     case EAT_AXIS_X:
-        // the largest moment is aligned witw x-axis
+        // the largest moment is aligned with x-axis
         aaxis = princip_axes.GetAAxis();
         baxis = princip_axes.GetBAxis();
         caxis = princip_axes.GetCAxis();
         break;
     case EAT_AXIS_Y:
-        // the largest moment is aligned witw y-axis
+        // the largest moment is aligned with y-axis
         aaxis = princip_axes.GetCAxis();
         baxis = princip_axes.GetAAxis();
         caxis = princip_axes.GetBAxis();
         break;
     case EAT_AXIS_Z:
-        // the largest moment is aligned witw z-axis
+        // the largest moment is aligned with z-axis
         aaxis = princip_axes.GetBAxis();
         baxis = princip_axes.GetCAxis();
         caxis = princip_axes.GetAAxis();
