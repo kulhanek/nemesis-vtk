@@ -112,6 +112,9 @@ QObject* GaussianInputExportToolCB(void* p_data)
 CGaussianInputExportTool::CGaussianInputExportTool(CProject* p_project)
     : CWorkPanel(&GaussianInputExportToolObject,p_project,EWPR_DIALOG)
 {
+    // force global setup
+    GlobalWPSetup = true;
+
     WidgetUI.setupUi(this);
 
     Structure = p_project->GetActiveStructure();
@@ -148,6 +151,9 @@ CGaussianInputExportTool::CGaussianInputExportTool(CProject* p_project)
         this, SLOT(UpdatePreviewText()));
     //----------------
     connect(WidgetUI.includeFragCB, SIGNAL(toggled(bool)),
+        this, SLOT(UpdatePreviewText()));
+    //----------------
+    connect(WidgetUI.bsseCB, SIGNAL(toggled(bool)),
         this, SLOT(UpdatePreviewText()));
     //----------------
     connect(WidgetUI.previewText, SIGNAL(textChanged()),
@@ -365,18 +371,34 @@ QString CGaussianInputExportTool::GetCalculationType(void)
     // Translate the enum to text for the output generation
     switch (WidgetUI.calculationCB->currentIndex()) {
         case 0:
+            WidgetUI.bsseCB->setEnabled(true);
             return "SCF=Tight";
         case 1:
+            WidgetUI.bsseCB->setEnabled(true);
             return "Opt";
         case 2:
-            return "Opt=(CalcFC,TS,NoEigenTest,MaxCycle=25)";
+            WidgetUI.bsseCB->setChecked(false);
+            WidgetUI.bsseCB->setEnabled(false);
+            return "Opt(CalcFC,TS,NoEigenTest,MaxCycle=25)";
         case 3:
+            WidgetUI.bsseCB->setChecked(false);
+            WidgetUI.bsseCB->setEnabled(false);
             return "Freq";
         case 4:
+            WidgetUI.bsseCB->setChecked(false);
+            WidgetUI.bsseCB->setEnabled(false);
             return "Opt=ModRedundant";
         case 5:
-            return "SCF=Tight Pop=CHELPG IOp=(6/33=2,6/50=1)";
+            WidgetUI.bsseCB->setChecked(false);
+            WidgetUI.bsseCB->setEnabled(false);
+            return "SCF=Tight Pop=CHELPG IOp(6/33=2,6/50=1)";
         case 6:
+            WidgetUI.bsseCB->setChecked(false);
+            WidgetUI.bsseCB->setEnabled(false);
+            return "SCF=Tight Pop=MK IOp(6/33=2,6/50=1)";
+        case 7:
+            WidgetUI.bsseCB->setChecked(false);
+            WidgetUI.bsseCB->setEnabled(false);
             return "SCF=Tight Pop=MK";
         default:
             return "SP";
@@ -551,6 +573,12 @@ QString CGaussianInputExportTool::GetBasisType(void)
 
 void CGaussianInputExportTool::GenerateHeader(QTextStream& str)
 {
+    NumberOfFragments = 0;
+
+    if( WidgetUI.includeFragCB->isChecked() || WidgetUI.bsseCB->isChecked() ){
+        InitFragmentIndexes();
+    }
+
     // These directives are required before the job specification
     if (WidgetUI.procSB->value() > 1) {
         str << "%NProcShared=" << WidgetUI.procSB->value() << '\n';
@@ -576,6 +604,10 @@ void CGaussianInputExportTool::GenerateHeader(QTextStream& str)
         str << " Guess=Mix";
     }
 
+    if( WidgetUI.bsseCB->isChecked() && (NumberOfFragments >= 2) ) {
+        str << " CounterPoise=" << NumberOfFragments;
+    }
+
     str << " NoSymm";
 
     // Title line
@@ -595,10 +627,6 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
     // Now for the charge and multiplicity
     str << WidgetUI.chargeSB->value() << ' ' << WidgetUI.multiplicitySB->value() << '\n';
 
-    if( WidgetUI.includeFragCB->isChecked() ){
-        InitFragmentIndexes();
-    }
-
     // Now to output the actual molecular coordinates
     // Cartesian coordinates
     switch(WidgetUI.coordCB->currentIndex() ) {
@@ -607,7 +635,7 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
                 CAtom* p_atom = static_cast<CAtom*>(p_qatom);
                 str << qSetFieldWidth(2) << right
                     << QString(PeriodicTable.GetSymbol(p_atom->GetZ()));
-                if( WidgetUI.includeFragCB->isChecked() ){
+                if( WidgetUI.includeFragCB->isChecked() || WidgetUI.bsseCB->isChecked() ){
                     str << "(Fragment=" << qSetFieldWidth(0) << FragIndexes[p_atom] << ")";
                 }
                 str << qSetFieldWidth(13) << qSetRealNumberPrecision(6) << forcepoint
@@ -645,7 +673,7 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
 
                 str << qSetFieldWidth(2) << right
                     << QString(PeriodicTable.GetSymbol(p_atom->GetZ()));
-                if( WidgetUI.includeFragCB->isChecked() ){
+                if( WidgetUI.includeFragCB->isChecked() || WidgetUI.bsseCB->isChecked() ){
                     str << "(Fragment=" << qSetFieldWidth(0) << FragIndexes[p_atom] << ")";
                 }
                 str << qSetFieldWidth(0);
@@ -785,7 +813,7 @@ void CGaussianInputExportTool::GenerateCoordinates(QTextStream& str)
         }
 
     }
-    if( WidgetUI.calculationCB->currentIndex() == 5 ) {
+    if( (WidgetUI.calculationCB->currentIndex() == 5) || (WidgetUI.calculationCB->currentIndex() == 6) ) {
         str << "gaussianESP.gesp" <<'\n' ;
         str << '\n';
     }
@@ -825,6 +853,7 @@ void CGaussianInputExportTool::GeneratePBCCoordinates(QTextStream& str)
 
 void CGaussianInputExportTool::InitFragmentIndexes(void)
 {
+    NumberOfFragments = 0;
     FragIndexes.clear();
     if( Structure == NULL ) return;
 
@@ -872,6 +901,8 @@ void CGaussianInputExportTool::InitFragmentIndexes(void)
 
     indexes.sort();
     indexes.unique();
+
+    NumberOfFragments = indexes.size();
 
     // reindex
     foreach(QObject* p_qobj, Structure->GetAtoms()->children()) {

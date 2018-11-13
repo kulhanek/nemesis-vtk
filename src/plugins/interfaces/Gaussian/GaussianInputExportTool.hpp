@@ -65,6 +65,7 @@ private:
     Ui::GaussianInputExportTool WidgetUI;
     CStructure*                 Structure;
     QMap<CAtom*,int>            FragIndexes;
+    int                         NumberOfFragments;
 
     // Generate an input deck as a string
     QString GenerateInputDeck(void);

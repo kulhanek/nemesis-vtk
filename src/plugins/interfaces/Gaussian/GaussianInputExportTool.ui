@@ -412,7 +412,12 @@
           </item>
           <item>
            <property name="text">
-            <string>MK Charges</string>
+            <string>ESP Calculation (MKS)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MKS Charges</string>
            </property>
           </item>
          </widget>
@@ -581,6 +586,13 @@
       <widget class="QCheckBox" name="includeFragCB">
        <property name="text">
         <string>Include fragments</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="bsseCB">
+       <property name="text">
+        <string>BSSE</string>
        </property>
       </widget>
      </item>

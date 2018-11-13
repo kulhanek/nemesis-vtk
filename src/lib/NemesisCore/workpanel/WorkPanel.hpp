@@ -109,6 +109,7 @@ public slots:
 protected:
     EWorkPanelRole      Role;
     CWorkPanelContainer Container;          // container of work panel window
+    bool                GlobalWPSetup;      // force global setup even if project is defined
 
     QMenu*              PopMenu;            // workpanel popup menu
 

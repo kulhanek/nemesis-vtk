@@ -53,6 +53,7 @@ CWorkPanel::CWorkPanel(CPluginObject* p_objectinfo,CProject* p_project,EWorkPane
 {
     Role = role;
     Project = p_project;
+    GlobalWPSetup = false;
 
     // set open flag
     CXMLElement* p_ele = GetWorkPanelSetup();
@@ -123,7 +124,7 @@ CWorkPanel::~CWorkPanel(void)
 
 CXMLElement* CWorkPanel::GetWorkPanelSetup(void)
 {
-    if( Project ){
+    if( Project && (GlobalWPSetup == false) ){
         return( Project->GetDesktop()->GetWorkPanelSetup(GetType()) );
     } else {
         return( GlobalDesktop->GetWorkPanelSetup(GetType()) );
