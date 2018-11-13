@@ -150,7 +150,8 @@ void CGDrvTrajSegmentDesigner::CreateGraph(void)
     Plot->xAxis->setLabel("CV [" + Object->GetCVUnit()->GetUnitName() + "]" );
     Plot->yAxis->setLabel("ΔEr [" + PQ_ENERGY->GetUnitName() + "]");
 
-    QCPGraph* p_graph = Plot->addGraph();
+    QCPCurve* p_graph = new QCPCurve(Plot->xAxis, Plot->yAxis);
+    // QCPGraph* p_graph = Plot->addGraph();
     p_graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc));
     p_graph->selectionDecorator()->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssSquare),QCPScatterStyle::spAll);
     Object->PopulateGraphData(p_graph);
@@ -172,7 +173,7 @@ void CGDrvTrajSegmentDesigner::UpdateGraph(void)
     if( Plot == NULL ) return;
     Plot->xAxis->setLabel("CV [" + Object->GetCVUnit()->GetUnitName() + "]" );
     Plot->yAxis->setLabel("ΔEr [" + PQ_ENERGY->GetUnitName() + "]");
-    Object->PopulateGraphData(Plot->graph());
+    Object->PopulateGraphData(dynamic_cast<QCPCurve*>(Plot->plottable()));
     Plot->replot();
 }
 
@@ -277,12 +278,14 @@ void CGDrvTrajSegmentDesigner::InitPointerValues(void)
         // select graph
         QCPDataRange dr(Object->GetCurrentSnapshotIndex()-1,Object->GetCurrentSnapshotIndex());
         QCPDataSelection ds(dr);
-        Plot->graph()->setSelection(ds);
+        QCPAbstractPlottable* p_graph = Plot->plottable();
+        p_graph->setSelection(ds);
     } else {
         // clear selection
         WidgetUI.energyTV->selectionModel()->clearSelection();
         QCPDataSelection ds;
-        Plot->graph()->setSelection(ds);
+        QCPAbstractPlottable* p_graph = Plot->plottable();
+        p_graph->setSelection(ds);
         }
 
     Plot->replot();
@@ -314,12 +317,12 @@ void CGDrvTrajSegmentDesigner::SnapshotClicked(const QModelIndex& index)
 
 void CGDrvTrajSegmentDesigner::GraphClicked(void)
 {
-    QCPGraph* p_graph = Plot->graph();
+    QCPAbstractPlottable* p_graph = Plot->plottable();
     QCPDataSelection sd = p_graph->selection();
 
     int selected_id = -1;
     foreach (QCPDataRange dataRange, sd.dataRanges()) {
-       selected_id = dataRange.begin() + 1;     // this should done only once
+       selected_id = dataRange.begin() + 1;     // this should be done only once
     }
     if( selected_id == -1 ) return;
 

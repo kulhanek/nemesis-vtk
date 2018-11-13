@@ -29,7 +29,7 @@
 // -----------------------------------------------------------------------------
 
 class CTrajectory;
-class QCPGraph;
+class QCPCurve;
 class CPhysicalQuantity;
 
 // -----------------------------------------------------------------------------
@@ -62,7 +62,7 @@ public:
     CPhysicalQuantity* GetCVUnit(void) const;
 
     /// get data
-    void PopulateGraphData(QCPGraph* p_graph);
+    void PopulateGraphData(QCPCurve* p_graph);
 
 // input/output methods --------------------------------------------------------
     /// load trajectory data

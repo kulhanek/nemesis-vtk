@@ -24,6 +24,8 @@
 #include <Structure.hpp>
 #include <AtomList.hpp>
 #include <OpenBabelUtils.hpp>
+#include <PhysicalQuantity.hpp>
+#include <PhysicalQuantities.hpp>
 
 #include "GaussianUtils.hpp"
 #include "openbabel/mol.h"
@@ -94,7 +96,8 @@ bool CGaussianUtils::ReadMethod(std::istream& sin,int& lineno,QString& method)
 
 //------------------------------------------------------------------------------
 
-bool CGaussianUtils::ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QString& mod)
+bool CGaussianUtils::ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QString& mod,
+                                double &cvscalefac,CPhysicalQuantity* &p_pq)
 {
     scd = "";
     mod = "";
@@ -117,18 +120,26 @@ bool CGaussianUtils::ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QStri
                 case 'B':
                     str >> a1 >> a2;
                     mod = QString("R(%1,%2)").arg(a1).arg(a2);
+                    cvscalefac = 1.0;
+                    p_pq = PQ_DISTANCE;
                     return(true);
                 case 'A':
                     str >> a1 >> a2 >> a3;
                     mod = QString("A(%1,%2,%3)").arg(a1).arg(a2).arg(a3);
+                    cvscalefac = M_PI/180.0;
+                    p_pq = PQ_ANGLE;
                     return(true);
                 case 'D':
                     str >> a1 >> a2 >> a3 >> a4;
                     mod = QString("D(%1,%2,%3,%4)").arg(a1).arg(a2).arg(a3).arg(a4);
+                    cvscalefac = M_PI/180.0;
+                    p_pq = PQ_ANGLE;
                     return(true);
             }
         }
     }
+
+    cvscalefac = 1.0;
 
     return(false);
 }

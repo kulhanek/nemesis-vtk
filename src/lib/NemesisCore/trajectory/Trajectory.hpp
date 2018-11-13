@@ -51,6 +51,9 @@ enum ETrajectoryPlayStatus {
     ETPS_PLAY
 };
 
+    // user flags               = 0x00010000    // first user flag
+#define EPOF_TRAJ_REBUILD_BONDS   0x00010000
+
 // -----------------------------------------------------------------------------
 
 ///  base class for trajectory based data

@@ -34,6 +34,7 @@
 #include <QTimer>
 #include <PluginDatabase.hpp>
 #include <AtomList.hpp>
+#include <BondList.hpp>
 #include <StructureList.hpp>
 
 //------------------------------------------------------------------------------
@@ -1149,7 +1150,15 @@ void CTrajectory::EndUpdate(void)
 void CTrajectory::EmitOnSnapshotChanged(void)
 {
     if( GetStructure() != NULL ){
-        GetStructure()->GetAtoms()->SetSnapshot(GetCurrentSnapshot());
+        CSnapshot* p_oldsnap = GetStructure()->GetAtoms()->GetSnapshot();
+        CSnapshot* p_newsnap = GetCurrentSnapshot();
+        GetStructure()->GetAtoms()->SetSnapshot(p_newsnap);
+        if( p_oldsnap != p_newsnap ){
+            // rebuild bonds if requested
+            if( IsFlagSet(static_cast<EProObjectFlag>(EPOF_TRAJ_REBUILD_BONDS)) ){
+                GetStructure()->GetBonds()->RecreateBonds();
+            }
+        }
     }
     emit OnSnapshotChanged();
     if( GetTrajectories() ){

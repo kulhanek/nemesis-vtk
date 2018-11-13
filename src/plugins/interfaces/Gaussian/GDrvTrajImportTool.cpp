@@ -170,6 +170,11 @@ void CGDrvTrajImportTool::LaunchJob(const QString& file)
         return;
     }
 
+    // request bond rebuild
+    CProObjectFlags flags = p_traj->GetFlags();
+    SET_FLAG(flags,static_cast<EProObjectFlag>(EPOF_TRAJ_REBUILD_BONDS),true);
+    p_traj->SetFlags(flags);
+
     bool imported_str = false;
 
     if( p_str->GetAtoms()->GetNumberOfAtoms() == 0 ){

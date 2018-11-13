@@ -159,6 +159,9 @@ CTrajectoryDesigner::CTrajectoryDesigner(CTrajectory* p_owner)
     //------------------
     connect(WidgetUI.filterInfoPB,SIGNAL(clicked(bool)),
             this,SLOT(FilterInfo(void)));
+    //------------------
+    connect(WidgetUI.rebuildBondsCB,SIGNAL(clicked(bool)),
+            this,SLOT(SetChangedFlagTrue(void)));
 
     //--------------
     connect(WidgetUI.buttonBox1, SIGNAL(clicked(QAbstractButton*)),
@@ -218,6 +221,9 @@ void CTrajectoryDesigner::ApplyAllValues(void)
     if( Object->BeginChangeWH(EHCL_COMPOSITE,Object->GetType().GetName()) == NULL ) return;
 
     Changing = true;
+        CProObjectFlags flags = Object->GetFlags();
+        SET_FLAG(flags,static_cast<EProObjectFlag>(EPOF_TRAJ_REBUILD_BONDS),WidgetUI.rebuildBondsCB->isChecked());
+        Object->SetFlagsWH(flags);
         General->ApplyValues();
         ApplyValues();
         RefBy->ApplyValues();
@@ -274,6 +280,8 @@ void CTrajectoryDesigner::InitValues(void)
     WidgetUI.structureLO->blockSignals(true);
     WidgetUI.structureLO->setObject(Object->GetStructure());
     WidgetUI.structureLO->blockSignals(false);
+
+    WidgetUI.rebuildBondsCB->setChecked(Object->IsFlagSet(EPOF_TRAJ_REBUILD_BONDS));
 
     WidgetUI.currentSnapshotSB->setValue(Object->GetCurrentSnapshotIndex());
     WidgetUI.numberOfSnapshotsSB->setValue(Object->GetNumberOfSnapshots());

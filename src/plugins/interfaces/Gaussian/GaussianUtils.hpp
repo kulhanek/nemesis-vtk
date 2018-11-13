@@ -27,6 +27,7 @@
 //------------------------------------------------------------------------------
 
 class CStructure;
+class CPhysicalQuantity;
 
 //------------------------------------------------------------------------------
 
@@ -51,7 +52,7 @@ public:
     static bool ReadMethod(std::istream& sin,int& lineno,QString& method);
 
     /// read SCD definition
-    static bool ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QString& mod);
+    static bool ReadSCDDef(std::istream& sin,int& lineno,QString& scd,QString& mod,double& cvscalefac,CPhysicalQuantity* &p_pq);
 
     /// read SCD value
     static bool ReadSCDValue(std::istream& sin,int& lineno,const QString& mod,double& value);

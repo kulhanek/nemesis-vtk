@@ -208,7 +208,7 @@ void CGDrvTrajSegment::CreateModel(void)
 
 //------------------------------------------------------------------------------
 
-void CGDrvTrajSegment::PopulateGraphData(QCPGraph* p_graph)
+void CGDrvTrajSegment::PopulateGraphData(QCPCurve* p_graph)
 {
     // get first energy
     double first_energy = 0;
@@ -254,7 +254,7 @@ void CGDrvTrajSegment::LoadTrajectoryData(void)
 
     // read SCD
     QString mod;
-    if( CGaussianUtils::ReadSCDDef(sin,lineno,SCDDef,mod) == false ) return;
+    if( CGaussianUtils::ReadSCDDef(sin,lineno,SCDDef,mod,CVScaleFac,PQ_CV) == false ) return;
 
     // read snapshots
     while( sin.eof() == false ){
@@ -360,8 +360,7 @@ bool CGDrvTrajSegment::CreateGeoProperty(void)
                 // create graphical representation
                 p_prop->CreateGraphicsObject();
             }
-            CVScaleFac = 1.0;
-            PQ_CV = PQ_DISTANCE;
+
             return(true);
         }
         case 'A': {
@@ -378,8 +377,6 @@ bool CGDrvTrajSegment::CreateGeoProperty(void)
                 // create graphical representation
                 p_prop->CreateGraphicsObject();
             }
-            CVScaleFac = M_PI/180.0;
-            PQ_CV = PQ_ANGLE;
             return(true);
         }
         case 'D':{
@@ -398,8 +395,6 @@ bool CGDrvTrajSegment::CreateGeoProperty(void)
                 // create graphical representation
                 p_prop->CreateGraphicsObject();
             }        
-            CVScaleFac = M_PI/180.0;
-            PQ_CV = PQ_ANGLE;
             return(true);
         }
     }
