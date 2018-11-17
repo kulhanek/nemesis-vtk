@@ -103,7 +103,12 @@ void CPdbqtExportTool::ExecuteDialog(void)
     p_dialog->setDefaultSuffix("pdbqt");
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LaunchJob(p_dialog->selectedFiles().at(0));
+        QString file = p_dialog->selectedFiles().at(0);
+        QFileInfo finfo(file);
+        if( finfo.suffix().isEmpty() ){
+            file += ".pdbqt";
+        }
+        LaunchJob(file);
     }
 
     delete p_dialog;

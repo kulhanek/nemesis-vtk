@@ -327,7 +327,12 @@ void CGaussianInputExportTool::SaveInputFile(void)
     QString fileName = p_dialog->selectedFiles().at(0);
     GlobalSetup->SetLastOpenFilePathFromFile(fileName,GaussianInputExportToolID);
 
-    delete p_dialog;
+    delete p_dialog; 
+
+    QFileInfo finfo(fileName);
+    if( finfo.suffix().isEmpty() ){
+        fileName += ".com";
+    }
 
     QFile file(fileName);
 

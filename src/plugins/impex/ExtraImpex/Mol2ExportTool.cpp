@@ -103,7 +103,12 @@ void CMol2ExportTool::ExecuteDialog(void)
     p_dialog->setDefaultSuffix("mol2");
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LaunchJob(p_dialog->selectedFiles().at(0));
+        QString file = p_dialog->selectedFiles().at(0);
+        QFileInfo finfo(file);
+        if( finfo.suffix().isEmpty() ){
+            file += ".mol2";
+        }
+        LaunchJob(file);
     }
 
     delete p_dialog;

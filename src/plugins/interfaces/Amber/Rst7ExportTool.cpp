@@ -83,22 +83,26 @@ CRst7ExportTool::CRst7ExportTool(CProject* p_project)
 
 void CRst7ExportTool::ExecuteDialog(void)
 {
-    // parse formats list ------------------------
-    QStringList filters;
-    filters << "Amber restart (*.rst7)";
-    filters << "All files (*)";
-
     // --------------------------------
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
 
     p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(Rst7ExportToolID)));
+
+    QStringList filters;
+    filters << Rst7ExportToolID.GetName();
     p_dialog->setNameFilters(filters);
+
     p_dialog->setFileMode(QFileDialog::AnyFile);
     p_dialog->setAcceptMode(QFileDialog::AcceptSave);
     p_dialog->setDefaultSuffix("rst7");
 
     if( p_dialog->exec() == QDialog::Accepted ){
-        LaunchJob(p_dialog->selectedFiles().at(0));
+        QString file = p_dialog->selectedFiles().at(0);
+        QFileInfo finfo(file);
+        if( finfo.suffix().isEmpty() ){
+            file += ".rst7";
+        }
+        LaunchJob(file);
     }
 
     delete p_dialog;

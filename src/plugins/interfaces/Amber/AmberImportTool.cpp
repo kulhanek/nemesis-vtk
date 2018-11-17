@@ -185,7 +185,7 @@ void CAmberImportTool::LoadCoordinates(void)
 
     // load restart
     ImportJob->Restart.AssignTopology(&ImportJob->Topology);
-    if(ImportJob->Restart.Load(file_name) == false) {
+    if(ImportJob->Restart.Load(file_name,false,AMBER_RST_UNKNOWN) == false) {
         ES_ERROR("unable to load coordinates");
         QMessageBox::critical(NULL, tr("Load coordinate"),
                               tr("An error occurred during coordinate file opening!"),

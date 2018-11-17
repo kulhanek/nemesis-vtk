@@ -264,6 +264,11 @@ void CCPMDInputExportTool::SaveInputFile(void)
 
     delete p_dialog;
 
+    QFileInfo finfo(fileName);
+    if( finfo.suffix().isEmpty() ){
+        fileName += ".inp";
+    }
+
     QFile file(fileName);
 
     // open file
@@ -306,6 +311,11 @@ void CCPMDInputExportTool::SaveMapFile(void)
     GlobalSetup->SetLastOpenFilePathFromFile(fileName,CPMDInputExportToolID);
 
     delete p_dialog;
+
+    QFileInfo finfo(fileName);
+    if( finfo.suffix().isEmpty() ){
+        fileName += ".map";
+    }
 
     QFile file(fileName);
 

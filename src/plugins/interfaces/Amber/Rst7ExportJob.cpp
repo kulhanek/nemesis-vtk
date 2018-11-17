@@ -59,8 +59,8 @@ using namespace boost;
 QObject* Rst7ExportJobCB(void* p_data);
 
 CExtUUID        Rst7ExportJobID(
-                    "{RST7_EXPORT_JOB:49560bca-a0da-4303-8759-ba7d294d97f2}",
-                    "Amber Restart (rst7) Export");
+                    "{RST7_ASCII_EXPORT_JOB:49560bca-a0da-4303-8759-ba7d294d97f2}",
+                    "Amber Restart ASCII (rst7) Export");
 
 CPluginObject   Rst7ExportJobObject(&AmberPlugin,
                     Rst7ExportJobID,JOB_CAT,
