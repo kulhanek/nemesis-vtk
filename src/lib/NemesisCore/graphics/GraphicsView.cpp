@@ -612,13 +612,15 @@ QImage CGraphicsView::Render(int width,int height)
     if( width <= 0 ) width = DrawGLCanvas->width();
     if( height <= 0 ) height = DrawGLCanvas->height();
 
-    // FIXME
-//    QGLPixelBuffer pbuffer(width,height,QGLFormat::defaultFormat(),DrawGLCanvas->GetOpenGL());
-//    pbuffer.makeCurrent();
-//    DrawGL();
-//    FTGLFontCache.DestroyFonts();
+  QGLFormat format = QGLFormat::defaultFormat();
+  format.setSampleBuffers(true);
 
-  //  image = pbuffer.toImage();
+   QGLPixelBuffer pbuffer(width,height,format,NULL);
+   pbuffer.makeCurrent();
+   DrawGL();
+   FTGLFontCache.DestroyFonts();
+
+   image = pbuffer.toImage();
 
     return(image);
 }

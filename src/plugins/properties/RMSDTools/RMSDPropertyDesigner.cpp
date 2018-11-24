@@ -89,9 +89,11 @@ CRMSDPropertyDesigner::CRMSDPropertyDesigner(CRMSDProperty* p_fmo)
     // extra setup -------------------------------
     WidgetUI.templateLO->setProject(Property->GetProject());
     WidgetUI.templateLO->setSelectionHandler(&SH_Structure);
+    WidgetUI.templateLO->setObjectBaseMIMEType("structure.indexes");
     // -----------------
     WidgetUI.targetLO->setProject(Property->GetProject());
     WidgetUI.targetLO->setSelectionHandler(&SH_Structure);
+    WidgetUI.targetLO->setObjectBaseMIMEType("structure.indexes");
     // -----------------
 
     // units -------------------------------------

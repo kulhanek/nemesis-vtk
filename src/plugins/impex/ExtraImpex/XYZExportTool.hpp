@@ -1,10 +1,9 @@
-#ifndef AtomLabelSetupH
-#define AtomLabelSetupH
+#ifndef XYZExportToolH
+#define XYZExportToolH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2011 Petr Kulhanek, kulhanek@chemi.muni.cz
-//    Copyright (C) 2010 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2018 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -21,40 +20,21 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <NemesisCoreMainHeader.hpp>
-#include <GraphicsSetup.hpp>
-#include <SmallColor.hpp>
-#include <FTGLFont.hpp>
+#include <ProObject.hpp>
 
 //------------------------------------------------------------------------------
 
-/// atom label setup
+/// XYZ export tool
 
-class CAtomLabelSetup : public CGraphicsSetup {
+class CXYZExportTool : public CProObject {
 public:
-// constructors and destructors ------------------------------------------------
-    CAtomLabelSetup(CProObject* p_owner);
-    ~CAtomLabelSetup(void);
+// constructor and destructor -------------------------------------------------
+    CXYZExportTool(CProject* p_project);
 
-// input/output methods --------------------------------------------------------
-    virtual void LoadData(CXMLElement* p_ele);
-    virtual void SaveData(CXMLElement* p_ele);
-
-// section of public data ------------------------------------------------------
+// section of public data -----------------------------------------------------
 public:
-    QString         LabelFontName;
-    int             LabelFontSize;
-    CColor          LabelColor;
-    int             LineStippleFactor;
-    int             LineStipplePattern;
-    int             LineWidth;
-    CColor          LineColor;
-    bool            DepthTest;
-    CFTGLFont       FTGLFont;
-    bool            AutoOffset;
-    double          OffsetScale;
-
-    void UpdateFTGLFont(void);
+    void ExecuteDialog(void);
+    void LaunchJob(const QString& file);
 };
 
 //------------------------------------------------------------------------------

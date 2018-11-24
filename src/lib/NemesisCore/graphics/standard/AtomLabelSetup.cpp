@@ -66,7 +66,10 @@ CAtomLabelSetup::CAtomLabelSetup(CProObject* p_owner)
     LineStipplePattern = 0x5555;
     LineWidth = 1;
     LineColor.SetRGB(0.5,0.5,0.0);
-    DepthTest = false;
+    DepthTest = true;
+
+    AutoOffset = true;
+    OffsetScale = 0.30;
 
     UpdateFTGLFont();
 }
@@ -104,6 +107,9 @@ void CAtomLabelSetup::LoadData(CXMLElement* p_ele)
 
     p_ele->GetAttribute("dt",DepthTest);
 
+    p_ele->GetAttribute("ao",AutoOffset);
+    p_ele->GetAttribute("os",OffsetScale);
+
     UpdateFTGLFont();
 }
 
@@ -131,6 +137,9 @@ void CAtomLabelSetup::SaveData(CXMLElement* p_ele)
     p_ele->SetAttribute("lsp",LineStipplePattern);
 
     p_ele->SetAttribute("dt",DepthTest);
+
+    p_ele->SetAttribute("ao",AutoOffset);
+    p_ele->SetAttribute("os",OffsetScale);
 }
 
 //==============================================================================

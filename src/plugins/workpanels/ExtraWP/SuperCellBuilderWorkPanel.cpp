@@ -84,6 +84,7 @@ CSuperCellBuilderWorkPanel::CSuperCellBuilderWorkPanel(CProject* p_pro,CStructur
     // extra setup -------------------------------
     WidgetUI.structureW->setProject(GetProject());
     WidgetUI.structureW->setSelectionHandler(&SH_Structure);
+    WidgetUI.structureW->setObjectBaseMIMEType("structure.indexes");
 
     // local events ------------------------------
     connect(WidgetUI.structureW,SIGNAL(OnObjectChanged()),

@@ -1,7 +1,7 @@
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2013 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2018 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -27,44 +27,45 @@
 
 #include <ErrorSystem.hpp>
 #include <GlobalSetup.hpp>
-#include <Project.hpp>
+
 #include <Structure.hpp>
+#include <Project.hpp>
 #include <MainWindow.hpp>
 #include <QFileDialog>
 #include <QMessageBox>
 
 #include "ExtraImpexModule.hpp"
 
-#include "NStrExportTool.hpp"
+#include "XYZExportTool.hpp"
 
-#include "NStrExportJob.hpp"
+#include "XYZExportJob.hpp"
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
 
-QObject* NStrExportToolCB(void* p_data);
+QObject* XYZExportToolCB(void* p_data);
 
-CExtUUID        NStrExportToolID(
-                    "{NSTR_EXPORT_TOOL:40ae078b-5b48-48da-90bc-7b88e5986a14}",
-                    "Nemesis Structure File (*.str)",
-                    "Export Nemesis structure file");
+CExtUUID        XYZExportToolID(
+                    "{XYZ_EXPORT_TOOL:cb973697-9ccd-4ca1-b123-849dcb86770f}",
+                    "XYZ File (*.xyz)",
+                    "Export XYZ file");
 
-CPluginObject   NStrExportToolObject(&ExtraImpexPlugin,
-                    NStrExportToolID,EXPORT_STRUCTURE_CAT,
-                    NStrExportToolCB);
+CPluginObject   XYZExportToolObject(&ExtraImpexPlugin,
+                    XYZExportToolID,EXPORT_STRUCTURE_CAT,
+                    XYZExportToolCB);
 
 // -----------------------------------------------------------------------------
 
-QObject* NStrExportToolCB(void* p_data)
+QObject* XYZExportToolCB(void* p_data)
 {
     CProject* p_project = static_cast<CProject*>(p_data);
     if( p_project == NULL ){
-        ES_ERROR("CNStrExportTool requires active project");
+        ES_ERROR("CXYZExportTool requires active project");
         return(NULL);
     }
 
-    CNStrExportTool* p_object = new CNStrExportTool(p_project);
+    CXYZExportTool* p_object = new CXYZExportTool(p_project);
     p_object->ExecuteDialog();
     delete p_object;
 
@@ -75,8 +76,8 @@ QObject* NStrExportToolCB(void* p_data)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-CNStrExportTool::CNStrExportTool(CProject* p_project)
-    : CProObject(&NStrExportToolObject,NULL,p_project,true)
+CXYZExportTool::CXYZExportTool(CProject* p_project)
+    : CProObject(&XYZExportToolObject,NULL,p_project,true)
 {
 }
 
@@ -84,28 +85,28 @@ CNStrExportTool::CNStrExportTool(CProject* p_project)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-void CNStrExportTool::ExecuteDialog(void)
+void CXYZExportTool::ExecuteDialog(void)
 {
     // parse formats list ------------------------
     QStringList filters;
-    filters << "Nemesis Structure File (*.str)";
-    filters << "All files (*)";
+    filters << "XYZ Files (*.xyz)";
+    filters << "All Files (*)";
 
-    // --------------------------------
+    // open qfiledialog for file open with filters set correctly
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
-    p_dialog->setWindowTitle(NStrExportToolObject.GetDescription());
+    p_dialog->setWindowTitle(XYZExportToolObject.GetDescription());
 
-    p_dialog->setDirectory (QString(GlobalSetup->GetLastOpenFilePath(NStrExportToolID)));
     p_dialog->setNameFilters(filters);
+    p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(XYZExportToolID)));
     p_dialog->setFileMode(QFileDialog::AnyFile);
     p_dialog->setAcceptMode(QFileDialog::AcceptSave);
-    p_dialog->setDefaultSuffix("str");
+    p_dialog->setDefaultSuffix("xyz");
 
     if( p_dialog->exec() == QDialog::Accepted ){
         QString file = p_dialog->selectedFiles().at(0);
         QFileInfo finfo(file);
         if( finfo.suffix().isEmpty() ){
-            file += ".str";
+            file += ".xyz";
         }
         LaunchJob(file);
     }
@@ -113,11 +114,13 @@ void CNStrExportTool::ExecuteDialog(void)
     delete p_dialog;
 }
 
+//==============================================================================
 //------------------------------------------------------------------------------
+//==============================================================================
 
-void CNStrExportTool::LaunchJob(const QString& file)
+void CXYZExportTool::LaunchJob(const QString& file)
 {
-    GlobalSetup->SetLastOpenFilePathFromFile(file,NStrExportToolID);
+    GlobalSetup->SetLastOpenFilePathFromFile(file,XYZExportToolID);
 
     // get active structure to export
     CStructure* p_str = GetProject()->GetActiveStructure();
@@ -128,12 +131,16 @@ void CNStrExportTool::LaunchJob(const QString& file)
     }
 
     // create job
-    CNStrExportJob* p_job = new CNStrExportJob(p_str,file);
+    CXYZExportJob* p_job = new CXYZExportJob(p_str,file);
     if( p_job->SubmitJob() == false ){
         delete p_job;
     }
+
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
+
+
+

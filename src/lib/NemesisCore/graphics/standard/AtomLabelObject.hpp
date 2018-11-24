@@ -48,7 +48,8 @@ enum EAtomLabelObjectFlag {
     EALOF_SHOW_RESNAME          = 0x00100000,
     EALOF_SHOW_CUSTOM           = 0x00200000,
     EALOF_SHOW_LINE             = 0x00400000,
-    EALOF_SHOW_HYDROGENS        = 0x00800000
+    EALOF_SHOW_HYDROGENS        = 0x00800000,
+    EALOF_SHOW_SERIALINDEX      = 0x01000000,
 };
 
 // -----------------------------------------------------------------------------
@@ -106,8 +107,9 @@ public:
 
 // section of public data ------------------------------------------------------
 private:
-    QString             Format;     // custom format
-    CPoint              Offset;     // label offset
+    QString             Format;         // custom format
+    CPoint              Offset;         // label offset
+    CPoint              AutoOffsetDir;  // direction for auto offset - local variable
 
     /// label structure list
     void LabelStructureList(CStructureList* p_strlist);

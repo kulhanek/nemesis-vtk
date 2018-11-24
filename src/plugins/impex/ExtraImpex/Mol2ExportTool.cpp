@@ -93,7 +93,6 @@ void CMol2ExportTool::ExecuteDialog(void)
 
     // --------------------------------
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
-
     p_dialog->setWindowTitle(Mol2ExportToolObject.GetDescription());
 
     p_dialog->setDirectory (QString(GlobalSetup->GetLastOpenFilePath(Mol2ExportToolID)));

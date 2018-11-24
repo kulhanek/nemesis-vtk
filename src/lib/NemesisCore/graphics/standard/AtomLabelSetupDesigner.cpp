@@ -92,6 +92,12 @@ CAtomLabelSetupDesigner::CAtomLabelSetupDesigner(CAtomLabelSetup* p_setup)
     connect(WidgetUI.lineColorPB, SIGNAL(clicked(bool)),
             this, SLOT(SetChangedFlagTrue()));
     // -------------
+    connect(WidgetUI.autoOffsetCB, SIGNAL(clicked(bool)),
+            this, SLOT(SetChangedFlagTrue()));
+    // -------------
+    connect(WidgetUI.scaleFactorSB, SIGNAL(valueChanged(double)),
+            this, SLOT(SetChangedFlagTrue()));
+    // -------------
     connect(WidgetUI.buttonBox, SIGNAL(clicked(QAbstractButton*)),
             this, SLOT(ButtonBoxClicked(QAbstractButton*)));
     // -------------
@@ -172,6 +178,8 @@ void CAtomLabelSetupDesigner::InitValues(void)
     WidgetUI.lineColorPB->setColor(Setup->LineColor);
     WidgetUI.lineWidthSB->setValue(Setup->LineWidth);
     WidgetUI.depthTestCB->setChecked(Setup->DepthTest);
+    WidgetUI.autoOffsetCB->setChecked(Setup->AutoOffset);
+    WidgetUI.scaleFactorSB->setValue(Setup->OffsetScale);
 
     SetChangedFlag(false);
 }
@@ -186,6 +194,8 @@ void CAtomLabelSetupDesigner::ApplyValues(void)
     Setup->LineColor = WidgetUI.lineColorPB->getCColor();
     Setup->LineWidth = WidgetUI.lineWidthSB->value();
     Setup->DepthTest = WidgetUI.depthTestCB->isChecked();
+    Setup->AutoOffset = WidgetUI.autoOffsetCB->isChecked();
+    Setup->OffsetScale = WidgetUI.scaleFactorSB->value();
 }
 
 //==============================================================================

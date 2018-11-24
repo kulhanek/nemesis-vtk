@@ -112,6 +112,9 @@ CAtomLabelObjectDesigner::CAtomLabelObjectDesigner(CAtomLabelObject* p_fmo)
     connect(WidgetUI.showLineCB, SIGNAL(clicked(bool)),
             SLOT(SetChangedFlagTrue()));
     //------------------
+    connect(WidgetUI.showSerialIndexCB, SIGNAL(clicked(bool)),
+            SLOT(SetChangedFlagTrue()));
+    //------------------
     connect(WidgetUI.offsetXSB, SIGNAL(valueChanged(double)),
             SLOT(SetChangedFlagTrue()));
     //------------------
@@ -220,6 +223,7 @@ void CAtomLabelObjectDesigner::InitValues(void)
     WidgetUI.showResidueCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_RESNAME));
     WidgetUI.showCustomCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_CUSTOM));
     WidgetUI.showHydrogensCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_HYDROGENS));
+    WidgetUI.showSerialIndexCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_SERIALINDEX));
 
     CustomFormatClicked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_CUSTOM));
 
@@ -251,6 +255,7 @@ void CAtomLabelObjectDesigner::ApplyValues(void)
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_CUSTOM,WidgetUI.showCustomCB->isChecked())
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_LINE,WidgetUI.showLineCB->isChecked())
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_HYDROGENS,WidgetUI.showHydrogensCB->isChecked())
+    SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_SERIALINDEX,WidgetUI.showSerialIndexCB->isChecked())
 
     Object->SetFlagsWH(flags);
 

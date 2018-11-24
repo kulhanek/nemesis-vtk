@@ -35,6 +35,7 @@
 #include <QStandardItemModel>
 #include <GraphicsSetupProfile.hpp>
 #include <QFileDialog>
+#include <RecentFileList.hpp>
 
 #include "GlobalSetupWorkPanel.hpp"
 #include "AdminWPModule.hpp"
@@ -369,16 +370,23 @@ void CGlobalSetupWorkPanel::SaveGraphicsTab(void)
 
 void CGlobalSetupWorkPanel::buttonBoxClicked(QAbstractButton* p_button)
 {
-    if( WidgetUI.buttonBox->buttonRole(p_button) != QDialogButtonBox::AcceptRole ) {
+    if( WidgetUI.buttonBox->standardButton(p_button) == QDialogButtonBox::Save ){
+        MouseDriverSetup->SaveUserSetup();
+        GlobalSetup->Save();
+        RecentFiles->Save();
+        GlobalDesktop->SaveDefaultDesktop();
         return;
     }
 
-    SaveStartupTab();
-    SavePathsTab();
-    SaveMouseTab();
-    SaveGraphicsTab();
+    if( WidgetUI.buttonBox->standardButton(p_button) == QDialogButtonBox::Ok ) {
+        SaveStartupTab();
+        SavePathsTab();
+        SaveMouseTab();
+        SaveGraphicsTab();
+        close();
+        return;
+    }
 
-    close();
 }
 
 //==============================================================================

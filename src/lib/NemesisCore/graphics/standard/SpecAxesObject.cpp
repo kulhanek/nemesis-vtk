@@ -43,6 +43,10 @@
 #include <SpecAxesObject.hpp>
 #include <SpecAxesSetup.hpp>
 
+//------------------------------------------------------------------------------
+
+using namespace std;
+
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
@@ -318,7 +322,15 @@ void CSpecAxesObject::UpdateData(void)
             break;
     }
 
+//    cout << Tensor[0][0] << " " << Tensor[0][1] << " " << Tensor[0][2] << endl;
+//    cout << Tensor[1][0] << " " << Tensor[1][1] << " " << Tensor[1][2] << endl;
+//    cout << Tensor[2][0] << " " << Tensor[2][1] << " " << Tensor[2][2] << endl;
+
     CLapack::syev('V','U',Tensor,EigenValues);
+
+//    cout << Tensor[0][0] << " " << Tensor[0][1] << " " << Tensor[0][2] << endl;
+//    cout << Tensor[1][0] << " " << Tensor[1][1] << " " << Tensor[1][2] << endl;
+//    cout << Tensor[2][0] << " " << Tensor[2][1] << " " << Tensor[2][2] << endl;
 
     // make vectors righ-hand ortogonal
         CPoint cp = CrossDot(GetEigenVectorB(),GetEigenVectorC());
@@ -407,8 +419,8 @@ void CSpecAxesObject::AddAxesAtom(CAtom* p_atom)
             Tensor[1][1] += mass*((pos.x-COM.x)*(pos.x-COM.x) + (pos.z-COM.z)*(pos.z-COM.z));
             Tensor[2][2] += mass*((pos.x-COM.x)*(pos.x-COM.x) + (pos.y-COM.y)*(pos.y-COM.y));
             Tensor[0][1] -= mass*(pos.x-COM.x)*(pos.y-COM.y);
-            Tensor[0][2] -= mass*(pos.x-COM.x)*(pos.z-COM.z);
             Tensor[1][0] -= mass*(pos.y-COM.y)*(pos.x-COM.x);
+            Tensor[0][2] -= mass*(pos.x-COM.x)*(pos.z-COM.z);
             Tensor[2][0] -= mass*(pos.z-COM.z)*(pos.x-COM.x);
             Tensor[1][2] -= mass*(pos.y-COM.y)*(pos.z-COM.z);
             Tensor[2][1] -= mass*(pos.z-COM.z)*(pos.y-COM.y);
@@ -416,11 +428,11 @@ void CSpecAxesObject::AddAxesAtom(CAtom* p_atom)
         case ESAOM_RGT:
             Tensor[0][0] += mass*(pos.x-COM.x)*(pos.x-COM.x);
             Tensor[0][1] += mass*(pos.x-COM.x)*(pos.y-COM.y);
-            Tensor[0][2] += mass*(pos.x-COM.x)*(pos.z-COM.z);
             Tensor[1][0] += mass*(pos.y-COM.y)*(pos.x-COM.x);
+            Tensor[0][2] += mass*(pos.x-COM.x)*(pos.z-COM.z);
+            Tensor[2][0] += mass*(pos.z-COM.z)*(pos.x-COM.x);
             Tensor[1][1] += mass*(pos.y-COM.y)*(pos.y-COM.y);
             Tensor[1][2] += mass*(pos.y-COM.y)*(pos.z-COM.z);
-            Tensor[2][0] += mass*(pos.z-COM.z)*(pos.x-COM.x);
             Tensor[2][1] += mass*(pos.z-COM.z)*(pos.y-COM.y);
             Tensor[2][2] += mass*(pos.z-COM.z)*(pos.z-COM.z);
             break;

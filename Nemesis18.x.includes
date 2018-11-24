@@ -44,3 +44,5 @@ share/ketcher/1.0.b4/util
 share/ketcher/1.0.b4/ui
 share/ketcher/1.0.b4/png/pattern
 share/ketcher/1.0.b4/mol
+src/lib/NemesisCore/graphics/standard
+src/plugins/properties/RMSDTools

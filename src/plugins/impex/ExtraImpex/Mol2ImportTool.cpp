@@ -95,6 +95,7 @@ void CMol2ImportTool::ExecuteDialog(void)
 
     // open qfiledialog for file open with filters set correctly
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
+    p_dialog->setWindowTitle(Mol2ImportToolObject.GetDescription());
 
     p_dialog->setNameFilters(filters);
     p_dialog->setDirectory(QString(GlobalSetup->GetLastOpenFilePath(Mol2ImportToolID)));

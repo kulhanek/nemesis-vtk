@@ -64,8 +64,13 @@ CPluginObject   ProjectListObject(&NemesisCorePlugin,
 
 /// this is used to store last file path for all nemesis projects
 CExtUUID        GenericProjectID(
-                    "{GENERIC_PROJECT_Module:632459eb-0c98-4390-8f85-67766b0736be}",
-                    "Nemesis project");
+                    "{GENERIC_PROJECT:632459eb-0c98-4390-8f85-67766b0736be}",
+                    "Nemesis generic project");
+
+CPluginObject   GenericProject(&NemesisCorePlugin,
+                    GenericProjectID,GENERIC_CAT,
+                    ":/images/NemesisCore/project/Project.svg",
+                    NULL);
 
 //==============================================================================
 //------------------------------------------------------------------------------

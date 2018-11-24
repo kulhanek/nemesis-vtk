@@ -39,6 +39,8 @@
 #include <GLSelection.hpp>
 #include <GraphicsView.hpp>
 #include <ElementColorsList.hpp>
+#include <Graphics.hpp>
+#include <GraphicsViewList.hpp>
 
 #include <AtomLabelObjectHistory.hpp>
 #include <AtomLabelObject.hpp>
@@ -216,6 +218,15 @@ void CAtomLabelObject::Draw(void)
 
     GLLoadObject(this);
 
+    AutoOffsetDir = CPoint(1.0,0.0,0.0);
+
+    CGraphicsView* p_gw = GetProject()->GetGraphics()->GetViews()->GetCurrentView();
+    if( p_gw != NULL ){
+        CTransformation trans = p_gw->GetTrans();
+        trans.Invert();
+        trans.Apply(AutoOffsetDir);
+    }
+
     glDisable(GL_LIGHTING);
     glDisable(GL_COLOR_MATERIAL);
 
@@ -297,6 +308,7 @@ void CAtomLabelObject::LabelAtom(CAtom* p_atom)
     if( p_setup == NULL ) return;
 
     QString label;
+    int Z = p_atom->GetZ();
 
     // complete label
     if( IsFlagSet<EAtomLabelObjectFlag>(EALOF_SHOW_CUSTOM) ) {
@@ -321,12 +333,22 @@ void CAtomLabelObject::LabelAtom(CAtom* p_atom)
                 label += p_atom->GetResidue()->GetName() + " ";
             }
         }
+        if( IsFlagSet<EAtomLabelObjectFlag>(EALOF_SHOW_SERIALINDEX) ) {
+            QString si("%1%2");
+            si = si.arg(PeriodicTable.GetSymbol(Z)).arg(p_atom->GetSerIndex());
+            label += si;
+        }
     }
 
     // set position
     CPoint  pos1,pos2;
     pos1 = p_atom->GetPos();
     pos2 = pos1 + Offset;
+
+    if( p_setup->AutoOffset ) {
+        double radius = PeriodicTable.GetVdWRadius(Z);
+        pos2 += AutoOffsetDir*radius*p_setup->OffsetScale;
+    }
 
     // draw label
     glPushMatrix();

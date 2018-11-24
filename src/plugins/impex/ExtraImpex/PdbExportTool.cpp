@@ -92,7 +92,6 @@ void CPdbExportTool::ExecuteDialog(void)
 
     // --------------------------------
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
-
     p_dialog->setWindowTitle(PdbExportToolObject.GetDescription());
 
     p_dialog->setDirectory (QString(GlobalSetup->GetLastOpenFilePath(PdbExportToolID)));

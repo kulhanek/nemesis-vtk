@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -40,13 +40,6 @@
           <string>Flags</string>
          </property>
          <layout class="QGridLayout" name="_4">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="visibleCB">
-            <property name="text">
-             <string>Visible</string>
-            </property>
-           </widget>
-          </item>
           <item row="4" column="0" colspan="2">
            <widget class="QFrame" name="frame">
             <property name="sizePolicy">
@@ -63,52 +56,10 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
-           <widget class="QCheckBox" name="showNameCB">
-            <property name="text">
-             <string>Show name</string>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="1">
            <widget class="QCheckBox" name="showChargeCB">
             <property name="text">
              <string>Show charge</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QCheckBox" name="showTypeCB">
-            <property name="text">
-             <string>Show type</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QCheckBox" name="showResidueCB">
-            <property name="text">
-             <string>Show residue</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <widget class="QCheckBox" name="showCustomCB">
-            <property name="text">
-             <string>Custom format</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1">
-           <widget class="QCheckBox" name="showLineCB">
-            <property name="text">
-             <string>Show quotation</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="showHiddenCB">
-            <property name="text">
-             <string>Show hidden objects</string>
             </property>
            </widget>
           </item>
@@ -119,10 +70,66 @@
             </property>
            </widget>
           </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="showNameCB">
+            <property name="text">
+             <string>Show name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="showHiddenCB">
+            <property name="text">
+             <string>Show hidden objects</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QCheckBox" name="showCustomCB">
+            <property name="text">
+             <string>Custom format</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QCheckBox" name="showTypeCB">
+            <property name="text">
+             <string>Show type</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QCheckBox" name="showLineCB">
+            <property name="text">
+             <string>Show quotation</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="showResidueCB">
+            <property name="text">
+             <string>Show residue</string>
+            </property>
+           </widget>
+          </item>
           <item row="2" column="0">
            <widget class="QCheckBox" name="showHydrogensCB">
             <property name="text">
              <string>Show hydrogens</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="visibleCB">
+            <property name="text">
+             <string>Visible</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QCheckBox" name="showSerialIndexCB">
+            <property name="text">
+             <string>Show serial index</string>
             </property>
            </widget>
           </item>

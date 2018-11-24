@@ -30,6 +30,8 @@ SET(EXTRA_IMPEX_SRC
         XYZImportTool.cpp
         XYZImportJob.cpp
         XYZTrajImportTool.cpp
+        XYZExportTool.cpp
+        XYZExportJob.cpp
         )
 
 # program windows --------------------------------------------------------------

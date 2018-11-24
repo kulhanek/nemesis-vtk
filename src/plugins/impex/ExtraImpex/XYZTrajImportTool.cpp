@@ -110,7 +110,6 @@ void CXYZTrajImportTool::ExecuteDialog(void)
 
     // open qfiledialog for file open with filters set correctly
     QFileDialog* p_dialog = new QFileDialog(GetProject()->GetMainWindow());
-
     p_dialog->setWindowTitle(XYZTrajImportToolObject.GetDescription());
 
     p_dialog->setNameFilters(filters);
