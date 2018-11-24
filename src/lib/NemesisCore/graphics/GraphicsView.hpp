@@ -214,6 +214,8 @@ private:
     CGraphicsProfile*       Profile;            // graphics profile to use
     CGraphicsCommonView*    DrawGLCanvas;       // attached OpenGL canvas
     bool                    SyncToPrimaryView;  // synchronize with primary view
+    int                     Width;              // w and h if GLCanvas is not attached
+    int                     Height;
 
     // selection data
     int     SelAreaSize;

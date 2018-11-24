@@ -148,7 +148,7 @@ void CRenderWindow::WidthChanged(int w)
     }
 
     Width = w;
-    RenderProject();
+    ZoomFit();
 }
 
 //------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ void CRenderWindow::HeightChanged(int h)
         WidgetUI.widthSB->blockSignals(false);
     }
     Height = h;
-    RenderProject();
+    ZoomFit();
 }
 
 //------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ void CRenderWindow::XResChanged(int xres)
         WidgetUI.yResSB->blockSignals(false);
     }
     XDPI = xres;
-    RenderProject();
+    ZoomFit();
 }
 
 //------------------------------------------------------------------------------
@@ -196,7 +196,7 @@ void CRenderWindow::YResChanged(int yres)
         WidgetUI.xResSB->blockSignals(false);
     }
     YDPI = yres;
-    RenderProject();
+    ZoomFit();
 }
 
 //------------------------------------------------------------------------------
@@ -270,7 +270,7 @@ void CRenderWindow::SaveImage(void)
     QString outname = QFileDialog::getSaveFileName(this,
                       tr("Save project image"),
                       QString(GlobalSetup->GetLastOpenFilePath(SaveImageModuleID)),
-                      "image files - (*.bmp *.jpg *.jpeg *.png)");
+                      "Image files - (*.bmp *.jpg *.jpeg *.png)");
     if( outname == NULL ) return;
 
     // update last open path

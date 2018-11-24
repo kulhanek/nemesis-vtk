@@ -102,6 +102,9 @@ CGraphicsView::CGraphicsView(CGraphicsViewList* p_owner,bool primary)
     ViewUp.y = 0;
     ViewUp.z = 1;
 
+    Width = 0;
+    Height = 0;
+
     DepthCueing = false;
     DCMode = GL_EXP2;
     DCDensity = 0.02;
@@ -612,15 +615,23 @@ QImage CGraphicsView::Render(int width,int height)
     if( width <= 0 ) width = DrawGLCanvas->width();
     if( height <= 0 ) height = DrawGLCanvas->height();
 
-  QGLFormat format = QGLFormat::defaultFormat();
-  format.setSampleBuffers(true);
+    Width = width;
+    Height = height;
 
-   QGLPixelBuffer pbuffer(width,height,format,NULL);
-   pbuffer.makeCurrent();
-   DrawGL();
-   FTGLFontCache.DestroyFonts();
+    CGraphicsCommonView* p_tmp = DrawGLCanvas;
+    DrawGLCanvas = NULL;
 
-   image = pbuffer.toImage();
+    QGLFormat format = QGLFormat::defaultFormat();
+    format.setSampleBuffers(true);
+
+    QGLPixelBuffer pbuffer(Width,Height,format,NULL);
+    pbuffer.makeCurrent();
+    DrawGL();
+    FTGLFontCache.DestroyFonts();
+
+    image = pbuffer.toImage();
+
+    DrawGLCanvas = p_tmp;
 
     return(image);
 }
@@ -727,8 +738,9 @@ void CGraphicsView::SetCursor(const QCursor& cursor)
 
 void CGraphicsView::DrawGL(void)
 {
-    if( DrawGLCanvas == NULL ) return;
-//    if( StereoContext == NULL ) return;
+// do not test here as it is not set in Render Mode
+//   if( DrawGLCanvas == NULL ) return;
+//   if( StereoContext == NULL ) return;
 
     GetViews()->RegisterCurrentView(this);
 
@@ -872,9 +884,18 @@ void CGraphicsView::InitMono(void)
 {
     // Misc stuff
     double aspect  = 1.0;
-    if( DrawGLCanvas->height() > 0 ){
-        aspect = DrawGLCanvas->width() / (double)DrawGLCanvas->height();
+    if( DrawGLCanvas ) {
+        if( DrawGLCanvas->height() > 0 ){
+            aspect = DrawGLCanvas->width() / (double)DrawGLCanvas->height();
+        }
+        glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
+    } else {
+        if( Height > 0 ){
+            aspect = Width / (double)Height;
+        }
+        glViewport(0,0,Width,Height);
     }
+
     double radians = (M_PI / 180.0) * Fovy / 2.0;
     double wd2     = Near * tan(radians);
 
@@ -883,8 +904,6 @@ void CGraphicsView::InitMono(void)
     right   =  aspect * wd2;
     top     =  wd2;
     bottom  = -wd2;
-
-    glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
