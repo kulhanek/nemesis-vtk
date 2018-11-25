@@ -74,7 +74,7 @@ CGeometryLabelSetup::CGeometryLabelSetup(CProObject* p_owner)
     LabelFontName = "NotoSans-Regular";
     LabelFontSize = 30;
     ShowUnit = true;
-    DepthTest = false;
+    DepthTest = true;
 
     UpdateFTGLFont();
 }

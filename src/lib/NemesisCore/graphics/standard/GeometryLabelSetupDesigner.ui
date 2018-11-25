@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>307</width>
-    <height>320</height>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -382,14 +382,14 @@
    <header location="global">ColorPushButton.hpp</header>
   </customwidget>
   <customwidget>
-   <class>QFTGLFontComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">FTGLFontComboBox.hpp</header>
-  </customwidget>
-  <customwidget>
    <class>QLineStippleComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">LineStippleComboBox.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>QFTGLFontComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">FTGLFontComboBox.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -432,8 +432,6 @@ void CPlaneObject::Draw(void)
         }
 
         GLLoadObject(this);
-        SetInitialColorScheme();
-
         DrawPlane();
     }
 
@@ -506,27 +504,6 @@ void CPlaneObject::SetupChanged(void)
         pos.z = 0;
         Vertices.push_back(pos);
     }
-}
-
-// -----------------------------------------------------------------------------
-
-void CPlaneObject::SetInitialColorScheme(void)
-{
-    // draw individual objects
-    glShadeModel(GL_SMOOTH);
-
-    glEnable(GL_LIGHTING);
-
-    // set global color enviroment
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,ColorsList.GlobalMaterial.Ambient);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,ColorsList.GlobalMaterial.Diffuse);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,ColorsList.GlobalMaterial.Emission);
-
-    float shininess[1];
-    shininess[0] = ColorsList.GlobalMaterial.Shininess;
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS ,shininess);
-
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,ColorsList.GlobalMaterial.Specular);
 }
 
 // -----------------------------------------------------------------------------
@@ -646,7 +623,7 @@ void CPlaneObject::DrawPlane(void)
         glDisable(GL_LIGHTING);
 
         if( IsFlagSet(EPOF_SELECTED) == true ) {
-            glMaterialfv(GL_FRONT_AND_BACK, ColorsList.MaterialMode, ColorsList.SelectionMaterial.Color);
+            glColor4fv(ColorsList.SelectionMaterial.Color);
         } else {
             glColor4fv(Setup->FrontColor);
         }
@@ -662,7 +639,7 @@ void CPlaneObject::DrawPlane(void)
         glEnd();
 
         if( IsFlagSet(EPOF_SELECTED) == true ) {
-            glMaterialfv(GL_FRONT_AND_BACK, ColorsList.MaterialMode, ColorsList.SelectionMaterial.Color);
+            glColor4fv(ColorsList.SelectionMaterial.Color);
         } else {
             glColor4fv(Setup->BackColor);
         }

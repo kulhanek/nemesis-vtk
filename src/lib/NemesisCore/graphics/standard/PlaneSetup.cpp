@@ -57,8 +57,8 @@ QObject* PlaneSetupCB(void* p_data)
 CPlaneSetup::CPlaneSetup(CProObject* p_owner)
     : CGraphicsSetup(&PlaneSetupObject,p_owner)
 {
-    FrontColor.SetRGB(0.8,0.8,0.15,0.3);
-    BackColor.SetRGB(0.9,0.15,0.15,0.3);
+    FrontColor.SetRGB(0.8,0.0,0.0,0.3);
+    BackColor.SetRGB(0.0,0.8,0.0,0.3);
     Transparent = false;
     NumOfVertices = 4;
 }

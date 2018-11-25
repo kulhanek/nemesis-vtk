@@ -360,10 +360,11 @@ void CGeometryLabelObject::LabelPosition(void)
 
 void CGeometryLabelObject::LabelDistance(void)
 {
-    CSimplePoint<float> pos1;
-    CSimplePoint<float> pos2;
+    CPoint              pos1;
+    CPoint              pos2;
     CGeoDescriptor      geo1;
     CGeoDescriptor      geo2;
+    double              dis;
     bool                completed = false;
 
     if( Objects.count() < 1 ) return;
@@ -372,40 +373,66 @@ void CGeometryLabelObject::LabelDistance(void)
     geo1 = p_obj1->GetGeoDescriptor();
 
     switch(geo1.GetType()){
-       case EGDT_NILL:
-           return;
-       case EGDT_ONE_POINT:
-           pos1 = geo1.GetPoint1();
-           break;
-       case EGDT_TWO_POINTS:
-       case EGDT_TWO_POINTS_ORIENTED:
-           pos1 = geo1.GetPoint1();
-           pos2 = geo2.GetPoint2();
-           completed = true;
-           break;
-       default:
-           return;
+        case EGDT_NILL:
+            return;
+        case EGDT_ONE_POINT:
+            pos1 = geo1.GetPoint1();
+            break;
+        case EGDT_TWO_POINTS:
+        case EGDT_TWO_POINTS_ORIENTED:
+            pos1 = geo1.GetPoint1();
+            pos2 = geo2.GetPoint2();
+            dis = CGeoMeasurement::GetDistance(pos1,pos2);
+            completed = true;
+            break;
+        case EGDT_PLANE:
+            // will be completed in the next round
+            break;
+        default:
+            ES_ERROR("not implemented");
+            return;
     }
 
     if( completed == false ){
         if( Objects.count() < 2 ) return;
+
         CProObject* p_obj2 = static_cast<CProObject*>(Objects[1]);
         geo2 = p_obj2->GetGeoDescriptor();
+
+        if( geo1.GetType() == EGDT_ONE_POINT ) {
+            pos1 = geo1.GetPoint1();
+        } else {
+            if( geo2.GetType() == EGDT_ONE_POINT ) {
+                pos1 = geo2.GetPoint1();
+                geo2 = geo1;
+            } else {
+                ES_ERROR("not implemented");
+                return;
+            }
+        }
+
         switch(geo2.GetType()){
-           case EGDT_ONE_POINT:
-               pos2 = geo2.GetPoint1();
-               completed = true;
-               break;
-           default:
-               break;
+            case EGDT_ONE_POINT:
+                pos2 = geo2.GetPoint1();
+                dis = CGeoMeasurement::GetDistance(pos1,pos2);
+                completed = true;
+                break;
+            case EGDT_PLANE: {
+                CPoint n = geo2.GetPoint2();
+                n.Normalize();
+                double d = VectDot(n,geo2.GetPoint1());
+                double s = VectDot(n,pos1);
+                dis = s-d;
+                pos2 = pos1 - n*dis;
+                completed = true;
+                }
+                break;
+            default:
+                break;
          }
     }
 
     if( completed == false ) return;
-
-    // calculate distance ------------------------
-    double              dis;
-    dis = CGeoMeasurement::GetDistance(pos1,pos2);
 
     // draw distance -----------------------------
     glLineWidth(Setup->LineWidth);
@@ -417,8 +444,8 @@ void CGeometryLabelObject::LabelDistance(void)
     }
     glColor4fv(Setup->LineColor.ForGL());
     glBegin(GL_LINES);
-        glVertex3fv(pos1);
-        glVertex3fv(pos2);
+        glVertex3dv(pos1);
+        glVertex3dv(pos2);
     glEnd();
     glDisable(GL_LINE_STIPPLE);
 

@@ -93,7 +93,7 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
         return(0);
     }
 
-    // point/point, point/line, point/plane
+    // point/point, point/plane
     CProObject* object2 = p_selection->GetSelectedObject(1);
     descrip2 = object2->GetGeoDescriptor();
 
@@ -120,8 +120,8 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
         // descrip2.Point2  plane normal vector
         CPoint n = descrip2.GetPoint2();
         n.Normalize();
-        double d = VectDot(n,descrip2.GetPoint2());
-        double s = VectDot(n,descrip1.GetPoint1());
+        double d = VectDot(n,descrip2.GetPoint1());
+        double s = VectDot(n,point1);
         return(s-d);
         }
 

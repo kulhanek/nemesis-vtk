@@ -170,9 +170,6 @@ private:
     double              Rotation;
     int                 ClippingPlaneID;
 
-    /// color scheme
-    void SetInitialColorScheme(void);
-
     /// fit plane
     void FitPlane(void);
 
