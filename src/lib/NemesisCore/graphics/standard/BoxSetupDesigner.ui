@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>283</width>
-    <height>374</height>
+    <height>387</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,16 @@
    <property name="spacing">
     <number>3</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
     <number>3</number>
    </property>
    <item>
@@ -33,7 +42,16 @@
        <property name="spacing">
         <number>3</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>3</number>
+       </property>
+       <property name="topMargin">
+        <number>3</number>
+       </property>
+       <property name="rightMargin">
+        <number>3</number>
+       </property>
+       <property name="bottomMargin">
         <number>3</number>
        </property>
        <item>
@@ -71,7 +89,16 @@
           <string>Box line</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
            <number>3</number>
           </property>
           <property name="spacing">
@@ -141,13 +168,6 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
-           <widget class="QCheckBox" name="showTubesCB">
-            <property name="text">
-             <string>Tubes</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
@@ -168,7 +188,16 @@
           <string>Center point</string>
          </property>
          <layout class="QGridLayout" name="_3">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
            <number>3</number>
           </property>
           <property name="spacing">

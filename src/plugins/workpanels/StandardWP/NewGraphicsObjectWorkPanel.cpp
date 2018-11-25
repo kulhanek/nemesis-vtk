@@ -87,6 +87,7 @@ CNewGraphicsObjectWorkPanel::CNewGraphicsObjectWorkPanel(CProObject* p_scope)
     : CWorkPanel(&NewGraphicsObjectWorkPanelObject,p_scope->GetProject(),EWPR_DIALOG)
 {
     Scope = p_scope;
+    GlobalWPSetup = true;
 
     WidgetUI.setupUi(this);
 
@@ -281,7 +282,7 @@ void CNewGraphicsObjectWorkPanel::LoadWorkPanelSpecificData(CXMLElement* p_ele)
     p_ele->GetAttribute("od",checked);
     WidgetUI.openObjectDesignerCB->setChecked(checked);
 
-    int index = 0;
+    int index = 2;
     p_ele->GetAttribute("ao",index);
     WidgetUI.addObjectsCB->setCurrentIndex(index);
 

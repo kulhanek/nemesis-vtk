@@ -76,10 +76,9 @@ CBoxObject::CBoxObject(CGraphicsObjectList* p_gl)
     Dimensions.x = 5.0;
     Dimensions.y = 5.0;
     Dimensions.z = 5.0;
-    // do not use (0,0,1) it is not visible to user for default scene orientation
-    Direction.x = -1.0;
+    Direction.x = 0.0;
     Direction.y = 0.0;
-    Direction.z = 0.0;
+    Direction.z = 1.0;
     DirectionObject = NULL;
     Rotation = 0.0;
 }
@@ -106,14 +105,13 @@ void CBoxObject::CopyBoxObject(CBoxObject* p_box)
     p_box->Direction.x = Direction.x;
     p_box->Direction.x = Direction.x;
     p_box->Direction.x = Direction.x;
-    p_box->Sphere = Sphere;
-    p_box->Cylinder = Cylinder;
     p_box->Rotation = Rotation;
 }
 
 //==============================================================================
 //------------------------------------------------------------------------------
 //==============================================================================
+
 bool CBoxObject::SetPositionWH(const CPoint& pos)
 {
     if( PositionObject != NULL ) return(false);
@@ -488,8 +486,6 @@ void CBoxObject::SetupChanged(void)
         ES_ERROR("setup is not available");
         return;
     }
-    Sphere.SetTessellationQuality(Setup->SphereTesselationQuality);
-    Cylinder.SetTessellationQuality(Setup->TubeTesselationQuality);
 
     CGraphicsObject::SetupChanged();
 }
@@ -510,37 +506,35 @@ void CBoxObject::DrawBox(void)
     CPoint h3 = l3+h1;
     CPoint h4 = l2+l3+h1;
 
-    CPoint shift;
-
     if( IsFlagSet<EBoxObjectFlag>(EBCBOF_ORIGIN_IN_CENTER) ){
-        shift = GetPosition()-dim/2.0;
-    } else {
-        shift = GetPosition();
-    }
-    // Jirka
-    CPoint dir = GetDirection();
+        CPoint shift = -dim/2.0;
+        l1 += shift;
+        l2 += shift;
+        l3 += shift;
+        l4 += shift;
 
-    float cylH = ::Size(dir);
-    float rotAngle;
-
-    if (cylH == 0) {
-        rotAngle = 0;
-    } else {
-        rotAngle = acos(dir.z/cylH)*180.0/3.14; // konstanta je 180/PI
+        h1 += shift;
+        h2 += shift;
+        h3 += shift;
+        h4 += shift;
     }
 
-    glTranslated(shift.x,shift.y,shift.z);
-    if( (dir.y != 0) || (dir.x != 0) ) {
-        glRotatef(rotAngle,-dir.y,dir.x, 0);
-    } else {
-        if( rotAngle > 90.0 ) glScalef(1,1,-1);
-    }
+    // rotate z-axis
+    CTransformation trans;
+    CPoint z(0.0,0.0,1.0);
+    trans.Rotate(GetRotation(),z);
+    trans.ChangeDirection(z,GetDirection());
 
-    glScaled(1,1,1);
-    glRotatef(Rotation,dim.x,dim.y,dim.z);
+    trans.Apply(l1);
+    trans.Apply(l2);
+    trans.Apply(l3);
+    trans.Apply(l4);
+    trans.Apply(h1);
+    trans.Apply(h2);
+    trans.Apply(h3);
+    trans.Apply(h4);
 
-    // Jirka
-
+    CPoint shift = GetPosition();
     l1 += shift;
     l2 += shift;
     l3 += shift;
@@ -551,9 +545,10 @@ void CBoxObject::DrawBox(void)
     h3 += shift;
     h4 += shift;
 
-    if( Setup->UseTubes ){
-        SetInitialColorScheme();
-    }
+
+    // draw box
+    glDisable(GL_LIGHTING);
+    glDisable(GL_COLOR_MATERIAL);
 
     if( IsFlagSet(EPOF_SELECTED) ){
         glColor4fv(ColorsList.SelectionMaterial.Color);
@@ -561,132 +556,43 @@ void CBoxObject::DrawBox(void)
         glColor4fv(Setup->LineColor);
     }
 
-    if( Setup->UseTubes == false ){
-        // draw box
-        glEnable(GL_LIGHTING);
-        glDisable(GL_COLOR_MATERIAL);
+    glLineWidth(Setup->LineWidth*100);
 
-        glLineWidth(Setup->LineWidth*100);
-
-        if( Setup->LineStippleFactor > 0 ){
-            glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
-            glEnable(GL_LINE_STIPPLE);
-        }
-        glBegin(GL_LINES);
-            glVertex3d(l1.x,l1.y,l1.z);
-            glVertex3d(l2.x,l2.y,l2.z);
-            glVertex3d(l1.x,l1.y,l1.z);
-            glVertex3d(l3.x,l3.y,l3.z);
-            glVertex3d(l2.x,l2.y,l2.z);
-            glVertex3d(l4.x,l4.y,l4.z);
-            glVertex3d(l3.x,l3.y,l3.z);
-            glVertex3d(l4.x,l4.y,l4.z);
-
-            glVertex3d(h1.x,h1.y,h1.z);
-            glVertex3d(h2.x,h2.y,h2.z);
-            glVertex3d(h1.x,h1.y,h1.z);
-            glVertex3d(h3.x,h3.y,h3.z);
-            glVertex3d(h2.x,h2.y,h2.z);
-            glVertex3d(h4.x,h4.y,h4.z);
-            glVertex3d(h3.x,h3.y,h3.z);
-            glVertex3d(h4.x,h4.y,h4.z);
-
-            glVertex3d(l1.x,l1.y,l1.z);
-            glVertex3d(h1.x,h1.y,h1.z);
-            glVertex3d(l2.x,l2.y,l2.z);
-            glVertex3d(h2.x,h2.y,h2.z);
-            glVertex3d(l3.x,l3.y,l3.z);
-            glVertex3d(h3.x,h3.y,h3.z);
-            glVertex3d(l4.x,l4.y,l4.z);
-            glVertex3d(h4.x,h4.y,h4.z);
-        glEnd();
-
-        glDisable(GL_LINE_STIPPLE);
-    } else {
-        DrawTube(l1,l2);
-        DrawTube(l1,l3);
-        DrawTube(l2,l4);
-        DrawTube(l3,l4);
-        DrawTube(h1,h2);
-        DrawTube(h1,h3);
-        DrawTube(h2,h4);
-        DrawTube(h3,h4);
-        DrawTube(l1,h1);
-        DrawTube(l2,h2);
-        DrawTube(l3,h3);
-        DrawTube(l4,h4);
-
-        DrawSphere(l1);
-        DrawSphere(l2);
-        DrawSphere(l3);
-        DrawSphere(l4);
-        DrawSphere(h1);
-        DrawSphere(h2);
-        DrawSphere(h3);
-        DrawSphere(h4);
+    if( Setup->LineStippleFactor > 0 ){
+        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
+        glEnable(GL_LINE_STIPPLE);
     }
+    glBegin(GL_LINES);
+        glVertex3d(l1.x,l1.y,l1.z);
+        glVertex3d(l2.x,l2.y,l2.z);
+        glVertex3d(l1.x,l1.y,l1.z);
+        glVertex3d(l3.x,l3.y,l3.z);
+        glVertex3d(l2.x,l2.y,l2.z);
+        glVertex3d(l4.x,l4.y,l4.z);
+        glVertex3d(l3.x,l3.y,l3.z);
+        glVertex3d(l4.x,l4.y,l4.z);
 
-}
+        glVertex3d(h1.x,h1.y,h1.z);
+        glVertex3d(h2.x,h2.y,h2.z);
+        glVertex3d(h1.x,h1.y,h1.z);
+        glVertex3d(h3.x,h3.y,h3.z);
+        glVertex3d(h2.x,h2.y,h2.z);
+        glVertex3d(h4.x,h4.y,h4.z);
+        glVertex3d(h3.x,h3.y,h3.z);
+        glVertex3d(h4.x,h4.y,h4.z);
 
-//------------------------------------------------------------------------------
+        glVertex3d(l1.x,l1.y,l1.z);
+        glVertex3d(h1.x,h1.y,h1.z);
+        glVertex3d(l2.x,l2.y,l2.z);
+        glVertex3d(h2.x,h2.y,h2.z);
+        glVertex3d(l3.x,l3.y,l3.z);
+        glVertex3d(h3.x,h3.y,h3.z);
+        glVertex3d(l4.x,l4.y,l4.z);
+        glVertex3d(h4.x,h4.y,h4.z);
+    glEnd();
 
-void CBoxObject::DrawTube(CPoint& p1,CPoint& p2)
-{
-    CSimplePoint<float>     pd;
-    float                   rotAngle;
-    float                   cylH;
+    glDisable(GL_LINE_STIPPLE);
 
-    pd = p2 - p1;
-    cylH = Size(pd);
-
-    glPushMatrix();
-        if (cylH == 0) {
-            rotAngle = 0;
-        } else {
-            rotAngle = acos(pd.z/cylH)*180.0/3.14;
-        }
-        glTranslatef (p1.x,p1.y,p1.z);
-        if( (pd.y != 0) || (pd.x != 0) ) {
-            glRotatef(rotAngle,-pd.y,pd.x, 0);
-        } else {
-            if( rotAngle > 90.0 ) glScalef(1,1,-1);
-        }
-        Cylinder.Draw(Setup->LineWidth,cylH);
-    glPopMatrix();
-}
-
-//------------------------------------------------------------------------------
-
-void CBoxObject::DrawSphere(CPoint& p1)
-{
-    glPushMatrix();
-        glTranslatef (p1.x,p1.y,p1.z);
-        Sphere.Draw(Setup->LineWidth);
-    glPopMatrix();
-}
-
-//---------------------------------------------------------------------------
-
-void CBoxObject::SetInitialColorScheme(void)
-{
-    // draw individual objects
-    glShadeModel(GL_SMOOTH);
-
-    glEnable(GL_LIGHTING);
-
-    // set global color enviroment
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,ColorsList.GlobalMaterial.Ambient);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,ColorsList.GlobalMaterial.Diffuse);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,ColorsList.GlobalMaterial.Emission);
-
-    float shininess[1];
-    shininess[0] = ColorsList.GlobalMaterial.Shininess;
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS ,shininess);
-
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,ColorsList.GlobalMaterial.Specular);
-
-    glEnable(GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT_AND_BACK,ColorsList.MaterialMode);
 }
 
 //------------------------------------------------------------------------------

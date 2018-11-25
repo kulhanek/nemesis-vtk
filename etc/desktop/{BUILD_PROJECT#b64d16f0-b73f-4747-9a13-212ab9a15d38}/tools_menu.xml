@@ -5,6 +5,7 @@
     <workpanel uuid="{RESIDUE_WORK_PANEL:983992af-e31d-417a-bc21-0b35a32d855b}"/>
     <workpanel uuid="{GRAPH_SYMMETRY_WORK_PANEL:183ec892-7639-414a-b17c-d313caaf11b7}"/>
     <workpanel uuid="{AUTOMORPHISM_WORK_PANEL:74f9957e-2623-4170-a2de-33010604ac55}"/>
+    <workpanel uuid="{SYMMOL_WORK_PANEL:d95a2b28-0fa9-4e7e-a84e-13f838edf9d7}"/>
     <workpanel uuid="{STRUCTURE_PALETTE_WORK_PANEL:4055ad4a-4b46-4130-bad3-9192dee5c512}"/>
     <workpanel uuid="{SUPER_CELL_BUILDER_WORK_PANEL:ab06478c-26ca-49e3-871e-73239ea1042f}"/>
     <workpanel uuid="{STR_INTERNAL_GEO:412c1f0b-5675-4198-9687-a89555971110}"/>

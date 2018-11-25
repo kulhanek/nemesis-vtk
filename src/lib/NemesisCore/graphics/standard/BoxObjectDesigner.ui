@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>285</width>
-    <height>647</height>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -194,29 +194,6 @@
             </item>
            </layout>
           </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>Rotation:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QQuantitySpinBox" name="rotationSB">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="decimals">
-             <number>0</number>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
@@ -280,7 +257,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_3">
          <property name="title">
-          <string>Normal vector</string>
+          <string>Z vector direction</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="8" column="0">
@@ -379,6 +356,29 @@
              </widget>
             </item>
            </layout>
+          </item>
+          <item row="10" column="1">
+           <widget class="QQuantitySpinBox" name="rotationSB">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Rotation:</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

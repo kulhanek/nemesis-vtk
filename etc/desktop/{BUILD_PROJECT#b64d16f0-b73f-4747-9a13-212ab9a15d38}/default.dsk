@@ -25,7 +25,7 @@
         </item>
         <item uuid="{NEW_GRAPHICS_OBJECT_WORK_PANEL:b0568e3a-c78b-44f3-aee5-1e4739cc4be9}" open="false" geom="01D9D1CA00010000000001AD000000F6000003420000022F00000000">
             <geom l="1" t="52" w="569" h="342"/>
-            <data od="true" ao="1"/>
+            <data od="false" ao="2"/>
         </item>
         <item uuid="{GEOMETRY_WORK_PANEL:63a0f336-31f4-4509-84b7-4218e5a84e9d}" open="true" geom="01D9D0CB00010000000003FA000001DF000004FF000002EC000003FA000001DF000004FF000002EC000000000000">
             <geom l="1018" t="454" w="262" h="263"/>

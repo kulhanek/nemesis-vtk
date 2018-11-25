@@ -70,7 +70,7 @@ public:
     bool SubmitJob(void);
 
     /// set Terminated flag to true
-    void TerminateJob(void);
+    virtual void TerminateJob(void);
 
 // signals ---------------------------------------------------------------------
 signals:

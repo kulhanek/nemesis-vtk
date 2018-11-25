@@ -88,9 +88,9 @@ public:
     /// set rotation
     void SetRotation(double rotation,CHistoryNode* p_history=NULL);
 
-
 // information methods ---------------------------------------------------------
 
+    /// copy setup from the other box
     void CopyBoxObject(CBoxObject* p_box);
 
     /// geometry descriptor
@@ -108,11 +108,11 @@ public:
     /// get direction
     CPoint GetDirection(void);
 
-    /// get rotation
-    double GetRotation(void);
-
     /// return direction object
     CProObject* GetDirectionObject(void);
+
+    /// get rotation
+    double GetRotation(void);
 
 // executive methods -----------------------------------------------------------
     /// draw object
@@ -150,8 +150,6 @@ public:
 // section of private data ----------------------------------------------------
 private:
     CBoxSetup*  Setup;
-    CSphere     Sphere;
-    CCylinder   Cylinder;
     CPoint      Position;
     CProObject* PositionObject;
     CPoint      Direction;
@@ -167,15 +165,6 @@ private:
 
     /// draw center
     void DrawCenter(void);
-
-    /// set initial color scheme
-    void SetInitialColorScheme(void);
-
-    /// draw tube
-    void DrawTube(CPoint& p1,CPoint& p2);
-
-    /// draw sphere
-    void DrawSphere(CPoint& p1);
 
     /// handle history related things
     virtual void RemoveFromRegistered(CProObject* p_object,

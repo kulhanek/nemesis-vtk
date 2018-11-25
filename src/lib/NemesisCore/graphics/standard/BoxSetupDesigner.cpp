@@ -88,9 +88,6 @@ CBoxSetupDesigner::CBoxSetupDesigner(CBoxSetup* p_setup)
     connect(WidgetUI.lineStippleFactorSB, SIGNAL(valueChanged(int)),
             this, SLOT(SetChangedFlagTrue(void)));
     // -------------
-    connect(WidgetUI.showTubesCB, SIGNAL(clicked(bool)),
-            this, SLOT(SetChangedFlagTrue(void)));
-    // -------------
     connect(WidgetUI.pointColorPB, SIGNAL(clicked(bool)),
             this, SLOT(SetChangedFlagTrue(void)));
     // -------------
@@ -178,7 +175,6 @@ void CBoxSetupDesigner::InitValues(void)
     WidgetUI.lineWidthSB->setValue(Setup->LineWidth);
     WidgetUI.lineStipplePatternCB->setStipplePattern(Setup->LineStipplePattern);
     WidgetUI.lineStippleFactorSB->setValue(Setup->LineStippleFactor );
-    WidgetUI.showTubesCB->setChecked(Setup->UseTubes);
 
     WidgetUI.pointColorPB->setColor(Setup->PointColor);
     WidgetUI.pointSizeSB->setInternalValue(Setup->PointSize);
@@ -193,7 +189,6 @@ void CBoxSetupDesigner::ApplyValues(void)
     Setup->LineWidth = WidgetUI.lineWidthSB->value();
     Setup->LineStipplePattern = WidgetUI.lineStipplePatternCB->getStipplePattern();
     Setup->LineStippleFactor = WidgetUI.lineStippleFactorSB->value();
-    Setup->UseTubes = WidgetUI.showTubesCB->isChecked();
 
     Setup->PointColor = WidgetUI.pointColorPB->getCColor();
     Setup->PointWidth = WidgetUI.pointWidthSB->value();

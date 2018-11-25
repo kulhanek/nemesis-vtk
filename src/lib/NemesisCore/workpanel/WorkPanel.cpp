@@ -87,7 +87,7 @@ CWorkPanel::CWorkPanel(CPluginObject* p_objectinfo,CProject* p_project,EWorkPane
     // -------------------------------------------
     // set up popup menu
     PopMenu = new QMenu("PopupMenu", this);
-
+    PopMenu->addAction("Save as default", this, SLOT(SaveAsDefault()));
     PopMenu->addAction("Close window", this, SLOT(close()));
 
     WorkPanels->WorkPanelAdded(this);
@@ -163,6 +163,23 @@ void CWorkPanel::LoadWorkPanelSetup(void)
     // ************ automagic ************
 
     LoadWorkPanelSetup(GetWorkPanelSetup());
+}
+
+//------------------------------------------------------------------------------
+
+void CWorkPanel::SaveAsDefault(void)
+{
+    // save locally
+    SaveWorkPanelSetup();
+
+    // save project or global desktop
+    if( Project && (GlobalWPSetup == false) ){
+        Project->GetDesktop()->SaveDefaultDesktop();
+        return;
+    } else {
+        GlobalDesktop->SaveDefaultDesktop();
+        return;
+    }
 }
 
 //------------------------------------------------------------------------------

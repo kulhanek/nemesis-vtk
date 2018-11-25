@@ -56,15 +56,10 @@ QObject* BoxSetupCB(void* p_data)
 CBoxSetup::CBoxSetup(CProObject* p_owner)
     : CGraphicsSetup(&BoxSetupObject,p_owner)
 {
-    UseTubes = false;
     LineWidth = 0.01;
     LineColor.SetRGB(0.0,0.5,0.0);
-    LineStippleFactor = 0;
+    LineStippleFactor = 2;
     LineStipplePattern = 0x5555;
-
-    // TODO - these are not loaded/saved/or accesible from Designer
-    TubeTesselationQuality = 6;
-    SphereTesselationQuality = 2;
 
     PointWidth = 1;
     PointSize = 0.15;
@@ -87,7 +82,6 @@ void CBoxSetup::LoadData(CXMLElement* p_ele)
         LineColor.Load(p_sel);
     }
     p_ele->GetAttribute("lw",LineWidth);
-    p_ele->GetAttribute("ut",UseTubes);
 
     p_sel = p_ele->GetFirstChildElement("pc");
     if( p_sel != NULL ) {
@@ -109,7 +103,6 @@ void CBoxSetup::SaveData(CXMLElement* p_ele)
     p_sel = p_ele->CreateChildElement("lc");
     LineColor.Save(p_sel);
     p_ele->SetAttribute("lw",LineWidth);
-    p_ele->SetAttribute("ut",UseTubes);
 
     p_sel = p_ele->CreateChildElement("pc");
     PointColor.Save(p_sel);

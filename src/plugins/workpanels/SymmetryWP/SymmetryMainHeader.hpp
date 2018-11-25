@@ -1,9 +1,9 @@
-#ifndef BoxSetupH
-#define BoxSetupH
+#ifndef SymmetryMainHeaderH
+#define SymmetryMainHeaderH
 // =============================================================================
 // NEMESIS - Molecular Modelling Package
 // -----------------------------------------------------------------------------
-//    Copyright (C) 2011 Petr Kulhanek, kulhanek@chemi.muni.cz
+//    Copyright (C) 2018 Petr Kulhanek, kulhanek@chemi.muni.cz
 //
 //     This program is free software; you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -21,37 +21,36 @@
 // =============================================================================
 
 #include <NemesisCoreMainHeader.hpp>
-#include <GraphicsSetup.hpp>
-#include <SmallColor.hpp>
-#include <Point.hpp>
 
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
-class CXMLElement;
+#if defined _WIN32 || defined __CYGWIN__
+#ifdef OPEN_BABEL_PLUGIN_BUILDING_DLL
+#ifdef __GNUC__
+#define OPEN_BABEL_PLUGIN_DLL_PUBLIC __attribute__((dllexport))
+#else
+#define OPEN_BABEL_PLUGIN_DLL_PUBLIC __declspec(dllexport)
+#endif
+#else
+#ifdef __GNUC__
+#define OPEN_BABEL_PLUGIN_DLL_PUBLIC __attribute__((dllimport))
+#else
+#define OPEN_BABEL_PLUGIN_DLL_PUBLIC __declspec(dllimport)
+#endif
+#define OPEN_BABEL_PLUGIN_DLL_LOCAL
+#endif
+#else
+#if __GNUC__ >= 4
+#define OPEN_BABEL_PLUGIN_DLL_PUBLIC __attribute__ ((visibility("default")))
+#define OPEN_BABEL_PLUGIN_DLL_LOCAL  __attribute__ ((visibility("hidden")))
+#else
+#define OPEN_BABEL_PLUGIN_DLL_PUBLIC
+#define OPEN_BABEL_PLUGIN_DLL_LOCAL
+#endif
+#endif
 
-// -----------------------------------------------------------------------------
+#define OPEN_BABEL_PLUGIN_PACKAGE OPEN_BABEL_PLUGIN_DLL_PUBLIC
 
-class CBoxSetup : public CGraphicsSetup {
-public:
-// constructors and destructors -----------------------------------------------
-    CBoxSetup(CProObject* p_owner);
-
-// input/output methods -------------------------------------------------------
-    virtual void LoadData(CXMLElement* p_ele);
-    virtual void SaveData(CXMLElement* p_ele);
-
-// section of public data -----------------------------------------------------
-public:
-    float       LineWidth;
-    CColor      LineColor;
-    int         LineStippleFactor;
-    int         LineStipplePattern;
-
-    int         PointWidth;
-    float       PointSize;
-    CColor      PointColor;
-};
-
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 #endif

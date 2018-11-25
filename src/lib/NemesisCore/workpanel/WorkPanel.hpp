@@ -105,6 +105,9 @@ public slots:
     /// set work panel contents changed (for setup WP)
     void SetChangedFlagTrue(void);
 
+    /// save as default setup
+    void SaveAsDefault(void);
+
 // section of private data -----------------------------------------------------
 protected:
     EWorkPanelRole      Role;
