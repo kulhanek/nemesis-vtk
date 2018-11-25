@@ -89,6 +89,7 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
                 || (descrip1.GetType() == EGDT_TWO_POINTS_ORIENTED)  ) {
             return(GetDistance(descrip1.GetPoint1(),descrip1.GetPoint2()));
         }
+        ES_ERROR("not implemented");
         return(0);
     }
 
@@ -105,6 +106,7 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
             point1 = descrip2.GetPoint1();
             descrip2 = descrip1;
         } else {
+            ES_ERROR("not implemented");
             return(0);
         }
     }
@@ -113,19 +115,18 @@ double CGeoMeasurement::GetDistance(CSelectionList* p_selection)
     case EGDT_ONE_POINT:
         return(GetDistance(point1,descrip2.GetPoint1()));
 
-    case EGDT_LINE:
-        ES_ERROR("not implemented");
-        return(0);
-
-    case EGDT_PLANE:
-        ES_ERROR("not implemented");
-        return(0);
-
-    case EGDT_TWO_POINTS_ORIENTED:
-        ES_ERROR("not implemented");
-        return(0);
+    case EGDT_PLANE:{
+        // descrip2.Point1  plane position
+        // descrip2.Point2  plane normal vector
+        CPoint n = descrip2.GetPoint2();
+        n.Normalize();
+        double d = VectDot(n,descrip2.GetPoint2());
+        double s = VectDot(n,descrip1.GetPoint1());
+        return(s-d);
+        }
 
     default:
+        ES_ERROR("not implemented");
         return(0);
     }
 }
@@ -168,22 +169,14 @@ double CGeoMeasurement::GetAngle(CSelectionList* p_selection)
         if( descrip3.GetType() != EGDT_ONE_POINT ) return(0);
         return(GetAngle(descrip1.GetPoint1(),descrip2.GetPoint1(),descrip3.GetPoint1()));
     }
-    case EGDT_LINE:
-        if( descrip2.GetType() == EGDT_LINE ) {
-            ES_ERROR("not implemented");
-            return(0);
-        }
-        if( descrip2.GetType() == EGDT_TWO_POINTS_ORIENTED) {
-            ES_ERROR("not implemented");
-            return(0);
-        }
-        return(0);
     case EGDT_PLANE:
         if( descrip2.GetType() == EGDT_PLANE ) {
             return(Angle(descrip1.GetPoint2(),descrip2.GetPoint2()));
         }
+        ES_ERROR("not implemented");
         return(0);
     default:
+        ES_ERROR("not implemented");
         return(0);
     }
 }

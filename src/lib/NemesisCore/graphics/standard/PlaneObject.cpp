@@ -82,7 +82,7 @@ CPlaneObject::CPlaneObject(CGraphicsObjectList* p_gl)
     PositionObject = NULL;
 
     // do not use (0,0,1) it is not visible to user for default scene orientation
-    Direction.x = -1.0;
+    Direction.x = 1.0;
     Direction.y = 0.0;
     Direction.z = 0.0;
     DirectionObject = NULL;
@@ -90,6 +90,9 @@ CPlaneObject::CPlaneObject(CGraphicsObjectList* p_gl)
     Size = 5;
     Rotation = 0;
     ClippingPlaneID = 0;
+
+    // update setup
+    SetupChanged();
 }
 
 //==============================================================================
@@ -640,11 +643,12 @@ void CPlaneObject::DrawPlane(void)
         glRotatef(Rotation,0,0,1);
 
         glEnable(GL_CULL_FACE);
+        glDisable(GL_LIGHTING);
 
         if( IsFlagSet(EPOF_SELECTED) == true ) {
             glMaterialfv(GL_FRONT_AND_BACK, ColorsList.MaterialMode, ColorsList.SelectionMaterial.Color);
         } else {
-            glMaterialfv(GL_FRONT_AND_BACK, ColorsList.MaterialMode, Setup->FrontColor);
+            glColor4fv(Setup->FrontColor);
         }
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -660,7 +664,7 @@ void CPlaneObject::DrawPlane(void)
         if( IsFlagSet(EPOF_SELECTED) == true ) {
             glMaterialfv(GL_FRONT_AND_BACK, ColorsList.MaterialMode, ColorsList.SelectionMaterial.Color);
         } else {
-            glMaterialfv(GL_FRONT_AND_BACK, ColorsList.MaterialMode, Setup->BackColor);
+            glColor4fv(Setup->BackColor);
         }
 
         glCullFace(GL_FRONT);
@@ -817,14 +821,21 @@ void CPlaneObject::Rotate(const CPoint& drot,CGraphicsView* p_view)
 {
     if( DirectionObject != NULL ) return;
 
-    CTransformation trans;
-    CTransformation coord = p_view->GetTrans();
-    trans *= coord;
-    trans.Rotate(drot);
-    coord.Invert();
-    trans *= coord;
+    CTransformation strans = p_view->GetTrans();
+    strans.Invert();
+    CPoint x(1.0,0.0,0.0);
+    CPoint y(0.0,1.0,0.0);
+    CPoint z(0.0,0.0,1.0);
+    strans.Apply(x);
+    strans.Apply(y);
+    strans.Apply(z);
 
-    trans.Apply(Direction);
+    CTransformation otrans;
+    otrans.Rotate(-drot.y,y);
+    otrans.Rotate(drot.z,z);
+    otrans.Apply(Direction);
+
+    Rotation += drot.x*180/3.14;
 
     // use delayed event notification
     RaiseEvent();

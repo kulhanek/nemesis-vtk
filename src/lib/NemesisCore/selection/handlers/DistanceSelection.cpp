@@ -81,7 +81,6 @@ ESelResult CDistanceSelection::RegisterObject(CSelectionList* p_sel,const CSelOb
             return(ESR_SELECTED_OBJECTS_END);
 
         case EGDT_ONE_POINT:
-        case EGDT_LINE:
         case EGDT_PLANE:
             p_sel->AddObject(obj);
             return(ESR_SELECTED_OBJECTS_CHANGED);
@@ -99,7 +98,6 @@ ESelResult CDistanceSelection::RegisterObject(CSelectionList* p_sel,const CSelOb
         if( descrip1.GetType() == EGDT_ONE_POINT ) {
             switch(descrip2.GetType()) {
             case EGDT_ONE_POINT:
-            case EGDT_LINE:
             case EGDT_PLANE:
                 p_sel->AddObject(obj);
                 return(ESR_SELECTED_OBJECTS_END);

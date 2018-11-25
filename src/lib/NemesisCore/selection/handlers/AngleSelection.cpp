@@ -81,7 +81,6 @@ ESelResult CAngleSelection::RegisterObject(CSelectionList* p_sel,const CSelObjec
 
         case EGDT_ONE_POINT:
         case EGDT_TWO_POINTS_ORIENTED:
-        case EGDT_LINE:
         case EGDT_PLANE:
             p_sel->AddObject(obj);
             return(ESR_SELECTED_OBJECTS_CHANGED);
@@ -112,11 +111,6 @@ ESelResult CAngleSelection::RegisterObject(CSelectionList* p_sel,const CSelObjec
             }
 
         case EGDT_TWO_POINTS_ORIENTED:
-            p_sel->AddObject(obj);
-            return(ESR_SELECTED_OBJECTS_END);
-
-        case EGDT_LINE:
-            if( descrip2.GetType() != EGDT_LINE) return(ESR_NONE_SELECTED);
             p_sel->AddObject(obj);
             return(ESR_SELECTED_OBJECTS_END);
 

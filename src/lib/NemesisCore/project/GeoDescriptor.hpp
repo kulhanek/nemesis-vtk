@@ -52,7 +52,6 @@ enum EGetDescriptorType {
     EGDT_TWO_POINTS_ORIENTED,
     EGDT_THREE_POINTS,
     EGDT_FOUR_POINTS,
-    EGDT_LINE,
     EGDT_PLANE      // determined by point and normal vector
 };
 

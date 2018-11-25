@@ -312,9 +312,9 @@ void CMol2ExportJob::WriteResidues(CResidueList* p_reslist)
         sout << format("%8d %10s") % id % p_res->GetName().toStdString();
 
         if( p_res->GetNumberOfAtoms() > 0 ){
-            sout << format("%5d RESIDUE") % p_res->GetAtoms()[0]->GetSerIndex();
+            sout << format("%5d RESIDUE          0 ****  ****    0 ROOT") % p_res->GetAtoms()[0]->GetSerIndex();
         } else {
-            sout << format("%5d RESIDUE") % 0;
+            sout << format("%5d RESIDUE          0 ****  ****    0 ROOT") % 0;
         }
         sout << endl;
 

@@ -985,7 +985,7 @@ CTransformation CRMSDProperty::GetAlignTransform(bool mass_weighted)
         if( mass_weighted ){
             mass = PeriodicTable.GetMass(p_ac->GetTemplateAtom()->GetZ());
         }
-        // FIXME
+
         rx = p_ac->GetTargetAtom()->GetPos().x - com2.x;
         ry = p_ac->GetTargetAtom()->GetPos().y - com2.y;
         rz = p_ac->GetTargetAtom()->GetPos().z - com2.z;
@@ -993,15 +993,15 @@ CTransformation CRMSDProperty::GetAlignTransform(bool mass_weighted)
         fy = p_ac->GetTemplateAtom()->GetPos().y - com1.y;
         fz = p_ac->GetTemplateAtom()->GetPos().z - com1.z;
 
-        xxyx += fx*rx;
-        xxyy += fx*ry;
-        xxyz += fx*rz;
-        xyyx += fy*rx;
-        xyyy += fy*ry;
-        xyyz += fy*rz;
-        xzyx += fz*rx;
-        xzyy += fz*ry;
-        xzyz += fz*rz;
+        xxyx += mass*fx*rx;
+        xxyy += mass*fx*ry;
+        xxyz += mass*fx*rz;
+        xyyx += mass*fy*rx;
+        xyyy += mass*fy*ry;
+        xyyz += mass*fy*rz;
+        xzyx += mass*fz*rx;
+        xzyy += mass*fz*ry;
+        xzyz += mass*fz*rz;
     }
 
     helper.Field[0][0] = xxyx + xyyy + xzyz;
