@@ -21,6 +21,7 @@
 // =============================================================================
 
 #include <WorkPanel.hpp>
+#include <QTemporaryDir>
 #include "ui_SymmolWorkPanel.h"
 
 //------------------------------------------------------------------------------
@@ -36,13 +37,14 @@ public:
 
 // section of private data ----------------------------------------------------
 private:
-    Ui::SymmolWorkPanel   WidgetUI;
+    Ui::SymmolWorkPanel WidgetUI;
+    QTemporaryDir       TmpDir;
+    QString             SymmolOutput;
 
     virtual void  LoadWorkPanelSpecificData(CXMLElement* p_ele);
     virtual void  SaveWorkPanelSpecificData(CXMLElement* p_ele);
 
 private slots:
-    void NewStructure();
     void ClearAll(void);
     void RunSymmol(void);
     void SymmetrizeStructure(void);

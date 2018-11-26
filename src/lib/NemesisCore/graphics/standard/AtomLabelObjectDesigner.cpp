@@ -94,6 +94,9 @@ CAtomLabelObjectDesigner::CAtomLabelObjectDesigner(CAtomLabelObject* p_fmo)
     connect(WidgetUI.showNameCB, SIGNAL(clicked(bool)),
             SLOT(SetChangedFlagTrue()));
     //------------------
+    connect(WidgetUI.showDescriptionCB, SIGNAL(clicked(bool)),
+            SLOT(SetChangedFlagTrue()));
+    //------------------
     connect(WidgetUI.showTypeCB, SIGNAL(clicked(bool)),
             SLOT(SetChangedFlagTrue()));
     //------------------
@@ -103,7 +106,7 @@ CAtomLabelObjectDesigner::CAtomLabelObjectDesigner(CAtomLabelObject* p_fmo)
     connect(WidgetUI.showResidueCB, SIGNAL(clicked(bool)),
             SLOT(SetChangedFlagTrue()));
     //------------------
-    connect(WidgetUI.showCustomCB, SIGNAL(clicked(bool)),
+    connect(WidgetUI.showSerialIndexCB, SIGNAL(clicked(bool)),
             SLOT(SetChangedFlagTrue()));
     //------------------
     connect(WidgetUI.showCustomCB, SIGNAL(clicked(bool)),
@@ -218,6 +221,7 @@ void CAtomLabelObjectDesigner::InitValues(void)
 
     WidgetUI.showHiddenCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_HIDDEN));
     WidgetUI.showNameCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_NAME));
+    WidgetUI.showDescriptionCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_DESCRIPTION));
     WidgetUI.showTypeCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_TYPE));
     WidgetUI.showChargeCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_CHARGE));
     WidgetUI.showResidueCB->setChecked(Object->IsFlagSet((EProObjectFlag)EALOF_SHOW_RESNAME));
@@ -249,6 +253,7 @@ void CAtomLabelObjectDesigner::ApplyValues(void)
 
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_HIDDEN,WidgetUI.showHiddenCB->isChecked())
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_NAME,WidgetUI.showNameCB->isChecked())
+    SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_DESCRIPTION,WidgetUI.showDescriptionCB->isChecked())
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_TYPE,WidgetUI.showTypeCB->isChecked())
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_CHARGE,WidgetUI.showChargeCB->isChecked())
     SET_FLAG(flags,(EProObjectFlag)EALOF_SHOW_RESNAME,WidgetUI.showResidueCB->isChecked())
@@ -275,18 +280,26 @@ void CAtomLabelObjectDesigner::CustomFormatClicked(bool checked)
 {
     if( checked ){
         WidgetUI.showNameCB->setChecked(false);
+        WidgetUI.showDescriptionCB->setChecked(false);
         WidgetUI.showTypeCB->setChecked(false);
         WidgetUI.showChargeCB->setChecked(false);
         WidgetUI.showResidueCB->setChecked(false);
+        WidgetUI.showSerialIndexCB->setChecked(false);
+
         WidgetUI.showNameCB->setEnabled(false);
+        WidgetUI.showDescriptionCB->setEnabled(false);
         WidgetUI.showTypeCB->setEnabled(false);
         WidgetUI.showChargeCB->setEnabled(false);
         WidgetUI.showResidueCB->setEnabled(false);
+        WidgetUI.showSerialIndexCB->setEnabled(false);
+
     } else {
         WidgetUI.showNameCB->setEnabled(true);
+        WidgetUI.showDescriptionCB->setEnabled(true);
         WidgetUI.showTypeCB->setEnabled(true);
         WidgetUI.showChargeCB->setEnabled(true);
         WidgetUI.showResidueCB->setEnabled(true);
+        WidgetUI.showSerialIndexCB->setEnabled(true);
     }
 }
 

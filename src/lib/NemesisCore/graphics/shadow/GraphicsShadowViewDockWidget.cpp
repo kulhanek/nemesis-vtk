@@ -55,7 +55,8 @@ void CGraphicsShadowViewDockWidget::closeEvent(QCloseEvent *event)
     Child->closeEvent(event);
     if( event->isAccepted() ) {
         Child->QWidget::setParent(NULL);
-        delete Child;
+        Child->deleteLater();
+        Child = NULL;
     }
 }
 

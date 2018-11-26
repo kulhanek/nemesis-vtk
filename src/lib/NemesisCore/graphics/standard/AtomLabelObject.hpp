@@ -50,6 +50,7 @@ enum EAtomLabelObjectFlag {
     EALOF_SHOW_LINE             = 0x00400000,
     EALOF_SHOW_HYDROGENS        = 0x00800000,
     EALOF_SHOW_SERIALINDEX      = 0x01000000,
+    EALOF_SHOW_DESCRIPTION      = 0x02000000
 };
 
 // -----------------------------------------------------------------------------

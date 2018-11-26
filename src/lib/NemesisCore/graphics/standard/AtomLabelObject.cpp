@@ -322,6 +322,9 @@ void CAtomLabelObject::LabelAtom(CAtom* p_atom)
         if( IsFlagSet<EAtomLabelObjectFlag>(EALOF_SHOW_NAME) ) {
             label += p_atom->GetName() + " ";
         }
+        if( IsFlagSet<EAtomLabelObjectFlag>(EALOF_SHOW_DESCRIPTION) ) {
+            label += p_atom->GetDescription() + " ";
+        }
         if( IsFlagSet<EAtomLabelObjectFlag>(EALOF_SHOW_TYPE) ) {
             label += p_atom->GetType() + " ";
         }
@@ -334,7 +337,7 @@ void CAtomLabelObject::LabelAtom(CAtom* p_atom)
             }
         }
         if( IsFlagSet<EAtomLabelObjectFlag>(EALOF_SHOW_SERIALINDEX) ) {
-            QString si("%1%2");
+            QString si("%1%2 ");
             si = si.arg(PeriodicTable.GetSymbol(Z)).arg(p_atom->GetSerIndex());
             label += si;
         }

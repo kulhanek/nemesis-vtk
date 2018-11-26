@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>345</width>
-    <height>308</height>
+    <height>241</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Automorphism</string>
+   <string>Symmol</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -53,9 +53,28 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QCheckBox" name="useCoreAtomsCB">
+         <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Selected atoms as a core</string>
+           <string>DCM:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="dcmSB">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="value">
+           <double>0.300000000000000</double>
           </property>
          </widget>
         </item>
@@ -63,50 +82,6 @@
          <widget class="QPushButton" name="runPB">
           <property name="text">
            <string>Run Symmol</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>DCM:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>DCME:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" colspan="2">
-         <widget class="QDoubleSpinBox" name="dcmeSB">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <property name="decimals">
-           <number>3</number>
-          </property>
-          <property name="value">
-           <double>0.300000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="2">
-         <widget class="QDoubleSpinBox" name="dcmSB">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <property name="decimals">
-           <number>3</number>
-          </property>
-          <property name="value">
-           <double>0.300000000000000</double>
           </property>
          </widget>
         </item>
