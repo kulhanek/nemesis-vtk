@@ -63,7 +63,12 @@
           </item>
           <item>
            <property name="text">
-            <string>PBEPBE</string>
+            <string>PBE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>PBE0</string>
            </property>
           </item>
           <item>

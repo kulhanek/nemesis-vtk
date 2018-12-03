@@ -183,9 +183,9 @@ void CXYZExportJob::WriteAtoms(CAtomList* p_atoms)
         CAtom* p_atom = static_cast<CAtom*>(p_qobj);
         sout << format( "%2s " ) % PeriodicTable.GetSymbol(p_atom->GetZ());
         CPoint pos = p_atom->GetPos();
-        sout << format( "%12.6f " ) % pos.x;
-        sout << format( "%12.6f " ) % pos.y;
-        sout << format( "%12.6f " ) % pos.z << endl;
+        sout << format( "%20.12f " ) % pos.x;
+        sout << format( "%20.12f " ) % pos.y;
+        sout << format( "%20.12f " ) % pos.z << endl;
 
         if( Tick % Quantum == 0 ){
             emit OnProgressNotification(Tick,"Total progress %p% - Saving atoms (1/1) ...");
