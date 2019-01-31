@@ -21,12 +21,12 @@ if(WIN32)
 endif(WIN32)
 
 # final build ------------------------------------------------------------------
-ADD_EXECUTABLE(nemesis ${NEMESIS_SRC})
+ADD_EXECUTABLE(_nemesis.exe ${NEMESIS_SRC})
 
-ADD_DEPENDENCIES(nemesis nemesis_core_shared)
-QT5_USE_MODULES(nemesis Core Widgets Script)
+ADD_DEPENDENCIES(_nemesis.exe nemesis_core_shared)
+QT5_USE_MODULES(_nemesis.exe Core Widgets Script)
 
-TARGET_LINK_LIBRARIES(nemesis
+TARGET_LINK_LIBRARIES(_nemesis.exe
                 NemesisCore
                 ${QT_LIBRARIES}
                 ${PLUSULA_LIB_NAME}
@@ -35,7 +35,7 @@ TARGET_LINK_LIBRARIES(nemesis
                 )
 
 INSTALL(TARGETS
-            nemesis
+            _nemesis.exe
         RUNTIME DESTINATION
             bin
         )

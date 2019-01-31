@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# ensure C numeric style
+export LC_NUMERIC="C"
+
+# path to this scrip
+SCRIPTDIR=$(readlink -f $0)
+SCRIPTPATH=`dirname $SCRIPTDIR`
+
+# launch the code
+$SCRIPTPATH/_nemesis.exe "$@"
