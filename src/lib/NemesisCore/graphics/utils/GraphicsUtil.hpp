@@ -48,10 +48,10 @@ private:
     unsigned int         DummyPos;
 
     void ComputeVertices(void);
-    void ComputePartition(const CSimplePoint<GLfloat>& v1,
-                          const CSimplePoint<GLfloat>& v2,
-                          const CSimplePoint<GLfloat>& v3,
-                          CSimplePoint<GLfloat> data[],
+    void ComputePartition(const CSimplePoint<float>& v1,
+                          const CSimplePoint<float>& v2,
+                          const CSimplePoint<float>& v3,
+                          CSimplePoint<float> data[],
                           const unsigned int complexity);
 };
 
@@ -75,10 +75,10 @@ private:
     unsigned int         DummyPos;
 
     void ComputeVertices(void);
-    void ComputePartition(const CSimplePoint<GLfloat>& v1,
-                          const CSimplePoint<GLfloat>& v2,
-                          const CSimplePoint<GLfloat>& v3,
-                          CSimplePoint<GLfloat> data[],
+    void ComputePartition(const CSimplePoint<float>& v1,
+                          const CSimplePoint<float>& v2,
+                          const CSimplePoint<float>& v3,
+                          CSimplePoint<float> data[],
                           const unsigned int complexity);
 };
 
@@ -129,11 +129,11 @@ public:
     CArc(void);   // default tessellation=3
     ~CArc(void);
 
-    void Draw(const CSimplePoint<GLfloat>& v1,
-              const CSimplePoint<GLfloat>& v2,
-              const CSimplePoint<GLfloat>& v3,
+    void Draw(const CSimplePoint<float>& v1,
+              const CSimplePoint<float>& v2,
+              const CSimplePoint<float>& v3,
               float angle,
-              CSimplePoint<GLfloat>& str);
+              CSimplePoint<float>& str);
     bool SetTessellationQuality(const unsigned int quality);
 
 // section of private data ----------------------------------------------------

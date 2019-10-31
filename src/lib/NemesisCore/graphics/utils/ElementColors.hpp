@@ -29,6 +29,7 @@
 
 // FIXME
 enum EECModes {
+    EECM_NONE = 0,
     EECM_FRONT_AND_BACK = 1,
 };
 

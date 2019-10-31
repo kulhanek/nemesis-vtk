@@ -23,7 +23,6 @@
 #include <NemesisCoreMainHeader.hpp>
 #include <GraphicsSetup.hpp>
 #include <SmallColor.hpp>
-#include <FTGLFont.hpp>
 
 //------------------------------------------------------------------------------
 
@@ -67,7 +66,7 @@ public:
     bool    DepthTest;
     bool    ShowUnit;
 
-    CFTGLFont       FTGLFont;
+    //CFTGLFont       FTGLFont;
 
     void UpdateFTGLFont(void);
 };

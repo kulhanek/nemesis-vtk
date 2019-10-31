@@ -113,7 +113,7 @@ private:
     CPoint          Pos;                    // position of object
     CPoint          Centrum;                // fake center of object
     double          ScaleFac;               // scale factor for orthographic projection
-    GLdouble        GlobalModelMatrix[16];  // backup of transformation matrix
+   // GLdouble        GlobalModelMatrix[16];  // backup of transformation matrix
     bool            Changed;                // data was changed
     int             UpdateLevel;            // begin/end level
 

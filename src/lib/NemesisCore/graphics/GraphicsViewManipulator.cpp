@@ -30,7 +30,7 @@
 CGraphicsViewManipulator::CGraphicsViewManipulator(void)
 {
     for(int i=0; i < 16; i++) {
-        GlobalModelMatrix[i] = 0;
+        //GlobalModelMatrix[i] = 0;
     }
     ScaleFac = 1;
     Changed = false;
@@ -125,7 +125,7 @@ void CGraphicsViewManipulator::SetScale(double scale)
 
 void CGraphicsViewManipulator::ApplyGlobalViewTransformation(void)
 {
-    glLoadMatrixd(GlobalModelMatrix);
+    //glLoadMatrixd(GlobalModelMatrix);
 }
 
 //------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ void CGraphicsViewManipulator::ApplyFaceTransformation(void)
 {
     CTransformation trans = GetTrans();
     trans.Invert();
-    glMultMatrixd(trans.GetRawDataField());
+  //  glMultMatrixd(trans.GetRawDataField());
 }
 
 //------------------------------------------------------------------------------
@@ -154,16 +154,16 @@ void CGraphicsViewManipulator::ResetManip(void)
 
 void CGraphicsViewManipulator::ManipDraw(void)
 {
-    glPushMatrix();
-    glGetDoublev(GL_MODELVIEW_MATRIX,GlobalModelMatrix);
-    glScaled(ScaleFac,ScaleFac,ScaleFac);
-    glTranslated(Pos.x,Pos.y,Pos.z);
-    glPushMatrix();
-    glMultMatrixd(Trans.GetRawDataField());
-    glTranslated(-Centrum.x,-Centrum.y,-Centrum.z);
-    RawDraw();
-    glPopMatrix();
-    glPopMatrix();
+//    glPushMatrix();
+//    glGetDoublev(GL_MODELVIEW_MATRIX,GlobalModelMatrix);
+//    glScaled(ScaleFac,ScaleFac,ScaleFac);
+//    glTranslated(Pos.x,Pos.y,Pos.z);
+//    glPushMatrix();
+//    glMultMatrixd(Trans.GetRawDataField());
+//    glTranslated(-Centrum.x,-Centrum.y,-Centrum.z);
+//    RawDraw();
+//    glPopMatrix();
+//    glPopMatrix();
 }
 
 //------------------------------------------------------------------------------

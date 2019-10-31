@@ -188,7 +188,7 @@ void CGeoPropertySetup::SaveData(CXMLElement* p_ele)
 
 void CGeoPropertySetup::UpdateFTGLFont()
 {
-    FTGLFont.Setup(LabelFontName,LabelFontSize);
+    //FTGLFont.Setup(LabelFontName,LabelFontSize);
 }
 
 //==============================================================================

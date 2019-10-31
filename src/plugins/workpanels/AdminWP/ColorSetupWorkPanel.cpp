@@ -153,23 +153,23 @@ void CColorSetupWorkPanel::UseValues(void)
     ColorsList.SelectionMaterial.Specular = WidgetUI.TBSelSpecular->getCColor();
     ColorsList.SelectionMaterial.Shininess = WidgetUI.SBSelShininess->value();
 
-    switch(WidgetUI.CBType->currentIndex()) {
-    case 0:
-        ColorsList.MaterialMode = GL_AMBIENT;
-        break;
-    case 1:
-        ColorsList.MaterialMode = GL_DIFFUSE;
-        break;
-    case 2:
-        ColorsList.MaterialMode = GL_SPECULAR;
-        break;
-    case 3:
-        ColorsList.MaterialMode = GL_AMBIENT_AND_DIFFUSE;
-        break;
-    default:
-        ColorsList.MaterialMode = GL_AMBIENT;
-        break;
-    }
+//    switch(WidgetUI.CBType->currentIndex()) {
+//    case 0:
+//        ColorsList.MaterialMode = GL_AMBIENT;
+//        break;
+//    case 1:
+//        ColorsList.MaterialMode = GL_DIFFUSE;
+//        break;
+//    case 2:
+//        ColorsList.MaterialMode = GL_SPECULAR;
+//        break;
+//    case 3:
+//        ColorsList.MaterialMode = GL_AMBIENT_AND_DIFFUSE;
+//        break;
+//    default:
+//        ColorsList.MaterialMode = GL_AMBIENT;
+//        break;
+//    }
 
     CElementColors elem_color;
 
@@ -201,23 +201,23 @@ void CColorSetupWorkPanel::ReInitValues(void)
     WidgetUI.SBGlbShininess->setValue(ColorsList.GlobalMaterial.Shininess);
 
     // type
-    switch(ColorsList.MaterialMode) {
-    case GL_AMBIENT:
-        WidgetUI.CBType->setCurrentIndex(0);
-        break;
-    case GL_DIFFUSE:
-        WidgetUI.CBType->setCurrentIndex(1);
-        break;
-    case GL_SPECULAR:
-        WidgetUI.CBType->setCurrentIndex(2);
-        break;
-    case GL_AMBIENT_AND_DIFFUSE:
-        WidgetUI.CBType->setCurrentIndex(3);
-        break;
-    default:
-        WidgetUI.CBType->setCurrentIndex(0);
-        break;
-    }
+//    switch(ColorsList.MaterialMode) {
+//    case GL_AMBIENT:
+//        WidgetUI.CBType->setCurrentIndex(0);
+//        break;
+//    case GL_DIFFUSE:
+//        WidgetUI.CBType->setCurrentIndex(1);
+//        break;
+//    case GL_SPECULAR:
+//        WidgetUI.CBType->setCurrentIndex(2);
+//        break;
+//    case GL_AMBIENT_AND_DIFFUSE:
+//        WidgetUI.CBType->setCurrentIndex(3);
+//        break;
+//    default:
+//        WidgetUI.CBType->setCurrentIndex(0);
+//        break;
+//    }
 
     WidgetUI.TBSelColor->setColor(ColorsList.SelectionMaterial.Color);
     WidgetUI.TBSelAmbient->setColor(ColorsList.SelectionMaterial.Ambient);

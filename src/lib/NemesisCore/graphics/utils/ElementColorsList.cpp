@@ -35,7 +35,7 @@ CElementColorsList ColorsList;
 
 CElementColorsList::CElementColorsList(void)
 {
-    MaterialMode = 0;
+    MaterialMode = EECM_NONE;
 }
 
 //==============================================================================

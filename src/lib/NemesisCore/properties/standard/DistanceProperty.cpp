@@ -273,14 +273,14 @@ void CDistanceProperty::Draw(void)
         return;
     }
 
-    glDisable(GL_LIGHTING);
-    glDisable(GL_COLOR_MATERIAL);
+//    glDisable(GL_LIGHTING);
+//    glDisable(GL_COLOR_MATERIAL);
 
-    GLLoadObject(this);
+//    GLLoadObject(this);
 
-    LabelDistance();
+//    LabelDistance();
 
-    glDisable(GL_LINE_STIPPLE);
+//    glDisable(GL_LINE_STIPPLE);
 }
 
 //------------------------------------------------------------------------------
@@ -297,24 +297,24 @@ void CDistanceProperty::LabelDistance(void)
     double              dis;
     dis = CGeoMeasurement::GetDistance(pos1,pos2);
 
-    // draw distance -----------------------------
-    glLineWidth(Setup->LineWidth);
-    if( Setup->LineStippleFactor > 0 ){
-        glEnable(GL_LINE_STIPPLE);
-        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
-    } else {
-        glDisable(GL_LINE_STIPPLE);
-    }
-    if( IsFlagSet(EPOF_SELECTED) ){
-        glColor4fv(ColorsList.SelectionMaterial.Color);
-    } else {
-        glColor4fv(Setup->LineColor);
-    }
-    glBegin(GL_LINES);
-        glVertex3fv(pos1);
-        glVertex3fv(pos2);
-    glEnd();
-    glDisable(GL_LINE_STIPPLE);
+//    // draw distance -----------------------------
+//    glLineWidth(Setup->LineWidth);
+//    if( Setup->LineStippleFactor > 0 ){
+//        glEnable(GL_LINE_STIPPLE);
+//        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
+//    } else {
+//        glDisable(GL_LINE_STIPPLE);
+//    }
+//    if( IsFlagSet(EPOF_SELECTED) ){
+//        glColor4fv(ColorsList.SelectionMaterial.Color);
+//    } else {
+//        glColor4fv(Setup->LineColor);
+//    }
+//    glBegin(GL_LINES);
+//        glVertex3fv(pos1);
+//        glVertex3fv(pos2);
+//    glEnd();
+//    glDisable(GL_LINE_STIPPLE);
 
     // draw text and quotation -------------------
     CSimplePoint<float>  textpos;

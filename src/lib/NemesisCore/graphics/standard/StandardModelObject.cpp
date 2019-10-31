@@ -77,7 +77,7 @@ CStandardModelObject::CStandardModelObject(CGraphicsObjectList* p_gl)
     RegisterAllowedObjectType(BondID);
     RegisterAllowedObjectType(AtomID);
 
-    ExtQuad = gluNewQuadric();
+    //ExtQuad = gluNewQuadric();
     Setup = NULL;
     ColorMode = new CGOColorMode(this,"Model color",true);
     // color mode is child object so we need
@@ -146,9 +146,9 @@ void CStandardModelObject::Draw(void)
     if( IsFlagSet(EPOF_VISIBLE) == false ) return;
 
     // draw individual objects
-    glShadeModel(GL_SMOOTH);
+//    glShadeModel(GL_SMOOTH);
 
-    glEnable(GL_LIGHTING);
+//    glEnable(GL_LIGHTING);
     SetInitialColorScheme();
 
     foreach(QObject* p_qobj,Objects) {
@@ -425,19 +425,19 @@ CGOColorMode* CStandardModelObject::GetColorMode(void)
 
 void CStandardModelObject::SetInitialColorScheme(void)
 {
-    // set global color enviroment
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,ColorsList.GlobalMaterial.Ambient);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,ColorsList.GlobalMaterial.Diffuse);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,ColorsList.GlobalMaterial.Emission);
+//    // set global color enviroment
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,ColorsList.GlobalMaterial.Ambient);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,ColorsList.GlobalMaterial.Diffuse);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,ColorsList.GlobalMaterial.Emission);
 
-    float shininess[1];
-    shininess[0] = ColorsList.GlobalMaterial.Shininess;
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS ,shininess);
+//    float shininess[1];
+//    shininess[0] = ColorsList.GlobalMaterial.Shininess;
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS ,shininess);
 
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,ColorsList.GlobalMaterial.Specular);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,ColorsList.GlobalMaterial.Specular);
 
-    glEnable(GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT_AND_BACK,ColorsList.MaterialMode);
+//    glEnable(GL_COLOR_MATERIAL);
+//    glColorMaterial(GL_FRONT_AND_BACK,ColorsList.MaterialMode);
 }
 
 //------------------------------------------------------------------------------
@@ -528,11 +528,11 @@ void CStandardModelObject::DrawAtom(CAtom* p_atom)
     bool                   selected;
     int                    Z;
 
-    if(AtomsSet->Type > 0 ) {
-        glEnable(GL_LIGHTING);
-    } else {
-        glDisable(GL_LIGHTING);
-    }
+//    if(AtomsSet->Type > 0 ) {
+//        glEnable(GL_LIGHTING);
+//    } else {
+//        glDisable(GL_LIGHTING);
+//    }
 
     pos = p_atom->GetPos()+koffset;
     Z = p_atom->GetZ();
@@ -559,8 +559,8 @@ void CStandardModelObject::DrawAtom(CAtom* p_atom)
         radius *= AtomsSet->Ratio;
     }
 
-    glPushMatrix();
-    glTranslatef(pos.x, pos.y, pos.z);
+//    glPushMatrix();
+//    glTranslatef(pos.x, pos.y, pos.z);
     color->ApplyMaterialColor();
 
     switch(AtomsSet->Type){
@@ -575,7 +575,7 @@ void CStandardModelObject::DrawAtom(CAtom* p_atom)
     }
 
     if( selected == true ) {
-        glEnable(GL_BLEND);
+//        glEnable(GL_BLEND);
         ColorsList.SelectionMaterial.ApplyMaterialColor();
         switch(AtomsSet->Type){
         case 0:
@@ -588,9 +588,9 @@ void CStandardModelObject::DrawAtom(CAtom* p_atom)
             Sphere.Draw(radius+0.1);
             break;
         }
-        glDisable(GL_BLEND);
+//        glDisable(GL_BLEND);
     }
-    glPopMatrix();
+//    glPopMatrix();
 
 
 }
@@ -613,11 +613,11 @@ void CStandardModelObject::DrawBond(CBond* p_bond)
     }
     if( (p_atom1->IsFlagSet(EPOF_VISIBLE) == false) && (p_atom2->IsFlagSet(EPOF_VISIBLE) == false) ) return;
 
-    if(BondsSet->Type > 0 ) {
-        glEnable(GL_LIGHTING);
-    } else {
-        glDisable(GL_LIGHTING);
-    }
+//    if(BondsSet->Type > 0 ) {
+//        glEnable(GL_LIGHTING);
+//    } else {
+//        glDisable(GL_LIGHTING);
+//    }
 
     int Z1,Z2;
     Z1 = p_atom1->GetZ();
@@ -705,12 +705,12 @@ void CStandardModelObject::DrawRawBond(CSimplePoint<float>& pos1,
 {
     float radius = BondsSet->Radius;
 
-    glPushMatrix();
+//    glPushMatrix();
 
     switch( BondsSet->Type ){
         // ----------------
         case 0:
-            glLineWidth(radius*100);
+//            glLineWidth(radius*100);
             if( BondsSet->ShowOrder == true ){
                 if( BondsSet->Diffuse == true ) {
                     DrawStick(pos1,pos2,color1,color2,order,ordervect);
@@ -744,13 +744,13 @@ void CStandardModelObject::DrawRawBond(CSimplePoint<float>& pos1,
     }
 
     if( selected == true ) {
-        glEnable(GL_BLEND);
+//        glEnable(GL_BLEND);
         CElementColors*    color1 = &ColorsList.SelectionMaterial;
         DrawTube(pos1,pos2,radius+0.05,color1,color1);
-        glDisable(GL_BLEND);
+//        glDisable(GL_BLEND);
     }
 
-    glPopMatrix();
+//    glPopMatrix();
 
 }
 
@@ -759,8 +759,8 @@ void CStandardModelObject::DrawRawBond(CSimplePoint<float>& pos1,
 //==============================================================================
 
 void CStandardModelObject::DrawTube(
-                                    CSimplePoint<GLfloat>& p1,
-                                    CSimplePoint<GLfloat>& p2,
+                                    CSimplePoint<float>& p1,
+                                    CSimplePoint<float>& p2,
                                     float  radius,
                                     const CElementColors* color1,
                                     const CElementColors* color2
@@ -773,23 +773,23 @@ void CStandardModelObject::DrawTube(
     pd = p2 - p1;
     cylH = Size(pd);
 
-    glPushMatrix();
+//    glPushMatrix();
 
     if (cylH == 0) {
         rotAngle = 0;
     } else {
         rotAngle = acos(pd.z/cylH)*180.0/3.14;
     }
-    glTranslatef (p1.x,p1.y,p1.z);
-    if( (pd.y != 0) || (pd.x != 0) ) {
-        glRotatef(rotAngle,-pd.y,pd.x, 0);
-    } else {
-        if( rotAngle > 90.0 ) glScalef(1,1,-1);
-    }
+//    glTranslatef (p1.x,p1.y,p1.z);
+//    if( (pd.y != 0) || (pd.x != 0) ) {
+//        glRotatef(rotAngle,-pd.y,pd.x, 0);
+//    } else {
+//        if( rotAngle > 90.0 ) glScalef(1,1,-1);
+//    }
 
     Cylinder.DrawWithMaterialColors(radius,cylH,color1,color2);
 
-    glPopMatrix();
+//    glPopMatrix();
 }
 
 //---------------------------------------------------------------------------
@@ -814,27 +814,27 @@ void CStandardModelObject::DrawTube(
     cylH = Size(pd);
     cylM = Size(pm);
 
-    glPushMatrix();
+//    glPushMatrix();
 
     if (cylH == 0) {
         rotAngle = 0;
     } else {
         rotAngle = acos(pd.z/cylH)*180.0/3.14;
     }
-    glTranslatef (p1.x,p1.y,p1.z);
-    if( (pd.y != 0) || (pd.x != 0) ) {
-        glRotatef(rotAngle,-pd.y,pd.x, 0);
-    } else {
-        if( rotAngle > 90.0 ) glScalef(1,1,-1);
-    }
+//    glTranslatef (p1.x,p1.y,p1.z);
+//    if( (pd.y != 0) || (pd.x != 0) ) {
+//        glRotatef(rotAngle,-pd.y,pd.x, 0);
+//    } else {
+//        if( rotAngle > 90.0 ) glScalef(1,1,-1);
+//    }
 
-    color1->ApplyMaterialColor();
-    Cylinder.Draw(radius,cylM);
-    glTranslatef(0,0,cylM);
-    color2->ApplyMaterialColor();
-    Cylinder.Draw(radius,cylH-cylM);
+//    color1->ApplyMaterialColor();
+//    Cylinder.Draw(radius,cylM);
+//    glTranslatef(0,0,cylM);
+//    color2->ApplyMaterialColor();
+//    Cylinder.Draw(radius,cylH-cylM);
 
-    glPopMatrix();
+//    glPopMatrix();
 }
 
 //---------------------------------------------------------------------------
@@ -982,18 +982,18 @@ void CStandardModelObject::DrawTube(
 //==============================================================================
 
 void CStandardModelObject::DrawStick(
-                                    CSimplePoint<GLfloat>& p1,
-                                    CSimplePoint<GLfloat>& p2,
+                                    CSimplePoint<float>& p1,
+                                    CSimplePoint<float>& p2,
                                     const CElementColors* color1,
                                     const CElementColors* color2
                                     )
 {
-    glBegin(GL_LINES);
-        color1->ApplyMaterialColor();
-        glVertex3fv(p1);
-        if( color2 != color1 ) color2->ApplyMaterialColor();
-        glVertex3fv(p2);
-    glEnd();
+//    glBegin(GL_LINES);
+//        color1->ApplyMaterialColor();
+//        glVertex3fv(p1);
+//        if( color2 != color1 ) color2->ApplyMaterialColor();
+//        glVertex3fv(p2);
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
@@ -1006,14 +1006,14 @@ void CStandardModelObject::DrawStick(
                                     const CElementColors* color2
                                     )
 {
-    glBegin(GL_LINES);
-        color1->ApplyMaterialColor();
-        glVertex3fv(p1);
-        glVertex3fv(m);
-        if( color2 != color1 ) color2->ApplyMaterialColor();
-        glVertex3fv(m);
-        glVertex3fv(p2);
-    glEnd();
+//    glBegin(GL_LINES);
+//        color1->ApplyMaterialColor();
+//        glVertex3fv(p1);
+//        glVertex3fv(m);
+//        if( color2 != color1 ) color2->ApplyMaterialColor();
+//        glVertex3fv(m);
+//        glVertex3fv(p2);
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
@@ -1158,7 +1158,7 @@ void CStandardModelObject::DrawStick(
 
 void CStandardModelObject::DrawSphere(float radius,int slices,int stacks)
 {
-    gluSphere(ExtQuad,radius,slices,stacks);
+//    gluSphere(ExtQuad,radius,slices,stacks);
 }
 
 //==============================================================================

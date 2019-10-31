@@ -374,14 +374,14 @@ void CAngleProperty::Draw(void)
         return;
     }
 
-    glDisable(GL_LIGHTING);
-    glDisable(GL_COLOR_MATERIAL);
+//    glDisable(GL_LIGHTING);
+//    glDisable(GL_COLOR_MATERIAL);
 
-    GLLoadObject(this);
+//    GLLoadObject(this);
 
-    LabelAngle();
+//    LabelAngle();
 
-    glDisable(GL_LINE_STIPPLE);
+//    glDisable(GL_LINE_STIPPLE);
 }
 
 //------------------------------------------------------------------------------
@@ -398,61 +398,61 @@ void CAngleProperty::LabelAngle(void)
 
     // arc positions -----------------------------
     CArc                    arc;
-    CSimplePoint<GLfloat>   v1;
-    CSimplePoint<GLfloat>   v2;
-    CSimplePoint<GLfloat>   v3;
-    CSimplePoint<GLfloat>   str;
+    CSimplePoint<float>   v1;
+    CSimplePoint<float>   v2;
+    CSimplePoint<float>   v3;
+    CSimplePoint<float>   str;
 
     // draw angle --------------------------------
     v2 = pos2;
-    glLineWidth(Setup->LineWidth);
-    if( Setup->LineStippleFactor > 0 ){
-        glEnable(GL_LINE_STIPPLE);
-        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
-    } else {
-        glDisable(GL_LINE_STIPPLE);
-    }
-    if( IsFlagSet(EPOF_SELECTED) ){
-        glColor4fv(ColorsList.SelectionMaterial.Color);
-    } else {
-        glColor4fv(Setup->LineColor);
-    }
-    if(Size(pos1-pos2) > Size(pos3-pos2)) {
-        v1 = pos2 + Norm(pos1-pos2)*Size(pos3-pos2)*Setup->AngleArcScope;
-        v3 = pos2 + Norm(pos3-pos2)*Size(pos3-pos2)*Setup->AngleArcScope;
-        arc.Draw(v3,v2,v1,angle,str);
-        glBegin(GL_LINE_STRIP);
-        if(Size(pos3-pos2) > Size(v3-v2)) {
-            glVertex3fv(pos3);
-        } else {
-            glVertex3fv(v3);
-        }
-            glVertex3fv(v2);
-        if(Size(pos1-pos2) > Size(v1-v2)) {
-            glVertex3fv(pos1);
-        } else {
-            glVertex3fv(v1);
-        }
-        glEnd();
-    } else {
-        v1 = pos2 + Norm(pos1-pos2)*Size(pos1-pos2)*Setup->AngleArcScope;
-        v3 = pos2 + Norm(pos3-pos2)*Size(pos1-pos2)*Setup->AngleArcScope;
-        arc.Draw(v1,v2,v3,angle,str);
-        glBegin(GL_LINE_STRIP);
-        if(Size(pos1 - pos2) > Size(v1 - v2)) {
-            glVertex3fv(pos1);
-        } else {
-            glVertex3fv(v1);
-        }
-            glVertex3fv(v2);
-        if(Size(pos3 - pos2) > Size(v3 - v2)) {
-            glVertex3fv(pos3);
-        } else {
-            glVertex3fv(v3);
-        }
-        glEnd();
-    }
-    glDisable(GL_LINE_STIPPLE);
+//    glLineWidth(Setup->LineWidth);
+//    if( Setup->LineStippleFactor > 0 ){
+//        glEnable(GL_LINE_STIPPLE);
+//        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
+//    } else {
+//        glDisable(GL_LINE_STIPPLE);
+//    }
+//    if( IsFlagSet(EPOF_SELECTED) ){
+//        glColor4fv(ColorsList.SelectionMaterial.Color);
+//    } else {
+//        glColor4fv(Setup->LineColor);
+//    }
+//    if(Size(pos1-pos2) > Size(pos3-pos2)) {
+//        v1 = pos2 + Norm(pos1-pos2)*Size(pos3-pos2)*Setup->AngleArcScope;
+//        v3 = pos2 + Norm(pos3-pos2)*Size(pos3-pos2)*Setup->AngleArcScope;
+//        arc.Draw(v3,v2,v1,angle,str);
+//        glBegin(GL_LINE_STRIP);
+//        if(Size(pos3-pos2) > Size(v3-v2)) {
+//            glVertex3fv(pos3);
+//        } else {
+//            glVertex3fv(v3);
+//        }
+//            glVertex3fv(v2);
+//        if(Size(pos1-pos2) > Size(v1-v2)) {
+//            glVertex3fv(pos1);
+//        } else {
+//            glVertex3fv(v1);
+//        }
+//        glEnd();
+//    } else {
+//        v1 = pos2 + Norm(pos1-pos2)*Size(pos1-pos2)*Setup->AngleArcScope;
+//        v3 = pos2 + Norm(pos3-pos2)*Size(pos1-pos2)*Setup->AngleArcScope;
+//        arc.Draw(v1,v2,v3,angle,str);
+//        glBegin(GL_LINE_STRIP);
+//        if(Size(pos1 - pos2) > Size(v1 - v2)) {
+//            glVertex3fv(pos1);
+//        } else {
+//            glVertex3fv(v1);
+//        }
+//            glVertex3fv(v2);
+//        if(Size(pos3 - pos2) > Size(v3 - v2)) {
+//            glVertex3fv(pos3);
+//        } else {
+//            glVertex3fv(v3);
+//        }
+//        glEnd();
+//    }
+//    glDisable(GL_LINE_STIPPLE);
 
     // draw text and quotation -------------------
     CSimplePoint<float>  textpos;

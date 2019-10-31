@@ -74,19 +74,19 @@ void CBackgroundObject::Draw(void)
         return;
     }
 
-    // backup current color mode from anaglyph rendering if enabled
-    GLboolean data[4];
-    glGetBooleanv(GL_COLOR_WRITEMASK,data);
+//    // backup current color mode from anaglyph rendering if enabled
+//    GLboolean data[4];
+//    glGetBooleanv(GL_COLOR_WRITEMASK,data);
 
-    // clear entire buffer only for red component and normal mode
-    if( data[2] == GL_FALSE ){
-        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-    }
-    glClearColor(p_setup->Color.R(),p_setup->Color.G(),p_setup->Color.B(),1);
-    glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+//    // clear entire buffer only for red component and normal mode
+//    if( data[2] == GL_FALSE ){
+//        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+//    }
+//    glClearColor(p_setup->Color.R(),p_setup->Color.G(),p_setup->Color.B(),1);
+//    glClear( GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-    // restore color mode
-    glColorMask(data[0], data[1], data[2], data[3]);
+//    // restore color mode
+//    glColorMask(data[0], data[1], data[2], data[3]);
 }
 
 //==============================================================================

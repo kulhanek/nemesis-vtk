@@ -49,20 +49,21 @@ CSphere::~CSphere(void)
 
 void CSphere::Draw(const float radius)
 {
-    CSimplePoint<GLfloat>  v;
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>  v;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_TRIANGLES);
-    while(i < NumOfVertices) {
-        v = *data;
-        glNormal3fv(v);
-        v *= radius;
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    glEnd();
+//    glBegin(GL_TRIANGLES);
+//    while(i < NumOfVertices) {
+//        v = *data;
+//        glNormal3fv(v);
+//        v *= radius;
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    glEnd();
+//
 }
 
 //---------------------------------------------------------------------------
@@ -91,15 +92,15 @@ bool CSphere::SetTessellationQuality(const unsigned int quality)
 
 void CSphere::ComputeVertices(void)
 {
-    GLfloat x = 0.525731112119133606f, z = 0.850650808352039932f;
+    float x = 0.525731112119133606f, z = 0.850650808352039932f;
 
-    static GLfloat vdata[12][3] = {
+    static float vdata[12][3] = {
         {-x, 0, z}, {x, 0, z}, {-x, 0, -z}, {x, 0, -z},
         {0, z, x}, {0, z, -x}, {0, -z, x}, {0, -z, -x},
         {z, x, 0}, {-z, x, 0}, {z, -x, 0}, {-z, -x, 0}
     };
 
-    static GLuint tindices[20][3] = {
+    static int tindices[20][3] = {
         {0, 4, 1}, {0, 9, 4}, {9, 5, 4}, {4, 5, 8}, {4, 8, 1},
         {8, 10, 1}, {8, 3, 10}, {5, 3, 8}, {5, 2, 3}, {2, 7, 3},
         {7, 10, 3}, {7, 6, 10}, {7, 11, 6}, {11, 0, 6}, {0, 1, 6},
@@ -108,16 +109,16 @@ void CSphere::ComputeVertices(void)
 
     DummyPos = 0;
     for (unsigned int i = 0; i < 20; i++)
-        ComputePartition(((CSimplePoint<GLfloat>*)vdata[tindices[i][0]])[0], ((CSimplePoint<GLfloat>*)vdata[tindices[i][1]])[0], ((CSimplePoint<GLfloat>*)vdata[tindices[i][2]])[0],Vertices,Tessellation - 1);
+        ComputePartition(((CSimplePoint<float>*)vdata[tindices[i][0]])[0], ((CSimplePoint<float>*)vdata[tindices[i][1]])[0], ((CSimplePoint<float>*)vdata[tindices[i][2]])[0],Vertices,Tessellation - 1);
 
 }
 
 //---------------------------------------------------------------------------
 
-void CSphere::ComputePartition(const CSimplePoint<GLfloat>& v1,
-                               const CSimplePoint<GLfloat>& v2,
-                               const CSimplePoint<GLfloat>& v3,
-                               CSimplePoint<GLfloat> data[],
+void CSphere::ComputePartition(const CSimplePoint<float>& v1,
+                               const CSimplePoint<float>& v2,
+                               const CSimplePoint<float>& v3,
+                               CSimplePoint<float> data[],
                                const unsigned int complexity)
 {
     if (complexity == 0) {
@@ -125,7 +126,7 @@ void CSphere::ComputePartition(const CSimplePoint<GLfloat>& v1,
         data[DummyPos++] = v2;
         data[DummyPos++] = v3;
     } else {
-        CSimplePoint<GLfloat> v12,v23,v31;
+        CSimplePoint<float> v12,v23,v31;
         v12 = v1 + v2;
         v23 = v2 + v3;
         v31 = v3 + v1;
@@ -162,20 +163,20 @@ CHalfSphere::~CHalfSphere(void)
 
 void CHalfSphere::Draw(const float radius)
 {
-    CSimplePoint<GLfloat>  v;
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>  v;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_TRIANGLES);
-    while(i < NumOfVertices) {
-        v = *data;
-        glNormal3fv(v);
-        v *= radius;
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    glEnd();
+//    glBegin(GL_TRIANGLES);
+//    while(i < NumOfVertices) {
+//        v = *data;
+//        glNormal3fv(v);
+//        v *= radius;
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
@@ -204,15 +205,15 @@ bool CHalfSphere::SetTessellationQuality(const unsigned int quality)
 
 void CHalfSphere::ComputeVertices(void)
 {
-    GLfloat x = 0.525731112119133606f, z = 0.850650808352039932f;
+    float x = 0.525731112119133606f, z = 0.850650808352039932f;
 
-    static GLfloat vdata[12][3] = {
+    static float vdata[12][3] = {
         {-x, 0, z}, {x, 0, z}, {-x, 0, -z}, {x, 0, -z},
         {0, z, x}, {0, z, -x}, {0, -z, x}, {0, -z, -x},
         {z, x, 0}, {-z, x, 0}, {z, -x, 0}, {-z, -x, 0}
     };
 
-    static GLuint tindices[20][3] = {
+    static int tindices[20][3] = {
         {0, 4, 1}, {0, 9, 4}, {9, 5, 4}, {4, 5, 8}, {4, 8, 1},
         {8, 10, 1}, {8, 3, 10}, {5, 3, 8}, {5, 2, 3}, {2, 7, 3},
         {7, 10, 3}, {7, 6, 10}, {7, 11, 6}, {11, 0, 6}, {0, 1, 6},
@@ -221,13 +222,13 @@ void CHalfSphere::ComputeVertices(void)
 
     DummyPos = 0;
     for (unsigned int i = 0; i < 20; i++)
-        ComputePartition(((CSimplePoint<GLfloat>*)vdata[tindices[i][0]])[0], ((CSimplePoint<GLfloat>*)vdata[tindices[i][1]])[0], ((CSimplePoint<GLfloat>*)vdata[tindices[i][2]])[0],Vertices,Tessellation - 1);
+        ComputePartition(((CSimplePoint<float>*)vdata[tindices[i][0]])[0], ((CSimplePoint<float>*)vdata[tindices[i][1]])[0], ((CSimplePoint<float>*)vdata[tindices[i][2]])[0],Vertices,Tessellation - 1);
 
 }
 
 //---------------------------------------------------------------------------
 
-void CHalfSphere::ComputePartition(const CSimplePoint<GLfloat>& v1,const CSimplePoint<GLfloat>& v2,const CSimplePoint<GLfloat>& v3,CSimplePoint<GLfloat> data[],const unsigned int complexity)
+void CHalfSphere::ComputePartition(const CSimplePoint<float>& v1,const CSimplePoint<float>& v2,const CSimplePoint<float>& v3,CSimplePoint<float> data[],const unsigned int complexity)
 {
 
     if (complexity == 0) {
@@ -235,7 +236,7 @@ void CHalfSphere::ComputePartition(const CSimplePoint<GLfloat>& v1,const CSimple
         data[DummyPos++] = v2;
         data[DummyPos++] = v3;
     } else {
-        CSimplePoint<GLfloat> v12,v23,v31;
+        CSimplePoint<float> v12,v23,v31;
         v12 = v1 + v2;
         v23 = v2 + v3;
         v31 = v3 + v1;
@@ -272,118 +273,118 @@ CCylinder::~CCylinder(void)
 
 void CCylinder::Draw(const float radius,const float height)
 {
-    CSimplePoint<GLfloat>  v;
-    CSimplePoint<GLfloat>  n;
+    CSimplePoint<float>  v;
+    CSimplePoint<float>  n;
 
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_QUAD_STRIP);
-    while(i < NumOfFaces) {
-        n = *data;
-        v = n;
-        glNormal3fv(n);
-        v.x *= radius;
-        v.y *= radius;
-        glVertex3fv(v);
-        glNormal3fv(n);
-        v.z += height;
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    n = *Vertices;
-    v = n;
-    glNormal3fv(n);
-    v.x *= radius;
-    v.y *= radius;
-    glVertex3fv(v);
-    glNormal3fv(n);
-    v.z += height;
-    glVertex3fv(v);
+//    glBegin(GL_QUAD_STRIP);
+//    while(i < NumOfFaces) {
+//        n = *data;
+//        v = n;
+//        glNormal3fv(n);
+//        v.x *= radius;
+//        v.y *= radius;
+//        glVertex3fv(v);
+//        glNormal3fv(n);
+//        v.z += height;
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    n = *Vertices;
+//    v = n;
+//    glNormal3fv(n);
+//    v.x *= radius;
+//    v.y *= radius;
+//    glVertex3fv(v);
+//    glNormal3fv(n);
+//    v.z += height;
+//    glVertex3fv(v);
 
-    glEnd();
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
 
 void CCylinder::Draw(const float radius1,const float radius2,const float height)
 {
-    CSimplePoint<GLfloat>  v;
-    CSimplePoint<GLfloat>  n;
+    CSimplePoint<float>  v;
+    CSimplePoint<float>  n;
 
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_QUAD_STRIP);
-    while(i < NumOfFaces) {
-        n = *data;
-        v = n;
-        glNormal3fv(n);
-        v.x *= radius1;
-        v.y *= radius1;
-        glVertex3fv(v);
-        glNormal3fv(n);
-        v = n;
-        v.x *= radius2;
-        v.y *= radius2;
-        v.z += height;
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    n = *Vertices;
-    v = n;
-    glNormal3fv(n);
-    v.x *= radius1;
-    v.y *= radius1;
-    glVertex3fv(v);
-    glNormal3fv(n);
-    v = n;
-    v.x *= radius2;
-    v.y *= radius2;
-    v.z += height;
-    glVertex3fv(v);
+//    glBegin(GL_QUAD_STRIP);
+//    while(i < NumOfFaces) {
+//        n = *data;
+//        v = n;
+//        glNormal3fv(n);
+//        v.x *= radius1;
+//        v.y *= radius1;
+//        glVertex3fv(v);
+//        glNormal3fv(n);
+//        v = n;
+//        v.x *= radius2;
+//        v.y *= radius2;
+//        v.z += height;
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    n = *Vertices;
+//    v = n;
+//    glNormal3fv(n);
+//    v.x *= radius1;
+//    v.y *= radius1;
+//    glVertex3fv(v);
+//    glNormal3fv(n);
+//    v = n;
+//    v.x *= radius2;
+//    v.y *= radius2;
+//    v.z += height;
+//    glVertex3fv(v);
 
-    glEnd();
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
 
 void CCylinder::Draw(const float radius,const float height,const CColor* color1,const CColor* color2)
 {
-    CSimplePoint<GLfloat>  v,n;
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>  v,n;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_QUAD_STRIP);
-    while(i < NumOfFaces) {
-        n = *data;
-        v = n;
-        glNormal3fv(n);
-        v.x *= radius;
-        v.y *= radius;
-        glColor4fv(*color1);
-        glVertex3fv(v);
-        glNormal3fv(n);
-        v.z += height;
-        glColor4fv(*color2);
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    n = *Vertices;
-    v = n;
-    glNormal3fv(n);
-    v.x *= radius;
-    v.y *= radius;
-    glColor4fv(*color1);
-    glVertex3fv(v);
-    glNormal3fv(n);
-    v.z += height;
-    glColor4fv(*color2);
-    glVertex3fv(v);
-    glEnd();
+//    glBegin(GL_QUAD_STRIP);
+//    while(i < NumOfFaces) {
+//        n = *data;
+//        v = n;
+//        glNormal3fv(n);
+//        v.x *= radius;
+//        v.y *= radius;
+//        glColor4fv(*color1);
+//        glVertex3fv(v);
+//        glNormal3fv(n);
+//        v.z += height;
+//        glColor4fv(*color2);
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    n = *Vertices;
+//    v = n;
+//    glNormal3fv(n);
+//    v.x *= radius;
+//    v.y *= radius;
+//    glColor4fv(*color1);
+//    glVertex3fv(v);
+//    glNormal3fv(n);
+//    v.z += height;
+//    glColor4fv(*color2);
+//    glVertex3fv(v);
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
@@ -392,38 +393,38 @@ void CCylinder::DrawWithMaterialColors(const float radius,const float height,
                                        const CElementColors* color1,
                                        const CElementColors* color2)
 {
-    CSimplePoint<GLfloat>  v,n;
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>  v,n;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_QUAD_STRIP);
-    while(i < NumOfFaces) {
-        n = *data;
-        v = n;
-        glNormal3fv(n);
-        v.x *= radius;
-        v.y *= radius;
-        color1->ApplyMaterialColor();
-        glVertex3fv(v);
-        glNormal3fv(n);
-        v.z += height;
-        color2->ApplyMaterialColor();
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    n = *Vertices;
-    v = n;
-    glNormal3fv(n);
-    v.x *= radius;
-    v.y *= radius;
-    color1->ApplyMaterialColor();
-    glVertex3fv(v);
-    glNormal3fv(n);
-    v.z += height;
-    color2->ApplyMaterialColor();
-    glVertex3fv(v);
-    glEnd();
+//    glBegin(GL_QUAD_STRIP);
+//    while(i < NumOfFaces) {
+//        n = *data;
+//        v = n;
+//        glNormal3fv(n);
+//        v.x *= radius;
+//        v.y *= radius;
+//        color1->ApplyMaterialColor();
+//        glVertex3fv(v);
+//        glNormal3fv(n);
+//        v.z += height;
+//        color2->ApplyMaterialColor();
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    n = *Vertices;
+//    v = n;
+//    glNormal3fv(n);
+//    v.x *= radius;
+//    v.y *= radius;
+//    color1->ApplyMaterialColor();
+//    glVertex3fv(v);
+//    glNormal3fv(n);
+//    v.z += height;
+//    color2->ApplyMaterialColor();
+//    glVertex3fv(v);
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
@@ -432,38 +433,38 @@ void CCylinder::DrawWithUniformColors(const float radius,const float height,
                                       const CElementColors* color1,
                                       const CElementColors* color2)
 {
-    CSimplePoint<GLfloat>  v,n;
-    CSimplePoint<GLfloat>* data = Vertices;
+    CSimplePoint<float>  v,n;
+    CSimplePoint<float>* data = Vertices;
     unsigned int           i=0;
 
-    glBegin(GL_QUAD_STRIP);
-    while(i < NumOfFaces) {
-        n = *data;
-        v = n;
-        glNormal3fv(n);
-        v.x *= radius;
-        v.y *= radius;
-        color1->ApplyUniformColor();
-        glVertex3fv(v);
-        glNormal3fv(n);
-        v.z += height;
-        color2->ApplyUniformColor();
-        glVertex3fv(v);
-        data++;
-        i++;
-    }
-    n = *Vertices;
-    v = n;
-    glNormal3fv(n);
-    v.x *= radius;
-    v.y *= radius;
-    color1->ApplyUniformColor();
-    glVertex3fv(v);
-    glNormal3fv(n);
-    v.z += height;
-    color2->ApplyUniformColor();
-    glVertex3fv(v);
-    glEnd();
+//    glBegin(GL_QUAD_STRIP);
+//    while(i < NumOfFaces) {
+//        n = *data;
+//        v = n;
+//        glNormal3fv(n);
+//        v.x *= radius;
+//        v.y *= radius;
+//        color1->ApplyUniformColor();
+//        glVertex3fv(v);
+//        glNormal3fv(n);
+//        v.z += height;
+//        color2->ApplyUniformColor();
+//        glVertex3fv(v);
+//        data++;
+//        i++;
+//    }
+//    n = *Vertices;
+//    v = n;
+//    glNormal3fv(n);
+//    v.x *= radius;
+//    v.y *= radius;
+//    color1->ApplyUniformColor();
+//    glVertex3fv(v);
+//    glNormal3fv(n);
+//    v.z += height;
+//    color2->ApplyUniformColor();
+//    glVertex3fv(v);
+//    glEnd();
 }
 
 //---------------------------------------------------------------------------
@@ -493,8 +494,8 @@ bool CCylinder::SetTessellationQuality(const unsigned int quality)
 void CCylinder::ComputeVertices(void)
 {
     for (unsigned int i = 0; i < NumOfFaces; i++) {
-        Vertices[i].x = (GLfloat)cos((6.28318530717959 * i) / (double)NumOfFaces);
-        Vertices[i].y = (GLfloat)sin((6.28318530717959 * i) / (double)NumOfFaces);
+        Vertices[i].x = (float)cos((6.28318530717959 * i) / (double)NumOfFaces);
+        Vertices[i].y = (float)sin((6.28318530717959 * i) / (double)NumOfFaces);
         Vertices[i].z = 0;
     }
 }
@@ -541,10 +542,10 @@ bool CArc::SetTessellationQuality(const unsigned int quality)
 
 //---------------------------------------------------------------------------
 
-void CArc::Draw(const CSimplePoint<GLfloat>& v1,
-                const CSimplePoint<GLfloat>& v2,
-                const CSimplePoint<GLfloat>& v3,
-                float angle,CSimplePoint<GLfloat>& str)
+void CArc::Draw(const CSimplePoint<float>& v1,
+                const CSimplePoint<float>& v2,
+                const CSimplePoint<float>& v3,
+                float angle,CSimplePoint<float>& str)
 {
     CTransformation trans;
 
@@ -573,13 +574,13 @@ void CArc::Draw(const CSimplePoint<GLfloat>& v1,
 
     int numoffac = angle*NumOfFaces/3.14;
 
-    glBegin(GL_LINE_STRIP);
-    for(int i=0; i<numoffac; i++) {
-        CPoint newpos = trans.GetTransform(Vertices[i]);
-        glVertex3dv(newpos);
-    }
-    glVertex3dv(end);
-    glEnd();
+//    glBegin(GL_LINE_STRIP);
+//    for(int i=0; i<numoffac; i++) {
+//        CPoint newpos = trans.GetTransform(Vertices[i]);
+//        glVertex3dv(newpos);
+//    }
+//    glVertex3dv(end);
+//    glEnd();
 
     str = trans.GetTransform(Vertices[numoffac/2]);
 }
@@ -589,8 +590,8 @@ void CArc::Draw(const CSimplePoint<GLfloat>& v1,
 void CArc::ComputeVertices(void)
 {
     for (unsigned int i = 0; i < NumOfFaces; i++) {
-        Vertices[i].x = (GLfloat)cos((3.14 * i) / (double)NumOfFaces);
-        Vertices[i].y = (GLfloat)sin((3.14 * i) / (double)NumOfFaces);
+        Vertices[i].x = (float)cos((3.14 * i) / (double)NumOfFaces);
+        Vertices[i].y = (float)sin((3.14 * i) / (double)NumOfFaces);
         Vertices[i].z = 0;
     }
 }
@@ -610,7 +611,7 @@ COpenGL2DFont::COpenGL2DFont(void)
 
 COpenGL2DFont::~COpenGL2DFont(void)
 {
-    glDeleteLists(ListBase,NumOfGlyph);
+ //   glDeleteLists(ListBase,NumOfGlyph);
 }
 
 //---------------------------------------------------------------------------
@@ -658,13 +659,13 @@ COpenGL2DFont::~COpenGL2DFont(void)
 
 bool COpenGL2DFont::IsInitialized(void)
 {
-    if( ListBase > 0 ) {
-        if( glIsList(ListBase) == false ) {
-            ListBase = 0;
-            return(false);
-        }
-        return(true);
-    }
+//    if( ListBase > 0 ) {
+//        if( glIsList(ListBase) == false ) {
+//            ListBase = 0;
+//            return(false);
+//        }
+//        return(true);
+//    }
     return(false);
 }
 
@@ -672,7 +673,7 @@ bool COpenGL2DFont::IsInitialized(void)
 
 void COpenGL2DFont::DestroyFont(void)
 {
-    if( NumOfGlyph > 0 ) glDeleteLists(ListBase,NumOfGlyph);
+    //if( NumOfGlyph > 0 ) glDeleteLists(ListBase,NumOfGlyph);
     FirstGlyph = 0;
     NumOfGlyph = 0;
     ListBase = 0;
@@ -693,10 +694,10 @@ void COpenGL2DFont::DrawText(const QString& text)
         }
     }
 
-    glPushAttrib(GL_LIST_BIT);
-        glListBase(ListBase-FirstGlyph);
-        glCallLists(array.size(), GL_UNSIGNED_BYTE, array.constData());
-    glPopAttrib();
+//    glPushAttrib(GL_LIST_BIT);
+//        glListBase(ListBase-FirstGlyph);
+//        glCallLists(array.size(), GL_UNSIGNED_BYTE, array.constData());
+//    glPopAttrib();
 }
 
 //==============================================================================

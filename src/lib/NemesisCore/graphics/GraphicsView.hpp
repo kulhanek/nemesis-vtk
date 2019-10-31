@@ -220,7 +220,7 @@ private:
     // selection data
     int     SelAreaSize;
     int     SelBuffSize;
-    GLuint* SelBuffer;
+    int* SelBuffer;
 
     // fit scene data
     QTimer*             FitSceneTimer;

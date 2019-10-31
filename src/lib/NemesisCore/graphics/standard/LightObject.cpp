@@ -174,15 +174,15 @@ void CLightObject::Draw(void)
 
     GLLoadObject(this);
 
-    glPushMatrix();
-        if( IsFlagSet<ELightObjectFlag>(ELOF_GLOBAL_POSITION) ){
-            ApplyGlobalViewTransformation();
-        }
+//    glPushMatrix();
+//        if( IsFlagSet<ELightObjectFlag>(ELOF_GLOBAL_POSITION) ){
+//            ApplyGlobalViewTransformation();
+//        }
 
-        InitLight();
-        MakeLight();
-        DrawCover();
-    glPopMatrix();
+//        InitLight();
+//        MakeLight();
+//        DrawCover();
+//    glPopMatrix();
 }
 
 //------------------------------------------------------------------------------
@@ -200,48 +200,43 @@ void CLightObject::GetObjectMetrics(CObjMetrics& metrics)
 //------------------------------------------------------------------------------
 //==============================================================================
 
-GLenum CLightObject::GetLightEnumeration(int index)
-{
-    return((GLenum)(GL_LIGHT0+index));
-}
-
 //------------------------------------------------------------------------------
 
 void CLightObject::InitLight(void)
 {
-    GLenum light = GetLightEnumeration(LightIndex);
-    glEnable(light);
+//    GLenum light = GetLightEnumeration(LightIndex);
+//    glEnable(light);
 
-    glLightfv(light,GL_AMBIENT,Setup->Ambient);
-    glLightfv(light,GL_DIFFUSE,Setup->Diffuse);
-    glLightfv(light,GL_SPECULAR,Setup->Specular);
+//    glLightfv(light,GL_AMBIENT,Setup->Ambient);
+//    glLightfv(light,GL_DIFFUSE,Setup->Diffuse);
+//    glLightfv(light,GL_SPECULAR,Setup->Specular);
 
-    glLightf(light,GL_CONSTANT_ATTENUATION,Setup->Attenuation[0]);
-    glLightf(light,GL_LINEAR_ATTENUATION,Setup->Attenuation[1]);
-    glLightf(light,GL_QUADRATIC_ATTENUATION,Setup->Attenuation[2]);
+//    glLightf(light,GL_CONSTANT_ATTENUATION,Setup->Attenuation[0]);
+//    glLightf(light,GL_LINEAR_ATTENUATION,Setup->Attenuation[1]);
+//    glLightf(light,GL_QUADRATIC_ATTENUATION,Setup->Attenuation[2]);
 
-    glLightf(light, GL_SPOT_EXPONENT, Setup->SpotExponent);
+//    glLightf(light, GL_SPOT_EXPONENT, Setup->SpotExponent);
 
-    if( IsFlagSet<ELightObjectFlag>(ELOF_SPOT_ENABLED) ){
-        glLightf(light, GL_SPOT_CUTOFF, Setup->SpotCutoff);
-    } else {
-        glLightf(light, GL_SPOT_CUTOFF, 180.0f);
-    }
+//    if( IsFlagSet<ELightObjectFlag>(ELOF_SPOT_ENABLED) ){
+//        glLightf(light, GL_SPOT_CUTOFF, Setup->SpotCutoff);
+//    } else {
+//        glLightf(light, GL_SPOT_CUTOFF, 180.0f);
+//    }
 }
 
 //------------------------------------------------------------------------------
 
 void CLightObject::MakeLight(void)
 {
-    GLenum light = GetLightEnumeration(LightIndex);
-    GLfloat pos[4];
+    //GLenum light = GetLightEnumeration(LightIndex);
+    float pos[4];
 
     pos[0] = Position.x;
     pos[1] = Position.y;
     pos[2] = Position.z;
     pos[3] = IsFlagSet<ELightObjectFlag>(ELOF_ATTENUATION_ENABLED);   // pokud je nenulov. je povolena atenuace
 
-    glLightfv(light, GL_POSITION, pos);
+    //glLightfv(light, GL_POSITION, pos);
 
     CPoint direction;
     direction.x = 1.0;
@@ -249,16 +244,16 @@ void CLightObject::MakeLight(void)
     direction.z = Orientation.y;
     direction.ConvertToCartesian();
 
-    GLfloat dir[4];
+    float dir[4];
 
     dir[0] = direction.x;
     dir[1] = direction.y;
     dir[2] = direction.z;
     dir[3] = 0;
 
-    if( IsFlagSet<ELightObjectFlag>(ELOF_SPOT_ENABLED) ){
-        glLightfv(light, GL_SPOT_DIRECTION,dir );
-    }
+//    if( IsFlagSet<ELightObjectFlag>(ELOF_SPOT_ENABLED) ){
+//        glLightfv(light, GL_SPOT_DIRECTION,dir );
+//    }
 }
 
 //------------------------------------------------------------------------------
@@ -280,18 +275,18 @@ void CLightObject::DrawCover(void)
         rotAngle = acos(direction.z/cylH)*180.0/3.14; // konstanta je 180/PI
     }
 
-    glPushMatrix();
-        glTranslatef (Position.x,Position.y,Position.z);
-        if( (direction.y != 0) || (direction.x != 0) ) {
-            glRotatef(rotAngle,-direction.y,direction.x, 0);
-        } else {
-            if( rotAngle > 90.0 ) glScalef(1,1,-1);
-        }
+//    glPushMatrix();
+//        glTranslatef (Position.x,Position.y,Position.z);
+//        if( (direction.y != 0) || (direction.x != 0) ) {
+//            glRotatef(rotAngle,-direction.y,direction.x, 0);
+//        } else {
+//            if( rotAngle > 90.0 ) glScalef(1,1,-1);
+//        }
 
-        glEnable(GL_COLOR_MATERIAL);
-        glColor4fv(Setup->CoverColor);
-        Cylinder.Draw(0,Setup->CoverRadius,Setup->CoverHeight);
-    glPopMatrix();
+//        glEnable(GL_COLOR_MATERIAL);
+//        glColor4fv(Setup->CoverColor);
+//        Cylinder.Draw(0,Setup->CoverRadius,Setup->CoverHeight);
+//    glPopMatrix();
 }
 
 //------------------------------------------------------------------------------

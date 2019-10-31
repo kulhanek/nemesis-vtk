@@ -96,7 +96,6 @@ private:
     CPoint          Orientation;
     CCylinder       Cylinder;
 
-    GLenum          GetLightEnumeration(int index);
     void            InitLight(void);
     void            MakeLight(void);
     void            DrawCover(void);

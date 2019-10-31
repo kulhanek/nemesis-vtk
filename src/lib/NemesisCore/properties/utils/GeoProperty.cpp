@@ -98,33 +98,33 @@ void CGeoProperty::DrawText(const CSimplePoint<float>& pos,const QString& label)
 {
     if( ! IsFlagSet<EGeoPropertyObjectFlag>(EGPOF_SHOW_LABEL) ) return;
 
-    glPushMatrix();
-        if( IsFlagSet(EPOF_SELECTED) ){
-            glColor4fv(ColorsList.SelectionMaterial.Color);
-        } else {
-            glColor4fv(Setup->LabelColor);
-        }
+//    glPushMatrix();
+//        if( IsFlagSet(EPOF_SELECTED) ){
+//            glColor4fv(ColorsList.SelectionMaterial.Color);
+//        } else {
+//            glColor4fv(Setup->LabelColor);
+//        }
 
-        glTranslatef(pos.x,pos.y,pos.z);
+//        glTranslatef(pos.x,pos.y,pos.z);
 
-        // the text should be faced to an user
-        ApplyFaceTransformation();
+//        // the text should be faced to an user
+//        ApplyFaceTransformation();
 
-        // rotate FTGL to our coordinate system
-        glRotatef(90,1,0,0);
-        glRotatef(90,0,1,0);
-        glScalef(0.01,0.01,0.01);
+//        // rotate FTGL to our coordinate system
+//        glRotatef(90,1,0,0);
+//        glRotatef(90,0,1,0);
+//        glScalef(0.01,0.01,0.01);
 
-        if( Setup->DepthTest ){
-            glEnable(GL_DEPTH_TEST);
-        } else {
-            glDisable(GL_DEPTH_TEST);
-        }
+//        if( Setup->DepthTest ){
+//            glEnable(GL_DEPTH_TEST);
+//        } else {
+//            glDisable(GL_DEPTH_TEST);
+//        }
 
-        Setup->FTGLFont.Render(label.toStdWString().c_str());
-    glPopMatrix();
+//        Setup->FTGLFont.Render(label.toStdWString().c_str());
+//    glPopMatrix();
 
-    glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_DEPTH_TEST);
 }
 
 //------------------------------------------------------------------------------
@@ -133,23 +133,23 @@ void CGeoProperty::DrawLabelQuotationLine(CSimplePoint<float>& p1,CSimplePoint<f
 {
     if( ! IsFlagSet<EGeoPropertyObjectFlag>(EGPOF_SHOW_LABEL_QUOTATION) ) return;
 
-    if( Setup->LabelQuotationStippleFactor > 0 ){
-        glEnable(GL_LINE_STIPPLE);
-        glLineStipple(Setup->LabelQuotationStippleFactor,Setup->LabelQuotationStipplePattern);
-    } else {
-        glDisable(GL_LINE_STIPPLE);
-    }
-    glLineWidth(Setup->LabelQuotationLineWidth);
-    if( IsFlagSet(EPOF_SELECTED) ){
-        glColor4fv(ColorsList.SelectionMaterial.Color);
-    } else {
-        glColor4fv(Setup->LabelQuotationColor);
-    }
+//    if( Setup->LabelQuotationStippleFactor > 0 ){
+//        glEnable(GL_LINE_STIPPLE);
+//        glLineStipple(Setup->LabelQuotationStippleFactor,Setup->LabelQuotationStipplePattern);
+//    } else {
+//        glDisable(GL_LINE_STIPPLE);
+//    }
+//    glLineWidth(Setup->LabelQuotationLineWidth);
+//    if( IsFlagSet(EPOF_SELECTED) ){
+//        glColor4fv(ColorsList.SelectionMaterial.Color);
+//    } else {
+//        glColor4fv(Setup->LabelQuotationColor);
+//    }
 
-    glBegin(GL_LINES);
-       glVertex3fv(p1);
-       glVertex3fv(p2);
-    glEnd();
+//    glBegin(GL_LINES);
+//       glVertex3fv(p1);
+//       glVertex3fv(p2);
+//    glEnd();
 }
 
 //------------------------------------------------------------------------------
@@ -176,20 +176,20 @@ void CGeoProperty::DrawCOMPosition(CSimplePoint<float>& com)
     zline2.Set(com.x, com.y, com.z + off);
 
     // draw position cross -----------------------
-    glLineWidth(Setup->PointWidth);
-    if( IsFlagSet(EPOF_SELECTED) ){
-        glColor4fv(ColorsList.SelectionMaterial.Color);
-    } else {
-        glColor4fv(Setup->PointColor);
-    }
-    glBegin(GL_LINES);
-        glVertex3fv(xline1);
-        glVertex3fv(xline2);
-        glVertex3fv(yline1);
-        glVertex3fv(yline2);
-        glVertex3fv(zline1);
-        glVertex3fv(zline2);
-    glEnd();
+//    glLineWidth(Setup->PointWidth);
+//    if( IsFlagSet(EPOF_SELECTED) ){
+//        glColor4fv(ColorsList.SelectionMaterial.Color);
+//    } else {
+//        glColor4fv(Setup->PointColor);
+//    }
+//    glBegin(GL_LINES);
+//        glVertex3fv(xline1);
+//        glVertex3fv(xline2);
+//        glVertex3fv(yline1);
+//        glVertex3fv(yline2);
+//        glVertex3fv(zline1);
+//        glVertex3fv(zline2);
+//    glEnd();
 }
 
 //------------------------------------------------------------------------------
@@ -198,25 +198,25 @@ void CGeoProperty::DrawCOMQuotation(CSimplePoint<float>& com,const QList<CAtom*>
 {
     if( ! IsFlagSet<EGeoPropertyObjectFlag>(EGPOF_SHOW_COM_QUOTATION) ) return;
 
-    glEnable(GL_LINE_STIPPLE);
+//    glEnable(GL_LINE_STIPPLE);
 
-    glLineStipple(Setup->PointQuotationStippleFactor,Setup->PointQuotationStipplePattern);
-    glLineWidth(Setup->PointQuotationWidth);
+//    glLineStipple(Setup->PointQuotationStippleFactor,Setup->PointQuotationStipplePattern);
+//    glLineWidth(Setup->PointQuotationWidth);
 
-    if( IsFlagSet(EPOF_SELECTED) ){
-        glColor4fv(ColorsList.SelectionMaterial.Color);
-    } else {
-        glColor4fv(Setup->PointQuotationColor);
-    }
+//    if( IsFlagSet(EPOF_SELECTED) ){
+//        glColor4fv(ColorsList.SelectionMaterial.Color);
+//    } else {
+//        glColor4fv(Setup->PointQuotationColor);
+//    }
 
-    foreach(CAtom* p_atom,atoms) {
-        CPoint pos = p_atom->GetPos();
+//    foreach(CAtom* p_atom,atoms) {
+//        CPoint pos = p_atom->GetPos();
 
-        glBegin(GL_LINES);
-            glVertex3fv(com);
-            glVertex3dv(pos);
-        glEnd();
-    }
+//        glBegin(GL_LINES);
+//            glVertex3fv(com);
+//            glVertex3dv(pos);
+//        glEnd();
+//    }
 }
 
 //==============================================================================

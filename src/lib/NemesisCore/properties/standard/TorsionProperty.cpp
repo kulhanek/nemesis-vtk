@@ -501,14 +501,14 @@ void CTorsionProperty::Draw(void)
         return;
     }
 
-    glDisable(GL_LIGHTING);
-    glDisable(GL_COLOR_MATERIAL);
+//    glDisable(GL_LIGHTING);
+//    glDisable(GL_COLOR_MATERIAL);
 
-    GLLoadObject(this);
+//    GLLoadObject(this);
 
-    LabelTorsion();
+//    LabelTorsion();
 
-    glDisable(GL_LINE_STIPPLE);
+//    glDisable(GL_LINE_STIPPLE);
 }
 
 //------------------------------------------------------------------------------
@@ -525,13 +525,13 @@ void CTorsionProperty::LabelTorsion(void)
     dihed = CGeoMeasurement::GetTorsion(pos1,pos2,pos3,pos4);
 
     // draw dihed --------------------------------
-    glLineWidth(Setup->LineWidth);
-    if( Setup->LineStippleFactor > 0 ){
-        glEnable(GL_LINE_STIPPLE);
-        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
-    } else {
-        glDisable(GL_LINE_STIPPLE);
-    }
+//    glLineWidth(Setup->LineWidth);
+//    if( Setup->LineStippleFactor > 0 ){
+//        glEnable(GL_LINE_STIPPLE);
+//        glLineStipple(Setup->LineStippleFactor,Setup->LineStipplePattern);
+//    } else {
+//        glDisable(GL_LINE_STIPPLE);
+//    }
 
     CSimplePoint<float> mp = (pos2+pos3)*0.5;
     CSimplePoint<float> v1,v2,c1,c2;
@@ -549,28 +549,28 @@ void CTorsionProperty::LabelTorsion(void)
 
     CSimplePoint<float> s2 = Norm(c2)+mp;
 
-    if( IsFlagSet(EPOF_SELECTED) ){
-        glColor4fv(ColorsList.SelectionMaterial.Color);
-    } else {
-        glColor4fv(Setup->LineColor);
-    }
+//    if( IsFlagSet(EPOF_SELECTED) ){
+//        glColor4fv(ColorsList.SelectionMaterial.Color);
+//    } else {
+//        glColor4fv(Setup->LineColor);
+//    }
 
-    glBegin(GL_LINES);
-        glVertex3fv(pos1);
-        glVertex3fv(pos2);
-        glVertex3fv(pos2);
-        glVertex3fv(pos3);
-        glVertex3fv(pos3);
-        glVertex3fv(pos4);
-        glVertex3fv(mp);
-        glVertex3fv(s1);
-        glVertex3fv(pos1);
-        glVertex3fv(s1);
-        glVertex3fv(mp);
-        glVertex3fv(s2);
-        glVertex3fv(pos4);
-        glVertex3fv(s2);
-    glEnd();
+//    glBegin(GL_LINES);
+//        glVertex3fv(pos1);
+//        glVertex3fv(pos2);
+//        glVertex3fv(pos2);
+//        glVertex3fv(pos3);
+//        glVertex3fv(pos3);
+//        glVertex3fv(pos4);
+//        glVertex3fv(mp);
+//        glVertex3fv(s1);
+//        glVertex3fv(pos1);
+//        glVertex3fv(s1);
+//        glVertex3fv(mp);
+//        glVertex3fv(s2);
+//        glVertex3fv(pos4);
+//        glVertex3fv(s2);
+//    glEnd();
 
     float angle = CGeoMeasurement::GetAngle(s1,mp,s2);
 
@@ -578,7 +578,7 @@ void CTorsionProperty::LabelTorsion(void)
     CSimplePoint<float>  pm;
     arc.Draw(s1,mp,s2,angle,pm);
 
-    glDisable(GL_LINE_STIPPLE);
+//    glDisable(GL_LINE_STIPPLE);
 
     // draw text and quotation -------------------
     CSimplePoint<float>  textpos;

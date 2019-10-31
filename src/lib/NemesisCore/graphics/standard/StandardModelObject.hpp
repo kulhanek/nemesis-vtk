@@ -120,7 +120,7 @@ private:
     CSphere                     Sphere;
     CHalfSphere                 HalfSphere;
     CCylinder                   Cylinder;
-    GLUquadricObj*              ExtQuad;
+    //GLUquadricObj*              ExtQuad;
     CGOColorMode*               ColorMode;
 
 // tmp data

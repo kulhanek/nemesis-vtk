@@ -58,7 +58,7 @@ public:
 // section of public data ----------------------------------------------------
 public:
     CElementColors  GlobalMaterial;
-    GLenum          MaterialMode;
+    EECModes        MaterialMode;
 
     CElementColors  SelectionMaterial;
 

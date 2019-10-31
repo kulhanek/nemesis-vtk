@@ -83,22 +83,22 @@ bool CSelObject::operator == (const CSelObject& left) const
 //------------------------------------------------------------------------------
 //==============================================================================
 
-GLenum GLGetMode(void)
-{
-    GLint i[1];
-    glGetIntegerv(GL_RENDER_MODE,i);
-    //return(i[0]);
-    // TODO - does not work under Windows
-    int j = GL_SELECT;
-    return(j);
-}
+//GLenum GLGetMode(void)
+//{
+//    GLint i[1];
+//    glGetIntegerv(GL_RENDER_MODE,i);
+//    //return(i[0]);
+//    // TODO - does not work under Windows
+//    int j = GL_SELECT;
+//    return(j);
+//}
 
 //---------------------------------------------------------------------------
 
 void GLLoadObject(CProObject* p_object,int subid)
 {
     int index = LoadedObjects.RegisterObject(p_object,subid);
-    glLoadName(index);
+  //  glLoadName(index);
 }
 
 //==============================================================================

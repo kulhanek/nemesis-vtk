@@ -32,7 +32,6 @@
 #include <GraphicsProfileList.hpp>
 #include <WorkPanel.hpp>
 #include <GraphicsShadowView.hpp>
-#include <FTGLFontCache.hpp>
 
 // undef some strange windows macros
 #ifdef WIN32
@@ -70,7 +69,7 @@ CGraphicsView::CGraphicsView(CGraphicsViewList* p_owner,bool primary)
     SyncToPrimaryView = false;
     SelAreaSize = 4;
     SelBuffSize = 50000;
-    SelBuffer = new GLuint[SelBuffSize];
+    SelBuffer = new int[SelBuffSize];
 
     FitSceneTimer = new QTimer;
     connect(FitSceneTimer,SIGNAL(timeout(void)),
@@ -625,7 +624,7 @@ QImage CGraphicsView::Render(int width,int height)
     QGLPixelBuffer pbuffer(Width,Height,format,NULL);
     pbuffer.makeCurrent();
     DrawGL();
-    FTGLFontCache.DestroyFonts();
+    //FTGLFontCache.DestroyFonts();
 
     image = pbuffer.toImage();
 
@@ -703,7 +702,7 @@ void CGraphicsView::AttachOpenGLCanvas(CGraphicsCommonView* p_scene)
 void CGraphicsView::DetachOpenGLCanvas(void)
 {
     // destroy fonts associated with the context
-    FTGLFontCache.DestroyFonts();
+    //FTGLFontCache.DestroyFonts();
 
     if( DrawGLCanvas ){
         DrawGLCanvas->SetGraphicsView(NULL);
@@ -744,7 +743,7 @@ void CGraphicsView::DrawGL(void)
 
     try{
         // GL init
-        GLfloat lmodel_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+        float lmodel_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
 
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_LESS);
@@ -765,7 +764,7 @@ void CGraphicsView::DrawGL(void)
         //glEnable(GL_CULL_FACE);
         glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-        GLfloat shininess = 80;
+        float shininess = 80;
 
         glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS,&shininess );
         glColorMaterial(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE);
@@ -819,19 +818,19 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
         // workaround - see GLGetMode();
         LoadedObjects.Clear();
 
-        // set selection buffer
-        glSelectBuffer(SelBuffSize,SelBuffer);
+//        // set selection buffer
+//        glSelectBuffer(SelBuffSize,SelBuffer);
 
-        LoadedObjects.RegisterMasterObject(GetProfiles()->GetSelectionMasterObject());
+//        LoadedObjects.RegisterMasterObject(GetProfiles()->GetSelectionMasterObject());
 
-        // init DrawGLCanvas
-        glDisable(GL_LIGHTING);
-        glDisable(GL_COLOR_MATERIAL);
-        glShadeModel(GL_SMOOTH);
+//        // init DrawGLCanvas
+//        glDisable(GL_LIGHTING);
+//        glDisable(GL_COLOR_MATERIAL);
+//        glShadeModel(GL_SMOOTH);
 
-        glRenderMode(GL_SELECT);
-        glInitNames();
-        glPushName((GLint)~0);
+//        glRenderMode(GL_SELECT);
+//        glInitNames();
+//        glPushName((GLint)~0);
 
         // init camera
         InitMonoSelection(mousex,mousey,4,4);
@@ -881,46 +880,46 @@ const CSelObject CGraphicsView::SelectObject(int mousex,int mousey)
 void CGraphicsView::InitMono(void)
 {
     // Misc stuff
-    double aspect  = 1.0;
-    if( DrawGLCanvas ) {
-        if( DrawGLCanvas->height() > 0 ){
-            aspect = DrawGLCanvas->width() / (double)DrawGLCanvas->height();
-        }
-        glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
-    } else {
-        if( Height > 0 ){
-            aspect = Width / (double)Height;
-        }
-        glViewport(0,0,Width,Height);
-    }
+//    double aspect  = 1.0;
+//    if( DrawGLCanvas ) {
+//        if( DrawGLCanvas->height() > 0 ){
+//            aspect = DrawGLCanvas->width() / (double)DrawGLCanvas->height();
+//        }
+//        glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
+//    } else {
+//        if( Height > 0 ){
+//            aspect = Width / (double)Height;
+//        }
+//        glViewport(0,0,Width,Height);
+//    }
 
-    double radians = (M_PI / 180.0) * Fovy / 2.0;
-    double wd2     = Near * tan(radians);
+//    double radians = (M_PI / 180.0) * Fovy / 2.0;
+//    double wd2     = Near * tan(radians);
 
-    double left, right, top, bottom;
-    left    = -aspect * wd2;
-    right   =  aspect * wd2;
-    top     =  wd2;
-    bottom  = -wd2;
+//    double left, right, top, bottom;
+//    left    = -aspect * wd2;
+//    right   =  aspect * wd2;
+//    top     =  wd2;
+//    bottom  = -wd2;
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
 
-    switch(ProjectionMode){
-        case EPM_PERSPECTIVE:
-            glFrustum(left,right,bottom,top,Near,Far);
-            break;
-        case EPM_ORTHOGRAPHIC:
-            glOrtho(left,right,bottom,top,Near,Far);
-            break;
-    }
+//    switch(ProjectionMode){
+//        case EPM_PERSPECTIVE:
+//            glFrustum(left,right,bottom,top,Near,Far);
+//            break;
+//        case EPM_ORTHOGRAPHIC:
+//            glOrtho(left,right,bottom,top,Near,Far);
+//            break;
+//    }
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
 
-    gluLookAt(Position.x,Position.y,Position.z,
-              Reference.x,Reference.y,Reference.z,
-              ViewUp.x,ViewUp.y,ViewUp.z);
+//    gluLookAt(Position.x,Position.y,Position.z,
+//              Reference.x,Reference.y,Reference.z,
+//              ViewUp.x,ViewUp.y,ViewUp.z);
 }
 
 //------------------------------------------------------------------------------
@@ -941,35 +940,35 @@ void CGraphicsView::InitMonoSelection(int x,int y,int w,int h)
     top     =  wd2;
     bottom  = -wd2;
 
-    glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
+//    glViewport(0,0,DrawGLCanvas->width(),DrawGLCanvas->height());
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
 
-    GLint vp[4];
-    glGetIntegerv(GL_VIEWPORT, vp);
+//    GLint vp[4];
+//    glGetIntegerv(GL_VIEWPORT, vp);
 
-    if( (w == 0) && (h == 0) ) {
-        gluPickMatrix(x,DrawGLCanvas->height()-y, 4, 4, vp);
-    } else {
-        gluPickMatrix(x-w/2,DrawGLCanvas->height()-y+h/2, w, h, vp);
-    }
+//    if( (w == 0) && (h == 0) ) {
+//        gluPickMatrix(x,DrawGLCanvas->height()-y, 4, 4, vp);
+//    } else {
+//        gluPickMatrix(x-w/2,DrawGLCanvas->height()-y+h/2, w, h, vp);
+//    }
 
-    switch(ProjectionMode){
-        case EPM_PERSPECTIVE:
-            glFrustum(left,right,bottom,top,Near,Far);
-            break;
-        case EPM_ORTHOGRAPHIC:
-            glOrtho(left,right,bottom,top,Near,Far);
-            break;
-    }
+//    switch(ProjectionMode){
+//        case EPM_PERSPECTIVE:
+//            glFrustum(left,right,bottom,top,Near,Far);
+//            break;
+//        case EPM_ORTHOGRAPHIC:
+//            glOrtho(left,right,bottom,top,Near,Far);
+//            break;
+//    }
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
 
-    gluLookAt(Position.x,Position.y,Position.z,
-              Reference.x,Reference.y,Reference.z,
-              ViewUp.x,ViewUp.y,ViewUp.z);
+//    gluLookAt(Position.x,Position.y,Position.z,
+//              Reference.x,Reference.y,Reference.z,
+//              ViewUp.x,ViewUp.y,ViewUp.z);
 }
 
 //------------------------------------------------------------------------------
