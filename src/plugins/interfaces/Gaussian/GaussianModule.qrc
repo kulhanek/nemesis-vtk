@@ -1,7 +1,0 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
- <qresource>
-    <file>images/Gaussian/GDrvTrajSegment.svg</file>
-    <file>images/Gaussian/GOptTrajSegment.svg</file>
- </qresource>
-</RCC>

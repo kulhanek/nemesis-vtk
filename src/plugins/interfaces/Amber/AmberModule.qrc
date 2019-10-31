@@ -1,7 +1,0 @@
-<!DOCTYPE RCC><RCC version="1.0">
- <qresource>
-     <file>images/Amber/Open.svg</file>
-     <file>images/Amber/Close.svg</file>
-     <file>images/Amber/GESPGrid.svg</file>
- </qresource>
- </RCC>
