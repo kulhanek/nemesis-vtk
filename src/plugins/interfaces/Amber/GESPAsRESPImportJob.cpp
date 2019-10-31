@@ -46,7 +46,6 @@
 #include <BondList.hpp>
 #include <AtomList.hpp>
 #include <Atom.hpp>
-#include <PointObject.hpp>
 #include <OpenBabelUtils.hpp>
 
 #include <fstream>

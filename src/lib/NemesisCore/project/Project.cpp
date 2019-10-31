@@ -446,8 +446,9 @@ void CProject::NewData(void)
         }
     }
 
-    objectuuid.LoadFromString("{FREEZED_ATOMS_OBJECT:d638ed90-b60a-4344-a810-eb55f09125a6}");
-    p_gobj = AddGraphicsObject(objectuuid,p_profile);
+// FIXME
+//    objectuuid.LoadFromString("{FREEZED_ATOMS_OBJECT:d638ed90-b60a-4344-a810-eb55f09125a6}");
+//    p_gobj = AddGraphicsObject(objectuuid,p_profile);
 }
 
 //==============================================================================

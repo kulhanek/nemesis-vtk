@@ -269,76 +269,6 @@ SET(NEMESIS_CORE_SRC
         graphics/standard/StandardModelObjectDesigner.cpp
         graphics/standard/StandardModelObjectHistory.cpp
 
-        graphics/standard/FastModelSetup.cpp
-        graphics/standard/FastModelSetupDesigner.cpp
-        graphics/standard/FastModelObject.cpp
-        graphics/standard/FastModelObjectHistory.cpp
-        graphics/standard/FastModelObjectDesigner.cpp
-
-        graphics/standard/XYZAxesSetup.cpp
-        graphics/standard/XYZAxesSetupDesigner.cpp
-        graphics/standard/XYZAxesObject.cpp
-        graphics/standard/XYZAxesObjectDesigner.cpp
-
-        graphics/standard/SpecAxesSetup.cpp
-        graphics/standard/SpecAxesSetupDesigner.cpp
-        graphics/standard/SpecAxesObject.cpp
-        graphics/standard/SpecAxesObjectHistory.cpp
-        graphics/standard/SpecAxesObjectDesigner.cpp
-
-        graphics/standard/AtomLabelSetup.cpp
-        graphics/standard/AtomLabelSetupDesigner.cpp
-        graphics/standard/AtomLabelObject.cpp
-        graphics/standard/AtomLabelObjectDesigner.cpp
-        graphics/standard/AtomLabelObjectHistory.cpp
-
-        graphics/standard/GeometryLabelSetup.cpp
-        graphics/standard/GeometryLabelSetupDesigner.cpp
-        graphics/standard/GeometryLabelObject.cpp
-        graphics/standard/GeometryLabelObjectHistory.cpp
-        graphics/standard/GeometryLabelObjectDesigner.cpp
-
-        graphics/standard/FreezedAtomsSetup.cpp
-        graphics/standard/FreezedAtomsSetupDesigner.cpp
-        graphics/standard/FreezedAtomsObject.cpp
-        graphics/standard/FreezedAtomsObjectDesigner.cpp
-
-        graphics/standard/BoxSetup.cpp
-        graphics/standard/BoxSetupDesigner.cpp
-        graphics/standard/BoxObject.cpp
-        graphics/standard/BoxObjectDesigner.cpp
-        graphics/standard/BoxObjectHistory.cpp
-
-        graphics/standard/PBCBoxSetup.cpp
-        graphics/standard/PBCBoxSetupDesigner.cpp
-        graphics/standard/PBCBoxObject.cpp
-        graphics/standard/PBCBoxObjectDesigner.cpp
-        graphics/standard/PBCBoxObjectHistory.cpp
-
-        graphics/standard/PlaneSetup.cpp
-        graphics/standard/PlaneSetupDesigner.cpp
-        graphics/standard/PlaneObject.cpp
-        graphics/standard/PlaneObjectDesigner.cpp
-        graphics/standard/PlaneObjectHistory.cpp
-
-        graphics/standard/VectorSetup.cpp
-        graphics/standard/VectorSetupDesigner.cpp
-        graphics/standard/VectorObject.cpp
-        graphics/standard/VectorObjectDesigner.cpp
-        graphics/standard/VectorObjectHistory.cpp
-
-        graphics/standard/PointSetup.cpp
-        graphics/standard/PointSetupDesigner.cpp
-        graphics/standard/PointObject.cpp
-        graphics/standard/PointObjectDesigner.cpp
-        graphics/standard/PointObjectHistory.cpp
-
-        graphics/standard/TextSetup.cpp
-        graphics/standard/TextSetupDesigner.cpp
-        graphics/standard/TextObject.cpp
-        graphics/standard/TextObjectDesigner.cpp
-        graphics/standard/TextObjectHistory.cpp
-
     # properties ---------------------------------
         properties/Property.cpp
         properties/GraphicsProperty.cpp
@@ -474,40 +404,19 @@ SET(NEMESIS_UIS
         graphics/utils/GSDesignerGeneral.ui
         graphics/utils/GSDesignerRefBy.ui
         graphics/standard/BackgroundSetupDesigner.ui
+        graphics/standard/BackgroundObjectDesigner.ui
         graphics/standard/LightSetupDesigner.ui
         graphics/standard/LightObjectDesigner.ui
         graphics/standard/StandardModelSetupDesigner.ui
         graphics/standard/StandardModelObjectDesigner.ui
-        graphics/standard/GeometryLabelSetupDesigner.ui
-        graphics/standard/XYZAxesSetupDesigner.ui
-        graphics/standard/FastModelSetupDesigner.ui
-        graphics/standard/FastModelObjectDesigner.ui
-        graphics/standard/AtomLabelObjectDesigner.ui
-        graphics/standard/BoxSetupDesigner.ui
-        graphics/standard/BoxObjectDesigner.ui
-        graphics/standard/PlaneSetupDesigner.ui
-        graphics/standard/VectorSetupDesigner.ui
-        graphics/standard/VectorObjectDesigner.ui
-        graphics/standard/FreezedAtomsSetupDesigner.ui
-        graphics/standard/PointSetupDesigner.ui
-        graphics/standard/PointObjectDesigner.ui
-        graphics/standard/AtomLabelSetupDesigner.ui
-        graphics/standard/BackgroundObjectDesigner.ui
-        graphics/standard/FreezedAtomsObjectDesigner.ui
-        graphics/standard/XYZAxesObjectDesigner.ui
+
         graphics/GraphicsProfileDesigner.ui
-        graphics/standard/PBCBoxObjectDesigner.ui
-        graphics/standard/PBCBoxSetupDesigner.ui
-        graphics/standard/GeometryLabelObjectDesigner.ui
-        graphics/standard/PlaneObjectDesigner.ui
         dialogs/RegExpDialog.ui
         dialogs/MaskDialog.ui
         dialogs/SelBondOrderDialog.ui
         dialogs/GraphicsTypeDialog.ui
         dialogs/TextDialog.ui
         widgets/ObjectLinkWidget.ui
-        graphics/standard/TextSetupDesigner.ui
-        graphics/standard/TextObjectDesigner.ui
         properties/utils/PRDesignerGeneral.ui
         project/utils/PODesignerStructures.ui
         project/utils/PODesignerGeneral.ui

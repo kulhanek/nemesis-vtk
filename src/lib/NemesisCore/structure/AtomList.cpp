@@ -35,9 +35,6 @@
 
 #include <Graphics.hpp>
 #include <GraphicsObjectList.hpp>
-#include <BoxObject.hpp>
-#include <PlaneObject.hpp>
-#include <VectorObject.hpp>
 
 #include <PrincipalAxes.hpp>
 #include <GeoDescriptor.hpp>

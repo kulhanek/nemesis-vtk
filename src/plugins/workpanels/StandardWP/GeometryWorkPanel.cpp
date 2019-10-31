@@ -43,7 +43,6 @@
 #include <Bond.hpp>
 #include <RestraintList.hpp>
 #include <Structure.hpp>
-#include <GeometryLabelObject.hpp>
 #include <Graphics.hpp>
 #include <GraphicsProfileList.hpp>
 #include <GraphicsProfile.hpp>
@@ -358,57 +357,58 @@ void CGeometryWorkPanel::SelectionCompleted(void)
 
 void CGeometryWorkPanel::LabelDAT(void)
 {
-    CSelectionList* p_list = SelRequest->GetSelectionList();
+// FIXME
+//    CSelectionList* p_list = SelRequest->GetSelectionList();
 
-    // these two conditions are necessary as SelectionCompleted is also called in response to
-    // geometry change
+//    // these two conditions are necessary as SelectionCompleted is also called in response to
+//    // geometry change
 
-    if( p_list == NULL ) return;
-    if( p_list->GetStatus() != ESS_SELECTED_OBJECTS_END ) return;
+//    if( p_list == NULL ) return;
+//    if( p_list->GetStatus() != ESS_SELECTED_OBJECTS_END ) return;
 
-    CGraphicsProfile* p_profile = p_list->GetProject()->GetGraphics()->GetProfiles()->GetActiveProfile();
-    if( p_profile == NULL ) return;
+//    CGraphicsProfile* p_profile = p_list->GetProject()->GetGraphics()->GetProfiles()->GetActiveProfile();
+//    if( p_profile == NULL ) return;
 
-    CHistoryNode* p_history = p_profile->BeginChangeWH(EHCL_GRAPHICS,tr("label geometry parameter"));
-    if( p_history == NULL ) return;
+//    CHistoryNode* p_history = p_profile->BeginChangeWH(EHCL_GRAPHICS,tr("label geometry parameter"));
+//    if( p_history == NULL ) return;
 
-    CExtUUID objuuid;
-    objuuid.LoadFromString("{GEOMETRY_LABEL_OBJECT:e8f67b10-14ec-4f72-9099-9a74827485b6}");
-    CGraphicsObject* p_obj =  p_profile->CreateObjectWH(objuuid);
-    if( p_obj != NULL ){
-        CGeometryLabelObject* p_mobj = dynamic_cast<CGeometryLabelObject*>(p_obj);
-        if( p_mobj != NULL ){
-            p_mobj->AddSelectedObjectsWH();
+//    CExtUUID objuuid;
+//    objuuid.LoadFromString("{GEOMETRY_LABEL_OBJECT:e8f67b10-14ec-4f72-9099-9a74827485b6}");
+//    CGraphicsObject* p_obj =  p_profile->CreateObjectWH(objuuid);
+//    if( p_obj != NULL ){
+//        CGeometryLabelObject* p_mobj = dynamic_cast<CGeometryLabelObject*>(p_obj);
+//        if( p_mobj != NULL ){
+//            p_mobj->AddSelectedObjectsWH();
 
-            EGeometryWorkPanelAction act = static_cast<EGeometryWorkPanelAction>(ButtonGroup->checkedId());
-            switch(act) {
-                case EGWPA_NONE:
-                    p_mobj->SetTypeWH(ESGLT_NONE);
-                    break;
+//            EGeometryWorkPanelAction act = static_cast<EGeometryWorkPanelAction>(ButtonGroup->checkedId());
+//            switch(act) {
+//                case EGWPA_NONE:
+//                    p_mobj->SetTypeWH(ESGLT_NONE);
+//                    break;
 
-                case EGWPA_POSITION:
-                    p_mobj->SetTypeWH(ESGLT_POINT);
-                    break;
+//                case EGWPA_POSITION:
+//                    p_mobj->SetTypeWH(ESGLT_POINT);
+//                    break;
 
-                case EGWPA_DISTANCE:
-                    p_mobj->SetTypeWH(ESGLT_DISTANCE);
-                    break;
+//                case EGWPA_DISTANCE:
+//                    p_mobj->SetTypeWH(ESGLT_DISTANCE);
+//                    break;
 
-                case EGWPA_ANGLE:
-                    p_mobj->SetTypeWH(ESGLT_ANGLE);
-                    break;
+//                case EGWPA_ANGLE:
+//                    p_mobj->SetTypeWH(ESGLT_ANGLE);
+//                    break;
 
-                case EGWPA_TORSION:
-                    p_mobj->SetTypeWH(ESGLT_DIHEDRAL);
-                    break;
-            }
+//                case EGWPA_TORSION:
+//                    p_mobj->SetTypeWH(ESGLT_DIHEDRAL);
+//                    break;
+//            }
 
-        } else {
-            ES_ERROR("p_mobj is not CGeometryLabelObject");
-        }
-    }
+//        } else {
+//            ES_ERROR("p_mobj is not CGeometryLabelObject");
+//        }
+//    }
 
-    p_profile->EndChangeWH();
+//    p_profile->EndChangeWH();
 }
 
 //------------------------------------------------------------------------------
