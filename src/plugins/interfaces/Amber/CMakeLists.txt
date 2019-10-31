@@ -14,24 +14,12 @@ SET(AMBER_PLUGIN_SRC
         TopologyImportTool.cpp
         ChargesImportJob.cpp
         ChargesImportTool.cpp
-        GESPImportJob.cpp
-        GESPImportTool.cpp
-        GESPGridObject.cpp
-        GESPGridObjectDesigner.cpp
-        GESPGridSetup.cpp
-        GESPGridSetupDesigner.cpp
-        GESPAsRESPImportTool.cpp
-        GESPAsRESPImportJob.cpp
         )
 
 # program windows --------------------------------------------------------------
 SET(AMBER_PLUGIN_UIS
         AmberImportTool.ui
         Rst7ExportTool.ui
-        GESPImportTool.ui
-        GESPGridObjectDesigner.ui
-        GESPGridSetupDesigner.ui
-        GESPAsRESPImportTool.ui
         )
 
 # program resources ------------------------------------------------------------

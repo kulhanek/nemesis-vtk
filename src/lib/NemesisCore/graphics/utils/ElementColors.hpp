@@ -27,6 +27,13 @@
 
 //------------------------------------------------------------------------------
 
+// FIXME
+enum EECModes {
+    EECM_FRONT_AND_BACK = 1,
+};
+
+//------------------------------------------------------------------------------
+
 /// extended color definition for OpenGL
 
 class NEMESIS_CORE_PACKAGE CElementColors {
@@ -35,8 +42,8 @@ public:
     CElementColors(void);
 
 // setup methods ---------------------------------------------------------------
-    void ApplyMaterialColor(GLenum face=GL_FRONT_AND_BACK) const;
-    void ApplyUniformColor(GLenum face=GL_FRONT_AND_BACK) const;
+    void ApplyMaterialColor(EECModes face=EECM_FRONT_AND_BACK) const;
+    void ApplyUniformColor(EECModes face=EECM_FRONT_AND_BACK) const;
     void ApplyTransparency(float transparency);
 
 // input/output methods --------------------------------------------------------

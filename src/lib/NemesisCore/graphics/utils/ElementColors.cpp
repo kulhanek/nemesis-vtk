@@ -32,24 +32,26 @@ CElementColors::CElementColors(void)
 
 //------------------------------------------------------------------------------
 
-void CElementColors::ApplyMaterialColor(GLenum face) const
+void CElementColors::ApplyMaterialColor(EECModes face) const
 {
-    glDisable(GL_COLOR_MATERIAL);
-    glColor4fv(Diffuse);
-    glMaterialfv(face, GL_AMBIENT,Ambient);
-    glMaterialfv(face, GL_DIFFUSE,Diffuse);
-    glMaterialfv(face, GL_EMISSION,Emission);
-    glMaterialfv(face, GL_SPECULAR,Specular);
-    glMaterialf(face, GL_SHININESS,Shininess);
+    // FIXME
+//    glDisable(GL_COLOR_MATERIAL);
+//    glColor4fv(Diffuse);
+//    glMaterialfv(face, GL_AMBIENT,Ambient);
+//    glMaterialfv(face, GL_DIFFUSE,Diffuse);
+//    glMaterialfv(face, GL_EMISSION,Emission);
+//    glMaterialfv(face, GL_SPECULAR,Specular);
+//    glMaterialf(face, GL_SHININESS,Shininess);
 }
 
 //------------------------------------------------------------------------------
 
-void CElementColors::ApplyUniformColor(GLenum face) const
+void CElementColors::ApplyUniformColor(EECModes face) const
 {
-    glMaterialf(face, GL_SHININESS,Shininess);
-    glEnable(GL_COLOR_MATERIAL);
-    glColor4fv(Color);
+    // FIXME
+//    glMaterialf(face, GL_SHININESS,Shininess);
+//    glEnable(GL_COLOR_MATERIAL);
+//    glColor4fv(Color);
 }
 
 //------------------------------------------------------------------------------

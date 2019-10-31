@@ -202,8 +202,6 @@ SET(NEMESIS_CORE_SRC
         graphics/utils/GOColorMode.cpp
         graphics/utils/GOColorModeHistory.cpp
         graphics/utils/GOColorModeDesigner.cpp
-        graphics/utils/FTGLFontCache.cpp
-        graphics/utils/FTGLFont.cpp
 
         graphics/GraphicsObject.cpp
         graphics/GraphicsObjectHistory.cpp
@@ -473,9 +471,6 @@ ADD_LIBRARY(nemesis_core_shared SHARED ${NEMESIS_CORE_SRC})
 ADD_DEPENDENCIES(nemesis_core_shared plusula_shared)
 
 TARGET_LINK_LIBRARIES(nemesis_core_shared plusula
-                ${FTGL_LIB}
-                ${OPENGL_glu_LIBRARY}
-                ${OPENGL_gl_LIBRARY}
                 ${OPEN_BABEL_LIB}
                 ${QT_LIBRARIES}
                 ${SCIMAFIC_CLIB_NAME}
