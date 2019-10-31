@@ -1,8 +1,0 @@
-<!-- Turbomole Plugin Setup -->
-<PLUGIN name="Turbomole"
-        uuid="{TURBOMOLE_PLUGIN:adc71455-7806-4702-bf01-323c57ecc0a6}">
-    <!-- some local setup will be here -->
-    <OBJECT uuid="{TVIB_TRAJ_SEGMENT:c102477a-a45c-4270-9768-557b009d64e0}">
-        <CONFIG key="_designer" value="{VIB_TRAJ_SEGMENT_DESIGNER:02d468c7-8cc7-4295-92cf-eeae2ae9c653}"/>
-    </OBJECT>
-</PLUGIN> 

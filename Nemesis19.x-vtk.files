@@ -1,5 +1,4 @@
 etc/desktop/{BUILD_PROJECT#b64d16f0-b73f-4747-9a13-212ab9a15d38}/tools_menu.xml
-etc/plugins/definitions/workpanels/SymmetryWP.plg
 src/lib/NemesisCore/graphics/utils/ElementColors.cpp
 src/lib/NemesisCore/graphics/utils/ElementColors.hpp
 src/lib/NemesisCore/graphics/utils/ElementColorsList.cpp
@@ -46,18 +45,8 @@ README.md
 etc/CMakeLists.txt
 etc/CMakeLists.txt
 etc/plugins/definitions/NemesisCore.plg
-etc/plugins/definitions/impex/ExtraImpex.plg
-etc/plugins/definitions/interfaces/Amber.plg
-etc/plugins/definitions/interfaces/CPMD.plg
-etc/plugins/definitions/interfaces/Gaussian.plg
-etc/plugins/definitions/interfaces/OpenBabel.plg
-etc/plugins/definitions/interfaces/Turbomole.plg
 etc/plugins/definitions/projects/BuildProject.plg
-etc/plugins/definitions/projects/SketchProject.plg
-etc/plugins/definitions/projects/TrajectoryProject.plg
-etc/plugins/definitions/properties/RMSDTools.plg
 etc/plugins/definitions/workpanels/AdminWP.plg
-etc/plugins/definitions/workpanels/ExtraWP.plg
 etc/plugins/definitions/workpanels/StandardWP.plg
 src/lib/NemesisCore/NemesisCoreMainHeaderConfig.hpp
 src/lib/NemesisCore/windows/AboutWindow.ui
@@ -823,8 +812,3 @@ src/lib/CMakeLists.txt
 src/plugins/CMakeLists.txt
 src/CMakeLists.txt
 CMakeLists.txt
-src/plugins/CATsProject/CATsProject.qrc
-src/plugins/CATsProject/CATsProjectWindow.ui
-etc/plugins/definitions/CATsProject.plg
-src/plugins/CrystalTools/SuperCellBuilderWorkPanel.ui
-src/lib/NemesisCore/graphics/standard/PlaneObjectDesigner.ui

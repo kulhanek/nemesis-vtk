@@ -1,8 +1,0 @@
-<PLUGIN name="SketchProject"
-        uuid="{SKETCH_PROJECT_PLUGIN:750de7b9-5345-4784-8f3b-4cfb2e488992}">
-    <!-- some local setup will be here -->
-    <OBJECT uuid="{SKETCH_PROJECT:6b047926-9a91-4e5f-884a-500db358ddb2}">
-        <CONFIG key="_designer" value="{SKETCH_PROJECT_DESIGNER:f67b31f6-3827-4399-ac84-f391c512b327}"/>
-        <CONFIG key="_model" value="{DUMMY_MODEL:8a8e91a6-28b7-4f68-9f08-24413d0eb170}"/>
-    </OBJECT>
-</PLUGIN> 

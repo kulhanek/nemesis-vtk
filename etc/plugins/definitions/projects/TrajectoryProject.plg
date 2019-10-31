@@ -1,9 +1,0 @@
-<!-- MoleculeProject Plugin Setup -->
-<PLUGIN name="TrajectoryProject"
-        uuid="{TRAJECTORY_PROJECT_PLUGIN:dbed1085-5ece-4e27-800e-c3924cf62d69}">
-    <!-- some local setup will be here -->
-    <OBJECT uuid="{TRAJECTORY_PROJECT:c4dd64d9-da20-413d-a2df-6f38697e4d2d}">
-        <CONFIG key="_model"    value="{PRO_OBJECT_MODEL:165adc10-a3ad-4524-92ee-9448bec52eed}"/>
-        <CONFIG key="_designer" value="{TRAJECTORY_PROJECT_DESIGNER:7f390c8f-b680-4411-be8d-ec4106c888cd}"/>
-    </OBJECT>
-</PLUGIN> 

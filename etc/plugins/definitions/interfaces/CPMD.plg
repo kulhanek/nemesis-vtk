@@ -1,5 +1,0 @@
-<!-- CPMD Plugin Setup -->
-<PLUGIN name="CPMD"
-        uuid="{CPMD_PLUGIN:e1c6171b-6e9b-496b-830e-9fbdabdcc70d}">
-    <!-- some local setup will be here -->
-</PLUGIN> 

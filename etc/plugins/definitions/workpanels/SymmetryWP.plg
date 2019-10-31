@@ -1,5 +1,0 @@
-<!-- Symmetry Plugin Setup -->
-<PLUGIN name="SymmetryWP"
-        uuid="{SYMMETRY_WP:ac42023e-6568-4bde-9abd-5b04b50a80d4}">
-    <!-- some local setup will be here -->
-</PLUGIN> 
