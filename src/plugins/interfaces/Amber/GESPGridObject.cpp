@@ -23,8 +23,6 @@
 #include <CategoryUUID.hpp>
 #include <ErrorSystem.hpp>
 #include <GraphicsObjectList.hpp>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <Project.hpp>
 
 #include "AmberModule.hpp"

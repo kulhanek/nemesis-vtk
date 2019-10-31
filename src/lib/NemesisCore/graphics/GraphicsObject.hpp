@@ -26,7 +26,6 @@
 #include <ProObject.hpp>
 #include <ObjectManipulator.hpp>
 #include <GraphicsSetup.hpp>
-#include <GL/gl.h>
 #include <ErrorSystem.hpp>
 
 //------------------------------------------------------------------------------

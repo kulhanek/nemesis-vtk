@@ -23,7 +23,6 @@
 
 #include <GraphicsUtil.hpp>
 #include <Transformation.hpp>
-#include <GL/gl.h>
 #include <IndexCounter.hpp>
 #include <ProObject.hpp>
 

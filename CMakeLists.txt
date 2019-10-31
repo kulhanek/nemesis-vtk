@@ -78,16 +78,6 @@ INCLUDE_DIRECTORIES(${OPEN_BABEL_ROOT}/include)
 LINK_DIRECTORIES(${OPEN_BABEL_ROOT}/lib)
 SET(OPEN_BABEL_LIB obcore)
 
-# FreeType ---------------------------------------
-FIND_PACKAGE(Freetype REQUIRED)
-INCLUDE_DIRECTORIES(${FREETYPE_INCLUDE_DIRS})
-
-# FTGL -------------------------------------------
-SET(FTGL_ROOT ${DEVELOPMENT_ROOT}/thirdparty/ftgl/2.1.3rc5)
-INCLUDE_DIRECTORIES(${FTGL_ROOT}/src/lib/ftgl)
-LINK_DIRECTORIES(${FTGL_ROOT}/lib)
-SET(FTGL_LIB ftgl)
-
 # Indigo -----------------------------------------
 SET(INDIGO_ROOT ${DEVELOPMENT_ROOT}/thirdparty/indigo/1.2.3)
 INCLUDE_DIRECTORIES(${INDIGO_ROOT}/src/api)
@@ -99,9 +89,6 @@ SET(QCP_ROOT ${DEVELOPMENT_ROOT}/thirdparty/qcustomplot/2.0.1)
 INCLUDE_DIRECTORIES(${QCP_ROOT}/src/lib/qcustomplot/)
 LINK_DIRECTORIES(${QCP_ROOT}/lib)
 SET(QCP_LIB qcustomplot)
-
-# OpenGL -----------------------------------------
-FIND_PACKAGE(OpenGL REQUIRED)
 
 # QT5 --------------------------------------------
 SET(CMAKE_AUTOMOC ON)

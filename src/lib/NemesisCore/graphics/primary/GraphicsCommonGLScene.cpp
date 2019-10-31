@@ -19,7 +19,6 @@
 // =============================================================================
 
 #include <GraphicsCommonGLScene.hpp>
-#include <GL/gl.h>
 #include <ErrorSystem.hpp>
 #include <GraphicsView.hpp>
 #include <QPainter>

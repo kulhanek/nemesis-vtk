@@ -30,8 +30,6 @@
 #include <Project.hpp>
 #include <XMLElement.hpp>
 #include <Graphics.hpp>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <GraphicsProfileObject.hpp>
 #include <HistoryNode.hpp>
 #include <GraphicsProfileHistory.hpp>

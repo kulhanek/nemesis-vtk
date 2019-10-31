@@ -33,7 +33,6 @@
 
 #include <SimpleList.hpp>
 #include <SimpleIterator.hpp>
-#include <GL/gl.h>
 
 // -----------------------------------------------------------------------------
 

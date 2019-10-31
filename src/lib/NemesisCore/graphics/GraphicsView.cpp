@@ -26,8 +26,6 @@
 #include <CategoryUUID.hpp>
 #include <XMLElement.hpp>
 #include <Graphics.hpp>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <GLSelection.hpp>
 #include <QGLPixelBuffer>
 #include <GraphicsViewList.hpp>

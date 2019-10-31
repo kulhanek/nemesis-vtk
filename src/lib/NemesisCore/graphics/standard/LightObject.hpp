@@ -25,8 +25,6 @@
 
 #include <NemesisCoreMainHeader.hpp>
 #include <GraphicsObject.hpp>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <GraphicsUtil.hpp>
 
 //------------------------------------------------------------------------------

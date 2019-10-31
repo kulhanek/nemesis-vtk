@@ -22,7 +22,6 @@
 // =============================================================================
 
 #include <NemesisCoreMainHeader.hpp>
-#include <GL/gl.h>
 #include <XMLElement.hpp>
 #include <SmallColor.hpp>
 

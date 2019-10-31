@@ -21,7 +21,6 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // =============================================================================
 
-#include <GL/gl.h>
 #include <Manipulator.hpp>
 #include <ErrorSystem.hpp>
 

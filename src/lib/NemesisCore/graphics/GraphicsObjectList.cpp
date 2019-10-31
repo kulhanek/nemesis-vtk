@@ -29,8 +29,6 @@
 #include <CategoryUUID.hpp>
 #include <XMLElement.hpp>
 #include <Graphics.hpp>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <GraphicsObjectHistory.hpp>
 #include <GraphicsObjectLink.hpp>
 #include <GraphicsObjectEnd.hpp>
